@@ -1,0 +1,421 @@
+/*  ------------------------- LETRAS Y BODY ---------------------- */
+
+body, .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    background-color: #f4f7fa;
+}
+
+/* ------------------------ PREVENIR DESPLAZAMIENTOS HORIZONTALES NO DESEADOS EN LOS MOVILES ------------------------------ */
+
+html, body {
+    overflow-x: hidden;
+}
+
+
+/* =================== HEADER =================== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 1rem 2rem;
+    background-color: midnightblue;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 50px 0 20px;
+}
+
+/* =================== LOGO =================== */
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-container img,
+.logo-principal img {
+    display: block;
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-container img:hover {
+    transform: scale(1.05);
+}
+
+/* =================== NAVEGACIÓN =================== */
+#menu-navegacion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+    text-align: center;
+}
+
+#menu-navegacion > div {
+    position: relative;
+}
+
+#menu-navegacion a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+#menu-navegacion a:hover {
+    color: #eeee22;
+}
+
+/* =================== SUBMENÚS =================== */
+#submenu-carnets,
+#submenu-alumnos,
+#submenu-profesores {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: midnightblue;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    z-index: 1000;
+}
+
+#menu-carnets:hover #submenu-carnets,
+#menu-alumnos:hover #submenu-alumnos,
+#profesores:hover #submenu-profesores {
+    display: block;
+}
+
+#submenu-carnets a,
+#submenu-alumnos a,
+#submenu-profesores a {
+    display: block;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+#submenu-carnets a:hover,
+#submenu-alumnos a:hover,
+#submenu-profesores a:hover {
+    background-color: midnightblue;
+    color: #eeee22;
+}
+
+/* =================== INFO TOP DERECHA =================== */
+.container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: black;
+    margin: 0;
+}
+
+.container a img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.container a:hover img {
+    transform: scale(1.1);
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #menu-navegacion {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #submenu-carnets,
+    #submenu-alumnos {
+        position: static;
+        transform: none;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    #submenu-carnets a,
+    #submenu-alumnos a {
+        padding-left: 1rem;
+        color: white;
+    }
+
+    #menu-carnets:hover #submenu-carnets,
+    #menu-alumnos:hover #submenu-alumnos {
+        display: block;
+    }
+}
+
+
+
+/* ----------------------------------------------------- CONTACTO FORMULARIO ------------------------------------------------------- */
+
+/* Centrado del título */
+#titulo-formulario {
+    text-align: center;
+    color: midnightblue;  /* Color de texto azul oscuro */
+    font-size: 24px;
+    margin-bottom: 30px;
+    margin-top: 80px;
+  }
+  
+  /* Estilos generales */
+  #formulario-contacto {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Dos columnas en pantallas grandes */
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    border: 2px solid #f4f7fa; /* Borde azul oscuro */
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    max-width: 800px;
+    margin: 50px auto;
+    margin-top: 80px;
+    animation: fadeInForm 1s ease-out forwards; /* Animación de aparición del formulario */
+  }
+  
+  /* Estilos para los campos de entrada */
+  #nombre, #apellidos, #email, #telefono, #asunto, #mensaje {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    background-color: midnightblue;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+    box-sizing: border-box;  /* Asegura que el padding no afecte al tamaño */
+  }
+  #mensaje {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* Estilo para los placeholders */
+  input::placeholder, textarea::placeholder {
+    color: #aaaaaa;
+    transition: color 0.3s ease;
+  }
+  
+  /* Cambio de borde y color al hacer foco */
+  #nombre:focus, #apellidos:focus, #email:focus, #telefono:focus, #asunto:focus, #mensaje:focus {
+    border-color: #f4f7fa;  /* Borde azul claro */
+    outline: none;
+    color: #f4f7fa;
+    transform: scale(1.05);  /* Leve aumento del tamaño del campo */
+  }
+  
+  /* Asegurar que el campo de mensaje ocupe el ancho completo */
+  #mensaje {
+    grid-column: span 2;  /* El campo de mensaje abarca ambas columnas */
+    height: auto;
+    resize: vertical;  /* Permitir que el usuario ajuste el tamaño */
+  }
+  
+  /* Responsividad para pantallas pequeñas */
+  @media (max-width: 600px) {
+    #formulario-contacto {
+      grid-template-columns: 1fr; /* En pantallas pequeñas solo una columna */
+      padding: 20px;
+    }
+  
+    #nombre, #apellidos, #email, #telefono, #asunto, #mensaje {
+      max-width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
+    }
+  
+    #mensaje {
+      grid-column: span 1;  /* El campo de mensaje ocupa solo una columna */
+    }
+  }
+  
+  /* Animación para los placeholders al hacer foco */
+  #nombre:focus::placeholder, #apellidos:focus::placeholder, #email:focus::placeholder, #telefono:focus::placeholder, #asunto:focus::placeholder, #mensaje:focus::placeholder {
+    color: #f4f7fa;  /* Cambio de color del placeholder */
+  }
+  
+  /* Estilo para el select de asunto */
+  #asunto {
+    height: auto;
+    padding: 12px;
+    background-color: midnightblue;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #asunto:focus {
+    outline: none;
+    color: #f4f7fa;
+    transform: scale(1.05);
+  }
+  
+  /* Botones del formulario */
+  button[type="submit"], button[type="reset"] {
+    padding: 12px 20px;
+    border-radius: 20px;
+    background-color: midnightblue; /* Fondo azul oscuro */
+    border: none;
+    color: #f4f7fa; 
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra para destacar */
+  }
+  
+  /* Hover para los botones */
+  button[type="submit"]:hover, button[type="reset"]:hover {
+    background-color: midnightblue; /* Fondo amarillo más claro */
+    color: #f4f7fa;
+    transform: scale(1.05); /* Agranda ligeramente el botón */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 1.5); /* Sombra más pronunciada */
+  }
+  
+  /* Botones al hacer clic */
+  button[type="submit"]:active, button[type="reset"]:active {
+    transform: scale(0.95); /* Reduce ligeramente el tamaño */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
+  }
+  
+  /* Responsividad para botones */
+  @media (max-width: 600px) {
+    button[type="submit"], button[type="reset"] {
+      width: 100%; /* Los botones ocupan todo el ancho disponible */
+      padding: 15px; /* Más espacio interno */
+    }
+  }
+
+  /* ------------------------------ FOOTER ------------------------------------------- */
+
+#pie-pagina {
+    background-color: midnightblue;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 100px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+}
+
+.footer-section {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.email-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a img {
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.5);
+}
+
+/* Ubicación */
+#ubicacion-footer {
+    text-align: left;
+}
+
+#texto-ubicacion {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Mapa */
+#iframe-ubicacion iframe {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 2rem auto;
+}
+
+/* Pie inferior */
+#container-pie-pagina {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#texto-pie-pagina {
+    font-size: 0.9rem;
+    color: lightgray;
+    margin: 4px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #ubicacion-footer {
+        text-align: center;
+    }
+
+    #iframe-ubicacion iframe {
+        height: 200px;
+    }
+}
