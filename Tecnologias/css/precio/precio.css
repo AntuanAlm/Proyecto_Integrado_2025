@@ -30,6 +30,7 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 50px 0 20px;
+    cursor: pointer;
 }
 
 /* =================== LOGO =================== */
@@ -96,6 +97,7 @@ html, body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     min-width: 200px;
     z-index: 1000;
+    cursor: pointer;
 }
 
 #menu-carnets:hover #submenu-carnets,
@@ -219,7 +221,7 @@ html, body {
     border-radius: 8px;
     padding: 2rem;
     width: 200px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-align: left;
@@ -230,7 +232,7 @@ html, body {
 
 /* Efecto hover para los precios */
 .precio-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-20px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -265,7 +267,7 @@ html, body {
 
 .precio-item ul li::before {
     content: "•";
-    color: #007BFF;
+    color: midnightblue;
     font-size: 1.2rem;
     position: absolute;
     left: 0;
@@ -306,6 +308,82 @@ html, body {
         font-size: 0.9rem;
     }
 }
+
+
+/* ============================== PAGAR ================================ */
+
+/* Estilo general del contenedor */
+#politica-pasarela-pago {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 150px;
+  }
+  
+  /* Título */
+  #politica-pasarela-pago h2 {
+    font-size: 2em;
+    color: midnightblue;
+    margin-bottom: 20px;
+  }
+  
+  /* Párrafo */
+  #politica-pasarela-pago p {
+    font-size: 1.1em;
+    color: midnightblue;
+    margin-bottom: 30px;
+  }
+  
+  /* Botón */
+  .btn-pago {
+    display: inline-block;
+    background-color: midnightblue;
+    color: #f4f7fa;
+    padding: 14px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Efecto hover */
+  .btn-pago:hover {
+    background-color: midnightblue;
+    transform: scale(1.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+  }
+
+/* ------------------========= RESPONSIVE PARA MOVILES =======================------------------ */
+  
+@media (max-width: 480px) {
+    #politica-pasarela-pago {
+      padding: 20px;
+      margin: 20px 10px;
+    }
+  
+    #politica-pasarela-pago h2 {
+      font-size: 1.5em;
+    }
+  
+    #politica-pasarela-pago p {
+      font-size: 1em;
+    }
+  
+    .btn-pago {
+      padding: 12px 20px;
+      font-size: 0.95em;
+    }
+  }
+  
 
 /* ============================= FOOTER ========================= */
 

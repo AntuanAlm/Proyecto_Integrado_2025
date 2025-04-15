@@ -4,86 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=ç, initial-scale=1.0">
     <title>Autoescuela Almansa.es</title>
+
+    <!-- Links de css -->
     <link rel="stylesheet" href="/Tecnologias/css/vista_principal/index.css">
+    <link rel="stylesheet" href="/Tecnologias/css/variables_css/vista_principal_variables/vista_principal_variables.css">
+    <link rel="stylesheet" href="/Tecnologias/css/responsive/vista_principal_responsive/vista_principal_responsive.css">
+
+    <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Matemasie&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/Tecnologias/img/logo/logo-autoescuela.png" type="image/x-icon">
 
+    <!-- JS -->
+     <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
+     <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
 </head>
 <body>
 
     <div class="container">
         
             <p class="email">
-                <img src="/Tecnologias/img/logo/Gmail_Icon.original.png" alt="email" width="35" height="35">
+                <img data-src="gmail" alt="email" width="35" height="35">
                 autoescuelaalmansa@hotmail.com
             </p>
     
                 <a href="https://www.facebook.com/antonio.almansa.39?locale=es_ES" class="facebook" target="_blank">
-                    <img src="/Tecnologias/img/logo/facebook.png" alt="facebook" width="30" height="30">
+                    <img data-src="fb" alt="facebook" width="30" height="30">
                 </a>
     
                 <a href="https://www.instagram.com/autoalmansa.es/?igsh=MXJseXk1Y2NkZDRnZg%3D%3D#" class="instagram" target="_blank">
-                    <img src="/Tecnologias/img/logo/instagram.png" alt="instagram" width="30" height="30">
+                    <img data-src="instagram" alt="instagram" width="30" height="30">
                 </a>
             
         </div>
-    
-
-    <header class="header">
-        <div class="logo-container">
-            <a href="index.html" class="logo-principal">
-                <img src="/Tecnologias/img/logo/logo-autoescuela.png" alt="Logo Autoescuela Almansa" width="100" height="100">
-            </a>
-        </div>
         
-        <nav id="menu-navegacion">
-            <div id="menu-carnets">
-              <a href="#carnets">Carnets</a>
-              <div id="submenu-carnets">
-                <a id="submenu-coche" href="/Tecnologias/html/coche/coche.html">Coche - B</a>
-                <!-- <a id="submenu-moto" href="#carnets-moto">Moto</a> -->
-                <a id="submenu-intensivos" href="#carnets-cursos-intensivos">Cursos Intensivos</a>
-                <a id="submenu-reciclaje" href="#carnets-clases-reciclaje">Clases de Reciclaje</a>
-              </div>
-            </div>
-          
-            <div id="menu-alumnos">
-              <a href="#alumnos">Alumnos</a>
-              <div id="submenu-alumnos">
-                <a id="submenu-test" href="#alumnos-test">Test</a>
-                <a id="submenu-nota" href="#alumnos-consulta-nota">Consulta tu Nota</a>
-              </div>
-            </div>
+        <!------------------------------------ HEADER -------------------------------------->
 
-            <div id="profesores">
-              <a href="#profesores">Profesores</a>
-              <div id="submenu-profesores">
-                <a href="submenu-conocer">Conoce a tus profesores</a>
-                <a href="submenu-login">Area profesores</a>
+        <header class="header">
+          <div class="logo-container">
+              <a class="logo-principal" data-enlace="inicio">
+                  <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
+              </a>
+          </div>
+          
+          <nav id="menu-navegacion">
+              <div id="menu-carnets">
+                  <a href="#carnets" data-enlace="carnets">Carnets</a>
+                  <div id="submenu-carnets">
+                      <a id="submenu-coche" data-enlace="coche">Coche - B</a>
+                      <a id="submenu-precio" data-enlace="precio">Precios - B</a>
+                      <a id="submenu-intensivos" data-enlace="cursos_intensivos">Cursos Intensivos</a>
+                      <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
+                  </div>
               </div>
-            </div>
           
-            <div id="menu-calendario">
-              <a href="#calendario">Calendario</a>
-            </div>
+              <div id="menu-alumnos">
+                  <a href="#alumnos" data-enlace="alumnos">Alumnos</a>
+                  <div id="submenu-alumnos">
+                      <a id="submenu-test" data-enlace="test">Test</a>
+                      <a id="submenu-nota" data-enlace="nota">Consulta tu Nota</a>
+                  </div>
+              </div>
+      
+              <div id="profesores">
+                  <a>Profesores</a>
+                  <div id="submenu-profesores">
+                      <a data-enlace="profesores">Conoce a tus profesores</a>
+                      <a data-enlace="login">Area profesores</a>
+                  </div>
+              </div>
           
-            <div id="menu-resenas">
-              <a href="/Tecnologias/html/reseñas/reseñas.html">Reseñas</a>
-            </div>
+              <div id="menu-calendario">
+                  <a data-enlace="calendario">Calendario</a>
+              </div>
           
-            <div id="menu-sobrenosotros">
-              <a href="/Tecnologias/html/sobre_nosotros/sobre_nosotros.html">Sobre nosotros</a>
-            </div>
+              <div id="menu-resenas">
+                  <a data-enlace="reseñas">Reseñas</a>
+              </div>
           
-            <div id="menu-contacto">
-              <a href="/Tecnologias/html/contacto/contacto.html">Contacto</a>
-            </div>
+              <div id="menu-sobrenosotros">
+                  <a data-enlace="sobre_nosotros">Sobre nosotros</a>
+              </div>
+          
+              <div id="menu-contacto">
+                  <a data-enlace="contacto">Contacto</a>
+              </div>
           </nav>
-
-    </header>
-    
+      </header>
+      
     
     <div id="titles">
         <h1>Autoescuela Almansa.es</h1>
@@ -95,19 +104,22 @@
      <div id="container-etiquetas">
 
         <div id="etiqueta_coche">
-          <a href="/Tecnologias/html/coche/coche.html">
-            <img src="/Tecnologias/img/logo/coche_blanco_auto.png" alt="coche_blanco_auto" width="100" height="100">
+          <a data-enlace="coche">
+            <img data-src="coche_pequeño" alt="coche_blanco_auto" width="100" height="100">
             <p>Coche</p>
           </a>
         </div>
-
-        <!-- <div id="etiqueta_moto">
-          <a href="#carnet_moto">
-            <img src="/Tecnologias/img/logo/moto_auto.png" alt="moto_auto" width="100" height="100">
-            <p>Moto</p>
-          </a>
-        </div> -->
     
+     </div>
+     
+        <!-- ========================= LOS TESTS =============================== -->
+         
+     <h1 id="titulo-acceso-test-alumnos">¿Eres ya alumno?</h1>
+
+     <div id="enlace-test-alumnos">
+      <!-- aquí voy hacer lo de los test -->
+        <a href="#alumnos-test">Acceso a test</a>  
+        <!-- FALTA ENLAZAR -->
      </div>
      
      <h3 id="subtitulo-diferencias">¿En qué nos diferenciamos?</h3>
@@ -119,10 +131,11 @@
      </div>
 
 
-<!-- CONTENEDOR PRINCIPAL DE RESEÑAS -->
+    <!--------------------- RESEÑAS ---------------------------->
+
 <div id="reseñas">
   <h2 id="subtexto-etiquetas-reseñas">¿Qué dicen sobre nuestra autoescuela?</h2>
-  <img src="/Tecnologias/img/logo/reviews-google.png" alt="4.9 estrellas" width="300" height="200">
+  <img data-src="estrellas_google" alt="4.9 estrellas" width="300" height="200">
 </div>
 
 <!-- ETIQUETAS DE RESEÑAS -->
@@ -132,7 +145,7 @@
   <!-- Etiqueta 1 -->
 
   <div id="etiqueta-reseñas">
-    <img src="/Tecnologias/img/logo/629383ee30fb025780ee2970.png" alt="reseña-verificada" width="100" height="100">
+    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
     <h3>Lucía ***</h3>
     <p>Aunque solo hice las prácticas en esta autoescuela, ya que la teórica me la saqué en otra, estoy segurísima de que María es una profesora espectacular y encantadora. Por otra parte, Antonio es una persona muy profesional, encantador y muy entregado a su trabajo. Estoy muy agradecida de haberme cambiado, ya que desde que me apunté empecé a hacer prácticas. Por lo tanto, recomiendo esta autoescuela.</p>
   </div>
@@ -140,7 +153,7 @@
   <!-- Etiqueta 2 -->
 
   <div id="etiqueta-reseñas">
-    <img src="/Tecnologias/img/logo/629383ee30fb025780ee2970.png" alt="reseña-verificada" width="100" height="100">
+    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
     <h3>Carlos ***</h3>
     <p>La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!</p>
   </div>
@@ -148,7 +161,7 @@
   <!-- Etiqueta 3 -->
 
   <div id="etiqueta-reseñas">
-    <img src="/Tecnologias/img/logo/629383ee30fb025780ee2970.png" alt="reseña-verificada" width="100" height="100">
+    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
     <h3>Ana ***</h3>
     <p>Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso.</p>
   </div>
@@ -156,7 +169,7 @@
   <!-- Etiqueta 4 -->
 
   <div id="etiqueta-reseñas">
-    <img src="/Tecnologias/img/logo/629383ee30fb025780ee2970.png" alt="reseña-verificada" width="100" height="100">
+    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
     <h3>Juan ***</h3>
     <p>El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases.</p>
   </div>
@@ -164,7 +177,7 @@
   <!-- Etiqueta 5 -->
 
   <div id="etiqueta-reseñas">
-    <img src="/Tecnologias/img/logo/629383ee30fb025780ee2970.png" alt="reseña-verificada" width="100" height="100">
+    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
     <h3>María ***</h3>
     <p>Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación.</p>
   </div>
@@ -172,7 +185,7 @@
   <!-- Etiqueta 6 -->
 
   <div id="etiqueta-reseñas">
-    <img src="/Tecnologias/img/logo/629383ee30fb025780ee2970.png" alt="reseña-verificada" width="100" height="100">
+    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
     <h3>José ***</h3>
     <p>Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!</p>
   </div>
@@ -206,23 +219,24 @@
 
 </form>
      
-     <!-- Footer -->
+     <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
+
 
      <footer id="pie-pagina">
       <div class="container-footer">
     
         <div class="footer-section">
           <p class="email-footer">
-            <img src="/Tecnologias/img/logo/Gmail_Icon.original.png" alt="email" width="24" height="24">
+            <img data-src="gmail" alt="email" width="24" height="24">
             autoescuelaalmansa@hotmail.com
           </p>
     
           <div class="social-icons">
-            <a href="https://www.facebook.com/" target="_blank">
-              <img src="/Tecnologias/img/logo/facebook.png" alt="facebook" width="30" height="30">
+            <a data-src="gmail" target="_blank">
+              <img data-src="fb" alt="facebook" width="30" height="30">
             </a>
-            <a href="https://www.instagram.com/" target="_blank">
-              <img src="/Tecnologias/img/logo/instagram.png" alt="instagram" width="30" height="30">
+            <a data-src="instagram" target="_blank">
+              <img data-src="instagram" alt="instagram" width="30" height="30">
             </a>
           </div>
         </div>

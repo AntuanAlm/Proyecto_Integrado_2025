@@ -1,0 +1,17 @@
+:root {
+  --fuente-principal: "Roboto", sans-serif;
+  --peso-fuente: 400;
+  --estilo-fuente: normal;
+  --configuracion-fuente: "wdth" 100;
+  --color-fondo: #f4f7fa;
+  --color-principal: midnightblue;
+  --color-hover: #eeee22;
+  --sombra-box: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --sombra-fuerte: 0 8px 20px rgba(0, 0, 0, 0.8);
+  --sombra-hover: 0 6px 14px rgba(0, 0, 0, 0.2);
+  --radio-borde: 10px;
+  --espaciado-contenedor: 2.5rem;
+  --max-ancho: 880px;
+  --color-texto: midnightblue;
+  --color-footer: lightgray;
+}

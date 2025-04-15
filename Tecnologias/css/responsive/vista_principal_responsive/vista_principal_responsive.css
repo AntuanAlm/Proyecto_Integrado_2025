@@ -1,0 +1,51 @@
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+
+  /* Ajustes para el HEADER */
+  .header {
+      flex-direction: column; /* Coloca los elementos del header en columna */
+      align-items: center; /* Centra los elementos verticalmente */
+  }
+
+  /* Ajustes para el menú de navegación */
+  #menu-navegacion {
+      flex-direction: column; /* Organiza los elementos de navegación en columna */
+      gap: 1rem; /* Añade espacio entre los elementos */
+  }
+
+  /* Ajustes para los submenús */
+  #submenu-carnets,
+  #submenu-alumnos {
+      position: static; /* Cambia la posición de los submenús para que no estén absolutamente posicionados */
+      transform: none; /* Elimina cualquier transformación de desplazamiento */
+      background-color: transparent; /* Hace que el fondo sea transparente */
+      box-shadow: none; /* Elimina la sombra */
+      padding: 0; /* Elimina el padding */
+  }
+
+  #submenu-carnets a,
+  #submenu-alumnos a {
+      padding-left: 1rem; /* Añade padding en el lado izquierdo de los enlaces */
+      color: var(--color-texto); /* Usa la variable de color de texto */
+  }
+
+  #menu-carnets:hover #submenu-carnets,
+  #menu-alumnos:hover #submenu-alumnos {
+      display: block; /* Muestra los submenús al hacer hover sobre el menú */
+  }
+
+  /* Ajustes para el FOOTER */
+  .container-footer {
+      flex-direction: column; /* Organiza las secciones del footer en columna */
+      align-items: center; /* Centra las secciones */
+      text-align: center; /* Centra el texto */
+  }
+
+  #ubicacion-footer {
+      text-align: center; /* Centra el texto de la ubicación en el footer */
+  }
+
+  #iframe-ubicacion iframe {
+      height: 200px; /* Ajusta la altura del iframe del mapa */
+  }
+}

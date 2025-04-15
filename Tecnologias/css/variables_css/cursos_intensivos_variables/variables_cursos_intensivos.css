@@ -1,0 +1,35 @@
+:root {
+    /* Colores */
+    --color-bg: #f4f7fa;
+    --color-header-bg: midnightblue;
+    --color-text: black;
+    --color-link: white;
+    --color-link-hover: #eeee22;
+    --color-accent: #ff6f61;
+    --color-accent-hover: #ff856e;
+  
+    /* Tipografía */
+    --font-main: "Roboto", sans-serif;
+    --font-weight-normal: 400;
+  
+    /* Sombra */
+    --shadow-default: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --shadow-text: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    --shadow-subtext: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  
+    /* Bordes */
+    --radius-default: 10px;
+    --radius-img: 15px;
+    --radius-small: 6px;
+    --radius-button: 8px;
+  
+    /* Transiciones */
+    --transition-default: all 0.3s ease;
+
+    /* Footer */
+    --footer-bg: midnightblue;
+    --footer-text: white;
+  }
+
+   
