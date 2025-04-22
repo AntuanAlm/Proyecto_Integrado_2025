@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cursos_intensivos: '/Tecnologias/html/curso_intensivo/curso_intensivo.html',
       clases_reciclaje: '/Tecnologias/html/clases_reciclajes/clases_reciclajes.html',
       profesores:'/Tecnologias/html/conoce_profesores/conoce_profesores.html',
-      test:'/Tecnologias/html/test-alumnos/test-alumnos.html'
+      test:'/Tecnologias/html/test-alumnos/test-alumnos.html',
+      calendario:'/Tecnologias/html/calendario/calendario.html',
 
     };
   

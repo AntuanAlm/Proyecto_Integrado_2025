@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conoce a tus profesores</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gracias por Registrarte</title>
 
-    <!-- Links de css -->
-    <link rel="stylesheet" href="/Tecnologias/css/conoce_profesores/conoce_profesores.css">
+  <!-- Links de css -->
+  <link rel="stylesheet" href="/Tecnologias/css/agradecimiento_pago/agradecimiento_pago.css" />
 
-    <!-- Links de fuentes de google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Matemasie&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/Tecnologias/img/logo/logo-autoescuela.png" type="image/x-icon">
+  <!-- Link de las fuentes de google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Matemasie&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/Tecnologias/img/logo/logo-autoescuela.png" type="image/x-icon">
 
-    <!-- JS -->
-     <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
-     <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
-     <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
-
-
+  <!-- JS -->
+   <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
+   <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
+   <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
 </head>
 <body>
 
@@ -42,26 +40,26 @@
 
     <!-------------------------------- CARRITO DE LA COMPRA ---------------------------->
     <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
-        <span>🛒 Carrito</span>
-        <span id="carrito-count" class="carrito-count">0</span>
-      </div>
+      <span>🛒 Carrito</span>
+      <span id="carrito-count" class="carrito-count">0</span>
+    </div>
 
-      <div id="carrito-menu" class="carrito-menu">
-        <div id="carrito-header" class="carrito-header">
-          <h2>Tu Carrito</h2>
-          <button class="close-carrito" onclick="toggleCarrito()">✖</button>
-        </div>
-        <div id="carrito-vacio" class="carrito-vacio">
-          <p>No tienes artículos en el carrito</p>
-        </div>
-        <div id="carrito-contenido" class="carrito-contenido">
-          <div id="carrito-items" class="carrito-items"></div>
-          <div id="carrito-total" class="carrito-total">
-            <p>Total: <span id="total-carrito">0€</span></p>
-          </div>
-          <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
-        </div>
+    <div id="carrito-menu" class="carrito-menu">
+      <div id="carrito-header" class="carrito-header">
+        <h2>Tu Carrito</h2>
+        <button class="close-carrito" onclick="toggleCarrito()">✖</button>
       </div>
+      <div id="carrito-vacio" class="carrito-vacio">
+        <p>No tienes artículos en el carrito</p>
+      </div>
+      <div id="carrito-contenido" class="carrito-contenido">
+        <div id="carrito-items" class="carrito-items"></div>
+        <div id="carrito-total" class="carrito-total">
+          <p>Total: <span id="total-carrito">0€</span></p>
+        </div>
+        <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+      </div>
+    </div>
     
     <!------------------------------------ HEADER -------------------------------------->
 
@@ -116,43 +114,31 @@
           </div>
       </nav>
   </header>
+  
 
-  <!-- ========================== PARTE DE CONOCE A TUS PROFESORES ========================== -->
-  <h1 id="conoce_profes">Conoce a tus profesores</h1>
 
-<section class="conoce-profesores">
-    <div class="profesores-container">
-        <!-- Profesor 1 -->
-        <div class="profesor">
-            <img src="/Tecnologias/img/profesores/profesor1.jpg" alt="Profesor de Carnet B" class="profesor-img">
-            <h2>Juan Pérez</h2>
-            <p>Especialista en clases prácticas para el Carnet B. Con más de 10 años de experiencia, Juan te ayudará a ganar confianza al volante y a superar el examen práctico con éxito.</p>
-            <ul>
-                <li>Clases prácticas personalizadas</li>
-                <li>Simulación de exámenes reales</li>
-                <li>Consejos para conducción segura</li>
-            </ul>
-        </div>
 
-        <!-- Profesor 2 -->
-        <div class="profesor">
-            <img src="/Tecnologias/img/profesores/profesora2.jpg" alt="Profesora de Teoría e Intensivos" class="profesor-img">
-            <h2>María López</h2>
-            <p>Encargada de las clases teóricas y los cursos intensivos. María tiene un enfoque dinámico y práctico para que aprendas la teoría de forma rápida y efectiva.</p>
-            <ul>
-                <li>Clases teóricas interactivas</li>
-                <li>Cursos intensivos para aprobar en tiempo récord</li>
-                <li>Resolución de dudas y simulacros de test</li>
-            </ul>
-        </div>
+    <!-- ========================= AGRADECIMIENTO ======================== -->
+  <div class="container-agradecimiento">
+    <h1>¡Gracias por Registrarte!</h1>
+    <p>
+      Estamos encantados de que hayas elegido nuestra autoescuela para tu formación.  
+      Nos comprometemos a ofrecerte la mejor experiencia y ayudarte a alcanzar tus objetivos.
+    </p>
+    <p>
+      Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.
+    </p>
+    <div class="botones">
+      <a data-enlace="contacto" class="button">Contáctanos</a>
+      <a data-enlace="inicio" class="button">Volver al Inicio</a>
+      <a data-enlace="test" class="button">Ir a los Test</a>
     </div>
-</section>
+  </div>
+
+  <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 
 
- <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
-
-
- <footer id="pie-pagina">
+  <footer id="pie-pagina">
     <div class="container-footer">
   
       <div class="footer-section">
@@ -187,8 +173,6 @@
       <p id="texto-pie-pagina">Desarrollado por: Antonio Almansa</p>
     </div>
   </footer>
-
   
-    
 </body>
 </html>

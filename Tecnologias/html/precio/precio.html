@@ -13,11 +13,14 @@
     <!-- JS -->
     <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
     <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
+    <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
 
 </head>
 <body>
 
-   <div class="container">
+    <!--------------------------------- HEADER DE CONTACTO ------------------------------->
+
+            <div class="container">
         
             <p class="email">
                 <img data-src="gmail" alt="email" width="35" height="35">
@@ -33,6 +36,30 @@
                 </a>
             
         </div>
+
+        <!-------------------------------- CARRITO DE LA COMPRA ---------------------------->
+              <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
+                <span>🛒 Carrito</span>
+                <span id="carrito-count" class="carrito-count">0</span>
+              </div>
+
+              <div id="carrito-menu" class="carrito-menu">
+                <div id="carrito-header" class="carrito-header">
+                  <h2>Tu Carrito</h2>
+                  <button class="close-carrito" onclick="toggleCarrito()">✖</button>
+                </div>
+                <div id="carrito-vacio" class="carrito-vacio">
+                  <p>No tienes artículos en el carrito</p>
+                </div>
+                <div id="carrito-contenido" class="carrito-contenido">
+                  <div id="carrito-items" class="carrito-items"></div>
+                  <div id="carrito-total" class="carrito-total">
+                    <p>Total: <span id="total-carrito">0€</span></p>
+                  </div>
+                  <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+                </div>
+              </div>
+
         
         <!------------------------------------ HEADER -------------------------------------->
 
@@ -45,7 +72,7 @@
           
           <nav id="menu-navegacion">
             <div id="menu-carnets">
-                <a href="#carnets" data-enlace="carnets">Carnets</a>
+                <a data-enlace="carnets">Carnets</a>
                 <div id="submenu-carnets">
                     <a id="submenu-coche" data-enlace="coche">Coche - B</a>
                     <a id="submenu-precio" data-enlace="precio">Precios - B</a>
@@ -101,15 +128,12 @@
           <h2>Teórico</h2>
           <p class="precio">Precio: 150€</p>
           <p>Incluye:</p>
-
           <ul>
               <li>Material didáctico</li>
               <li>Acceso a test online</li>
               <li>Clases teóricas ilimitadas</li>
           </ul>
-
-          <a data-enlace="pasarela_pago" target="_blank" class="btn-pago">Comprar Teórico</a>
-
+          <a href="#" class="btn-pago" onclick="agregarAlCarrito('Teórico', 150, 'Teórico')">Añadir al carrito - Teórico</a>
       </div>
 
       <div class="precio-item">
@@ -121,7 +145,7 @@
               <li>Vehículo moderno y seguro</li>
               <li>Instructor certificado</li>
           </ul>
-          <a data-enlace="pasarela_pago" target="_blank" class="btn-pago">Comprar Clase Práctica</a>
+          <a href="#" class="btn-pago" onclick="agregarAlCarrito('Práctico', 30, 'Clase')">Añadir al carrito - Clase Práctica</a>
       </div>
 
       <div class="precio-item">
@@ -133,13 +157,52 @@
               <li>20 clases prácticas</li>
               <li>Gestión de exámenes</li>
           </ul>
-          <a data-enlace="pasarela_pago" target="_blank" class="btn-pago">Comprar Pack Completo</a>
+          <a href="#" class="btn-pago" onclick="agregarAlCarrito('Pack Completo', 950, 'Pack')">Añadir al carrito - Pack Completo</a>
       </div>
+
+      <div class="precio-item">
+          <h2>Curso Intensivo</h2>
+          <p class="precio">Precio: 350€</p>
+          <p>Incluye:</p>
+          <ul>
+              <li>Clases teóricas intensivas</li>
+              <li>Material de estudio</li>
+              <li>Acceso a test online</li>
+          </ul>
+          <a href="#" class="btn-pago" onclick="agregarAlCarrito('Curso Intensivo', 350, 'Curso')">Añadir al carrito - Curso Intensivo</a>
+      </div>
+
+      <div class="precio-item">
+        <h2>Pack de 10 Clases Prácticas</h2>
+        <p class="precio">Precio: 280€</p>
+        <p>Incluye:</p>
+        <ul>
+          <li>10 clases prácticas de 45 minutos</li>
+          <li>Vehículo moderno y seguro</li>
+          <li>Instructor certificado</li>
+        </ul>
+        <a href="#" class="btn-pago" onclick="agregarAlCarrito('Pack de 10 Clases Prácticas', 280, 'Pack')">Añadir al carrito - Pack de 10 Clases</a>
+      </div>
+
+      <div class="precio-item">
+        <h2>Pack de 20 Clases Prácticas</h2>
+        <p class="precio">Precio: 540€</p>
+        <p>Incluye:</p>
+        <ul>
+          <li>20 clases prácticas de 45 minutos</li>
+          <li>Vehículo moderno y seguro</li>
+          <li>Instructor certificado</li>
+        </ul>
+        <a href="#" class="btn-pago" onclick="agregarAlCarrito('Pack de 20 Clases Prácticas', 540, 'Pack')">Añadir al carrito - Pack de 20 Clases</a>
+      </div>
+
   </div>
 </div>
 
+    <!-- ============================ PASARELA DE PAGO ============================= -->
+     
     <div id="politica-pasarela-pago">
-        <h2>¿Quieres leer la política de la Pasarela de Pago?</h2>
+        <h2>¿Quieres leer la Política de Protección de Datos de la Pasarela de Pago?</h2>
         <p>Puedes consultar todos los detalles en nuestra página dedicada para la protección de tus datos.</p>
             <a data-enlace="politica_pasarela_pago" class="btn-pago">
               Leer Política de Pasarela de Pago

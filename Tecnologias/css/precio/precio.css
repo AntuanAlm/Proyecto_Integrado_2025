@@ -232,7 +232,7 @@ html, body {
 
 /* Efecto hover para los precios */
 .precio-item:hover {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -276,7 +276,7 @@ html, body {
 
 /* ============================== RESPONSIVE ====================-- */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     #precios-carnet-b h1 {
         font-size: 2.5rem;
     }
@@ -289,7 +289,7 @@ html, body {
     .precio-item {
         width: 80%;
     }
-}
+} */
 
 @media (max-width: 480px) {
     #precios-carnet-b h1 {
@@ -310,7 +310,7 @@ html, body {
 }
 
 
-/* ============================== PAGAR ================================ */
+/* ============================== POLITICA DE PROTECCION DE DATOS ================================ */
 
 /* Estilo general del contenedor */
 #politica-pasarela-pago {
@@ -383,7 +383,166 @@ html, body {
       font-size: 0.95em;
     }
   }
-  
+
+
+/* ============================= CARRITO DE LA COMPRA ========================= */
+
+/* Ícono del carrito */
+.carrito-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1e3a8a;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 30px;
+    font-size: 16px;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carrito-icon:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+}
+
+/* Contador del carrito */
+.carrito-count {
+    background-color: #ef4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+/* Menú desplegable del carrito */
+.carrito-menu {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    max-height: 500px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 998;
+    transition: all 0.4s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Mostrar carrito cuando esté visible (añade esta clase desde JS) */
+.carrito-menu.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Header del carrito */
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.carrito-header h2 {
+    font-size: 18px;
+    color: #1f2937;
+    margin: 0;
+}
+
+.close-carrito {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.3s;
+}
+
+.close-carrito:hover {
+    color: #111827;
+}
+
+/* Mensaje carrito vacío */
+.carrito-vacio {
+    text-align: center;
+    color: #6b7280;
+    font-size: 15px;
+}
+
+/* Contenido del carrito */
+.carrito-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Items */
+.carrito-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f3f4f6;
+    padding: 10px;
+    border-radius: 8px;
+    color: #1f2937;
+}
+
+/* Total */
+.carrito-total {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    color: #111827;
+}
+
+/* Botón de pagar */
+.btn-pago {
+    background-color: midnightblue;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-pago:hover {
+    background-color: midnightblue;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .carrito-menu {
+        width: 90%;
+        right: 5%;
+        bottom: 90px;
+    }
+
+    .carrito-icon {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
+
 
 /* ============================= FOOTER ========================= */
 

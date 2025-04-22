@@ -13,6 +13,8 @@
     <!-- JS -->
     <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
     <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
+    <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
+
 
 </head>
 <body>
@@ -35,6 +37,29 @@
                 </a>
             
         </div>
+
+        <!-------------------------------- CARRITO DE LA COMPRA ---------------------------->
+        <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
+            <span>🛒 Carrito</span>
+            <span id="carrito-count" class="carrito-count">0</span>
+          </div>
+  
+          <div id="carrito-menu" class="carrito-menu">
+            <div id="carrito-header" class="carrito-header">
+              <h2>Tu Carrito</h2>
+              <button class="close-carrito" onclick="toggleCarrito()">✖</button>
+            </div>
+            <div id="carrito-vacio" class="carrito-vacio">
+              <p>No tienes artículos en el carrito</p>
+            </div>
+            <div id="carrito-contenido" class="carrito-contenido">
+              <div id="carrito-items" class="carrito-items"></div>
+              <div id="carrito-total" class="carrito-total">
+                <p>Total: <span id="total-carrito">0€</span></p>
+              </div>
+              <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+            </div>
+          </div>
         
         <!------------------------------------ HEADER -------------------------------------->
 
