@@ -7,8 +7,13 @@
 
     <!-- Links de css -->
     <link rel="stylesheet" href="/Tecnologias/css/vista_principal/index.css">
-    <link rel="stylesheet" href="/Tecnologias/css/variables_css/vista_principal_variables/vista_principal_variables.css">
-    <link rel="stylesheet" href="/Tecnologias/css/responsive/vista_principal_responsive/vista_principal_responsive.css">
+    <link rel="stylesheet" href="/Tecnologias/css/body_header_nav/body_header_nav.css">
+    <link rel="stylesheet" href="/Tecnologias/css/carrito_compra/carrito_compra.css">
+    <link rel="stylesheet" href="/Tecnologias/css/formularios/formulario_contacto/formulario_contacto.css">
+    <link rel="stylesheet" href="/Tecnologias/css/footer_generico/footer.css">
+
+    <!-- <link rel="stylesheet" href="/Tecnologias/css/variables_css/vista_principal_variables/vista_principal_variables.css">
+    <link rel="stylesheet" href="/Tecnologias/css/responsive/vista_principal_responsive/vista_principal_responsive.css"> -->
 
     <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +25,7 @@
      <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
      <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
      <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
+     <script src="/Tecnologias/js/carrusel_reseñas/carrusel_reseñas.js"></script>
      
 </head>
 <body>
@@ -27,7 +33,7 @@
     <div class="container">
         
             <p class="email">
-                <img data-src="gmail" alt="email" width="35" height="35">
+                <img data-src="gmail" alt="email" width="35" height="35" mailto="autoescuelaalmansa@hotmail.com">
                 autoescuelaalmansa@hotmail.com
             </p>
     
@@ -118,24 +124,25 @@
           </nav>
       </header>
       
-    
-    <div id="titles">
-        <h1>Autoescuela Almansa.es</h1>
-        <h2>Consigue tu permiso de conducir de la mejor forma.</h2>
+    <!-- ============================ TITULO ===========================  -->
+
+      <div class="contenedor-titulos" role="banner">
+        <h1><span class="resaltado">Autoescuela</span> Almansa.es</h1>
+        <h2>Consigue tu <strong>permiso de conducir</strong> de la mejor forma.</h2>
     </div>
 
     <h3 id="subtitulo-etiquetas">¿Estás interesado en sacarte el carnet de conducir?</h3>
 
-     <div id="container-etiquetas">
+    <!-- ======================== SUBTITULO =============================== -->
 
-        <div id="etiqueta_coche">
-          <a data-enlace="coche">
-            <img data-src="coche_pequeño" alt="coche_blanco_auto" width="100" height="100">
-            <p>Coche</p>
-          </a>
+    <div id="container-etiquetas">
+        <div class="etiqueta">
+            <a href="#coche" data-enlace="coche">
+                <img data-src="coche_pequeño" alt="Coche blanco auto" width="120" height="120">
+                <p>Coche</p>
+            </a>
         </div>
-    
-     </div>
+    </div>
      
         <!-- ========================= LOS TESTS =============================== -->
          
@@ -150,73 +157,65 @@
      <h3 id="subtitulo-diferencias">¿En qué nos diferenciamos?</h3>
 
      <div id="container-texto-direfencias">
-        <p id="texto-diferencias">En Autoescuela Almansa.es nos preocupamos por la formación de nuestros alumnos. Por eso, ofrecemos una enseñanza personalizada y adaptada a las necesidades de cada uno. Nuestros profesores son expertos en la materia y están siempre dispuestos a resolver cualquier duda que puedas tener.</p>
+        <p id="texto-diferencias">En Autoescuela *** nos preocupamos por la formación de nuestros alumnos. Por eso, ofrecemos una enseñanza personalizada y adaptada a las necesidades de cada uno. Nuestros profesores son expertos en la materia y están siempre dispuestos a resolver cualquier duda que puedas tener.</p> 
         <p id="texto-diferencias">Además, contamos con una amplia flota de vehículos modernos y seguros para que puedas practicar con total confianza. Y si necesitas un curso intensivo, ¡también lo tenemos!</p>
         <p id="texto-diferencias-3">No lo dudes más y ven a conocernos. ¡Te esperamos!</p>
      </div>
 
 
-    <!--------------------- RESEÑAS ---------------------------->
+       <!----------------------------- RESEÑAS ---------------------------->
+       <div id="reseñas">
+        <h2 id="subtexto-etiquetas-reseñas">¿Qué dicen sobre nuestra autoescuela?</h2>
+    
+        <div class="carrusel-contenedor">
 
-<div id="reseñas">
-  <h2 id="subtexto-etiquetas-reseñas">¿Qué dicen sobre nuestra autoescuela?</h2>
-  <img data-src="estrellas_google" alt="4.9 estrellas" width="300" height="200">
-</div>
+          <div class="carrusel-item activo">
+            <img data-src="reseñas_google" alt="reseña-verificada">
+            <h3>Lucía ***</h3>
+            <p>"¡Increíble experiencia! Aunque solo hice las prácticas aquí, María es una profesora espectacular que hace que aprender sea un placer. ¡Recomendada al 100%!"</p>
+          </div>
+          
+          <div class="carrusel-item">
+            <img data-src="reseñas_google" alt="reseña-verificada">
+            <h3>Carlos ***</h3>
+            <p>"La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!"</p>
+          </div>
 
-<!-- ETIQUETAS DE RESEÑAS -->
+          <div class="carrusel-item">
+            <img data-src="reseñas_google" alt="reseña-verificada">
+            <h3>Ana ***</h3>
+            <p>"Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso."</p>
+          </div>
 
-<div id="etiquetas">
+          <div class="carrusel-item">
+            <img data-src="reseñas_google" alt="reseña-verificada">
+            <h3>Juan ***</h3>
+            <p>"El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases."</p>
+          </div>
 
-  <!-- Etiqueta 1 -->
+          <div class="carrusel-item">
+            <img data-src="reseñas_google" alt="reseña-verificada">
+            <h3>María ***</h3>
+            <p>"Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación."</p>
+          </div>
 
-  <div id="etiqueta-reseñas">
-    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-    <h3>Lucía ***</h3>
-    <p>Aunque solo hice las prácticas en esta autoescuela, ya que la teórica me la saqué en otra, estoy segurísima de que María es una profesora espectacular y encantadora. Por otra parte, Antonio es una persona muy profesional, encantador y muy entregado a su trabajo. Estoy muy agradecida de haberme cambiado, ya que desde que me apunté empecé a hacer prácticas. Por lo tanto, recomiendo esta autoescuela.</p>
-  </div>
+          <div class="carrusel-item">
+            <img data-src="reseñas_google" alt="reseña-verificada">
+            <h3>José ***</h3>
+            <p>"Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!"</p>
+          </div>
+        </div>
+    
+        <div class="carrusel-controles">
+          <button id="anterior">⟵</button>
+          <button id="siguiente">⟶</button>
+        </div>
+      </div>
 
-  <!-- Etiqueta 2 -->
 
-  <div id="etiqueta-reseñas">
-    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-    <h3>Carlos ***</h3>
-    <p>La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!</p>
-  </div>
 
-  <!-- Etiqueta 3 -->
 
-  <div id="etiqueta-reseñas">
-    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-    <h3>Ana ***</h3>
-    <p>Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso.</p>
-  </div>
-
-  <!-- Etiqueta 4 -->
-
-  <div id="etiqueta-reseñas">
-    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-    <h3>Juan ***</h3>
-    <p>El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases.</p>
-  </div>
-
-  <!-- Etiqueta 5 -->
-
-  <div id="etiqueta-reseñas">
-    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-    <h3>María ***</h3>
-    <p>Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación.</p>
-  </div>
-
-  <!-- Etiqueta 6 -->
-
-  <div id="etiqueta-reseñas">
-    <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-    <h3>José ***</h3>
-    <p>Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!</p>
-  </div>
-</div>
-
-  <!-- Formulario de contacto -->
+  <!-- ======================================Formulario de contacto ========================================-->
 
   <h2 id="titulo-formulario">CONTACTO</h2>
 

@@ -1,477 +1,165 @@
-body, .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-    background-color: #f4f7fa;
-  
+:root {
+  --ancho-formulario: 90%;
+  --margen-formulario: 0 auto 100px auto;
+  --padding-formulario: 20px;
+  --fondo-formulario: #f7f4f7;
+  --borde-formulario: 1px solid #dde1e7;
+  --radio-formulario: 10px;
+  --sombra-formulario: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  --color-titulo: midnightblue;
+  --tamano-titulo: 26px;
+  --espacio-titulo: 30px;
+
+  --espacio-entre-campos: 20px;
+  --borde-campo: 1px solid #ccc;
+  --radio-campo: 5px;
+  --padding-campo: 10px;
+  --tamano-fuente-campo: 16px;
+  --color-texto-campo: midnightblue;
+  --color-fondo-campo: #fff;
+
+  --transicion-campo: 0.3s ease;
+  --escala-campo-focus: 1.02;
+
+  --padding-boton: 12px 20px;
+  --radio-boton: 5px;
+  --tamano-fuente-boton: 16px;
+  --fondo-boton-reset: #ccc;
+  --fondo-boton-enviar: midnightblue;
+  --color-boton-reset: #f4f7fa;
+  --color-boton-enviar: #f4f7f4;
+  --transicion-boton: 0.3s ease;
+  --escala-boton-hover: 1.02;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Título */
+#titutlo-form-cliente {
+  text-align: center;
+  color: var(--color-titulo);
+  font-size: var(--tamano-titulo);
+  margin-top: 60px;
+  margin-bottom: var(--espacio-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Contenedor formulario */
+.contenedor-formulario {
+  width: var(--ancho-formulario);
+  margin: var(--margen-formulario);
+  padding: var(--padding-formulario);
+  background-color: var(--fondo-formulario);
+  border: var(--borde-formulario);
+  border-radius: var(--radio-formulario);
+  box-shadow: var(--sombra-formulario);
+}
+
+/* Grid formulario */
+#form-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-entre-campos);
+}
+
+#form-datos > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-datos label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+#form-datos input {
+  width: 100%;
+  padding: var(--padding-campo);
+  font-size: var(--tamano-fuente-campo);
+  border: var(--borde-campo);
+  border-radius: var(--radio-campo);
+  background-color: var(--color-fondo-campo);
+  color: var(--color-texto-campo);
+  transition: border-color var(--transicion-campo), transform var(--transicion-campo);
+}
+
+#form-datos input:focus {
+  border-color: var(--color-titulo);
+  transform: scale(var(--escala-campo-focus));
+  outline: none;
+}
+
+#form-datos button {
+  width: 100%;
+  padding: var(--padding-boton);
+  border-radius: var(--radio-boton);
+  font-size: var(--tamano-fuente-boton);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transicion-boton), transform var(--transicion-boton);
+}
+
+#reset-datos {
+  background-color: midnightblue;
+  color: var(--color-boton-reset);
+}
+
+#enviar-datos {
+  background-color: var(--fondo-boton-enviar);
+  color: var(--color-boton-enviar);
+}
+
+#reset-datos:hover,
+#enviar-datos:hover {
+  transform: scale(var(--escala-boton-hover));
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .contenedor-formulario {
+    width: 95%;
+    padding: 15px;
   }
-  
-  /* PREVENIR DESPLAZAMIENTOS HORIZONTALES NO DESEADOS EN LOS MOVILES */
-  
-  html, body {
-  overflow-x: hidden;
+
+  #form-datos {
+    grid-template-columns: 1fr;
   }
-  
-  /* =================== HEADER =================== */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    padding: 1rem 2rem;
-    background-color: midnightblue;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 50px 0 20px;
-    cursor: pointer;
+
+  #titutlo-form-cliente {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
-  
-  /* =================== LOGO =================== */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  
-  .logo-container img,
-  .logo-principal img {
-    display: block;
-    height: 80px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .logo-container img:hover {
-    transform: scale(1.05);
-  }
-  
-  /* ============================= CARRITO DE LA COMPRA ========================= */
-  
-  /* Ícono del carrito */
-  .carrito-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #1e3a8a;
-    color: #fff;
-    padding: 12px 16px;
-    border-radius: 30px;
-    font-size: 16px;
-    z-index: 999;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .carrito-icon:hover {
-    background-color: #2563eb;
-    transform: scale(1.05);
-  }
-  
-  /* Contador del carrito */
-  .carrito-count {
-    background-color: #ef4444;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 8px;
-    font-size: 14px;
-    margin-left: 8px;
-  }
-  
-  /* Menú desplegable del carrito */
-  .carrito-menu {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 350px;
-    max-height: 500px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 998;
-    transition: all 0.4s ease;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  /* Mostrar carrito cuando esté visible (añade esta clase desde JS) */
-  .carrito-menu.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /* Header del carrito */
-  .carrito-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 8px;
-  }
-  
-  .carrito-header h2 {
-    font-size: 18px;
-    color: #1f2937;
-    margin: 0;
-  }
-  
-  .close-carrito {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #6b7280;
-    transition: color 0.3s;
-  }
-  
-  .close-carrito:hover {
-    color: #111827;
-  }
-  
-  /* Mensaje carrito vacío */
-  .carrito-vacio {
-    text-align: center;
-    color: #6b7280;
-    font-size: 15px;
-  }
-  
-  /* Contenido del carrito */
-  .carrito-contenido {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  
-  /* Items */
-  .carrito-items {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .carrito-item {
-    display: flex;
-    justify-content: space-between;
-    background-color: #f3f4f6;
+}
+
+@media (max-width: 576px) {
+  .contenedor-formulario {
     padding: 10px;
-    border-radius: 8px;
-    color: #1f2937;
-  }
-  
-  /* Total */
-  .carrito-total {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: right;
-    color: #111827;
-  }
-  
-  /* Botón de pagar */
-  .btn-pago {
-    background-color: midnightblue;
-    color: white;
-    text-align: center;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-pago:hover {
-    background-color: midnightblue;
-  }
-  
-  /* Responsive */
-  @media (max-width: 480px) {
-    .carrito-menu {
-        width: 90%;
-        right: 5%;
-        bottom: 90px;
-    }
-  
-    .carrito-icon {
-        bottom: 15px;
-        right: 15px;
-        padding: 10px 14px;
-        font-size: 14px;
-    }
-  }
-  
-  /* =================== NAVEGACIÓN =================== */
-  #menu-navegacion {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex: 1;
-    text-align: center;
-  }
-  
-  #menu-navegacion > div {
-    position: relative;
-  }
-  
-  #menu-navegacion a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  #menu-navegacion a:hover {
-    color: #eeee22;
-  }
-  
-  /* =================== SUBMENÚS =================== */
-  #submenu-carnets,
-  #submenu-alumnos,
-  #submenu-profesores {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: midnightblue;
-    border-radius: 6px;
-    padding: 0.5rem 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    z-index: 1000;
-    cursor: pointer;
-  }
-  
-  #menu-carnets:hover #submenu-carnets,
-  #menu-alumnos:hover #submenu-alumnos,
-  #profesores:hover #submenu-profesores {
-    display: block;
-  }
-  
-  #submenu-carnets a,
-  #submenu-alumnos a,
-  #submenu-profesores a {
-    display: block;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-align: left;
-  }
-  
-  #submenu-carnets a:hover,
-  #submenu-alumnos a:hover,
-  #submenu-profesores a:hover {
-    background-color: midnightblue;
-    color: #eeee22;
-  }
-  
-  /* =================== INFO TOP DERECHA =================== */
-  .container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .email {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1rem;
-    color: black;
-    margin: 0;
-  }
-  
-  .container a img {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .container a:hover img {
-    transform: scale(1.1);
-  }
-  
-  
-  /* ======================= RESPONSIVE ========================? */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    #menu-navegacion {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    /* Submenús ocultos por defecto */
-    #submenu-carnets,
-    #submenu-alumnos,
-    #submenu-profesores {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: midnightblue;
-      border-radius: 6px;
-      padding: 0.5rem 0;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      min-width: 200px;
-      z-index: 1000;
-    }
-  
-    /* Mostrar submenús al hacer hover */
-    #menu-carnets:hover #submenu-carnets,
-    #menu-alumnos:hover #submenu-alumnos,
-    #profesores:hover #submenu-profesores {
-      display: block;
-    }
-  
-    /* Enlaces del submenú: blancos por defecto */
-    #submenu-carnets a,
-    #submenu-alumnos a,
-    #submenu-profesores a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: white !important;
-      text-decoration: none;
-      background-color: midnightblue;
-      transition: color 0.3s ease;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-  
-    /* Al pasar el cursor: amarillo */
-    #submenu-carnets a:hover,
-    #submenu-alumnos a:hover,
-    #submenu-profesores a:hover {
-      color: yellow !important;
-    }
   }
 
-  /* =================================== FORMULARIO REGISTRO CLIENTE =============================== */
+  #form-datos input,
+  #form-datos button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 
-    
+@media (max-width: 480px) {
+  #titutlo-form-cliente {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
 
-
-
-
-/*  -------------------------------------- FOOTER -----------------------------------------------  */
-
-#pie-pagina {
-    background-color: midnightblue;
-    color: white;
-    padding: 40px 20px;
-    margin-top: 50px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .container-footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto 2rem auto;
-    }
-    
-    .footer-section {
-    flex: 1 1 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    }
-    
-    .email-footer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    }
-    
-    .social-icons {
-    display: flex;
-    gap: 20px;
-    }
-    
-    .social-icons a img {
-    transition: transform 0.3s ease;
-    }
-    
-    .social-icons a:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.5);
-    }
-    
-    /* Ubicación */
-    #ubicacion-footer {
-    text-align: left;
-    }
-    
-    #texto-ubicacion {
-    font-size: 1rem;
-    line-height: 1.6;
-    }
-    
-    /* Mapa */
-    #iframe-ubicacion iframe {
-    width: 100%;
-    max-width: 100%;
-    height: 300px;
-    border: none;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto 2rem auto;
-    }
-    
-    /* Pie inferior */
-    #container-pie-pagina {
-    text-align: center;
-    margin-top: 20px;
-    }
-    
-    #texto-pie-pagina {
-    font-size: 0.9rem;
-    color: lightgray;
-    margin: 4px 0;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-    .container-footer {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    
-    #ubicacion-footer {
-      text-align: center;
-    }
-    
-    #iframe-ubicacion iframe {
-      height: 200px;
-        }
-     }
-
-
-
-
-  
+  #form-datos label {
+    font-size: 12px;
+  }
+}
