@@ -1,36 +1,36 @@
 :root {
   --ancho-formulario: 90%;
-  --margen-formulario: 0 auto 100px auto;
+  --margen-formulario: 60px auto 100px;
   --padding-formulario: 20px;
-  --fondo-formulario: #f7f4f7;
+  --fondo-formulario: #f7faf4;
   --borde-formulario: 1px solid #dde1e7;
   --radio-formulario: 10px;
   --sombra-formulario: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   --color-titulo: midnightblue;
-  --tamano-titulo: 26px;
+  --tamano-titulo: 28px;
   --espacio-titulo: 30px;
 
   --espacio-entre-campos: 20px;
   --borde-campo: 1px solid #ccc;
   --radio-campo: 5px;
-  --padding-campo: 10px;
+  --padding-campo: 12px;
   --tamano-fuente-campo: 16px;
   --color-texto-campo: midnightblue;
-  --color-fondo-campo: #fff;
+  --color-fondo-campo: #ffffff;
 
   --transicion-campo: 0.3s ease;
-  --escala-campo-focus: 1.02;
+  --escala-campo-focus: 1.03;
 
-  --padding-boton: 12px 20px;
+  --padding-boton: 8px 16px;
   --radio-boton: 5px;
-  --tamano-fuente-boton: 16px;
-  --fondo-boton-reset: #ccc;
+  --tamano-fuente-boton: 14px;
   --fondo-boton-enviar: midnightblue;
-  --color-boton-reset: #f4f7fa;
-  --color-boton-enviar: #f4f7f4;
+  --color-boton-enviar: #eeee22;
   --transicion-boton: 0.3s ease;
-  --escala-boton-hover: 1.02;
+  --escala-boton-hover: 1.04;
+
+  --color-error: crimson;
 }
 
 * {
@@ -39,18 +39,40 @@
   padding: 0;
 }
 
-/* Título */
-#titutlo-form-cliente {
+/* ===== Estilos Generales ===== */
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ===== Títulos Elegantes Mejorados ===== */
+h1, h2 {
   text-align: center;
   color: var(--color-titulo);
   font-size: var(--tamano-titulo);
-  margin-top: 60px;
-  margin-bottom: var(--espacio-titulo);
+  margin: 40px 0 var(--espacio-titulo);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  line-height: 1.4;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
-/* Contenedor formulario */
+h1::after, h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg,midnightblue 100%);
+  margin: 12px auto 0;
+  border-radius: 3px;
+}
+
+/* ===== Contenedor de formularios ===== */
 .contenedor-formulario {
   width: var(--ancho-formulario);
   margin: var(--margen-formulario);
@@ -59,13 +81,17 @@
   border: var(--borde-formulario);
   border-radius: var(--radio-formulario);
   box-shadow: var(--sombra-formulario);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Grid formulario */
+/* ===== Formulario Mejorado ===== */
 #form-datos {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--espacio-entre-campos);
+  width: 100%;
 }
 
 #form-datos > div {
@@ -74,9 +100,11 @@
 }
 
 #form-datos label {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 5px;
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: var(--color-texto-campo);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 #form-datos input {
@@ -86,80 +114,117 @@
   border: var(--borde-campo);
   border-radius: var(--radio-campo);
   background-color: var(--color-fondo-campo);
-  color: var(--color-texto-campo);
-  transition: border-color var(--transicion-campo), transform var(--transicion-campo);
+  transition: border-color var(--transicion-campo), transform var(--transicion-campo), box-shadow var(--transicion-campo);
 }
 
 #form-datos input:focus {
-  border-color: var(--color-titulo);
+  border-color: #eeee22;
   transform: scale(var(--escala-campo-focus));
+  box-shadow: 0 0 8px rgba(238, 238, 34, 0.4);
   outline: none;
 }
 
-#form-datos button {
+/* ===== Mensajes de error ===== */
+.error-message {
+  color: var(--color-error);
+  font-size: 13px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+/* ===== Botones Contenedor ===== */
+.contenedor-botones {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
   width: 100%;
-  padding: var(--padding-boton);
-  border-radius: var(--radio-boton);
-  font-size: var(--tamano-fuente-boton);
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background var(--transicion-boton), transform var(--transicion-boton);
 }
 
-#reset-datos {
-  background-color: midnightblue;
-  color: var(--color-boton-reset);
-}
-
-#enviar-datos {
-  background-color: var(--fondo-boton-enviar);
-  color: var(--color-boton-enviar);
-}
-
-#reset-datos:hover,
-#enviar-datos:hover {
-  transform: scale(var(--escala-boton-hover));
-}
-
-/* Responsiveness */
 @media (max-width: 768px) {
-  .contenedor-formulario {
-    width: 95%;
-    padding: 15px;
+  .contenedor-botones {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 
   #form-datos {
     grid-template-columns: 1fr;
   }
-
-  #titutlo-form-cliente {
-    font-size: 22px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
 }
 
-@media (max-width: 576px) {
-  .contenedor-formulario {
-    padding: 10px;
+/* ===== Botones Estéticos Mejorados ===== */
+#form-datos button,
+#pasarela-pago button {
+  padding: var(--padding-boton);
+  font-size: var(--tamano-fuente-boton);
+  background-image: linear-gradient(145deg, var(--fondo-boton-enviar), #003366);
+  color: var(--color-boton-enviar);
+  border: none;
+  border-radius: var(--radio-boton);
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transicion-boton), background-image var(--transicion-boton), box-shadow 0.3s ease;
+  width: auto;
+  max-width: 150px;
+}
+
+#form-datos button:hover,
+#pasarela-pago button:hover {
+  transform: scale(var(--escala-boton-hover));
+  background-image: linear-gradient(145deg, blue, midnightblue);
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+/* ===== Pasarela de pago ===== */
+#pasarela-pago {
+  width: var(--ancho-formulario);
+  margin: var(--margen-formulario);
+  padding: var(--padding-formulario);
+  background-color: var(--fondo-formulario);
+  border: var(--borde-formulario);
+  border-radius: var(--radio-formulario);
+  box-shadow: var(--sombra-formulario);
+}
+
+#pasarela-pago label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--color-texto-campo);
+}
+
+#pasarela-pago input[type="radio"] {
+  margin-right: 8px;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  #form-datos {
+    grid-template-columns: 1fr;
   }
 
-  #form-datos input,
-  #form-datos button {
-    font-size: 14px;
-    padding: 10px;
+  h1, h2 {
+    font-size: 24px;
   }
 }
 
 @media (max-width: 480px) {
-  #titutlo-form-cliente {
+  h1, h2 {
     font-size: 20px;
-    margin-top: 30px;
-    margin-bottom: 15px;
   }
 
   #form-datos label {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  #form-datos input,
+  #pasarela-pago button {
+    font-size: 14px;
+    padding: 10px;
   }
 }

@@ -193,7 +193,7 @@
 
 /* ======================== LOS TESTS ========================= */
 
-#titulo-acceso-test-alumnos {
+/* #titulo-acceso-test-alumnos {
 font-size: 2rem;
 color: midnightblue;
 text-align: center;
@@ -224,7 +224,8 @@ transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s eas
 background-color: royalblue;
 transform: scale(1.05);
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+} */
+
 
 /* ------------------------------------ SUBTITULO DIFERENCIAS -------------------------------- */
 

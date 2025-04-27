@@ -1,0 +1,71 @@
+/* ============================================ NUEVOS USUARIOS O NO ================================ */
+
+:root {
+    /* Colores principales */
+    --color-verde: #28a745;
+    --color-verde-secundario: #20c997;
+    --color-azul: #56ccf2;
+    --color-azul-secundario: midnightblue;
+    --color-texto: midnightblue;
+  
+    /* Tipografía */
+  
+    /* Sombras */
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --sombra-hover-verde: 0 6px 18px rgba(67, 233, 123, 0.3);
+    --sombra-hover-azul: 0 6px 18px rgba(47, 128, 237, 0.3);
+  }
+  
+  /* Título Principal */
+  .titulo-principal {
+    font-size: 32px;
+    text-align: center;
+    color: var(--color-texto);
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  /* Contenedor de Botones */
+  .cliente-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 60px;
+  }
+  
+  /* Botones Generales */
+  .btn-nuevo-cliente,
+  .btn-cliente-actual {
+    padding: 15px 35px;
+    font-size: 17px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra-suave);
+    font-family: var(--fuente-principal);
+  }
+  
+  /* Botón Nuevo Cliente */
+  .btn-nuevo-cliente {
+    background: linear-gradient(135deg, var(--color-verde) 0%, var(--color-verde-secundario) 100%);
+    color: #fff;
+  }
+  
+  .btn-nuevo-cliente:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover-verde);
+  }
+  
+  /* Botón Cliente Actual */
+  .btn-cliente-actual {
+    background: linear-gradient(135deg, var(--color-azul) 0%, var(--color-azul-secundario) 100%);
+    color: #fff;
+  }
+  
+  .btn-cliente-actual:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover-azul);
+  }

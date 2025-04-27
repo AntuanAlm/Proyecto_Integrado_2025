@@ -8,6 +8,7 @@
     <!-- links de css -->
 
     <link rel="stylesheet" href="/Tecnologias/css/pasarela_pago/pasarela_pago.css">
+    <link rel="stylesheet" href="/Tecnologias/css/formularios/formulario_registro_cliente/formulario_registro_cliente.css">
 
     <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +19,8 @@
     <!-- JS -->
      <script src="/Tecnologias/js/enlaces_href/universal.js"></script>
      <script src="/Tecnologias/js/enlaces_src/imagenes.js"></script>
+     <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
+     <script src="/Tecnologias/js/resumen_compra_pasarela_pago/resumen_compra.js"></script>
 
 </head>
 <body>
@@ -92,7 +95,6 @@
           </div>
       </nav>
   </header>
-  
 
 
     <!-- ============================== PASARELA DE PAGO ================================= -->
@@ -102,22 +104,6 @@
 
       <!-- Opcional: botón para simular pago -->
       <button onclick="realizarPago()">Pagar</button>
-
-      <!-- Los scripts de la compras -->
-       
-      <script src="/Tecnologias/js/carrito_compra/carrito.js"></script>
-      <script src="/Tecnologias/js/resumen_compra_pasarela_pago/resumen_compra.js"></script>
-
-<script>
-
-    function realizarPago() {
-
-        alert("Procesando pago... por favor espere.");
-        localStorage.removeItem("carrito");
-        window.location.href = "../agradecimiento_pago/agradecimiento_pago.html"; // redirige tras pagar
-    }
-
-</script>
 
 <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 

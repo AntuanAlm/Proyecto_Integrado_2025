@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
       profesores:'/Tecnologias/html/conoce_profesores/conoce_profesores.html',
       test:'/Tecnologias/html/test-alumnos/test-alumnos.html',
       calendario:'/Tecnologias/html/calendario/calendario.html',
+      formulario_registro_nuevo_cliente:'Tecnologias/html/formularios/formulario_registro_cliente/formulario_registro_cliente.html',
+      agradecimiento:'Tecnologias/html/agradecimiento_pago/agradecimiento_pago.html',
 
     };
   
