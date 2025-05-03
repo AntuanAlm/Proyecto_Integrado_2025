@@ -1,109 +1,131 @@
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --background-body: #f0f4f8;
+  --background-section: #ffffff;
+  --background-item: #fff;
+  --border-color: #ddd;
+  --text-primary: #333;
+  --text-secondary: #444;
+  --text-title: midnightblue;
+  --text-button-hover: #001c5c;
+  --box-shadow-light: 0 0 15px rgba(0,0,0,0.1);
+  --box-shadow-strong: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Carrito */
+  --carrito-icon-bg: #1e3a8a;
+  --carrito-icon-hover: #2563eb;
+  --carrito-badge-bg: #ef4444;
+  --carrito-text: #1f2937;
+  --carrito-header-border: #ddd;
+  --carrito-empty-text: #6b7280;
+  --carrito-item-bg: #f3f4f6;
+  --carrito-total-text: #111827;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: var(--font-family);
+  background-color: var(--background-body);
+  margin: 0;
+  padding: 0;
+}
 
-  #politica-pasarela-pago {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    text-align: center;
-  }
+#politica-pasarela-pago {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: var(--background-section);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-light);
+  text-align: center;
+}
 
-  #politica-pasarela-pago h2 {
-    font-size: 2.5rem;
-    color: midnightblue;
-    margin-bottom: 3rem;
+#politica-pasarela-pago h2 {
+  font-size: 2.5rem;
+  color: var(--text-title);
+  margin-bottom: 3rem;
+}
 
-  }
+#politica-pasarela-pago p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
 
-  #politica-pasarela-pago p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: #333;
-  }
+.precio-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
 
-  .precio-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
+.precio-item {
+  background-color: var(--background-item);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 300px;
+  box-shadow: var(--box-shadow-strong);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
 
+.precio-item:hover {
+  transform: translateY(-10px);
+}
+
+.precio-item h2 {
+  color: var(--text-title);
+  margin-bottom: 0.5rem;
+}
+
+.precio-item .precio {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-title);
+  margin-bottom: 1rem;
+}
+
+.precio-item ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.precio-item ul li {
+  margin-bottom: 0.6rem;
+  color: var(--text-secondary);
+}
+
+.btn-politica {
+  display: inline-block;
+  background-color: var(--text-title);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-politica:hover {
+  background-color: var(--text-button-hover);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
   .precio-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 2rem;
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    text-align: left;
-    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 90%;
   }
+}
 
-  .precio-item:hover {
-    transform: translateY(-10px);
-  }
+/* ============================= CARRITO DE LA COMPRA ========================= */
 
-  .precio-item h2 {
-    color: midnightblue;
-    margin-bottom: 0.5rem;
-  }
-
-  .precio-item .precio {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: midnightblue;
-    margin-bottom: 1rem;
-  }
-
-  .precio-item ul {
-    padding-left: 1.2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .precio-item ul li {
-    margin-bottom: 0.6rem;
-    color: #444;
-  }
-
-  .btn-politica {
-    display: inline-block;
-    background-color: midnightblue;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-
-  .btn-politica:hover {
-    background-color: #001c5c;
-    transform: scale(1.05);
-  }
-
-  @media (max-width: 768px) {
-    .precio-item {
-      width: 100%;
-      max-width: 90%;
-    }
-  }
-
-  /* ============================= CARRITO DE LA COMPRA ========================= */
-
-/* Ícono del carrito */
 .carrito-icon {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #1e3a8a;
+  background-color: var(--carrito-icon-bg);
   color: #fff;
   padding: 12px 16px;
   border-radius: 30px;
@@ -115,13 +137,12 @@ body {
 }
 
 .carrito-icon:hover {
-  background-color: #2563eb;
+  background-color: var(--carrito-icon-hover);
   transform: scale(1.05);
 }
 
-/* Contador del carrito */
 .carrito-count {
-  background-color: #ef4444;
+  background-color: var(--carrito-badge-bg);
   color: white;
   border-radius: 50%;
   padding: 2px 8px;
@@ -129,14 +150,13 @@ body {
   margin-left: 8px;
 }
 
-/* Menú desplegable del carrito */
 .carrito-menu {
   position: fixed;
   bottom: 80px;
   right: 20px;
   width: 350px;
   max-height: 500px;
-  background-color: #fff;
+  background-color: var(--background-section);
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   padding: 20px;
@@ -150,24 +170,22 @@ body {
   gap: 16px;
 }
 
-/* Mostrar carrito cuando esté visible (añade esta clase desde JS) */
 .carrito-menu.visible {
   opacity: 1;
   visibility: visible;
 }
 
-/* Header del carrito */
 .carrito-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--carrito-header-border);
   padding-bottom: 8px;
 }
 
 .carrito-header h2 {
   font-size: 18px;
-  color: #1f2937;
+  color: var(--carrito-text);
   margin: 0;
 }
 
@@ -176,29 +194,26 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--carrito-empty-text);
   transition: color 0.3s;
 }
 
 .close-carrito:hover {
-  color: #111827;
+  color: var(--carrito-total-text);
 }
 
-/* Mensaje carrito vacío */
 .carrito-vacio {
   text-align: center;
-  color: #6b7280;
+  color: var(--carrito-empty-text);
   font-size: 15px;
 }
 
-/* Contenido del carrito */
 .carrito-contenido {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Items */
 .carrito-items {
   display: flex;
   flex-direction: column;
@@ -208,23 +223,21 @@ body {
 .carrito-item {
   display: flex;
   justify-content: space-between;
-  background-color: #f3f4f6;
+  background-color: var(--carrito-item-bg);
   padding: 10px;
   border-radius: 8px;
-  color: #1f2937;
+  color: var(--carrito-text);
 }
 
-/* Total */
 .carrito-total {
   font-size: 16px;
   font-weight: bold;
   text-align: right;
-  color: #111827;
+  color: var(--carrito-total-text);
 }
 
-/* Botón de pagar */
 .btn-pago {
-  background-color: midnightblue;
+  background-color: var(--text-title);
   color: white;
   text-align: center;
   padding: 12px;
@@ -235,21 +248,33 @@ body {
 }
 
 .btn-pago:hover {
-  background-color: midnightblue;
+  background-color: var(--text-title);
 }
 
-/* Responsive */
 @media (max-width: 480px) {
-  .carrito-menu {
-      width: 90%;
-      right: 5%;
-      bottom: 90px;
+  #politica-pasarela-pago {
+    width: 90%;
+    padding: 1rem;
+    margin: 1rem auto;
+    box-sizing: border-box;
   }
 
-  .carrito-icon {
-      bottom: 15px;
-      right: 15px;
-      padding: 10px 14px;
-      font-size: 14px;
+  #politica-pasarela-pago h2 {
+    font-size: 2rem;
+  }
+
+  #politica-pasarela-pago p {
+    font-size: 1rem;
+  }
+
+  .precio-item {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .carrito-menu {
+    width: 95%;
+    right: 2.5%;
   }
 }
+

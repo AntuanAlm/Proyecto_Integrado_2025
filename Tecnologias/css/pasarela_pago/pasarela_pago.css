@@ -1,275 +1,27 @@
-body, .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-    background-color: #f4f7fa;
-  
-  }
-  
-  /* PREVENIR DESPLAZAMIENTOS HORIZONTALES NO DESEADOS EN LOS MOVILES */
-  
-  html, body {
-  overflow-x: hidden;
-  }
-  
-  /* =================== HEADER =================== */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    padding: 1rem 2rem;
-    background-color: midnightblue;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 50px 0 20px;
-    cursor: pointer;
-  }
-  
-  /* =================== LOGO =================== */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  
-  .logo-container img,
-  .logo-principal img {
-    display: block;
-    height: 80px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .logo-container img:hover {
-    transform: scale(1.05);
-  }
-  
-  /* =================== NAVEGACIÓN =================== */
-  #menu-navegacion {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex: 1;
-    text-align: center;
-  }
-  
-  #menu-navegacion > div {
-    position: relative;
-  }
-  
-  #menu-navegacion a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  #menu-navegacion a:hover {
-    color: #eeee22;
-  }
-  
-  /* =================== SUBMENÚS =================== */
-  #submenu-carnets,
-  #submenu-alumnos,
-  #submenu-profesores {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: midnightblue;
-    border-radius: 6px;
-    padding: 0.5rem 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    z-index: 1000;
-    cursor: pointer;
-  }
-  
-  #menu-carnets:hover #submenu-carnets,
-  #menu-alumnos:hover #submenu-alumnos,
-  #profesores:hover #submenu-profesores {
-    display: block;
-  }
-  
-  #submenu-carnets a,
-  #submenu-alumnos a,
-  #submenu-profesores a {
-    display: block;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-align: left;
-  }
-  
-  #submenu-carnets a:hover,
-  #submenu-alumnos a:hover,
-  #submenu-profesores a:hover {
-    background-color: midnightblue;
-    color: #eeee22;
-  }
-  
-  /* =================== INFO TOP DERECHA =================== */
-  .container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .email {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1rem;
-    color: black;
-    margin: 0;
-  }
-  
-  .container a img {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .container a:hover img {
-    transform: scale(1.1);
-  }
-  
-  
-  /* ======================= RESPONSIVE ========================? */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    #menu-navegacion {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    /* Submenús ocultos por defecto */
-    #submenu-carnets,
-    #submenu-alumnos,
-    #submenu-profesores {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: midnightblue;
-      border-radius: 6px;
-      padding: 0.5rem 0;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      min-width: 200px;
-      z-index: 1000;
-    }
-  
-    /* Mostrar submenús al hacer hover */
-    #menu-carnets:hover #submenu-carnets,
-    #menu-alumnos:hover #submenu-alumnos,
-    #profesores:hover #submenu-profesores {
-      display: block;
-    }
-  
-    /* Enlaces del submenú: blancos por defecto */
-    #submenu-carnets a,
-    #submenu-alumnos a,
-    #submenu-profesores a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: white !important;
-      text-decoration: none;
-      background-color: midnightblue;
-      transition: color 0.3s ease;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-  
-    /* Al pasar el cursor: amarillo */
-    #submenu-carnets a:hover,
-    #submenu-alumnos a:hover,
-    #submenu-profesores a:hover {
-      color: yellow !important;
-    }
-  }
+:root {
+  /* Colores principales */
+  --color-primario: midnightblue;
+  --color-secundario: #f4f7fa;
+  --color-terciario: white;
+  --color-hover: #eeee22;
+  --color-texto-secundario: gray;
+  --color-fondo-total: #e0e7ff;
 
-/* ============================= CARRITO DE COMPRA ========================== */
+  /* Sombras */
+  --sombra-suave: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --sombra-fuerte: 0 6px 15px rgba(0, 0, 0, 0.2);
+  --sombra-hover: 0 6px 15px rgba(0, 0, 0, 0.3);
 
-/* Estilo para el contenedor del carrito flotante */
-#mini-carrito {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 300px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    padding: 10px;
-    display: none; /* Inicialmente oculto */
-  }
-  
-  #mini-carrito.oculto {
-    display: none;
-  }
-  
-  #mini-carrito-contenido {
-    max-height: 300px;
-    overflow-y: auto;
-  }
-  
-  .item-mini {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  #carrito-icono {
-    cursor: pointer;
-    position: relative;
-  }
-  
-  #carrito-contador {
-    font-size: 14px;
-    font-weight: bold;
-    background-color: red;
-    color: white;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    border-radius: 50%;
-    padding: 5px 10px;
-  }
-  
-  /* Estilo para el mini carrito cuando se abre */
-  #mini-carrito p,
-  #mini-carrito div {
-    padding: 10px;
-  }
-  
-  #carrito-icono:hover {
-    transform: scale(1.1);
-  }
+  /* Otros */
+  --borde-radio: 10px;
+  --borde-radio-grande: 15px;
+  --transicion-btn: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
 
 /* ====================================== PASARELA DE PAGO ===================================== */
 
 h1 {
-  color: midnightblue;
+  color: var(--color-primario);
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px #aaa;
   text-align: center;
@@ -279,9 +31,9 @@ h1 {
 #carrito-contenedor {
   width: 90%;
   max-width: 600px;
-  background-color: #f4f7fa;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-secundario);
+  border-radius: var(--borde-radio-grande);
+  box-shadow: var(--sombra-fuerte);
   padding: 20px;
   margin: 20px auto;
   min-height: 100px;
@@ -295,7 +47,7 @@ h1 {
 #carrito-vacio {
   text-align: center;
   font-size: 1.2rem;
-  color: gray;
+  color: var(--color-texto-secundario);
   margin: 20px auto;
 }
 
@@ -313,12 +65,12 @@ h1 {
 }
 
 .carrito-item {
-  background-color: white;
+  background-color: var(--color-terciario);
   border: 1px solid #ccc;
   padding: 15px;
   margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--borde-radio);
+  box-shadow: var(--sombra-suave);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -333,12 +85,12 @@ h1 {
   font-weight: bold;
   text-align: center;
   margin: 10px 0;
-  color: midnightblue;
-  background-color: #e0e7ff;
+  color: var(--color-primario);
+  background-color: var(--color-fondo-total);
   padding: 15px;
-  border-radius: 10px;
+  border-radius: var(--borde-radio);
   width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sombra-suave);
   box-sizing: border-box;
 }
 
@@ -347,23 +99,23 @@ h1 {
 }
 
 button {
-  background-color: midnightblue;
-  color: white;
+  background-color: var(--color-primario);
+  color: var(--color-terciario);
   border: none;
   padding: 12px 24px;
-  border-radius: 10px;
+  border-radius: var(--borde-radio);
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: var(--sombra-fuerte);
+  transition: var(--transicion-btn);
   display: block;
   margin: 10px auto;
 }
 
 button:hover {
-  background-color: #eeee22;
-  color: midnightblue;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-hover);
+  color: var(--color-primario);
+  box-shadow: var(--sombra-hover);
 }
 
 button:active {
@@ -383,103 +135,3 @@ button:active {
     transform: translateY(0);
   }
 }
-
-
-/*  -------------------------------------- FOOTER -----------------------------------------------  */
-
-#pie-pagina {
-background-color: midnightblue;
-color: white;
-padding: 40px 20px;
-margin-top: 50px;
-border-radius: 10px;
-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.container-footer {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-gap: 2rem;
-max-width: 1200px;
-margin: 0 auto 2rem auto;
-}
-
-.footer-section {
-flex: 1 1 300px;
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-.email-footer {
-display: flex;
-align-items: center;
-gap: 10px;
-font-size: 1rem;
-}
-
-.social-icons {
-display: flex;
-gap: 20px;
-}
-
-.social-icons a img {
-transition: transform 0.3s ease;
-}
-
-.social-icons a:hover img {
-transform: scale(1.05);
-filter: brightness(1.5);
-}
-
-/* Ubicación */
-#ubicacion-footer {
-text-align: left;
-}
-
-#texto-ubicacion {
-font-size: 1rem;
-line-height: 1.6;
-}
-
-/* Mapa */
-#iframe-ubicacion iframe {
-width: 100%;
-max-width: 100%;
-height: 300px;
-border: none;
-border-radius: 10px;
-display: block;
-margin: 0 auto 2rem auto;
-}
-
-/* Pie inferior */
-#container-pie-pagina {
-text-align: center;
-margin-top: 20px;
-}
-
-#texto-pie-pagina {
-font-size: 0.9rem;
-color: lightgray;
-margin: 4px 0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-.container-footer {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-#ubicacion-footer {
-  text-align: center;
-}
-
-#iframe-ubicacion iframe {
-  height: 200px;
-    }
- }
-  

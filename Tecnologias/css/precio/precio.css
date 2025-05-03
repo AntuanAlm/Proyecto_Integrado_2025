@@ -1,348 +1,177 @@
-/*  ------------------------- LETRAS Y BODY ---------------------- */
-
-body, .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-    background-color: #f4f7fa;
-}
-
-/* ------------------------ PREVENIR DESPLAZAMIENTOS HORIZONTALES NO DESEADOS EN LOS MOVILES ------------------------------ */
-
-html, body {
-    overflow-x: hidden;
-}
-
-
-/* =================== HEADER =================== */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    padding: 1rem 2rem;
-    background-color: midnightblue;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 50px 0 20px;
-    cursor: pointer;
-}
-
-/* =================== LOGO =================== */
-.logo-container {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.logo-container img,
-.logo-principal img {
-    display: block;
-    height: 80px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.logo-container img:hover {
-    transform: scale(1.05);
-}
-
-/* =================== NAVEGACIÓN =================== */
-#menu-navegacion {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex: 1;
-    text-align: center;
-}
-
-#menu-navegacion > div {
-    position: relative;
-}
-
-#menu-navegacion a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-}
-
-#menu-navegacion a:hover {
-    color: #eeee22;
-}
-
-/* =================== SUBMENÚS =================== */
-#submenu-carnets,
-#submenu-alumnos,
-#submenu-profesores {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: midnightblue;
-    border-radius: 6px;
-    padding: 0.5rem 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-#menu-carnets:hover #submenu-carnets,
-#menu-alumnos:hover #submenu-alumnos,
-#profesores:hover #submenu-profesores {
-    display: block;
-}
-
-#submenu-carnets a,
-#submenu-alumnos a,
-#submenu-profesores a {
-    display: block;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-align: left;
-}
-
-#submenu-carnets a:hover,
-#submenu-alumnos a:hover,
-#submenu-profesores a:hover {
-    background-color: midnightblue;
-    color: #eeee22;
-}
-
-/* =================== INFO TOP DERECHA =================== */
-.container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
-.email {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1rem;
-    color: black;
-    margin: 0;
-}
-
-.container a img {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.container a:hover img {
-    transform: scale(1.1);
-}
-
-/* =================== RESPONSIVE =================== */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #menu-navegacion {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    #submenu-carnets,
-    #submenu-alumnos {
-        position: static;
-        transform: none;
-        background-color: transparent;
-        box-shadow: none;
-        padding: 0;
-    }
-
-    #submenu-carnets a,
-    #submenu-alumnos a {
-        padding-left: 1rem;
-        color: white;
-    }
-
-    #menu-carnets:hover #submenu-carnets,
-    #menu-alumnos:hover #submenu-alumnos {
-        display: block;
-    }
-}
-
-/* ============================= PRECIOS ================================= */
-
-
-/* Contenedor principal */
-#precios-carnet-b {
+/* ============================ VARIABLES ============================ */
+:root {
+    --color-principal: midnightblue;
+    --color-blanco: #ffffff;
+    --color-borde: #ddd;
+    --color-texto-secundario: #555;
+    --color-shadow-fuerte: rgba(0, 0, 0, 0.8);
+    --color-shadow-suave: rgba(0, 0, 0, 0.2);
+    --color-shadow-menu: rgba(0, 0, 0, 0.25);
+    --color-hover-icon: #2563eb;
+    --color-icon-bg: #1e3a8a;
+    --color-contador: #ef4444;
+    --color-texto-header: #1f2937;
+    --color-texto-subtle: #6b7280;
+    --color-bg-item: #f3f4f6;
+  }
+  
+  /* ============================= PRECIOS ================================= */
+  
+  /* Contenedor principal */
+  #precios-carnet-b {
     max-width: 1200px;
     margin: 3rem auto;
     text-align: center;
-}
-
-/* Estilo del título */
-#precios-carnet-b h1 {
+    padding: 0 20px;
+  }
+  
+  /* Estilo del título */
+  #precios-carnet-b h1 {
     font-size: 2.5rem;
-    color: midnightblue;
+    color: var(--color-principal);
     margin-bottom: 2rem;
     font-weight: bold;
     margin-top: 80px;
     text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Contenedor de precios */
-.precio-container {
+  }
+  
+  /* Contenedor de precios */
+  .precio-container {
     display: flex;
     justify-content: center;
-    gap: 8rem;
+    gap: 6rem;
     flex-wrap: wrap;
     margin-top: 80px;
     margin-bottom: 150px;
-}
-
-/* Estilo para cada item de precio */
-.precio-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+  }
+  
+  /* Estilo para cada item de precio */
+  .precio-item {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
     border-radius: 8px;
     padding: 2rem;
-    width: 200px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    width: 260px;
+    box-shadow: 0 4px 15px var(--color-shadow-fuerte);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-/* Efecto hover para los precios */
-.precio-item:hover {
+  }
+  
+  /* Efecto hover para los precios */
+  .precio-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo de los subtítulos */
-.precio-item h2 {
+    box-shadow: 0 6px 20px var(--color-shadow-suave);
+  }
+  
+  /* Estilo de los subtítulos */
+  .precio-item h2 {
     font-size: 1.8rem;
-    color: midnightblue;
+    color: var(--color-principal);
     margin-bottom: 1rem;
-}
-
-/* Estilo para los precios */
-.precio-item .precio {
+  }
+  
+  /* Estilo para los precios */
+  .precio-item .precio {
     font-size: 1.5rem;
-    color: midnightblue;
+    color: var(--color-principal);
     font-weight: bold;
     margin-bottom: 1.5rem;
-}
-
-/* Estilo de las listas de cada precio */
-.precio-item ul {
+  }
+  
+  /* Estilo de las listas de cada precio */
+  .precio-item ul {
     list-style: none;
     padding: 0;
-}
-
-.precio-item ul li {
+  }
+  
+  .precio-item ul li {
     font-size: 1rem;
-    color: #555;
+    color: var(--color-texto-secundario);
     margin-bottom: 0.8rem;
     position: relative;
     padding-left: 1.5rem;
-}
-
-.precio-item ul li::before {
+  }
+  
+  .precio-item ul li::before {
     content: "•";
-    color: midnightblue;
+    color: var(--color-principal);
     font-size: 1.2rem;
     position: absolute;
     left: 0;
     top: 0;
-}
-
-/* ============================== RESPONSIVE ====================-- */
-
-/* @media (max-width: 768px) {
-    #precios-carnet-b h1 {
-        font-size: 2.5rem;
-    }
-
+  }
+  
+  /* ============================== RESPONSIVE PRECIOS ==================== */
+  @media (max-width: 768px) {
     .precio-container {
-        flex-direction: column;
-        gap: 1.5rem;
+      gap: 4rem;
     }
-
+  
     .precio-item {
-        width: 80%;
+      width: 80%;
     }
-} */
-
-@media (max-width: 480px) {
+  }
+  
+  @media (max-width: 480px) {
     #precios-carnet-b h1 {
-        font-size: 2rem;
+      font-size: 2rem;
     }
-
+  
     .precio-item h2 {
-        font-size: 1.6rem;
+      font-size: 1.6rem;
     }
-
+  
     .precio-item .precio {
-        font-size: 1.3rem;
+      font-size: 1.3rem;
     }
-
+  
     .precio-item ul li {
-        font-size: 0.9rem;
+      font-size: 0.95rem;
     }
-}
-
-
-/* ============================== POLITICA DE PROTECCION DE DATOS ================================ */
-
-/* Estilo general del contenedor */
-#politica-pasarela-pago {
+  
+    .precio-container {
+      margin-top: 50px;
+      margin-bottom: 100px;
+    }
+  }
+  
+  /* ============================== POLITICA DE PROTECCION DE DATOS ================================ */
+  
+  /* Estilo general del contenedor */
+  #politica-pasarela-pago {
     max-width: 600px;
     margin: 40px auto;
     padding: 30px;
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--color-blanco);
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 10px var(--color-shadow-fuerte);
     margin-bottom: 150px;
   }
   
   /* Título */
   #politica-pasarela-pago h2 {
     font-size: 2em;
-    color: midnightblue;
+    color: var(--color-principal);
     margin-bottom: 20px;
   }
   
   /* Párrafo */
   #politica-pasarela-pago p {
     font-size: 1.1em;
-    color: midnightblue;
+    color: var(--color-principal);
     margin-bottom: 30px;
   }
   
   /* Botón */
   .btn-pago {
     display: inline-block;
-    background-color: midnightblue;
-    color: #f4f7fa;
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
     padding: 14px 28px;
     font-size: 1em;
     font-weight: bold;
@@ -356,18 +185,23 @@ html, body {
   
   /* Efecto hover */
   .btn-pago:hover {
-    background-color: midnightblue;
+    background-color: var(--color-hover-icon);
     transform: scale(1.08);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-
   }
-
-/* ------------------========= RESPONSIVE PARA MOVILES =======================------------------ */
   
-@media (max-width: 480px) {
+  /* ============================== RESPONSIVE POLITICA ================================ */
+  @media (max-width: 768px) {
     #politica-pasarela-pago {
-      padding: 20px;
+      margin: 30px 20px;
+      padding: 25px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #politica-pasarela-pago {
       margin: 20px 10px;
+      padding: 20px;
     }
   
     #politica-pasarela-pago h2 {
@@ -383,17 +217,16 @@ html, body {
       font-size: 0.95em;
     }
   }
-
-
-/* ============================= CARRITO DE LA COMPRA ========================= */
-
-/* Ícono del carrito */
-.carrito-icon {
+  
+  /* ============================= CARRITO DE LA COMPRA ========================= */
+  
+  /* Ícono del carrito */
+  .carrito-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #1e3a8a;
-    color: #fff;
+    background-color: var(--color-icon-bg);
+    color: var(--color-blanco);
     padding: 12px 16px;
     border-radius: 30px;
     font-size: 16px;
@@ -401,33 +234,33 @@ html, body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.carrito-icon:hover {
-    background-color: #2563eb;
+  }
+  
+  .carrito-icon:hover {
+    background-color: var(--color-hover-icon);
     transform: scale(1.05);
-}
-
-/* Contador del carrito */
-.carrito-count {
-    background-color: #ef4444;
-    color: white;
+  }
+  
+  /* Contador del carrito */
+  .carrito-count {
+    background-color: var(--color-contador);
+    color: var(--color-blanco);
     border-radius: 50%;
     padding: 2px 8px;
     font-size: 14px;
     margin-left: 8px;
-}
-
-/* Menú desplegable del carrito */
-.carrito-menu {
+  }
+  
+  /* Menú desplegable del carrito */
+  .carrito-menu {
     position: fixed;
     bottom: 80px;
     right: 20px;
     width: 350px;
     max-height: 500px;
-    background-color: #fff;
+    background-color: var(--color-blanco);
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 25px var(--color-shadow-menu);
     padding: 20px;
     opacity: 0;
     visibility: hidden;
@@ -437,208 +270,116 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
-
-/* Mostrar carrito cuando esté visible (añade esta clase desde JS) */
-.carrito-menu.visible {
+  }
+  
+  /* Mostrar carrito cuando esté visible */
+  .carrito-menu.visible {
     opacity: 1;
     visibility: visible;
-}
-
-/* Header del carrito */
-.carrito-header {
+  }
+  
+  /* Header del carrito */
+  .carrito-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--color-borde);
     padding-bottom: 8px;
-}
-
-.carrito-header h2 {
+  }
+  
+  .carrito-header h2 {
     font-size: 18px;
-    color: #1f2937;
+    color: var(--color-texto-header);
     margin: 0;
-}
-
-.close-carrito {
+  }
+  
+  .close-carrito {
     background: transparent;
     border: none;
     font-size: 20px;
     cursor: pointer;
-    color: #6b7280;
+    color: var(--color-texto-subtle);
     transition: color 0.3s;
-}
-
-.close-carrito:hover {
+  }
+  
+  .close-carrito:hover {
     color: #111827;
-}
-
-/* Mensaje carrito vacío */
-.carrito-vacio {
+  }
+  
+  /* Mensaje carrito vacío */
+  .carrito-vacio {
     text-align: center;
-    color: #6b7280;
+    color: var(--color-texto-subtle);
     font-size: 15px;
-}
-
-/* Contenido del carrito */
-.carrito-contenido {
+  }
+  
+  /* Contenido del carrito */
+  .carrito-contenido {
     display: flex;
     flex-direction: column;
     gap: 14px;
-}
-
-/* Items */
-.carrito-items {
+  }
+  
+  /* Items */
+  .carrito-items {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.carrito-item {
+  }
+  
+  .carrito-item {
     display: flex;
     justify-content: space-between;
-    background-color: #f3f4f6;
+    background-color: var(--color-bg-item);
     padding: 10px;
     border-radius: 8px;
-    color: #1f2937;
-}
-
-/* Total */
-.carrito-total {
+    color: var(--color-texto-header);
+  }
+  
+  /* Total */
+  .carrito-total {
     font-size: 16px;
     font-weight: bold;
     text-align: right;
     color: #111827;
-}
-
-/* Botón de pagar */
-.btn-pago {
-    background-color: midnightblue;
-    color: white;
+  }
+  
+  /* Botón de pagar */
+  .btn-pago {
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
     text-align: center;
     padding: 12px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s;
-}
-
-.btn-pago:hover {
-    background-color: midnightblue;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
+  }
+  
+  .btn-pago:hover {
+    background-color: var(--color-hover-icon);
+  }
+  
+  /* ============================ RESPONSIVE CARRITO ========================= */
+  @media (max-width: 768px) {
     .carrito-menu {
-        width: 90%;
-        right: 5%;
-        bottom: 90px;
+      width: 80%;
+      right: 10%;
     }
-
+  }
+  
+  @media (max-width: 480px) {
+    .carrito-menu {
+      width: 90%;
+      right: 5%;
+      bottom: 90px;
+    }
+  
     .carrito-icon {
-        bottom: 15px;
-        right: 15px;
-        padding: 10px 14px;
-        font-size: 14px;
+      bottom: 15px;
+      right: 15px;
+      padding: 10px 14px;
+      font-size: 14px;
     }
-}
-
-
-/* ============================= FOOTER ========================= */
-
-#pie-pagina {
-    background-color: midnightblue;
-    color: white;
-    padding: 40px 20px;
-    margin-top: 100px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.container-footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto; /* Quitado el 2rem inferior */
-}
-
-.footer-section {
-    flex: 1 1 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.email-footer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-}
-
-.social-icons {
-    display: flex;
-    gap: 20px;
-}
-
-.social-icons a img {
-    transition: transform 0.3s ease;
-}
-
-.social-icons a:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.5);
-}
-
-/* Ubicación */
-#ubicacion-footer {
-    text-align: left;
-}
-
-#texto-ubicacion {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* Mapa */
-#iframe-ubicacion iframe {
-    width: 100%;
-    max-width: 100%;
-    height: 300px;
-    border: none;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto 2rem auto;
-}
-
-/* Pie inferior */
-#container-pie-pagina {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#texto-pie-pagina {
-    font-size: 0.9rem;
-    color: lightgray;
-    margin: 4px 0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .container-footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    #ubicacion-footer {
-        text-align: center;
-    }
-
-    #iframe-ubicacion iframe {
-        height: 200px;
-    }
-}
-
+  }
+  

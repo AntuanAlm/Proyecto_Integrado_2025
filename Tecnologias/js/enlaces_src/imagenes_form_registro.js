@@ -2,16 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const imagenes = document.querySelectorAll('[data-src]');
 
     const rutas = {
-        reseñas_google: '../../img/logo/629383ee30fb025780ee2970.png',
-        coche_autoescuela_grande: '../../img/logo/citroen-auto.png',
-        coche_pequeño: '../../img/logo/coche_blanco_auto.png',
-        fb: '../../img/logo/facebook.png',
-        gmail: '../../img/logo/Gmail_Icon.original.png',
-        instagram: '../../img/logo/instagram.png',
-        logo_autoescuela: '../../img/logo/logo-autoescuela.png',
-        estrellas_google: '../../img/logo/reviews-google.png',
-        profesor:'../../img/logo/profesor_auto.png',
-        profesora:'../../img/logo/profesora_auto.png',
+        reseñas_google: '../../../img/logo/629383ee30fb025780ee2970.png',
+        coche_autoescuela_grande: '../../../img/logo/citroen-auto.png',
+        coche_pequeño: '../../../img/logo/coche_blanco_auto.png',
+        fb: '../../../img/logo/facebook.png',
+        gmail: '../../../img/logo/Gmail_Icon.original.png',
+        instagram: '../../../img/logo/instagram.png',
+        logo_autoescuela: '../../../img/logo/logo-autoescuela.png',
+        estrellas_google: '../../../img/logo/reviews-google.png',
     };
     
 

@@ -1,432 +1,226 @@
-body, .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-    background-color: #f4f7fa;
-  
-  }
-  
-  /* PREVENIR DESPLAZAMIENTOS HORIZONTALES NO DESEADOS EN LOS MOVILES */
-  
-  html, body {
-  overflow-x: hidden;
-  }
-  
-  /* =================== HEADER =================== */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    padding: 1rem 2rem;
-    background-color: midnightblue;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 50px 0 20px;
-    cursor: pointer;
-  }
-  
-  /* =================== LOGO =================== */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  
-  .logo-container img,
-  .logo-principal img {
-    display: block;
-    height: 80px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .logo-container img:hover {
-    transform: scale(1.05);
-  }
-  
-  /* =================== NAVEGACIÓN =================== */
-  #menu-navegacion {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex: 1;
-    text-align: center;
-  }
-  
-  #menu-navegacion > div {
-    position: relative;
-  }
-  
-  #menu-navegacion a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  #menu-navegacion a:hover {
-    color: #eeee22;
-  }
-  
-  /* =================== SUBMENÚS =================== */
-  #submenu-carnets,
-  #submenu-alumnos,
-  #submenu-profesores {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: midnightblue;
-    border-radius: 6px;
-    padding: 0.5rem 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    z-index: 1000;
-    cursor: pointer;
-  }
-  
-  #menu-carnets:hover #submenu-carnets,
-  #menu-alumnos:hover #submenu-alumnos,
-  #profesores:hover #submenu-profesores {
-    display: block;
-  }
-  
-  #submenu-carnets a,
-  #submenu-alumnos a,
-  #submenu-profesores a {
-    display: block;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-align: left;
-  }
-  
-  #submenu-carnets a:hover,
-  #submenu-alumnos a:hover,
-  #submenu-profesores a:hover {
-    background-color: midnightblue;
-    color: #eeee22;
-  }
-  
-  /* =================== INFO TOP DERECHA =================== */
-  .container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .email {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1rem;
-    color: black;
-    margin: 0;
-  }
-  
-  .container a img {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .container a:hover img {
-    transform: scale(1.1);
-  }
-
-  /* ============================= CARRITO DE LA COMPRA ========================= */
-
-/* Ícono del carrito */
-.carrito-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #1e3a8a;
-  color: #fff;
-  padding: 12px 16px;
-  border-radius: 30px;
-  font-size: 16px;
-  z-index: 999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
+* {
+  box-sizing: border-box;
 }
 
-.carrito-icon:hover {
-  background-color: #2563eb;
-  transform: scale(1.05);
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 30px;
+  color: #333;
 }
 
-/* Contador del carrito */
-.carrito-count {
-  background-color: #ef4444;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 8px;
-  font-size: 14px;
-  margin-left: 8px;
-}
-
-/* Menú desplegable del carrito */
-.carrito-menu {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 350px;
-  max-height: 500px;
-  background-color: #fff;
+.calendario {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 998;
-  transition: all 0.4s ease;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-/* Mostrar carrito cuando esté visible (añade esta clase desde JS) */
-.carrito-menu.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Header del carrito */
-.carrito-header {
+/* ENCABEZADO */
+.encabezado {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 8px;
-}
-
-.carrito-header h2 {
-  font-size: 18px;
-  color: #1f2937;
-  margin: 0;
-}
-
-.close-carrito {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #6b7280;
-  transition: color 0.3s;
-}
-
-.close-carrito:hover {
-  color: #111827;
-}
-
-/* Mensaje carrito vacío */
-.carrito-vacio {
-  text-align: center;
-  color: #6b7280;
-  font-size: 15px;
-}
-
-/* Contenido del carrito */
-.carrito-contenido {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* Items */
-.carrito-items {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.carrito-item {
-  display: flex;
-  justify-content: space-between;
-  background-color: #f3f4f6;
-  padding: 10px;
-  border-radius: 8px;
-  color: #1f2937;
-}
-
-/* Total */
-.carrito-total {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: right;
-  color: #111827;
-}
-
-/* Botón de pagar */
-.btn-pago {
-  background-color: midnightblue;
+  padding: 24px;
+  background-color: #4285f4;
   color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.encabezado h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* BOTONES MESES Y EVENTOS */
+.botones-mes button,
+.botones-evento button {
+  background-color: white;
+  color: #4285f4;
+  border: 2px solid #4285f4;
+  padding: 10px 16px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 4px;
+}
+
+.botones-mes button:hover,
+.botones-evento button:hover {
+  background-color: #e3eafc;
+  transform: translateY(-2px);
+}
+
+/* DÍAS DE SEMANA Y DÍAS */
+.dias-semana,
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  text-decoration: none;
+  padding: 15px 0;
+}
+
+.dias-semana div {
+  padding: 10px 0;
+  background-color: #f2f6fc;
   font-weight: bold;
-  transition: background-color 0.3s;
+  border-bottom: 2px solid #e0e0e0;
+  color: #4285f4;
+  text-transform: uppercase;
 }
 
-.btn-pago:hover {
-  background-color: midnightblue;
+.dias div {
+  border: 1px solid #eee;
+  height: 100px;
+  padding: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .carrito-menu {
-      width: 90%;
-      right: 5%;
-      bottom: 90px;
-  }
-
-  .carrito-icon {
-      bottom: 15px;
-      right: 15px;
-      padding: 10px 14px;
-      font-size: 14px;
-  }
+/* Hover en los días */
+.dias div:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
 }
-  
-  
-  /* ======================= RESPONSIVE ========================? */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    #menu-navegacion {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    /* Submenús ocultos por defecto */
-    #submenu-carnets,
-    #submenu-alumnos,
-    #submenu-profesores {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: midnightblue;
-      border-radius: 6px;
-      padding: 0.5rem 0;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      min-width: 200px;
-      z-index: 1000;
-    }
-  
-    /* Mostrar submenús al hacer hover */
-    #menu-carnets:hover #submenu-carnets,
-    #menu-alumnos:hover #submenu-alumnos,
-    #profesores:hover #submenu-profesores {
-      display: block;
-    }
-  
-    /* Enlaces del submenú: blancos por defecto */
-    #submenu-carnets a,
-    #submenu-alumnos a,
-    #submenu-profesores a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: white !important;
-      text-decoration: none;
-      background-color: midnightblue;
-      transition: color 0.3s ease;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-  
-    /* Al pasar el cursor: amarillo */
-    #submenu-carnets a:hover,
-    #submenu-alumnos a:hover,
-    #submenu-profesores a:hover {
-      color: yellow !important;
-    }
-  }
 
-/* ================================ CALENDARIO ========================== */
+/* ESTADOS DE DÍAS */
+.hoy {
+  background-color: #d2e3fc;
+  font-weight: bold;
+  border: 2px solid #4285f4;
+}
 
-.calendario {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: #fdfdfd;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .encabezado-calendario {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .encabezado-calendario h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: midnightblue;
-  }
-  
-  .encabezado-calendario button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .dias-semana {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .cuadro-dias {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-  }
-  
-  .cuadro-dias div {
-    height: 80px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    position: relative;
-  }
-  
-  .cuadro-dias div.con-evento::after {
-    content: "📌";
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 1.2rem;
-    color: crimson;
-  }
-  
+.vacío {
+  background-color: #f9f9f9;
+}
+
+/* EVENTOS EN CALENDARIO */
+.evento {
+  background-color: #ffcc00;
+  color: white;
+  font-size: 12px;
+  padding: 2px 5px;
+  margin-top: 2px;
+  border-radius: 3px;
+  text-align: center;
+  display: block;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.evento.red { background-color: red; color: white; padding: 2px; border-radius: 3px; }
+.evento.green { background-color: green; color: white; padding: 2px; border-radius: 3px; }
+.evento.gold { background-color: gold; color: black; padding: 2px; border-radius: 3px; }
+.evento.blue { background-color: blue; color: white; padding: 2px; border-radius: 3px; }
+.evento.purple { background-color: purple; color: white; padding: 2px; border-radius: 3px; }
+
+
+/* CONTROLES DE EVENTOS */
+.botones-evento {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-top: 2px solid #ddd;
+}
+
+.botones-evento button {
+  background-color: #4285f4;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 6px;
+  margin: 6px;
+}
+
+.botones-evento button:hover {
+  background-color: #357ae8;
+}
+
+.botones-evento button:active {
+  background-color: #2c66d4;
+  transform: translateY(1px);
+}
+
+.eventos-controles {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 15px;
+}
+
+.eventos-controles button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px;
+}
+
+.eventos-controles button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.eventos-controles button:active {
+  background-color: #388e3c;
+  transform: translateY(1px);
+}
+
+/* BOTÓN FLOTANTE Y MENÚ */
+.boton-flotante {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 24px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.menu-acciones {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.menu-acciones.visible {
+  display: block;
+}
+
+.menu-acciones button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-acciones button:hover {
+  background-color: #f0f0f0;
+}
