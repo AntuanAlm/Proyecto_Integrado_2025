@@ -102,154 +102,186 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function añadirEvento() {
-    // Confirmar si el usuario desea añadir un evento
-    const confirmarAñadir = confirm("¿Desea añadir un nuevo evento?");
-    
-    if (!confirmarAñadir) {
-      return; // Si el usuario cancela, salimos de la función
-    }
+ // ========================= AÑADIR EVENTO =========================
+// Función para añadir un evento al calendario
+
+function añadirEvento() {
+  // Confirmar si el usuario desea añadir un evento
+  const confirmarAñadir = confirm("¿Desea añadir un nuevo evento?");
   
-    let titulo;
-    // Pedir el título hasta que sea válido
-    do {
-      titulo = prompt("Ingrese el título del evento:");
-      if (!titulo) {
-        alert("Debe ingresar un título.");
-      }
-    } while (!titulo); // Continuar pidiendo hasta que el título no sea vacío
-  
-    let fecha;
-    let fechaValida = false;
-    // Pedir la fecha hasta que sea válida
-    do {
-      fecha = prompt("Ingrese la fecha en formato: día/mes/año (ejemplo: 15/5/2025)");
-  
-      if (fecha) {
-        const fechaArray = fecha.split("/");
-        if (fechaArray.length === 3) {
-          const dia = parseInt(fechaArray[0].trim());
-          const mes = parseInt(fechaArray[1].trim()) - 1;
-          const año = parseInt(fechaArray[2].trim());
-  
-          const hoy = new Date();
-          const fechaIngresada = new Date(año, mes, dia);
-  
-          // Verificar si la fecha es válida
-          if (!isNaN(dia) && !isNaN(mes) && !isNaN(año) && 
-              dia > 0 && dia <= 31 && mes >= 0 && mes <= 11) {
-            
-            // Verificar si la fecha no es anterior a la fecha actual ni más allá del próximo año
-            if (fechaIngresada < hoy) {
-              alert("La fecha no puede ser en el pasado.");
-            } else if (fechaIngresada > new Date(hoy.getFullYear() + 1, hoy.getMonth(), hoy.getDate())) {
-              alert("La fecha no puede ser más allá del próximo año.");
-            } else {
-              fechaValida = true;
-            }
-          } else {
-            alert("Fecha inválida. Asegúrese de ingresar el día, mes y año correctamente.");
-          }
-        } else {
-          alert("Formato de fecha incorrecto. Use: día/mes/año.");
-        }
-      } else {
-        alert("Debe ingresar una fecha.");
-      }
-    } while (!fechaValida); // Continuar pidiendo hasta que la fecha sea válida
-  
-    // Pedir tipo de evento (examen o curso intensivo)
-    let tipoEvento;
-    do {
-      tipoEvento = prompt("¿Qué tipo de evento desea añadir? (examen/curso intensivo)");
-      if (tipoEvento && tipoEvento.toLowerCase() === "examen") {
-        // Validar que no sea fin de semana para los exámenes
-        const fechaArray = fecha.split("/");
-        const dia = parseInt(fechaArray[0].trim());
-        const mes = parseInt(fechaArray[1].trim()) - 1;
-        const año = parseInt(fechaArray[2].trim());
-        const fechaIngresada = new Date(año, mes, dia);
-        const diaSemana = fechaIngresada.getDay(); // 0 = domingo, 6 = sábado
-  
-        if (diaSemana === 0 || diaSemana === 6) { // Si es sábado o domingo
-          alert("No se puede añadir un examen en fin de semana. Elija otro día.");
-          tipoEvento = null; // Volver a pedir tipo de evento
-        }
-      }
-    } while (!tipoEvento || (tipoEvento.toLowerCase() === "examen" && (new Date(año, mes, dia).getDay() === 0 || new Date(año, mes, dia).getDay() === 6)));
-  
-    let colorInput;
-    let colorValido = false;
-    // Pedir el color hasta que sea válido
-    const coloresPermitidos = {
-      rojo: "red",
-      verde: "green",
-      amarillo: "gold",
-      azul: "blue",
-      morado: "purple"
-    };
-  
-    do {
-      colorInput = prompt(
-        "Elija un color para el evento (escriba uno de los siguientes en español):\nrojo, verde, amarillo, azul, morado"
-      );
-  
-      const color = coloresPermitidos[colorInput?.toLowerCase()];
-  
-      if (color) {
-        colorValido = true; // Si el color es válido, salir del bucle
-      } else {
-        alert("Color inválido. Escriba uno de los colores permitidos.");
-      }
-    } while (!colorValido); // Continuar pidiendo hasta que el color sea válido
-  
-    // Si todos los datos son válidos, añadimos el evento
-    const fechaArray = fecha.split("/");
-    const dia = parseInt(fechaArray[0].trim());
-    const mes = parseInt(fechaArray[1].trim()) - 1;
-    const año = parseInt(fechaArray[2].trim());
-    const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
-  
-    eventos.push({ titulo, fecha: fechaFormateada, color: coloresPermitidos[colorInput.toLowerCase()], tipoEvento });
-    localStorage.setItem("eventos", JSON.stringify(eventos));
-    alert("Evento añadido correctamente.");
-    generarCalendario(añoActual, mesActualIndex);
+  if (!confirmarAñadir) {
+    return; // Si el usuario cancela, salimos de la función
   }
-  
-  function borrarEvento() {
-    let fecha;
-    let eventoEncontrado = false;
-  
-    // Pedir la fecha hasta que se ingrese una válida
-    do {
-      fecha = prompt("Ingrese la fecha del evento a borrar (día/mes/año):");
-      
+
+  let titulo;
+  // Pedir el título hasta que sea válido
+  do {
+    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intesivo // Examen teórico...");
+    if (!titulo) {
+      alert("Debe ingresar un título.");
+    }
+  } while (!titulo); // Continuar pidiendo hasta que el título no sea vacío
+
+  let fecha;
+  let fechaValida = false;
+  // Pedir la fecha hasta que sea válida
+  do {
+    fecha = prompt("Ingrese la fecha en formato: día/mes/año (ejemplo: 15/5/2025)");
+
+    if (fecha) {
       const fechaArray = fecha.split("/");
       if (fechaArray.length === 3) {
         const dia = parseInt(fechaArray[0].trim());
         const mes = parseInt(fechaArray[1].trim()) - 1;
         const año = parseInt(fechaArray[2].trim());
-  
-        const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
-  
-        // Comprobar si la fecha tiene un evento asociado
-        const eventoIndex = eventos.findIndex(evento => evento.fecha === fechaFormateada);
-        if (eventoIndex !== -1) {
-          // Si hay un evento en esa fecha, eliminarlo
-          eventos.splice(eventoIndex, 1);
+
+        const hoy = new Date();
+        const fechaIngresada = new Date(año, mes, dia);
+
+        // Verificar si la fecha es válida
+        if (!isNaN(dia) && !isNaN(mes) && !isNaN(año) && 
+            dia > 0 && dia <= 31 && mes >= 0 && mes <= 11) {
+          
+          // Verificar si la fecha no es anterior a la fecha actual ni más allá del próximo año
+          if (fechaIngresada < hoy) {
+            alert("La fecha no puede ser en el pasado.");
+          } else if (fechaIngresada > new Date(hoy.getFullYear() + 1, hoy.getMonth(), hoy.getDate())) {
+            alert("La fecha no puede ser más allá del próximo año.");
+          } else {
+            fechaValida = true;
+          }
+        } else {
+          alert("Fecha inválida. Asegúrese de ingresar el día, mes y año correctamente.");
+        }
+      } else {
+        alert("Formato de fecha incorrecto. Use: día/mes/año.");
+      }
+    } else {
+      alert("Debe ingresar una fecha.");
+    }
+  } while (!fechaValida); // Continuar pidiendo hasta que la fecha sea válida
+
+  // Determinar el tipo de evento (examen o curso) basado en el título
+  let tipoEvento = titulo.toLowerCase().includes("examen") ? "examen" : "curso";
+
+  // Validar si es un examen y cae en un fin de semana
+  if (tipoEvento === "examen") {
+    let diaSemana;
+    do {
+      const fechaArray = fecha.split("/");
+      const dia = parseInt(fechaArray[0].trim());
+      const mes = parseInt(fechaArray[1].trim()) - 1;
+      const año = parseInt(fechaArray[2].trim());
+      const fechaIngresada = new Date(año, mes, dia);
+      diaSemana = fechaIngresada.getDay(); // 0 = domingo, 6 = sábado
+
+      // Si es sábado o domingo, pedir una nueva fecha
+      if (diaSemana === 0 || diaSemana === 6) { // Si es sábado o domingo
+        alert("No se puede añadir un examen en fin de semana. Elija otro día.");
+        fecha = prompt("Ingrese una nueva fecha en formato: día/mes/año (ejemplo: 15/5/2025)");
+      }
+    } while (diaSemana === 0 || diaSemana === 6); // Continuar hasta que la fecha no sea fin de semana
+  }
+
+  // Pedir color hasta que sea válido
+  let colorInput;
+  let colorValido = false;
+  const coloresPermitidos = {
+    rojo: "red",
+    verde: "green",
+    amarillo: "gold",
+    azul: "blue",
+    morado: "purple"
+  };
+
+  do {
+    colorInput = prompt(
+      "Elija un color para el evento (escriba uno de los siguientes en español):\nrojo, verde, amarillo, azul, morado"
+    );
+
+    const color = coloresPermitidos[colorInput?.toLowerCase()];
+
+    if (color) {
+      colorValido = true;
+    } else {
+      alert("Color inválido. Escriba uno de los colores permitidos.");
+    }
+  } while (!colorValido);
+
+  // Añadir el evento con todos los datos
+  const fechaArray = fecha.split("/");
+  const dia = parseInt(fechaArray[0].trim());
+  const mes = parseInt(fechaArray[1].trim()) - 1;
+  const año = parseInt(fechaArray[2].trim());
+  const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
+
+  eventos.push({ titulo, fecha: fechaFormateada, color: coloresPermitidos[colorInput.toLowerCase()], tipoEvento });
+  localStorage.setItem("eventos", JSON.stringify(eventos));
+  alert("Evento añadido correctamente.");
+  generarCalendario(añoActual, mesActualIndex);
+}
+
+// ========================= BORRAR EVENTO =========================
+// Función para borrar un evento del calendario
+
+function borrarEvento() {
+  let fecha;
+  let eventoEncontrado = false;
+
+  // Pedir la fecha hasta que se ingrese una válida
+  do {
+    fecha = prompt("Ingrese la fecha del evento a borrar (día/mes/año):");
+
+    const fechaArray = fecha.split("/");
+    if (fechaArray.length === 3) {
+      const dia = parseInt(fechaArray[0].trim());
+      const mes = parseInt(fechaArray[1].trim()) - 1;
+      const año = parseInt(fechaArray[2].trim());
+
+      const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
+
+      // Buscar eventos en esa fecha
+      const eventosEnFecha = eventos.filter(evento => evento.fecha === fechaFormateada);
+      
+      if (eventosEnFecha.length > 0) {
+        // Si hay más de un evento, mostrar una lista para que elija cuál borrar
+        if (eventosEnFecha.length > 1) {
+          let listaEventos = "Elija cuál evento desea borrar:\n";
+          eventosEnFecha.forEach((evento, index) => {
+            listaEventos += `${index + 1}. ${evento.titulo} - ${evento.tipoEvento}\n`;
+          });
+          const eventoElegido = parseInt(prompt(listaEventos));
+
+          if (eventoElegido >= 1 && eventoElegido <= eventosEnFecha.length) {
+            // Borrar el evento seleccionado
+            const eventoIndex = eventos.findIndex(evento => evento.fecha === fechaFormateada && evento.titulo === eventosEnFecha[eventoElegido - 1].titulo);
+            eventos.splice(eventoIndex, 1);
+            localStorage.setItem("eventos", JSON.stringify(eventos));
+            alert("Evento eliminado.");
+            generarCalendario(añoActual, mesActualIndex);
+            eventoEncontrado = true;
+          } else {
+            alert("Opción inválida. No se borró ningún evento.");
+          }
+        } else {
+          // Si solo hay un evento en esa fecha, borrarlo directamente
+          eventos.splice(eventos.findIndex(evento => evento.fecha === fechaFormateada), 1);
           localStorage.setItem("eventos", JSON.stringify(eventos));
           alert("Evento eliminado.");
           generarCalendario(añoActual, mesActualIndex);
-          eventoEncontrado = true; // Marcar que se ha encontrado el evento
-        } else {
-          alert("No se encontró ningún evento con esa fecha.");
+          eventoEncontrado = true;
         }
       } else {
-        alert("Formato de fecha incorrecto. Asegúrese de usar el formato: día/mes/año.");
+        alert("No se encontró ningún evento en esa fecha.");
       }
-    } while (!eventoEncontrado); // Continuar pidiendo hasta que el evento sea encontrado y borrado
-  }
-  
+    } else {
+      alert("Formato de fecha incorrecto. Asegúrese de usar el formato: día/mes/año.");
+    }
+  } while (!eventoEncontrado); // Continuar pidiendo hasta que el evento sea encontrado y borrado
+}
+
+// ========================== MODIFICAR EVENTO =========================
+// Función para modificar un evento del calendario
 
   function modificarEvento() {
     const fecha = prompt("Ingrese la fecha del evento a modificar (día/mes/año):");
@@ -322,10 +354,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-
   document.getElementById("btnAñadir").addEventListener("click", añadirEvento);
   document.getElementById("btnBorrar").addEventListener("click", borrarEvento);
   document.getElementById("btnModificar").addEventListener("click", modificarEvento);
 
   generarCalendario(añoActual, mesActualIndex);
 });
+
+
+

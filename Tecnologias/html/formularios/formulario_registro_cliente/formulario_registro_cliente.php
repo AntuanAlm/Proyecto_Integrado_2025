@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<!-- /**
+ * Este script inicializa una sesión en PHP y genera un token CSRF (Cross-Site Request Forgery).
+ * 
+ * - `session_start()`: Inicia una nueva sesión o reanuda una existente. Esto es necesario para
+ *   almacenar variables de sesión, como el token CSRF.
+ * - `bin2hex(random_bytes(32))`: Genera una cadena aleatoria criptográficamente segura de 32 bytes
+ *   y la convierte en una representación hexadecimal. Esto asegura que el token CSRF sea único y
+ *   difícil de adivinar.
+ * - `$_SESSION['csrf_token']`: Almacena el token CSRF generado en la sesión, haciéndolo accesible
+ *   en toda la aplicación para la protección contra CSRF.
+ * 
+ * Este token puede ser utilizado para proteger formularios al incluirlo como un campo oculto y
+ * validarlo en el servidor para prevenir solicitudes no autorizadas.
+ */ -->
+<?php
+session_start();
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+?>
+
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -22,8 +40,7 @@
    <script src="../../../js/enlaces_href/universal_form_registro.js"></script>    
    <script src="../../../js/enlaces_src/imagenes_form_registro.js"></script>
    <script src="../../../js/carrito_compra/carrito.js"></script>
-   <script src="../../../js/errores_formulario_registro/errores_formularios_registro.js"></script>
-
+   <script src="../../../js/validaciones_formulario_registro/validaciones_formularios_registro.js"></script>
 </head>
 <body>
 
@@ -123,44 +140,55 @@
   </header>
 
 
-<!-- ====================== FORMULARIO REGISTRO PRO =========================== -->
+<!-- ====================== FORMULARIO REGISTRO =========================== -->
 <section id="registro-cliente">
   <h1>Datos del Cliente</h1>
   <div class="contenedor-formulario">
-    <form id="form-datos" novalidate>
+    <form id="form-datos" method="post" action="../../../php/registro_cliente/registro_cliente.php" novalidate>
+
+     <!-- Token CSRF oculto : Este código genera un campo oculto en el formulario que incluye un token CSRF almacenado en la sesión para proteger contra ataques de falsificación de solicitudes entre sitios (CSRF). -->
+     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+
+
       <div>
         <label for="nombre">Nombre:</label>
-        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required data-error="error-nombre">
+        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
         <p id="error-nombre" class="error-message"></p>
       </div>
 
       <div>
         <label for="apellidos">Apellidos:</label>
-        <input id="apellidos" name="apellidos" type="text" placeholder="Tus apellidos" required data-error="error-apellidos">
+        <input id="apellidos" name="apellidos" type="text" placeholder="Tus apellidos" required>
         <p id="error-apellidos" class="error-message"></p>
       </div>
 
       <div>
-        <label for="dni">Adjuntar DNI:</label>
-        <input id="dni" name="dni" type="file" accept=".pdf,.jpg,.jpeg,.png" required data-error="error-dni">
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required>
+        <p id="error-fecha_nacimiento" class="error-message"></p>
+      </div>
+
+      <div>
+        <label for="dni">DNI:</label>
+        <input id="dni" name="dni" type="text" pattern="[0-9]{8}[A-Za-z]{1}" placeholder="12345678A" required>
         <p id="error-dni" class="error-message"></p>
       </div>
 
       <div>
         <label for="telefono">Teléfono:</label>
-        <input id="telefono" name="telefono" type="tel" placeholder="123456789" pattern="[0-9]{9}" required data-error="error-telefono">
+        <input id="telefono" name="telefono" type="tel" placeholder="123456789" pattern="[0-9]{9}" required>
         <p id="error-telefono" class="error-message"></p>
       </div>
 
       <div>
         <label for="correo">Correo electrónico:</label>
-        <input id="correo" name="correo" type="email" placeholder="tu@email.com" required data-error="error-correo">
+        <input id="correo" name="correo" type="email" placeholder="tu@email.com" required>
         <p id="error-correo" class="error-message"></p>
       </div>
 
       <div>
         <label for="contrasena">Contraseña:</label>
-        <input id="contrasena" name="contrasena" type="password" placeholder="Tu contraseña" required data-error="error-contrasena">
+        <input id="contrasena" name="contrasena" type="password" placeholder="Tu contraseña" required>
         <p id="error-contrasena" class="error-message"></p>
       </div>
 

@@ -1,0 +1,104 @@
+/* agradecimiento_registro.css */
+
+:root {
+    --color-fondo: #ffffff;
+    --color-borde: midnightblue;
+    --radio-borde: 10px;
+    --relleno: 30px;
+    --ancho-maximo: 600px;
+    --color-texto: midnightblue;
+    --tamano-fuente-titulo: 30px;
+    --tamano-fuente-parrafo: 16px;
+    --altura-linea-parrafo: 1.6;
+    --color-texto-enlace: #ffffff;
+    --color-fondo-enlace: midnightblue;
+    --color-fondo-hover-enlace: #eeee22;
+    --color-texto-hover-enlace: midnightblue;
+    --radio-borde-enlace: 5px;
+    --duracion-transicion: 0.3s;
+}
+h1 {
+    font-size: var(--tamano-fuente-titulo);
+    margin-bottom: 20px; 
+    margin-top: 50px;
+    color: var(--color-texto);
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.agradecimiento-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.agradecimiento-container {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    padding: var(--relleno);
+    max-width: var(--ancho-maximo);
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.agradecimiento-container p {
+    font-size: var(--tamano-fuente-parrafo);
+    line-height: var(--altura-linea-parrafo);
+    margin-bottom: 15px;
+}
+
+.agradecimiento-container a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: var(--tamano-fuente-parrafo);
+    font-weight: bold;
+    color: var(--color-texto-enlace);
+    background-color: var(--color-fondo-enlace);
+    border-radius: var(--radio-borde-enlace);
+    transition: background-color var(--duracion-transicion) ease, transform var(--duracion-transicion) ease;
+    cursor: pointer;
+}
+
+.agradecimiento-container a:hover {
+    background-color: var(--color-fondo-hover-enlace);
+    color: var(--color-texto-hover-enlace);
+    transform: scale(1.05);
+}
+
+.agradecimiento-container a:active {
+    transform: scale(0.95);
+}
+
+/* Responsividad mejorada */
+@media (max-width: 768px) {
+    .agradecimiento-container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .agradecimiento-container a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
