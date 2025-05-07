@@ -1,0 +1,48 @@
+/* Estilos para el mensaje de confirmación */
+.message {
+    max-width: 600px;
+    margin: auto;
+    background-color: #f7faf4;
+    border: 2px solid midnightblue;
+    color: midnightblue;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  /* Animación para la aparición del mensaje */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Enlace de regreso */
+  [data-enlace="inicio"] {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: midnightblue;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  [data-enlace="inicio"]:hover {
+    color: #eeee22;
+    text-decoration: underline;
+  }
+  

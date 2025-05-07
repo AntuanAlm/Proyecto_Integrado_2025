@@ -1,0 +1,78 @@
+:root {
+  --color-principal: midnightblue;
+  --color-acento: #eeee22;
+  --color-fondo: #f7faf4;
+  --radio: 10px;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-principal);
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: var(--color-principal);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: var(--color-acento);
+  margin: 0.5rem auto 0;
+  border-radius: 5px;
+}
+
+.lista-test-tematicos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.lista-test-tematicos li {
+  background-color: white;
+  border-left: 5px solid var(--color-acento);
+  border-radius: var(--radio);
+  padding: 1.2rem 3rem 1.2rem 1.5rem; /* Se añadió más espacio a la derecha */
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  position: relative;
+}
+
+.lista-test-tematicos li::before {
+  content: '📝';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.4rem;
+  color: var(--color-acento);
+  z-index: 1; 
+  pointer-events: none; 
+}
+
+.lista-test-tematicos li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: var(--color-fondo);
+}

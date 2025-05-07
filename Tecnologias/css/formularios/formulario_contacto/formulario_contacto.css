@@ -1,165 +1,204 @@
+:root {
+  --color-principal: midnightblue;
+  --color-secundario: #1a73e8;
+  --color-fondo-formulario: #f4f7fa;
+  --color-placeholder: #888888;
+  --color-placeholder-focus: #bbbbbb;
+  --color-error: red;
+
+  --color-texto-input: midnightblue;
+  --color-fondo-input: #ffffff;
+  --color-borde-input: rgba(0, 0, 0, 0.2);
+  --color-sombra-input: rgba(0, 0, 0, 0.05);
+  --color-sombra-form: rgba(0, 0, 0, 0.2);
+
+  --color-sombra-boton: rgba(0, 0, 0, 0.15);
+  --color-sombra-boton-hover: rgba(0, 0, 0, 0.2);
+
+  --fuente-general: "Roboto", sans-serif;
+
+  --font-size-titulo: 26px;
+  --font-size-input: 16px;
+  --font-size-error: 12px;
+
+  --radius-form: 15px;
+  --radius-input: 8px;
+  --radius-linea-titulo: 2px;
+  --radius-boton: 25px;
+
+  --ancho-maximo-form: 800px;
+  --padding-formulario: 40px 25px;
+  --gap-campos: 20px;
+
+  --ancho-linea-titulo: 80px;
+  --alto-linea-titulo: 3px;
+
+
+}
+
 /* ----------------------------------------------------- CONTACTO FORMULARIO ------------------------------------------------------- */
 #titulo-formulario {
-    text-align: center;
-    color: midnightblue;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    margin-top: 60px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
+  text-align: center;
+  color: var(--color-principal);
+  font-size: var(--font-size-titulo);
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-top: 60px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+#titulo-formulario::after {
+  content: "";
+  display: block;
+  width: var(--ancho-linea-titulo);
+  height: var(--alto-linea-titulo);
+  background: var(--color-secundario);
+  margin: 10px auto 0;
+  border-radius: var(--radius-linea-titulo);
+  box-shadow: 0 2px 5px var(--color-sombra-form);
+}
+
+/* ------------------------------------ FORMULARIO GENERAL ------------------------------------ */
+#formulario-contacto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap-campos);
+  justify-content: center;
+  align-items: start;
+  padding: var(--padding-formulario);
+  background: var(--color-fondo-formulario);
+  border-radius: var(--radius-form);
+  border: 1px solid var(--color-borde-input);
+  box-shadow: 0 8px 20px var(--color-sombra-form);
+  max-width: var(--ancho-maximo-form);
+  margin: 50px auto;
+  animation: fadeInForm 0.8s ease-out forwards;
+  box-sizing: border-box;
+}
+
+@keyframes fadeInForm {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
   }
-  
-  #titulo-formulario::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: #1a73e8;
-    margin: 10px auto 0;
-    border-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* ------------------------------------ FORMULARIO GENERAL ------------------------------------ */
+}
+
+/* ------------------------------------ CAMPOS DE ENTRADA ------------------------------------ */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#formulario-contacto input,
+#formulario-contacto select,
+#formulario-contacto textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--color-borde-input);
+  background-color: var(--color-fondo-input);
+  font-size: var(--font-size-input);
+  color: var(--color-texto-input);
+  box-shadow: inset 0 2px 4px var(--color-sombra-input);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+#formulario-contacto input:focus,
+#formulario-contacto select:focus,
+#formulario-contacto textarea:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
+  outline: none;
+}
+
+#mensaje {
+  grid-column: span 2;
+  height: 120px;
+  resize: vertical;
+  font-family: var(--fuente-general);
+}
+
+/* ------------------------------------ PLACEHOLDERS ------------------------------------ */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-placeholder);
+  transition: color 0.3s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: var(--color-placeholder-focus);
+}
+
+/* Estilo para el select */
+#asunto {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="midnightblue" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+/* ------------------------------------ ERRORES ------------------------------------ */
+.error {
+  color: var(--color-error);
+  font-size: var(--font-size-error);
+  margin-top: 5px;
+}
+
+/* ------------------------------------ BOTONES ------------------------------------ */
+button[type="submit"],
+button[type="reset"] {
+  padding: 12px 25px;
+  border-radius: var(--radius-boton);
+  gap: 20px;
+  background: var(--color-principal);
+  color: white;
+  font-size: var(--font-size-input);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px var(--color-sombra-boton);
+}
+
+button[type="submit"]:hover,
+button[type="reset"]:hover {
+  background: var(--color-secundario);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--color-sombra-boton-hover);
+}
+
+button[type="submit"]:active,
+button[type="reset"]:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 8px var(--color-sombra-boton);
+}
+
+/* ------------------------------------ RESPONSIVIDAD ------------------------------------ */
+@media (max-width: 600px) {
   #formulario-contacto {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
-    align-items: start;
-    padding: 40px 25px;
-    background: #f4f7fa;
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 50px auto;
-    animation: fadeInForm 0.8s ease-out forwards;
-    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    padding: 20px;
   }
-  
-  @keyframes fadeInForm {
-    from {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* ------------------------------------ CAMPOS DE ENTRADA ------------------------------------ */
-  #formulario-contacto input,
-  #formulario-contacto textarea {
-    width: 100%;
-    padding: 14px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-    font-size: 16px;
-    color: midnightblue;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
-  }
-  
-  #formulario-contacto input:focus,
-  #formulario-contacto textarea:focus {
-    border-color: #1a73e8;
-    box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
-    outline: none;
-  }
-  
-  /* Campo de mensaje grande */
+
   #mensaje {
-    grid-column: span 2;
-    height: 120px;
-    resize: vertical;
-    font-family: "Roboto", sans-serif;
+    grid-column: span 1;
   }
-  
-  /* ------------------------------------ PLACEHOLDERS ------------------------------------ */
-  input::placeholder,
-  textarea::placeholder {
-    color: #888888;
-    transition: color 0.3s ease;
-  }
-  
-  input:focus::placeholder,
-  textarea:focus::placeholder {
-    color: #bbbbbb;
-  }
-  
-  #asunto {
-    width: 100%;
-    padding: 14px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-    font-size: 16px;
-    color: midnightblue;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    appearance: none; /* Oculta flecha por defecto */
-    background-image: url('data:image/svg+xml;utf8,<svg fill="midnightblue" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 18px;
-    cursor: pointer;
-  }
-  
-  #asunto:focus {
-    border-color: #1a73e8;
-    box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
-    outline: none;
-  }
-  
-  /* ------------------------------------ BOTONES ------------------------------------ */
+
   button[type="submit"],
   button[type="reset"] {
-    padding: 12px 25px;
-    border-radius: 25px;
-    background: midnightblue;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 15px;
   }
-  
-  button[type="submit"]:hover,
-  button[type="reset"]:hover {
-    background: #1a73e8;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  button[type="submit"]:active,
-  button[type="reset"]:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* ------------------------------------ RESPONSIVIDAD ------------------------------------ */
-  @media (max-width: 600px) {
-    #formulario-contacto {
-      grid-template-columns: 1fr;
-      padding: 20px;
-    }
-  
-    #mensaje {
-      grid-column: span 1;
-    }
-  
-    button[type="submit"],
-    button[type="reset"] {
-      width: 100%;
-      padding: 15px;
-    }
-  }
-  
+}
+

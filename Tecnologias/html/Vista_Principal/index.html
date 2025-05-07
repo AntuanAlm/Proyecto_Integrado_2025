@@ -24,6 +24,8 @@
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/carrito_compra/carrito.js"></script>
     <script src="../../js/carrusel_reseñas/carrusel_reseñas.js"></script>
+    <script src="../../js/validaciones_formulario_contacto/validaciones_formulario_contacto.js"></script>
+
 </head>
 <body>
 
@@ -223,29 +225,50 @@
 
   <h2 id="titulo-formulario">CONTACTO</h2>
 
-<form action="" id="formulario-contacto">
-    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
-    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required>
-    <input type="email" name="email" id="email" placeholder="Email" required>
-    <input type="text" name="telefono" id="telefono" placeholder="Teléfono" required>
+  <form action="../../php/formulario_contacto/contacto.php" method="POST" id="formulario-contacto" novalidate>
+
+    <div class="campo">
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+      <p class="error" id="error-nombre"></p>
+    </div>
   
-    <div id="asunto-formulario">
-        <select name="asunto" id="asunto" required>
-            <option value="" disabled selected>Selecciona un asunto:</option>
-            <option value="coche">Permiso B</option>
-            <option value="cursos-intensivos">Cursos intensivos</option>
-            <option value="clases-reciclaje">Clases de reciclaje</option>
-        </select>
+    <div class="campo">
+      <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required>
+      <p class="error" id="error-apellidos"></p>
     </div>
-
-    <div id="mensaje-formulario">
-        <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..." required></textarea>
+  
+    <div class="campo">
+      <input type="email" name="email" id="email" placeholder="Email" required>
+      <p class="error" id="error-email"></p>
     </div>
-
-    <button type="submit">Enviar info!</button>
-    <button type="reset">Resetear info!</button>
+  
+    <div class="campo">
+      <input type="text" name="telefono" id="telefono" placeholder="Teléfono" required>
+      <p class="error" id="error-telefono"></p>
+    </div>
+  
+    <div class="campo">
+      <select name="asunto" id="asunto" required>
+        <option value="" disabled selected>Selecciona un asunto:</option>
+        <option value="coche">Permiso B</option>
+        <option value="cursos-intensivos">Cursos intensivos</option>
+        <option value="clases-reciclaje">Clases de reciclaje</option>
+      </select>
+      <p class="error" id="error-asunto"></p>
+    </div>
+  
+    <div class="campo">
+      <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <p class="error" id="error-mensaje"></p>
+    </div>
+  
+    <div class="botones">
+      <button type="submit">Enviar info!</button>
+      <button type="reset">Resetear info!</button>
+    </div>
 
 </form>
+
      
      <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 

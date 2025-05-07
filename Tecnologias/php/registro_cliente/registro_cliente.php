@@ -4,7 +4,8 @@ session_start();
 // Incluir el archivo de conexión a la base de datos
 require_once '../conexion/conexion.php'; // Asegúrate de que la ruta sea correcta
 
-// Generar un CSRF token para el formulario
+// Generar un CSRF token para el formulario : Esto es para la seguridad. Un token CSRF protege contra ataques en los 
+// que un atacante intenta enviar solicitudes maliciosas en nombre de un usuario legítimo.
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 // Recoger los datos del formulario y sanitizarlos
@@ -87,11 +88,11 @@ if (!empty($errores)) {
 
     // Preparar la consulta SQL de inserción
     $query = "INSERT INTO clientes (nombre, apellidos, dni, telefono, correo, contrasena, fecha_nacimiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conexion->prepare($query);
-    $stmt->bind_param("sssssss", $nombre, $apellidos, $dni, $telefono, $correo, $contrasena_hash, $fecha_nacimiento);
+    $stmt = $conexion->prepare($query); // Prepara la consulta de inserción.
+    $stmt->bind_param("sssssss", $nombre, $apellidos, $dni, $telefono, $correo, $contrasena_hash, $fecha_nacimiento); // Asocia los parámetros a la consulta.
 
     // Ejecutar la consulta
-    if ($stmt->execute()) {
+    if ($stmt->execute()) { // Si la consulta se ejecuta correctamente, se inserta el nuevo cliente.
         // Almacenar el ID del cliente en una cookie (opcional, por ejemplo para mantener la sesión)
         setcookie("cliente_id", $stmt->insert_id, time() + 3600, "/", "", false, true); // Cookie segura, expira en 1 hora
 
@@ -103,8 +104,8 @@ if (!empty($errores)) {
         echo "Error al registrar: " . $stmt->error;
     }
 
-    $stmt->close();
+    $stmt->close(); // Cierra la consulta.
 }
 
-$conexion->close();
+$conexion->close(); // Cierra la conexión con la base de datos.
 ?>

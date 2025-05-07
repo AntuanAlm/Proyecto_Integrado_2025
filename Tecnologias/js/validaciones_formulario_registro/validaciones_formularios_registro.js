@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Validar correo (debe ser un correo válido y de dominio específico)
-    if (!/^[^\s@]+@(gmail\.com|hotmail\.com|yahoo\.com)$/.test(correo)) {
+    if (!/^[^\s@]+@(gmail\.com|hotmail\.com|yahoo\.com|@outlook\.com)$/.test(correo)) {
       mostrarError("correo", "El correo electrónico debe ser de los dominios: @gmail.com, @hotmail.com o @outlook.com.");
       errores = true;
     }

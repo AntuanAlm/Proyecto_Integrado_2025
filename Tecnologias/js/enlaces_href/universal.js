@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
       formulario_registro_nuevo_cliente: '../../html/formularios/formulario_registro_cliente/formulario_registro_cliente.html',
       agradecimiento: '../../html/agradecimiento_pago/agradecimiento_pago.html',
       descripcion_coche_autoescuela:'../../html/descripcion_coche_autoescuela/descripción_coche_autoescuela.html',
+      test_tematicos:'../../html/test_tematicos/menu_test_tematicos.html',
+      
   };
 
   // Asocia un evento a cada enlace

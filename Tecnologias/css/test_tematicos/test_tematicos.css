@@ -1,0 +1,145 @@
+:root {
+    --azul: midnightblue;
+    --amarillo: #eeee22;
+    --fondo: #f0f0f0;
+    --sombra: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --transicion: all 0.3s ease;
+}
+
+/* Ajuste para que el contenido no sea demasiado ancho en pantallas grandes */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--fondo);
+    color: var(--azul);
+    margin: 0;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Diseño de la pregunta */
+.pregunta {
+    display: none;
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 8px solid var(--amarillo);
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+}
+
+.pregunta.active {
+    display: block;
+}
+
+/* Diseño de las opciones */
+.opciones label {
+    display: block;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: var(--transicion);
+}
+
+.opciones label:hover {
+    background: rgba(238, 238, 34, 0.2);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Diseño de los botones de navegación */
+.nav-buttons {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+button {
+    padding: 0.6rem 1.5rem;
+    margin: 0 10px;
+    background: var(--amarillo);
+    color: var(--azul);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+button:hover {
+    background: var(--azul);
+    color: var(--fondo);
+    transform: scale(1.05);
+}
+
+/* Navegación entre preguntas */
+.navegacion {
+    text-align: center;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navegacion .cuadro {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border: 2px solid var(--azul);
+    border-radius: 6px;
+    cursor: pointer;
+    line-height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    background: white;
+    transition: var(--transicion);
+}
+
+.navegacion .cuadro.active {
+    background: var(--azul);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Marco para imágenes */
+#marco {
+    width: 100%;
+    height: 200px;
+    background-image: url('ruta/a/tu/imagen.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 8px solid var(--amarillo);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: var(--sombra);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+    .nav-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    button {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+    .pregunta {
+        font-size: 1rem;
+    }
+    .navegacion .cuadro {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
