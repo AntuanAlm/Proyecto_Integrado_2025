@@ -1,0 +1,105 @@
+:root {
+  --color-principal: #005F73;
+  --color-secundario: #94D2BD;
+  --color-fondo-formulario: #f0f4f8;
+  --color-borde: #ccc;
+  --color-texto: #333;
+  --color-boton: #0a9396;
+  --color-boton-hover: #007f89;
+  --radio-borde: 10px;
+  --espaciado: 15px;
+  --sombra: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --fuente: 'Reboto', sans-serif;
+}
+
+#titulo-login-usuario {
+  text-align: center;
+  color: var(--color-principal);
+  font-family: var(--fuente);
+  margin-bottom: var(--espaciado);
+}
+
+
+#formulario-login {
+  background-color: var(--color-fondo-formulario);
+  border: 1px solid var(--color-borde);
+  padding: calc(var(--espaciado) * 2);
+  border-radius: var(--radio-borde);
+  max-width: 400px;
+  margin: auto;
+  box-shadow: var(--sombra);
+  font-family: var(--fuente);
+  color: var(--color-texto);
+}
+
+#formulario-login label {
+  display: block;
+  margin-top: var(--espaciado);
+  font-weight: bold;
+}
+
+#formulario-login input[type="text"],
+#formulario-login input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  margin-top: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#formulario-login button {
+  margin-top: var(--espaciado);
+  background-color: var(--color-secundario);
+  color: var(--color-texto);
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#formulario-login button:hover {
+  background-color: var(--color-boton-hover);
+  color: white;
+}
+
+#formulario-login input[type="submit"] {
+  margin-top: var(--espaciado);
+  background-color: var(--color-boton);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#formulario-login input[type="submit"]:hover {
+  background-color: var(--color-boton-hover);
+}
+
+#formulario-login input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+#enlace, #crear-cuenta {
+  display: block;
+  text-align: center;
+  margin-top: var(--espaciado);
+  color: var(--color-principal);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#texto-crear-cuenta {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#enlace:hover, #crear-cuenta:hover {
+  text-decoration: underline;
+}

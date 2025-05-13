@@ -113,14 +113,31 @@ function añadirEvento() {
     return; // Si el usuario cancela, salimos de la función
   }
 
+  const titulosPermitidos = [
+    "Examen práctico",
+    "Curso intensivo",
+    "Examen teórico",
+    "Medico",
+    "Cumpleaños",
+    "Reunión",
+  ];
+
   let titulo;
   // Pedir el título hasta que sea válido
   do {
-    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intesivo // Examen teórico...");
-    if (!titulo) {
-      alert("Debe ingresar un título.");
+    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intensivo // Examen teórico // Médico // Cumpleaños...");
+    if (!titulosPermitidos.some(t => t.toLowerCase() === titulo?.toLowerCase())) {
+      if (titulo) {
+        alert("Título inválido. Debe ser uno de los siguientes: " + titulosPermitidos.join(", "));
+      } else {
+        alert("Debe ingresar un título.");
+        return; // Si no se ingresa nada, salimos de la función
+      }
     }
-  } while (!titulo); // Continuar pidiendo hasta que el título no sea vacío
+  } while (!titulosPermitidos.some(t => t.toLowerCase() === titulo?.toLowerCase())); // Continuar pidiendo hasta que el título sea válido
+
+  // Convertir el título ingresado a su formato original (mayúsculas/minúsculas)
+  titulo = titulosPermitidos.find(t => t.toLowerCase() === titulo?.toLowerCase());
 
   let fecha;
   let fechaValida = false;
@@ -208,13 +225,20 @@ function añadirEvento() {
     }
   } while (!colorValido);
 
-  // Añadir el evento con todos los datos
+  // Verificar si ya hay 2 eventos en la fecha seleccionada
   const fechaArray = fecha.split("/");
   const dia = parseInt(fechaArray[0].trim());
   const mes = parseInt(fechaArray[1].trim()) - 1;
   const año = parseInt(fechaArray[2].trim());
   const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
 
+  const eventosDelDia = eventos.filter(e => e.fecha === fechaFormateada);
+  if (eventosDelDia.length >= 2) {
+    alert("No se pueden añadir más de 2 eventos en un mismo día.");
+    return;
+  }
+
+  // Añadir el evento con todos los datos
   eventos.push({ titulo, fecha: fechaFormateada, color: coloresPermitidos[colorInput.toLowerCase()], tipoEvento });
   localStorage.setItem("eventos", JSON.stringify(eventos));
   alert("Evento añadido correctamente.");

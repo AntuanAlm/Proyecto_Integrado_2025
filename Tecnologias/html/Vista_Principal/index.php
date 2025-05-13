@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+$mensaje = '';
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    unset($_SESSION['mensaje']);
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +24,7 @@
     <link rel="stylesheet" href="../../css/formularios/formulario_contacto/formulario_contacto.css">
     <link rel="stylesheet" href="../../css/titulo_botones_nuevos_alumnos/titulo_botones_nuevos_alumnos.css">
     <link rel="stylesheet" href="../../css/footer_generico/footer.css">
+    <link rel="stylesheet" href="../../css/sesion_iniciada_usuario/sesion_iniciada_usu.css">
 
     <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,9 +38,13 @@
     <script src="../../js/carrito_compra/carrito.js"></script>
     <script src="../../js/carrusel_reseñas/carrusel_reseñas.js"></script>
     <script src="../../js/validaciones_formulario_contacto/validaciones_formulario_contacto.js"></script>
+    <script src="../../js/menu_flotante_sesion/menu_flotante_sesion.js"></script>
+    <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script>
+    
 
 </head>
 <body>
+
 
     <div class="container">
         
@@ -121,6 +138,55 @@
                   <a data-enlace="contacto">Contacto</a>
               </div>
           </nav>
+
+          <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
+
+<?php if (isset($_GET['cerrado']) && $_GET['cerrado'] == 1): ?>
+  <div class="sesion-cerrada">
+    <p class="mensaje-sesion">🔒 Sesión cerrada correctamente.</p>
+  </div>
+<?php endif; ?>
+
+<div class="sesion-iniciada sesion-reducida" id="sesionIniciada">
+
+  <!-- Avatar siempre visible -->
+  <button id="toggleSesion" class="avatar" title="Menú de sesión">
+    <?php 
+      if (isset($_SESSION['usuario'])) {
+        // Si hay sesión, mostramos las iniciales del usuario
+        $nombre = $_SESSION['usuario'];
+        $iniciales = '';
+        foreach (explode(' ', $nombre) as $palabra) {
+          $iniciales .= strtoupper($palabra[0]);
+        }
+        echo $iniciales;
+      } else {
+        // Si no hay sesión, mostramos el ícono de "iniciar sesión"
+        echo '👤';
+      }
+    ?>
+  </button>
+
+  <!-- Si la sesión está iniciada -->
+  <?php if (isset($_SESSION['usuario'])): ?>
+    <div class="contenido-sesion" id="contenidoSesion">
+      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
+      <div class="acciones-sesion">
+        <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
+          <button type="submit">Cerrar sesión</button>
+        </form>
+      </div>
+    </div>
+  <!-- Si la sesión NO está iniciada -->
+  <?php else: ?>
+    <div class="contenido-sesion">
+      <form action="../../html/login_usuario/login_usuario.html" method="post" class="form-login">
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </div>
+  <?php endif; ?>
+</div>
+
       </header>
       
     <!-- ============================ TITULO ===========================  -->
@@ -153,7 +219,7 @@
          <button class="btn-nuevo-cliente" onclick="window.location.href='../../html/formularios/formulario_registro_cliente/formulario_registro_cliente.php'">
              ¡Quiero unirme ahora!
          </button>
-         <button class="btn-cliente-actual" onclick="window.location.href='/Tecnologias/html/nuevo_cliente/login.html'">
+         <button class="btn-cliente-actual" onclick="window.location.href='../../html/login_usuario/login_usuario.html'">
              Soy alumno de esta autoescuela. ¡Accede a tu área personal ahora!
          </button>
      </div>

@@ -17,3 +17,5 @@ $conexion->set_charset("utf8");
 // Puedes dejar esto si quieres comprobar que todo va bien (luego lo puedes comentar)
 #echo "Conexión exitosa";
 ?>
+
+

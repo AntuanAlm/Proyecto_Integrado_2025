@@ -1,39 +1,39 @@
+<?php
+session_start(); // Inicia la sesión
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Document</title>
 
-    <!-- Links de CSS -->
-    <link rel="stylesheet" href="../../css/contacto/contacto.css">
-    <link rel="stylesheet" href="../../css/formularios/formulario_contacto/formulario_contacto.css">
-    <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">
-    <link rel="stylesheet" href="../../css/carrito_compra/carrito_compra.css">
+    <!-- Links de css -->
+     <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">
+     <link rel="stylesheet" href="../../css/carrito_compra/carrito_compra.css">
     <link rel="stylesheet" href="../../css/footer_generico/footer.css">
+    <link rel="stylesheet" href="../../css/nuevo_cliente/nuevo_cliente.css">
 
-    <!-- Las fuentes de google -->
+    <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Matemasie&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../../img/logo/logo-autoescuela.png" type="image/x-icon">
-    
+
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/carrito_compra/carrito.js"></script>
-    <script src="../../js/validaciones_formulario_contacto/validaciones_formulario_contacto.js"></script>
 
 
 </head>
 <body>
 
-    <!-- ----------------------------- CONTAINER PRINCIPAL ------------------------- -->
-
-    <div class="container">
+     <div class="container">
         
             <p class="email">
-                <img data-src="gmail" alt="email" width="35" height="35">
+                <img data-src="gmail" alt="email" width="35" height="35" mailto="autoescuelaalmansa@hotmail.com">
                 autoescuelaalmansa@hotmail.com
             </p>
     
@@ -49,46 +49,46 @@
 
         <!-------------------------------- CARRITO DE LA COMPRA ---------------------------->
         <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
-            <span>🛒 Carrito</span>
-            <span id="carrito-count" class="carrito-count">0</span>
+          <span>🛒 Carrito</span>
+          <span id="carrito-count" class="carrito-count">0</span>
+        </div>
+
+        <div id="carrito-menu" class="carrito-menu">
+          <div id="carrito-header" class="carrito-header">
+            <h2>Tu Carrito</h2>
+            <button class="close-carrito" onclick="toggleCarrito()">✖</button>
           </div>
-  
-          <div id="carrito-menu" class="carrito-menu">
-            <div id="carrito-header" class="carrito-header">
-              <h2>Tu Carrito</h2>
-              <button class="close-carrito" onclick="toggleCarrito()">✖</button>
-            </div>
-            <div id="carrito-vacio" class="carrito-vacio">
-              <p>No tienes artículos en el carrito</p>
-            </div>
-            <div id="carrito-contenido" class="carrito-contenido">
-              <div id="carrito-items" class="carrito-items"></div>
-              <div id="carrito-total" class="carrito-total">
-                <p>Total: <span id="total-carrito">0€</span></p>
-              </div>
-              <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
-            </div>
+          <div id="carrito-vacio" class="carrito-vacio">
+            <p>No tienes artículos en el carrito</p>
           </div>
+          <div id="carrito-contenido" class="carrito-contenido">
+            <div id="carrito-items" class="carrito-items"></div>
+            <div id="carrito-total" class="carrito-total">
+              <p>Total: <span id="total-carrito">0€</span></p>
+            </div>
+            <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+          </div>
+        </div>
         
         <!------------------------------------ HEADER -------------------------------------->
 
         <header class="header">
           <div class="logo-container">
               <a class="logo-principal" data-enlace="inicio">
-                  <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
+                <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
               </a>
           </div>
           
           <nav id="menu-navegacion">
-            <div id="menu-carnets">
-                <a href="#carnets" data-enlace="carnets">Carnets</a>
-                <div id="submenu-carnets">
-                    <a id="submenu-coche" data-enlace="coche">Coche - B</a>
-                    <a id="submenu-precio" data-enlace="precio">Precios - B</a>
-                    <a id="submenu-intensivos"data-enlace="cursos_intensivos">Cursos Intensivos</a>
-                    <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
-                </div>
-            </div>
+              <div id="menu-carnets">
+                  <a href="#carnets" data-enlace="carnets">Carnets</a>
+                  <div id="submenu-carnets">
+                      <a id="submenu-coche" data-enlace="coche">Coche - B</a>
+                      <a id="submenu-precio" data-enlace="precio">Precios - B</a>
+                      <a id="submenu-intensivos" data-enlace="cursos_intensivos">Cursos Intensivos</a>
+                      <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
+                  </div>
+              </div>
           
               <div id="menu-alumnos">
                   <a href="#alumnos" data-enlace="alumnos">Alumnos</a>
@@ -122,57 +122,39 @@
                   <a data-enlace="contacto">Contacto</a>
               </div>
           </nav>
-      </header>
+          </header>
 
-<!-- ======================================Formulario de contacto ========================================-->
+           <!-- ==================================== ClLIENTES O NUEVOS CLIENTES ================================ -->
 
-<h2 id="titulo-formulario">CONTACTO</h2>
+    <!-- alumno_nuevoAlumno.html -->
+<h1 class="titulo-principal">Antes de pagar, una pregunta. ¿Ya eres alumno de nuestra autoescuela o te gustaría unirte?</h1>
 
-<form action="../../php/formulario_contacto/contacto.php" method="POST" id="formulario-contacto" novalidate>
+<div class="cliente-buttons">
+    <button class="btn-nuevo-cliente" onclick="window.location.href='../../html/formularios/formulario_registro_cliente/formulario_registro_cliente.php'">
+        ¡Quiero unirme ahora!
+    </button>
+    <button class="btn-cliente-actual" onclick="window.location.href='../../html/login_usuario/login_usuario.html'">
+        Soy alumno de esta autoescuela. ¡Accede a tu área personal ahora!
+    </button>
+</div>
 
-  <div class="campo">
-    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
-    <p class="error" id="error-nombre"></p>
-  </div>
+<button onclick="verificarLogin()">Pagar</button>
 
-  <div class="campo">
-    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required>
-    <p class="error" id="error-apellidos"></p>
-  </div>
+<script>
+    function verificarLogin() {
+        // Si el usuario está logueado, redirige a la pasarela de pago
+        var isLoggedIn = <?php echo isset($_SESSION['usuario_id']) ? 'true' : 'false'; ?>;
+        if (isLoggedIn) {
+            window.location.href = 'pasarela_pago.html'; // Cambiar a la URL de tu pasarela de pago
+        } else {
+            // Si no está logueado, redirigir a login o registro
+            window.location.href = 'login_usuario.html';
+        }
+    }
+</script>
 
-  <div class="campo">
-    <input type="email" name="email" id="email" placeholder="Email" required>
-    <p class="error" id="error-email"></p>
-  </div>
+      <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 
-  <div class="campo">
-    <input type="text" name="telefono" id="telefono" placeholder="Teléfono" required>
-    <p class="error" id="error-telefono"></p>
-  </div>
-
-  <div class="campo">
-    <select name="asunto" id="asunto" required>
-      <option value="" disabled selected>Selecciona un asunto:</option>
-      <option value="coche">Permiso B</option>
-      <option value="cursos-intensivos">Cursos intensivos</option>
-      <option value="clases-reciclaje">Clases de reciclaje</option>
-    </select>
-    <p class="error" id="error-asunto"></p>
-  </div>
-
-  <div class="campo">
-    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..." required></textarea>
-    <p class="error" id="error-mensaje"></p>
-  </div>
-
-  <div class="botones">
-    <button type="submit">Enviar info!</button>
-    <button type="reset">Resetear info!</button>
-  </div>
-
-</form>
-
-        <!-------------------------------- FOOTER ------------------------------------>
 
      <footer id="pie-pagina">
       <div class="container-footer">
@@ -184,10 +166,10 @@
           </p>
     
           <div class="social-icons">
-            <a href="https://www.facebook.com/" target="_blank">
+            <a data-src="gmail" target="_blank">
               <img data-src="fb" alt="facebook" width="30" height="30">
             </a>
-            <a href="https://www.instagram.com/" target="_blank">
+            <a data-src="instagram" target="_blank">
               <img data-src="instagram" alt="instagram" width="30" height="30">
             </a>
           </div>

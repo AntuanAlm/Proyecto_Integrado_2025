@@ -1,52 +1,56 @@
 <?php
+// Iniciar la sesión
 session_start();
-require_once '../conexion/conexion.php'; // Asegúrate de que la ruta es correcta
 
-// Recoger datos del formulario
-$correo = isset($_POST['correo']) ? trim($_POST['correo']) : '';
-$contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : '';
+// Conexión a la base de datos
+require_once('../../php/conexion/conexion.php');
 
-$errores = [];
-
-if (empty($correo) || empty($contrasena)) {
-    $errores[] = "Todos los campos son obligatorios.";
-} else {
-    // Buscar al usuario por correo
-    $query = "SELECT * FROM clientes WHERE correo = ?";
-    $stmt = $conexion->prepare($query);
-    $stmt->bind_param("s", $correo);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
-
-    if ($resultado->num_rows === 1) {
-        $usuario = $resultado->fetch_assoc();
-
-        // Verificar contraseña
-        if (password_verify($contrasena, $usuario['contrasena'])) {
-            // Contraseña válida → iniciar sesión
-            $_SESSION['cliente_id'] = $usuario['id'];
-            $_SESSION['cliente_nombre'] = $usuario['nombre'];
-            $_SESSION['cliente_correo'] = $usuario['correo'];
-
-            // Redirigir a la zona privada
-            header("Location: /Proyecto_Integrado_2025/zona_privada/inicio.php");
-            exit();
-        } else {
-            $errores[] = "Correo o contraseña incorrectos.";
-        }
-    } else {
-        $errores[] = "Correo o contraseña incorrectos.";
-    }
-
-    $stmt->close();
+// Si ya hay una sesión activa, redirigimos
+if (isset($_SESSION['usuario'])) {
+    header("Location: ../../html/Vista_Principal/index.php");
+    exit();
 }
 
-$conexion->close();
+// Verificar si se han enviado los datos del formulario
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usuario = $_POST['usuario'];
+    $contrasena = $_POST['contrasena'];
 
-// Mostrar errores si los hay
-if (!empty($errores)) {
-    foreach ($errores as $error) {
-        echo "<p style='color:red;'>$error</p>";
+    $usuario = mysqli_real_escape_string($conexion, $usuario);
+    $contrasena = mysqli_real_escape_string($conexion, $contrasena);
+
+    $query = "SELECT * FROM clientes WHERE correo = '$usuario'";
+    $result = mysqli_query($conexion, $query);
+
+    if (!$result) {
+        die("Error en la consulta: " . mysqli_error($conexion));
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+
+        if (password_verify($contrasena, $row['contrasena'])) {
+            // Comprobamos si ya tiene una sesión activa
+            if ($row['sesion_activa'] == 1) {
+                echo "Este usuario ya tiene una sesión activa. Por favor, cierra sesión antes de volver a iniciar.";
+                exit();
+            }
+
+            // Guardamos sesión y marcamos como activa
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['ultimo_acceso'] = time();
+
+            // Actualizamos la base de datos
+            $update = "UPDATE clientes SET sesion_activa = 1 WHERE correo = '$usuario'";
+            mysqli_query($conexion, $update);
+
+            header("Location: ../../html/Vista_Principal/index.php");
+            exit();
+        } else {
+            echo "Correo o contraseña incorrectos.";
+        }
+    } else {
+        echo "Correo o contraseña incorrectos.";
     }
 }
 ?>

@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Configura las rutas en un objeto (rutas relativas ajustadas)
   const rutas = {
-      inicio: '../../html/Vista_Principal/index.html',
-      sobre_nosotros: '../../html/sobre_nosotros/sobre_nosotros.html',
-      reseñas: '../../html/reseñas/reseñas.html',
+      inicio: '../../html/Vista_Principal/index.php',
+      sobre_nosotros: '../../html/sobre_nosotros/sobre_nosotros.php',
+      reseñas: '../../html/reseñas/reseñas.php',
       precio: '../../html/precio/precio.html',
       politica_pasarela_pago: '../../html/politica_pasarela_pago/politica_pasarela_pago.html',
       pasarela_pago: '../../html/pasarela_pago/pasarela_pago.html',
-      contacto: '../../html/contacto/contacto.html',
+      contacto: '../../html/contacto/contacto.php',
       coche: '../../html/coche/coche.html',
       logo_reseñas_google: '../../img/logo/reviews-google.png',
       cursos_intensivos: '../../html/curso_intensivo/curso_intensivo.html',
@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       agradecimiento: '../../html/agradecimiento_pago/agradecimiento_pago.html',
       descripcion_coche_autoescuela:'../../html/descripcion_coche_autoescuela/descripción_coche_autoescuela.html',
       test_tematicos:'../../html/test_tematicos/menu_test_tematicos.html',
+      login_usuario:'../../html/login_usuario/login_usuario.html',
+      login_pago:'../../html/alumno_nuevoAlumno/alumno_nuevoAlumno.php',
       
   };
 

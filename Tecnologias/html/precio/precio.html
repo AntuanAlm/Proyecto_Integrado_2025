@@ -1,3 +1,13 @@
+<?php
+session_start();  // Inicia la sesión
+
+if (!isset($_SESSION['usuario_id'])) {
+    // Si no hay usuario logueado, redirige a la página de formulario
+    header("Location: ../../html/alumno_nuevoAlumno.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +75,7 @@
                   <div id="carrito-total" class="carrito-total">
                     <p>Total: <span id="total-carrito">0€</span></p>
                   </div>
-                  <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+                  <a href="../../php/verificar_sesion/verificar_sesion.php" class="btn-pago">Ir a pagar</a>
                 </div>
               </div>
 

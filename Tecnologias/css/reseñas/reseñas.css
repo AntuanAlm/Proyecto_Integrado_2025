@@ -5,34 +5,34 @@
   --color-secundario: royalblue;
   --color-texto: white;
   --color-hover: #f4f7fa;
-  --color-shadow: rgba(0, 0, 0, 0.1);
-  --color-shadow-hover: rgba(0, 0, 0, 0.2);
-  --font-size-titulo: 36px;
-  --font-size-subtitulo: 24px;
-  --font-size-parrafo: 16px;
-  --font-size-small: 18px;
-  --font-size-large: 28px;
-  --border-radius: 10px;
-  --box-shadow: 0 4px 8px;
-  --box-shadow-hover: 0 8px 15px;
-  --padding: 20px;
-  --margin-top: 50px;
-  --padding-small: 10px;
-  --padding-large: 30px;
-  --border-radius-large: 15px;
+  --color-sombra: rgba(0, 0, 0, 0.1);
+  --color-sombra-hover: rgba(0, 0, 0, 0.2);
+  --tamano-fuente-titulo: 36px;
+  --tamano-fuente-subtitulo: 24px;
+  --tamano-fuente-parrafo: 16px;
+  --tamano-fuente-pequeno: 18px;
+  --tamano-fuente-grande: 28px;
+  --radio-borde: 10px;
+  --sombra-caja: 0 4px 8px;
+  --sombra-caja-hover: 0 8px 15px;
+  --relleno: 20px;
+  --margen-superior: 50px;
+  --relleno-pequeno: 10px;
+  --relleno-grande: 30px;
+  --radio-borde-grande: 15px;
 }
 
 /*  --------------------------------------------- RESEÑAS ---------------------------------------------------- */
 
 #reseñas {
-  margin-bottom: var(--padding-large);
+  margin-bottom: var(--relleno-grande);
   text-align: center;
-  padding: var(--padding-large);
+  padding: var(--relleno-grande);
 }
 
 #subtexto-etiquetas-reseñas {
-  font-size: var(--font-size-subtitulo);
-  margin-bottom: var(--padding-small);
+  font-size: var(--tamano-fuente-subtitulo);
+  margin-bottom: var(--relleno-pequeno);
 }
 
 /* Contenedor de las etiquetas de reseñas */
@@ -40,42 +40,42 @@
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--padding-large);
+  gap: var(--relleno-grande);
   max-width: 1200px;
   padding: 0 20px;
   margin: 0 auto; /* Centra el contenedor horizontalmente */
   justify-content: center; /* Centra las etiquetas dentro del grid */
   cursor: pointer;
-  margin-top: var(--margin-top);
+  margin-top: var(--margen-superior);
 }
 
 /* Estilo para cada etiqueta de reseña */
 #etiqueta-reseñas {
   background-color: var(--color-principal);
-  padding: var(--padding-small);
-  border-radius: var(--border-radius-large);
-  box-shadow: var(--box-shadow);
+  padding: var(--relleno-pequeno);
+  border-radius: var(--radio-borde-grande);
+  box-shadow: var(--sombra-caja);
   text-align: center;
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #etiqueta-reseñas img {
   border-radius: 50%;
-  margin-bottom: var(--padding-small);
+  margin-bottom: var(--relleno-pequeno);
   width: 200px;
   height: 150px;
   transition: transform 0.3s ease;
 }
 
 #etiqueta-reseñas p {
-  font-size: var(--font-size-parrafo);
+  font-size: var(--tamano-fuente-parrafo);
   margin: 5px 0;
   color: var(--color-texto);
   transition: color 0.3s ease;
 }
 
 #etiqueta-reseñas h3 {
-  font-size: var(--font-size-small);
+  font-size: var(--tamano-fuente-pequeno);
   margin: 10px 0;
   color: var(--color-texto);
 }
@@ -84,7 +84,7 @@
 #etiqueta-reseñas:hover {
   transform: scale(1.05);
   background-color: var(--color-secundario);
-  box-shadow: var(--box-shadow-hover);
+  box-shadow: var(--sombra-caja-hover);
 }
 
 #etiqueta-reseñas:hover img {
@@ -99,7 +99,7 @@
 
 #img-reseñas img {
     display: block;
-    margin: var(--margin-top) auto 0 auto;
+    margin: var(--margen-superior) auto 0 auto;
     transition: transform 0.6s ease 0s;
 }
 
@@ -116,34 +116,34 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 0 auto var(--padding-large) auto;
-    padding: var(--padding);
+    margin: 0 auto var(--relleno-grande) auto;
+    padding: var(--relleno);
     background-color: var(--color-principal);
     color: var(--color-texto);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-caja);
     max-width: 800px;
-    margin-top: var(--margin-top);
+    margin-top: var(--margen-superior);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #encabezado-reseñas:hover {
     transform: scale(1.05);
-    box-shadow: var(--box-shadow-hover);
+    box-shadow: var(--sombra-caja-hover);
     color: var(--color-hover);
 }
 
 #titulo-reseñas {
-    font-size: var(--font-size-titulo);
+    font-size: var(--tamano-fuente-titulo);
     margin-bottom: 15px;
     color: var(--color-principal);
     text-align: center;
     font-weight: bold;
-    margin-top: var(--margin-top);
+    margin-top: var(--margen-superior);
 }
 
 #encabezado-reseñas p {
-    font-size: var(--font-size-small);
+    font-size: var(--tamano-fuente-pequeno);
     line-height: 1.6;
     margin: 0;
     color: var(--color-texto);
@@ -157,15 +157,15 @@
 /* Responsive styles for encabezado-reseñas */
 @media (max-width: 768px) {
     #encabezado-reseñas {
-        padding: var(--padding-small);
+        padding: var(--relleno-pequeno);
     }
 
     #titulo-reseñas {
-        font-size: var(--font-size-large);
+        font-size: var(--tamano-fuente-grande);
     }
 
     #encabezado-reseñas p {
-        font-size: var(--font-size-parrafo);
+        font-size: var(--tamano-fuente-parrafo);
     }
 }
 
@@ -173,24 +173,157 @@
 
 #boton-contactar {
     display: block;
-    padding: var(--padding-small) var(--padding);
+    padding: var(--relleno-pequeno) var(--relleno);
     background-color: var(--color-principal);
     color: var(--color-texto);
-    font-size: var(--font-size-small);
+    font-size: var(--tamano-fuente-pequeno);
     font-weight: bold;
     text-decoration: none;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-caja);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
     width: fit-content;
-    margin: var(--padding-large) auto;
+    margin: var(--relleno-grande) auto;
     text-align: center;
-    margin-top: var(--margin-top);
+    margin-top: var(--margen-superior);
 }
 
 #boton-contactar:hover {
     transform: scale(1.05);
-    box-shadow: var(--box-shadow-hover);
+    box-shadow: var(--sombra-caja-hover);
     color: var(--color-hover);
+}
+
+/* =============================== BOTÓN AGREGAR RESEÑAS ================================= */
+
+#agregar-reseña {
+  margin: var(--relleno-grande) auto;
+  padding: var(--relleno);
+  background-color: var(--color-principal);
+  color: var(--color-texto);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-caja);
+  max-width: 800px;
+  text-align: center;
+}
+
+#agregar-reseña h2 {
+  font-size: var(--tamano-fuente-subtitulo);
+  margin-bottom: var(--relleno-pequeno);
+}
+
+#agregar-reseña input,
+#agregar-reseña textarea {
+  width: 90%;
+  padding: var(--relleno-pequeno);
+  margin-bottom: var(--relleno-pequeno);
+  border: 1px solid var(--color-secundario);
+  border-radius: var(--radio-borde);
+  font-size: var(--tamano-fuente-parrafo);
+}
+
+#agregar-reseña button {
+  padding: var(--relleno-pequeno) var(--relleno);
+  background-color: var(--color-secundario);
+  color: var(--color-texto);
+  font-size: var(--tamano-fuente-pequeno);
+  font-weight: bold;
+  border: none;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#agregar-reseña button:hover {
+  background-color: #f7faf7;
+  color: midnightblue;
+  transform: scale(1.05);
+}
+
+.etiqueta-reseña {
+  background-color: var(--color-principal);
+  padding: var(--relleno-pequeno);
+  border-radius: var(--radio-borde-grande);
+  box-shadow: var(--sombra-caja);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.etiqueta-reseña img {
+  border-radius: 50%;
+  margin-bottom: var(--relleno-pequeno);
+  width: 200px;
+  height: 150px;
+  transition: transform 0.3s ease;
+}
+
+.etiqueta-reseña h3 {
+  font-size: var(--tamano-fuente-pequeno);
+  margin: 10px 0;
+  color: var(--color-texto);
+}
+
+.etiqueta-reseña p {
+  font-size: var(--tamano-fuente-parrafo);
+  margin: 5px 0;
+  color: var(--color-texto);
+}
+
+.etiqueta-reseña:hover {
+  transform: scale(1.05);
+  background-color: var(--color-secundario);
+  box-shadow: var(--sombra-caja-hover);
+}
+
+.etiqueta-reseña:hover img {
+  transform: scale(1.1);
+}
+
+.boton-borrar {
+  background-color: var(--color-secundario);
+  color: var(--color-texto);
+  border: none;
+  padding: var(--relleno-pequeno);
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-size: var(--tamano-fuente-parrafo);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton-borrar:hover {
+  background-color: var(--color-principal);
+  transform: scale(1.1);
+}
+
+
+/* ========================= BOTÓN DE INICIAR SESIÓN ============================ */
+
+.contenido-sesion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.form-login {
+  display: flex;
+  justify-content: center;
+}
+
+.form-login button {
+  padding: var(--relleno-pequeno) var(--relleno);
+  background-color: var(--color-principal);
+  color: var(--color-texto);
+  font-size: var(--tamano-fuente-pequeno);
+  font-weight: bold;
+  border: none;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-login button:hover {
+  background-color: var(--color-secundario);
+  transform: scale(1.05);
 }

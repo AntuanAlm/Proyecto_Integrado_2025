@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Configura las rutas en un objeto (rutas relativas ajustadas)
     const rutas = {
-        inicio: '../../../html/Vista_Principal/index.html',
+        inicio: '../../../html/Vista_Principal/index.php',
         sobre_nosotros: '../../../html/sobre_nosotros/sobre_nosotros.html',
         reseñas: '../../../html/reseñas/reseñas.html',
         precio: '../../../html/precio/precio.html',

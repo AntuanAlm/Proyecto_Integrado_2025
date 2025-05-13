@@ -72,3 +72,34 @@
   box-shadow: 0 8px 15px var(--color-sombra-intensa);
   filter: brightness(1.1);
 }
+
+/* --------------------------------------- CONTENIDO SESIÓN ---------------------------------- */
+.contenido-sesion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-login {
+  display: flex;
+  justify-content: center;
+}
+
+.form-login button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primario);
+  color: var(--color-texto);
+  font-size: var(--fuente-texto);
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform var(--transicion-base), box-shadow var(--transicion-base), filter var(--transicion-base);
+  box-shadow: 0 4px 8px var(--color-sombra-intensa);
+}
+
+.form-login button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px var(--color-sombra-intensa);
+  filter: brightness(1.1);
+}

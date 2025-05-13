@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+$mensaje = '';
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    unset($_SESSION['mensaje']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +20,7 @@
     <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">
     <link rel="stylesheet" href="../../css/carrito_compra/carrito_compra.css">
     <link rel="stylesheet" href="../../css/footer_generico/footer.css">
+    <link rel="stylesheet" href="../../css/sesion_iniciada_usuario/sesion_iniciada_usu.css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +33,9 @@
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/carrito_compra/carrito.js"></script>
+    <script src="../../js/borrar_reseñas/borrar_reseñas.js"></script>
+    <script src="../../js/menu_flotante_sesion/menu_flotante_sesion.js"></script>
+    <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script>
 
 
 </head>
@@ -122,6 +136,56 @@
             <a data-enlace="contacto">Contacto</a>
         </div>
     </nav>
+
+    <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
+
+<?php if (isset($_GET['cerrado']) && $_GET['cerrado'] == 1): ?>
+  <div class="sesion-cerrada">
+    <p class="mensaje-sesion">🔒 Sesión cerrada correctamente.</p>
+  </div>
+<?php endif; ?>
+
+<div class="sesion-iniciada sesion-reducida" id="sesionIniciada">
+
+  <!-- Avatar siempre visible -->
+  <button id="toggleSesion" class="avatar" title="Menú de sesión">
+    <?php 
+      if (isset($_SESSION['usuario'])) {
+        // Si hay sesión, mostramos las iniciales del usuario
+        $nombre = $_SESSION['usuario'];
+        $iniciales = '';
+        foreach (explode(' ', $nombre) as $palabra) {
+          $iniciales .= strtoupper($palabra[0]);
+        }
+        echo $iniciales;
+      } else {
+        // Si no hay sesión, mostramos el ícono de "iniciar sesión"
+        echo '👤';
+      }
+    ?>
+  </button>
+
+  <!-- Si la sesión está iniciada -->
+  <?php if (isset($_SESSION['usuario'])): ?>
+    <div class="contenido-sesion" id="contenidoSesion">
+      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
+      <div class="acciones-sesion">
+        <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
+          <button type="submit">Cerrar sesión</button>
+        </form>
+      </div>
+    </div>
+  <!-- Si la sesión NO está iniciada -->
+  <?php else: ?>
+    <div class="contenido-sesion">
+      <form action="../../html/login_usuario/login_usuario.html" method="post" class="form-login">
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </div>
+  <?php endif; ?>
+</div>
+
+
 </header>
 
     <!-- >>>>>>>>>>>>>>>>>>>>>>>> APARTADO DE RESEÑAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -129,68 +193,77 @@
     <h1 id="titulo-reseñas">Reseñas</h1>
 
     <div id="encabezado-reseñas">
-        <p>La opinión de nuestros alumnos es muy importante, ya que, es una muy buena forma de hacernos a conocer para todas las personas que quieren obtener su permiso de conducir. Actualmente contamos con un 4.9 de media en reseñas de Google, lo que refleja el esfuerzo y dedicación que ponemos en cada clase y en cada alumno. A continuación, puedes leer algunas de las reseñas que nuestros alumnos han dejado:</p>
+      <p>La opinión de nuestros alumnos es muy importante, ya que, es una muy buena forma de hacernos a conocer para todas las personas que quieren obtener su permiso de conducir. Actualmente contamos con un 4.9 de media en reseñas de Google, lo que refleja el esfuerzo y dedicación que ponemos en cada clase y en cada alumno. A continuación, puedes leer algunas de las reseñas que nuestros alumnos han dejado:</p>
     </div>
 
-            <div id="img-reseñas">
-                <img data-src="estrellas_google" alt="4.9 estrellas" width="300" height="200">
-            </div>
+    <div id="img-reseñas">
+      <img data-src="estrellas_google" alt="4.9 estrellas" width="300" height="200">
+    </div>
 
-            <div id="etiquetas">
+    <div id="etiquetas">
 
-              <!-- Etiqueta 1 -->
-            
-              <div id="etiqueta-reseñas">
-                <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-                <h3>Lucía ***</h3>
-                <p>¡Increíble experiencia! Aunque solo hice las prácticas aquí, María es una profesora espectacular que hace que aprender sea un placer. ¡Recomendada al 100%!</p>
-              </div>
-            
-              <!-- Etiqueta 2 -->
-            
-              <div id="etiqueta-reseñas">
-                <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-                <h3>Carlos ***</h3>
-                <p>La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!</p>
-              </div>
-            
-              <!-- Etiqueta 3 -->
-            
-              <div id="etiqueta-reseñas">
-                <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-                <h3>Ana ***</h3>
-                <p>Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso.</p>
-              </div>
-            
-              <!-- Etiqueta 4 -->
-            
-              <div id="etiqueta-reseñas">
-                <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-                <h3>Juan ***</h3>
-                <p>El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases.</p>
-              </div>
-            
-              <!-- Etiqueta 5 -->
-            
-              <div id="etiqueta-reseñas">
-                <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-                <h3>María ***</h3>
-                <p>Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación.</p>
-              </div>
-            
-              <!-- Etiqueta 6 -->
-            
-              <div id="etiqueta-reseñas">
-                <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-                <h3>José ***</h3>
-                <p>Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!</p>
-              </div>
-            </div>
+      <!-- Etiqueta 1 -->
+      <div id="etiqueta-reseñas">
+      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+      <h3>Lucía ***</h3>
+      <p>¡Increíble experiencia! Aunque solo hice las prácticas aquí, María es una profesora espectacular que hace que aprender sea un placer. ¡Recomendada al 100%!</p>
+      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
+      </div>
 
+      <!-- Etiqueta 2 -->
+      <div id="etiqueta-reseñas">
+      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+      <h3>Carlos ***</h3>
+      <p>La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!</p>
+      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
+      </div>
 
-          <a data-enlace="contacto" id="boton-contactar">Contacta con nosotros!</a>
+      <!-- Etiqueta 3 -->
+      <div id="etiqueta-reseñas">
+      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+      <h3>Ana ***</h3>
+      <p>Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso.</p>
+      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
+      </div>
 
-            <!-------------------------------- FOOTER ------------------------------------>
+      <!-- Etiqueta 4 -->
+      <div id="etiqueta-reseñas">
+      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+      <h3>Juan ***</h3>
+      <p>El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases.</p>
+      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
+      </div>
+
+      <!-- Etiqueta 5 -->
+      <div id="etiqueta-reseñas">
+      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+      <h3>María ***</h3>
+      <p>Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación.</p>
+      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
+      </div>
+
+      <!-- Etiqueta 6 -->
+      <div id="etiqueta-reseñas">
+      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+      <h3>José ***</h3>
+      <p>Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!</p>
+      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
+      </div>
+    </div>
+
+    <a data-enlace="contacto" id="boton-contactar">Contacta con nosotros!</a>
+
+    <!-- ========================== AGREGAR RESEÑA ======================== -->
+
+    <div id="agregar-reseña">
+      <h2>¿Has estado apuntado en nuestra autoescuela? ¡Dejanos tu reseña!</h2>
+      <input type="text" id="nombre-usuario" placeholder="Tu nombre..." />
+      <br>
+      <textarea id="nueva-reseña" placeholder="Escribe tu reseña aquí..." rows="4" cols="50"></textarea>
+      <br>
+      <button id="boton-agregar-reseña" onclick="agregarReseña()">Agregar Reseña</button>
+    </div>
+    <!-------------------------------- FOOTER ------------------------------------>
 
      <footer id="pie-pagina">
       <div class="container-footer">

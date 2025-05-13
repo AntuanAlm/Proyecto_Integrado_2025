@@ -138,36 +138,39 @@ document.addEventListener('DOMContentLoaded', function () {
       errorElemento.style.display = 'block';  // Asegura que el mensaje de error sea visible
     }
   
-    // Función para ocultar mensajes de error
+    // ===============0Función para ocultar mensajes de error =================
     function hideError(id) {
       const errorElemento = document.getElementById(id);
       errorElemento.style.display = 'none'; // Oculta el mensaje de error
     }
   
-    // Al enviar el formulario, validamos
+    // =====================Al enviar el formulario, validamos ====================
     formulario.addEventListener('submit', function (e) {
       e.preventDefault();  // Evita que el formulario se envíe antes de las validaciones
       
       let isValid = true;
   
-      // Limpiar mensajes de error previos
+      //===================== Limpiar mensajes de error previos =====================
       ['error-nombre', 'error-apellidos', 'error-email', 'error-telefono', 'error-asunto', 'error-mensaje'].forEach(hideError);
   
-      // Validación de nombre
+      // ==================== Validación de nombre ====================
       if (nombre.value.trim() === '') {
         showError('error-nombre', '⚠️ El nombre es obligatorio.');
         isValid = false;
       }
   
-      // Validación de apellidos
+      // ========================= Validación de apellidos =========================
       if (apellidos.value.trim() === '') {
         showError('error-apellidos', '⚠️ Los apellidos son obligatorios.');
         isValid = false;
       }
   
-      // Validación de email
-      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const commonEmailMistakes = {
+      //  ======================= Validación de email =======================
+      // Lista de dominios de correos mas usados
+      const dominiosPermitidos = ["hotmail.com", "gmail.com", "outlook.com", "yahoo.com"];
+
+      // Diccionario de errores comunes de dominio
+      const erroresComunesDominio = {
         "hotmailll.com": "hotmail.com",
         "hotmaiil.com": "hotmail.com",
         "gamil.com": "gmail.com",
@@ -175,40 +178,65 @@ document.addEventListener('DOMContentLoaded', function () {
         "gmial.com": "gmail.com",
         "outlok.com": "outlook.com",
         "yaho.com": "yahoo.com",
-        "outlooko.com": "outlook.com"
+        "outlooko.com": "outlook.com",
+        "gmil.com": "gmail.com",
+        "yhaoo.com": "yahoo.com"
       };
 
-      const emailValue = email.value.trim();
-      if (emailValue === '') {
-        showError('error-email', '⚠️ El email es obligatorio.');
-        isValid = false;
-      } else if (!emailPattern.test(emailValue)) {
-        showError('error-email', '⚠️ El email debe contener "@" y un dominio válido.');
-        isValid = false;
-      } else {
-        const emailParts = emailValue.split('@');
-        if (emailParts.length === 2) {
-          const domain = emailParts[1].toLowerCase();
-          if (commonEmailMistakes[domain]) {
-            showError('error-email', `⚠️ Quizás quisiste decir "${emailParts[0]}@${commonEmailMistakes[domain]}"`);
-            isValid = false;
-          }
-        }
-      }
+    // ====================== Expresión regular para validar email : sin mas =====================
+    const patronCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // ================== Obtener y limpiar el valor del campo ======================
+    const valorCorreo = email.value.trim();
+
+    if (valorCorreo === '') {
+    showError('error-email', '⚠️ El correo electrónico es obligatorio.');
+    isValid = false;
+
+    } else if (!patronCorreo.test(valorCorreo)) {
+    showError('error-email', '⚠️ El correo debe tener un formato válido con "@" y un dominio correcto.');
+    isValid = false;
+
+    } else {
+    const partesCorreo = valorCorreo.split('@');
+
+    if (partesCorreo.length === 2) {
+    const nombreUsuario = partesCorreo[0];
+    const dominio = partesCorreo[1].toLowerCase();
+
+    // ====================== Sugerencia si hay un error común en el dominio =====================
+    if (erroresComunesDominio[dominio]) {
+      const sugerencia = erroresComunesDominio[dominio];
+      showError('error-email', `⚠️ Quizás quisiste decir "${nombreUsuario}@${sugerencia}".`);
+      isValid = false;
+
+    // ======================= Si el dominio no está permitido =======================
+    } else if (!dominiosPermitidos.includes(dominio)) {
+      showError('error-email', `⚠️ Solo se permiten correos de: ${dominiosPermitidos.join(', ')}. Por favor, vuelve a introducir tu correo.`);
+      email.value = ''; // Limpia el campo para que se vuelva a introducir
+      email.focus();    // Coloca el cursor en el campo
+      isValid = false;
+    }
+
+    } else {
+    showError('error-email', '⚠️ El correo no tiene un formato válido.');
+    isValid = false;
+    }
+  }
   
-      // Validación de teléfono
+      // ==================== Validación de teléfono ====================
       if (!/^\d{9}$/.test(telefono.value.trim())) {
         showError('error-telefono', '⚠️ El teléfono debe contener exactamente 9 números.');
         isValid = false;
       }
   
-      // Validación de asunto
+      // =================== Validación de asunto ===================
       if (asunto.value.trim() === '') {
         showError('error-asunto', '⚠️ El asunto es obligatorio.');
         isValid = false;
       }
   
-      // Validación de mensaje
+      // ================ Validación de mensaje ==================
       if (mensaje.value.trim().length < 10) {
         showError('error-mensaje', '⚠️ El mensaje debe contener al menos 10 caracteres.');
         isValid = false;
