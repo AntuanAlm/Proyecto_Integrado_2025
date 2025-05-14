@@ -8,8 +8,6 @@ if (isset($_SESSION['mensaje'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +80,7 @@ if (isset($_SESSION['mensaje'])) {
             <div id="carrito-total" class="carrito-total">
               <p>Total: <span id="total-carrito">0€</span></p>
             </div>
-            <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+            <a href="../../html/pasarela_pago/pasarela_pago.php" class="btn-pago">Ir a pagar</a>
           </div>
         </div>
         
@@ -139,7 +137,7 @@ if (isset($_SESSION['mensaje'])) {
               </div>
           </nav>
 
-          <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
+   <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
 
 <?php if (isset($_GET['cerrado']) && $_GET['cerrado'] == 1): ?>
   <div class="sesion-cerrada">
@@ -153,15 +151,24 @@ if (isset($_SESSION['mensaje'])) {
   <button id="toggleSesion" class="avatar" title="Menú de sesión">
     <?php 
       if (isset($_SESSION['usuario'])) {
-        // Si hay sesión, mostramos las iniciales del usuario
         $nombre = $_SESSION['usuario'];
-        $iniciales = '';
-        foreach (explode(' ', $nombre) as $palabra) {
-          $iniciales .= strtoupper($palabra[0]);
+
+        if (is_array($nombre)) {
+          $nombre = implode(' ', $nombre); // Convertimos array a cadena
         }
-        echo $iniciales;
+
+        if (is_string($nombre)) {
+          $iniciales = '';
+          foreach (explode(' ', $nombre) as $palabra) {
+            if (isset($palabra[0])) {
+              $iniciales .= strtoupper($palabra[0]);
+            }
+          }
+          echo $iniciales;
+        } else {
+          echo '👤';
+        }
       } else {
-        // Si no hay sesión, mostramos el ícono de "iniciar sesión"
         echo '👤';
       }
     ?>
@@ -170,7 +177,13 @@ if (isset($_SESSION['mensaje'])) {
   <!-- Si la sesión está iniciada -->
   <?php if (isset($_SESSION['usuario'])): ?>
     <div class="contenido-sesion" id="contenidoSesion">
-      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
+      <?php
+        $nombreUsuario = $_SESSION['usuario'];
+        if (is_array($nombreUsuario)) {
+          $nombreUsuario = implode(' ', $nombreUsuario);
+        }
+      ?>
+      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($nombreUsuario); ?></strong></p>
       <div class="acciones-sesion">
         <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
           <button type="submit">Cerrar sesión</button>
@@ -186,6 +199,8 @@ if (isset($_SESSION['mensaje'])) {
     </div>
   <?php endif; ?>
 </div>
+
+
 
       </header>
       

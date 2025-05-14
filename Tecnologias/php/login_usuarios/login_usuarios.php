@@ -36,11 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             }
 
-            // Guardamos sesión y marcamos como activa
-            $_SESSION['usuario'] = $usuario;
+            // Guardamos los datos del usuario en la sesión
+            $_SESSION['usuario'] = [
+                'id' => $row['id'],
+                'nombre' => $row['nombre'],
+                'email' => $row['correo']
+            ];
             $_SESSION['ultimo_acceso'] = time();
 
-            // Actualizamos la base de datos
+            // Actualizamos la base de datos para marcar sesión activa
             $update = "UPDATE clientes SET sesion_activa = 1 WHERE correo = '$usuario'";
             mysqli_query($conexion, $update);
 

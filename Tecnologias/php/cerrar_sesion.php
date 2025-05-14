@@ -2,7 +2,7 @@
 session_start();  // Iniciar sesión
 
 // 🔎 Ajustamos la conexión con la base de datos
-$ruta_conexion = __DIR__ . "/../conexion/conexion.php";
+$ruta_conexion = __DIR__ . "/conexion/conexion.php";
 
 if (file_exists($ruta_conexion)) {
     require_once($ruta_conexion);
@@ -13,7 +13,7 @@ if (file_exists($ruta_conexion)) {
 if (isset($_SESSION['usuario']['email'])) {
     $usuario = mysqli_real_escape_string($conexion, $_SESSION['usuario']['email']);
 
-    // 🔴 **Cerrar la sesión en la base de datos**
+    // 🔴 **Forzar el cierre de sesión en la base de datos**
     $query = "UPDATE clientes SET sesion_activa = 0 WHERE correo = '$usuario'";
     if (!mysqli_query($conexion, $query)) {
         die("⚠️ Error al cerrar sesión en la base de datos: " . mysqli_error($conexion));
@@ -57,7 +57,6 @@ session_start();
 session_regenerate_id(true);
 
 // 🔄 **Redirigir a `index.php`**
-header("Location: http://localhost/Proyecto_Integrado_2025/Tecnologias/html/Vista_Principal/index.php?cerrado=1");
+header("Location: ../html/Vista_Principal/index.php?cerrado=1");
 exit;
-
 ?>
