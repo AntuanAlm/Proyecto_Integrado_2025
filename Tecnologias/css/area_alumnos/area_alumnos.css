@@ -1,0 +1,81 @@
+/* Variables */
+:root {
+    --primary-color: midnightblue;
+    --secondary-color: #f7faf4;
+    --accent-color: #eeee22;
+}
+
+
+/* Container Styles */
+#container-alumno {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles */
+#titulo-alumno {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Text Styles */
+#texto-alumno {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+/* Buttons Container */
+.botones-alumno {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Button Styles */
+.btn-alumno {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-alumno:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.btn-alumno:active {
+    transform: scale(0.95);
+}
+
+/* Animanacion para container-alumno */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#container-alumno {
+    animation: slideIn 0.8s ease-out;
+}

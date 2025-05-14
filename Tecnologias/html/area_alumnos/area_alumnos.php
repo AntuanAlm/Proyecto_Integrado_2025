@@ -13,42 +13,39 @@ if (isset($_SESSION['mensaje'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Bienvenid@ a tu área</title>
 
-    <!-- Links de CSS -->
-    <link rel="stylesheet" href="../../css/contacto/contacto.css">
-    <link rel="stylesheet" href="../../css/formularios/formulario_contacto/formulario_contacto.css">
+    <!-- Link de css -->
+    <link rel="stylesheet" href="../../css/area_alumnos/area_alumnos.css">
     <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">
     <link rel="stylesheet" href="../../css/carrito_compra/carrito_compra.css">
     <link rel="stylesheet" href="../../css/footer_generico/footer.css">
     <link rel="stylesheet" href="../../css/sesion_iniciada_usuario/sesion_iniciada_usu.css">
 
 
-
-    <!-- Las fuentes de google -->
+     <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Matemasie&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../../img/logo/logo-autoescuela.png" type="image/x-icon">
-    
+
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/carrito_compra/carrito.js"></script>
-    <script src="../../js/validaciones_formulario_contacto/validaciones_formulario_contacto.js"></script>
     <script src="../../js/menu_flotante_sesion/menu_flotante_sesion.js"></script>
     <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script>
+    <script src="../../js/animacion_titulo_index/animacion_titulo_index.js"></script>
+
 
 
 </head>
 <body>
 
-    <!-- ----------------------------- CONTAINER PRINCIPAL ------------------------- -->
-
     <div class="container">
         
             <p class="email">
-                <img data-src="gmail" alt="email" width="35" height="35">
+                <img data-src="gmail" alt="email" width="35" height="35" mailto="autoescuelaalmansa@hotmail.com">
                 autoescuelaalmansa@hotmail.com
             </p>
     
@@ -64,46 +61,48 @@ if (isset($_SESSION['mensaje'])) {
 
         <!-------------------------------- CARRITO DE LA COMPRA ---------------------------->
         <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
-            <span>🛒 Carrito</span>
-            <span id="carrito-count" class="carrito-count">0</span>
+          <span>🛒 Carrito</span>
+          <span id="carrito-count" class="carrito-count">0</span>
+        </div>
+
+        <div id="carrito-menu" class="carrito-menu">
+          <div id="carrito-header" class="carrito-header">
+            <h2>Tu Carrito</h2>
+            <button class="close-carrito" onclick="toggleCarrito()">✖</button>
           </div>
-  
-          <div id="carrito-menu" class="carrito-menu">
-            <div id="carrito-header" class="carrito-header">
-              <h2>Tu Carrito</h2>
-              <button class="close-carrito" onclick="toggleCarrito()">✖</button>
-            </div>
-            <div id="carrito-vacio" class="carrito-vacio">
-              <p>No tienes artículos en el carrito</p>
-            </div>
-            <div id="carrito-contenido" class="carrito-contenido">
-              <div id="carrito-items" class="carrito-items"></div>
-              <div id="carrito-total" class="carrito-total">
-                <p>Total: <span id="total-carrito">0€</span></p>
-              </div>
-              <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
-            </div>
+          <div id="carrito-vacio" class="carrito-vacio">
+            <p>No tienes artículos en el carrito</p>
           </div>
+          <div id="carrito-contenido" class="carrito-contenido">
+            <div id="carrito-items" class="carrito-items"></div>
+            <div id="carrito-total" class="carrito-total">
+              <p>Total: <span id="total-carrito">0€</span></p>
+            </div>
+            <!-- <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a> -->
+             <a href="../../php/verificar_usuario_pago/verificar_usuario.php" class="btn-pago">Ir a pagar</a>
+
+          </div>
+        </div>
         
         <!------------------------------------ HEADER -------------------------------------->
 
         <header class="header">
           <div class="logo-container">
               <a class="logo-principal" data-enlace="inicio">
-                  <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
+                <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
               </a>
           </div>
           
           <nav id="menu-navegacion">
-            <div id="menu-carnets">
-                <a href="#carnets" data-enlace="carnets">Carnets</a>
-                <div id="submenu-carnets">
-                    <a id="submenu-coche" data-enlace="coche">Coche - B</a>
-                    <a id="submenu-precio" data-enlace="precio">Precios - B</a>
-                    <a id="submenu-intensivos"data-enlace="cursos_intensivos">Cursos Intensivos</a>
-                    <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
-                </div>
-            </div>
+              <div id="menu-carnets">
+                  <a href="#carnets" data-enlace="carnets">Carnets</a>
+                  <div id="submenu-carnets">
+                      <a id="submenu-coche" data-enlace="coche">Coche - B</a>
+                      <a id="submenu-precio" data-enlace="precio">Precios - B</a>
+                      <a id="submenu-intensivos" data-enlace="cursos_intensivos">Cursos Intensivos</a>
+                      <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
+                  </div>
+              </div>
           
               <div id="menu-alumnos">
                   <a href="#alumnos" data-enlace="alumnos">Alumnos</a>
@@ -138,8 +137,7 @@ if (isset($_SESSION['mensaje'])) {
               </div>
           </nav>
 
-
-          <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
+           <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
 
 <?php if (isset($_GET['cerrado']) && $_GET['cerrado'] == 1): ?>
   <div class="sesion-cerrada">
@@ -153,15 +151,24 @@ if (isset($_SESSION['mensaje'])) {
   <button id="toggleSesion" class="avatar" title="Menú de sesión">
     <?php 
       if (isset($_SESSION['usuario'])) {
-        // Si hay sesión, mostramos las iniciales del usuario
         $nombre = $_SESSION['usuario'];
-        $iniciales = '';
-        foreach (explode(' ', $nombre) as $palabra) {
-          $iniciales .= strtoupper($palabra[0]);
+
+        if (is_array($nombre)) {
+          $nombre = implode(' ', $nombre); // Convertimos array a cadena
         }
-        echo $iniciales;
+
+        if (is_string($nombre)) {
+          $iniciales = '';
+          foreach (explode(' ', $nombre) as $palabra) {
+            if (isset($palabra[0])) {
+              $iniciales .= strtoupper($palabra[0]);
+            }
+          }
+          echo $iniciales;
+        } else {
+          echo '👤';
+        }
       } else {
-        // Si no hay sesión, mostramos el ícono de "iniciar sesión"
         echo '👤';
       }
     ?>
@@ -170,7 +177,13 @@ if (isset($_SESSION['mensaje'])) {
   <!-- Si la sesión está iniciada -->
   <?php if (isset($_SESSION['usuario'])): ?>
     <div class="contenido-sesion" id="contenidoSesion">
-      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
+      <?php
+        $nombreUsuario = $_SESSION['usuario'];
+        if (is_array($nombreUsuario)) {
+          $nombreUsuario = implode(' ', $nombreUsuario);
+        }
+      ?>
+      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($nombreUsuario); ?></strong></p>
       <div class="acciones-sesion">
         <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
           <button type="submit">Cerrar sesión</button>
@@ -187,57 +200,43 @@ if (isset($_SESSION['mensaje'])) {
   <?php endif; ?>
 </div>
 
-      </header>
 
-<!-- ======================================Formulario de contacto ========================================-->
 
-<h2 id="titulo-formulario">CONTACTO</h2>
+        </header>
 
-<form action="../../php/formulario_contacto/contacto.php" method="POST" id="formulario-contacto" novalidate>
+        <!-- ========================= AREA DEL ALUMNO  ============================ -->
 
-  <div class="campo">
-    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
-    <p class="error" id="error-nombre"></p>
-  </div>
+        <div id="container-alumno">
+            <h1 id="titulo-alumno">Bienvenid@ a tu área de alumno de la Autoescuela Almansa.es</h1>
+            <p id="texto-alumno">Aquí podrás gestionar tu cuenta, ver tus clases, consultar tus notas y mucho más.</p>
 
-  <div class="campo">
-    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required>
-    <p class="error" id="error-apellidos"></p>
-  </div>
+            <div class="botones-alumno">
+          <button data-enlace="test" class="btn-alumno">¿Vamos a hacer test?</button>
+          <button data-enlace="../../html/porcentaje_notas/porcentaje_notas.html" class="btn-alumno">¿Quieres consultar tu porcentaje de notas?</button>
+          <button data-enlace="../../html/compras/compras.html" class="btn-alumno">¿Qué has comprado?</button>
+            </div>
+        </div>
 
-  <div class="campo">
-    <input type="email" name="email" id="email" placeholder="Email" required>
-    <p class="error" id="error-email"></p>
-  </div>
 
-  <div class="campo">
-    <input type="text" name="telefono" id="telefono" placeholder="Teléfono" required>
-    <p class="error" id="error-telefono"></p>
-  </div>
 
-  <div class="campo">
-    <select name="asunto" id="asunto" required>
-      <option value="" disabled selected>Selecciona un asunto:</option>
-      <option value="coche">Permiso B</option>
-      <option value="cursos-intensivos">Cursos intensivos</option>
-      <option value="clases-reciclaje">Clases de reciclaje</option>
-    </select>
-    <p class="error" id="error-asunto"></p>
-  </div>
 
-  <div class="campo">
-    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..." required></textarea>
-    <p class="error" id="error-mensaje"></p>
-  </div>
 
-  <div class="botones">
-    <button type="submit">Enviar info!</button>
-    <button type="reset">Resetear info!</button>
-  </div>
 
-</form>
 
-        <!-------------------------------- FOOTER ------------------------------------>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
+
 
      <footer id="pie-pagina">
       <div class="container-footer">
@@ -249,10 +248,10 @@ if (isset($_SESSION['mensaje'])) {
           </p>
     
           <div class="social-icons">
-            <a href="https://www.facebook.com/" target="_blank">
+            <a data-src="gmail" target="_blank">
               <img data-src="fb" alt="facebook" width="30" height="30">
             </a>
-            <a href="https://www.instagram.com/" target="_blank">
+            <a data-src="instagram" target="_blank">
               <img data-src="instagram" alt="instagram" width="30" height="30">
             </a>
           </div>

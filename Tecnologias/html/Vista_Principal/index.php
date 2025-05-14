@@ -80,7 +80,9 @@ if (isset($_SESSION['mensaje'])) {
             <div id="carrito-total" class="carrito-total">
               <p>Total: <span id="total-carrito">0€</span></p>
             </div>
-            <a href="../../html/pasarela_pago/pasarela_pago.php" class="btn-pago">Ir a pagar</a>
+            <!-- <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a> -->
+             <a href="../../php/verificar_usuario_pago/verificar_usuario.php" class="btn-pago">Ir a pagar</a>
+
           </div>
         </div>
         
@@ -188,6 +190,10 @@ if (isset($_SESSION['mensaje'])) {
         <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
           <button type="submit">Cerrar sesión</button>
         </form>
+        <!-- 🔹 Botón para ir al área de alumnos (fuera del formulario) -->
+        <a href="../../html/area_alumnos/area_alumnos.php">
+          <button type="button">Ir al área de alumnos</button>
+        </a>
       </div>
     </div>
   <!-- Si la sesión NO está iniciada -->
@@ -199,6 +205,7 @@ if (isset($_SESSION['mensaje'])) {
     </div>
   <?php endif; ?>
 </div>
+
 
 
 

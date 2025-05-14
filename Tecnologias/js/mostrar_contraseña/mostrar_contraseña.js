@@ -12,5 +12,3 @@ function mostrarContraseña() {
 
 // Agregar el event listener para llamar a la función
 document.getElementById('mostrar-contrasena').addEventListener('click', mostrarContraseña);
-
-// Add event listener to call the function

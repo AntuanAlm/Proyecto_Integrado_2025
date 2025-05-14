@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Configura las rutas en un objeto (rutas relativas ajustadas)
   const rutas = {
       inicio: '../../html/Vista_Principal/index.php',
-      sobre_nosotros: '../../html/sobre_nosotros/sobre_nosotros.php',
-      reseñas: '../../html/reseñas/reseñas.php',
+      sobre_nosotros: '../../html/sobre_nosotros/sobre_nosotros.html',
+      reseñas: '../../html/reseñas/reseñas.html',
       precio: '../../html/precio/precio.html',
       politica_pasarela_pago: '../../html/politica_pasarela_pago/politica_pasarela_pago.html',
       pasarela_pago: '../../html/pasarela_pago/pasarela_pago.html',
-      contacto: '../../html/contacto/contacto.php',
+      contacto: '../../html/contacto/contacto.html',
       coche: '../../html/coche/coche.html',
       logo_reseñas_google: '../../img/logo/reviews-google.png',
       cursos_intensivos: '../../html/curso_intensivo/curso_intensivo.html',

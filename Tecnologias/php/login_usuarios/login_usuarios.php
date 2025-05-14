@@ -1,4 +1,5 @@
 <?php
+
 // Iniciar la sesión
 session_start();
 
@@ -13,6 +14,7 @@ if (isset($_SESSION['usuario'])) {
 
 // Verificar si se han enviado los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
 
@@ -30,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($contrasena, $row['contrasena'])) {
+
             // Comprobamos si ya tiene una sesión activa
             if ($row['sesion_activa'] == 1) {
                 echo "Este usuario ya tiene una sesión activa. Por favor, cierra sesión antes de volver a iniciar.";
@@ -48,13 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $update = "UPDATE clientes SET sesion_activa = 1 WHERE correo = '$usuario'";
             mysqli_query($conexion, $update);
 
-            header("Location: ../../html/Vista_Principal/index.php");
+            header("Location: ../../html/area_alumnos/area_alumnos.php");
             exit();
+
         } else {
             echo "Correo o contraseña incorrectos.";
         }
+
     } else {
         echo "Correo o contraseña incorrectos.";
     }
 }
 ?>
+
+
+

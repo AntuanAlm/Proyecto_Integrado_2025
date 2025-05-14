@@ -80,7 +80,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         <div id="carrito-total" class="carrito-total">
           <p>Total: <span id="total-carrito">0€</span></p>
         </div>
-        <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+        <a href="../../php/verificar_usuario_pago/verificar_usuario.php" class="btn-pago">Ir a pagar</a>
       </div>
     </div>
     

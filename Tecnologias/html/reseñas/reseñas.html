@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-$mensaje = '';
-if (isset($_SESSION['mensaje'])) {
-    $mensaje = $_SESSION['mensaje'];
-    unset($_SESSION['mensaje']);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +69,7 @@ if (isset($_SESSION['mensaje'])) {
       <div id="carrito-total" class="carrito-total">
         <p>Total: <span id="total-carrito">0€</span></p>
       </div>
-      <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a>
+      <a href="../../php/verificar_usuario_pago/verificar_usuario.php" class="btn-pago">Ir a pagar</a>
     </div>
   </div>
   
@@ -136,56 +126,6 @@ if (isset($_SESSION['mensaje'])) {
             <a data-enlace="contacto">Contacto</a>
         </div>
     </nav>
-
-    <!-- ========================== INICIO/CIERRE DE SESIÓN ========================== -->
-
-<?php if (isset($_GET['cerrado']) && $_GET['cerrado'] == 1): ?>
-  <div class="sesion-cerrada">
-    <p class="mensaje-sesion">🔒 Sesión cerrada correctamente.</p>
-  </div>
-<?php endif; ?>
-
-<div class="sesion-iniciada sesion-reducida" id="sesionIniciada">
-
-  <!-- Avatar siempre visible -->
-  <button id="toggleSesion" class="avatar" title="Menú de sesión">
-    <?php 
-      if (isset($_SESSION['usuario'])) {
-        // Si hay sesión, mostramos las iniciales del usuario
-        $nombre = $_SESSION['usuario'];
-        $iniciales = '';
-        foreach (explode(' ', $nombre) as $palabra) {
-          $iniciales .= strtoupper($palabra[0]);
-        }
-        echo $iniciales;
-      } else {
-        // Si no hay sesión, mostramos el ícono de "iniciar sesión"
-        echo '👤';
-      }
-    ?>
-  </button>
-
-  <!-- Si la sesión está iniciada -->
-  <?php if (isset($_SESSION['usuario'])): ?>
-    <div class="contenido-sesion" id="contenidoSesion">
-      <p class="mensaje-sesion">✅ Sesión iniciada como:<br><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
-      <div class="acciones-sesion">
-        <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
-          <button type="submit">Cerrar sesión</button>
-        </form>
-      </div>
-    </div>
-  <!-- Si la sesión NO está iniciada -->
-  <?php else: ?>
-    <div class="contenido-sesion">
-      <form action="../../html/login_usuario/login_usuario.html" method="post" class="form-login">
-        <button type="submit">Iniciar sesión</button>
-      </form>
-    </div>
-  <?php endif; ?>
-</div>
-
-
 </header>
 
     <!-- >>>>>>>>>>>>>>>>>>>>>>>> APARTADO DE RESEÑAS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->

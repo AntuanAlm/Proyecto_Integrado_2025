@@ -100,12 +100,19 @@
     <h2 id="titulo-login-usuario">Login de usuario</h2>
     <form action="../../php/login_usuarios/login_usuarios.php" method="POST" id="formulario-login">
 
-      <label for="usuario">Usuario:</label>
-      <input type="text" name="usuario" id="usuario" placeholder="Introduce tu usuario" required><br><br>
+      <div id="campo">
+        <label for="usuario">Usuario:</label>
+        <input type="text" name="usuario" id="usuario" placeholder="Introduce tu usuario" required><br><br>
+        <p class="mensaje-error" id="error-usuario"></p>
+      </div>
+
+      <div id="campo">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" id="contrasena" placeholder="Introduce tu contraseña" required>
+        <button type="button" onclick="mostrarContraseña()">Mostrar</button><br><br>
+        <p class="mensaje-error" id="error-usuario"></p>
+      </div>
     
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" name="contrasena" id="contrasena" placeholder="Introduce tu contraseña" required>
-      <button type="button" onclick="mostrarContraseña()">Mostrar</button><br><br>
     
       <label>
       <input type="checkbox" name="recordar" value="1"> Recordarme
@@ -113,8 +120,9 @@
     
       <input type="submit" value="Iniciar sesión">
     </form>
+
     <p><a id="enlace" href="../../php/recuperar_contrasena/recuperar_contrasena.php">¿Olvidaste tu contraseña?</a></p>
-    <p id="texto-crear-cuenta">¿No tienes una cuenta? <a id="crear-cuenta" href="../../html/nuevo_cliente/nuevo_cliente.html">Crear cuenta</a></p>
+    <p id="texto-crear-cuenta">¿No tienes una cuenta? <a id="crear-cuenta" href="../../html/formularios/formulario_registro_cliente/formulario_registro_cliente.php">Crear cuenta</a></p>
 
       <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 

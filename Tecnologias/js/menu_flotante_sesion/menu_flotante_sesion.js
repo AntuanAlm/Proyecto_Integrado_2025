@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sesionDiv.classList.add("sesion-reducida");
         // Muestra el botón de alternar configurando su estilo de display a "block"
         botonToggle.style.display = "block";
-    }, 3000);
+    });
 
     // Agrega un evento al botón para alternar el tamaño del contenedor de sesión
     botonToggle.addEventListener("click", () => {

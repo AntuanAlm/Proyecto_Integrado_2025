@@ -1,22 +1,5 @@
 // Función para agregar un artículo al carrito
-
-
-/**
- * Agrega un producto al carrito de compras almacenado en el localStorage.
- * Si el producto ya existe en el carrito, incrementa su cantidad.
- * Si no existe, lo añade como un nuevo elemento.
- *
- * @param {string} nombre - El nombre del producto.
- * @param {number} precio - El precio del producto.
- * @param {string} tipo - El tipo o categoría del producto.
- *
- * @description Se utiliza JSON para convertir el carrito a un formato de texto (JSON.stringify)
- * y almacenarlo en localStorage, ya que localStorage solo puede guardar cadenas de texto.
- * Al recuperar el carrito, se usa JSON.parse para convertirlo de nuevo a un objeto JavaScript.
- */
-
 function agregarAlCarrito(nombre, precio, tipo) {
-
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     let itemExistente = carrito.find(item => item.nombre === nombre);
@@ -78,11 +61,40 @@ function actualizarCarrito() {
     }
 }
 
+function verificarSesionAntesDePagar() {
+    fetch("../../php/verificar_usuario_pago/verificar_usuario.php")  // Ajusta la ruta según la ubicación correcta
+
+        .then(response => response.json())
+        .then(data => {
+            console.log("Estado de sesión:", data.sesion_activa); // Para depuración
+
+            if (data.sesion_activa) {
+                // ✅ Usuario autenticado → Redirigir a la pasarela de pago
+                window.location.href = "http://localhost/Proyecto_Integrado_2025/Tecnologias/html/pasarela_pago/pasarela_pago.html";
+            } else {
+                // ❌ Usuario NO autenticado → Redirigir a login después de mostrar alerta
+                alert("Debes iniciar sesión para proceder con el pago.");
+                window.location.href = "http://localhost/Proyecto_Integrado_2025/Tecnologias/html/login_usuario/login_usuario.html";
+            }
+        })
+        .catch(error => console.error("Error verificando sesión:", error));
+}
+
+
+
+
+// Asegurar que el evento del botón se asigne correctamente después de que el DOM se cargue
+document.addEventListener('DOMContentLoaded', function () {
+    actualizarCarrito(); // Asegurar que el carrito se carga correctamente al iniciar la página
+
+    const btnPagar = document.querySelector(".btn-pago"); // Asegura que busca por clase
+    if (btnPagar) {
+        btnPagar.addEventListener("click", verificarSesionAntesDePagar);
+    }
+});
+
 // Función para mostrar/ocultar el menú del carrito
 function toggleCarrito() {
     const menu = document.getElementById("carrito-menu");
     menu.classList.toggle("visible");
 }
-
-// Cargar el contenido del carrito cuando la página se carga
-document.addEventListener('DOMContentLoaded', actualizarCarrito);
