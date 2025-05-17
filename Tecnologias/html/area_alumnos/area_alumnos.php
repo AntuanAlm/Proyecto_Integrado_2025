@@ -199,10 +199,16 @@ if (isset($_SESSION['mensaje'])) {
     </div>
   <?php endif; ?>
 </div>
-
-
-
         </header>
+
+        <!-- =============== AVISO DE QUE LA SESIÓN YA ESTÁ INICIADA=================== -->
+
+       <?php
+if (isset($_SESSION['mensaje'])) {
+    echo "<script>alert('" . htmlspecialchars($_SESSION['mensaje']) . "');</script>";
+    unset($_SESSION['mensaje']); // 🔹 Borra el mensaje para que no se repita
+}
+?>
 
         <!-- ========================= AREA DEL ALUMNO  ============================ -->
 
@@ -216,24 +222,6 @@ if (isset($_SESSION['mensaje'])) {
           <button data-enlace="../../html/compras/compras.html" class="btn-alumno">¿Qué has comprado?</button>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 

@@ -152,24 +152,26 @@ if (isset($_SESSION['mensaje'])) {
   <!-- Avatar siempre visible -->
   <button id="toggleSesion" class="avatar" title="Menú de sesión">
     <?php 
-      if (isset($_SESSION['usuario'])) {
-        $nombre = $_SESSION['usuario'];
+      if (isset($_SESSION['usuario']) && isset($_SESSION['usuario']['id'])) {
+        $usuario_id = $_SESSION['usuario']['id']; // 🔹 Obtiene el ID del usuario
+        $nombre = $_SESSION['usuario']['nombre']; // 🔹 Obtiene el nombre del usuario
 
         if (is_array($nombre)) {
           $nombre = implode(' ', $nombre); // Convertimos array a cadena
         }
 
-        if (is_string($nombre)) {
-          $iniciales = '';
-          foreach (explode(' ', $nombre) as $palabra) {
-            if (isset($palabra[0])) {
-              $iniciales .= strtoupper($palabra[0]);
-            }
+        // 🔹 Elimina números y caracteres extraños en el nombre (pero mantiene el ID)
+        $nombreLimpio = preg_replace('/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/u', '', $nombre);
+
+        $iniciales = '';
+        foreach (explode(' ', trim($nombreLimpio)) as $palabra) {
+          if (!empty($palabra)) {
+            $iniciales .= strtoupper($palabra[0]); // ✅ Toma solo iniciales
           }
-          echo $iniciales;
-        } else {
-          echo '👤';
         }
+
+        // 🔹 Avatar con ID + Iniciales (Ejemplo: "10PP")
+        echo $usuario_id . $iniciales;
       } else {
         echo '👤';
       }
@@ -180,7 +182,7 @@ if (isset($_SESSION['mensaje'])) {
   <?php if (isset($_SESSION['usuario'])): ?>
     <div class="contenido-sesion" id="contenidoSesion">
       <?php
-        $nombreUsuario = $_SESSION['usuario'];
+        $nombreUsuario = $_SESSION['usuario']['nombre'];
         if (is_array($nombreUsuario)) {
           $nombreUsuario = implode(' ', $nombreUsuario);
         }
@@ -190,7 +192,7 @@ if (isset($_SESSION['mensaje'])) {
         <form action="../../php/login_usuarios/logout.php" method="get" class="form-logout">
           <button type="submit">Cerrar sesión</button>
         </form>
-        <!-- 🔹 Botón para ir al área de alumnos (fuera del formulario) -->
+        <!-- Botón para ir al área de alumnos -->
         <a href="../../html/area_alumnos/area_alumnos.php">
           <button type="button">Ir al área de alumnos</button>
         </a>
@@ -205,9 +207,6 @@ if (isset($_SESSION['mensaje'])) {
     </div>
   <?php endif; ?>
 </div>
-
-
-
 
       </header>
       

@@ -21,6 +21,15 @@
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/validaciones_login/validaciones_login.js"></script>
     <script src="../../js/mostrar_contraseña/mostrar_contraseña.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (urlParams.get("sesion_activa") === "1") {
+        alert("⚠️ Ya hay una sesión iniciada. Cierra sesión antes de iniciar otra.");
+    }
+});
+</script>
 
 </head>
 <body>

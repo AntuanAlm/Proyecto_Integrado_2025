@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cursos_intensivos: '../../html/curso_intensivo/curso_intensivo.html',
       clases_reciclaje: '../../html/clases_reciclajes/clases_reciclajes.html',
       profesores: '../../html/conoce_profesores/conoce_profesores.html',
-      test: '../../html/test-alumnos/test-alumnos.html',
+      test: '../../html/test-alumnos/test-alumnos.php',
       calendario: '../../html/calendario/calendario.html',
       formulario_registro_nuevo_cliente: '../../html/formularios/formulario_registro_cliente/formulario_registro_cliente.html',
       agradecimiento: '../../html/agradecimiento_pago/agradecimiento_pago.html',

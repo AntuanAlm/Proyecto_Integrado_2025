@@ -1,3 +1,37 @@
+<?php
+session_start();
+require_once("../../php/conexion/conexion.php");
+
+// 🔎 **Verificar si el usuario ha iniciado sesión**
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../../html/login_usuario/login_usuario.html"); // Redirigir al login si no hay sesión activa
+    exit();
+}
+
+$usuario_id = $_SESSION["usuario"]["id"];
+
+// 🔎 **Verificar si el usuario ha comprado el Teórico o el Pack Completo**
+$query = "SELECT producto FROM compras WHERE usuario_id = ?";
+$stmt = $conexion->prepare($query);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$acceso = false;
+while ($row = $result->fetch_assoc()) {
+    if ($row["producto"] === "Teórico" || $row["producto"] === "Pack Completo") {
+        $acceso = true;
+        break;
+    }
+}
+
+if (!$acceso) {
+    header("Location: ../../html/precio/precio.html"); // Redirigir al pago si no ha comprado
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +56,7 @@
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/carrito_compra/carrito.js"></script>
-
+    <script src="../../js/acceso_test/acceso_test.js"></script>
 
 </head>
 <body>
