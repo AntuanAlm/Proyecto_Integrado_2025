@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $contrasena = trim($_POST['contrasena']);
 
     // 🔹 Uso de `prepared statements` para evitar inyecciones SQL
-    $query = "SELECT id, nombre, apellido, correo, contrasena FROM clientes WHERE correo = ?";
+    $query = "SELECT id, nombre, apellidos, correo, contrasena FROM clientes WHERE correo = ?";
     $stmt = $conexion->prepare($query);
     if (!$stmt) {
         die("Error al preparar la consulta: " . $conexion->error);
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['usuario'] = [
                 'id' => $row['id'],
                 'nombre' => $row['nombre'],
-                'apellido' => $row['apellido'],
+                'apellidos' => $row['apellidos'],
                 'correo' => $row['correo']
             ];
             $_SESSION['ultimo_acceso'] = time();

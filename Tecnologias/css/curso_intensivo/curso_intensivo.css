@@ -1,89 +1,188 @@
+:root {
+  /* Colores */
+  --color-fondo: #f4f7fa;
+  --color-fondo-cabecera: midnightblue;
+  --color-texto: black;
+  --color-enlace: white;
+  --color-enlace-hover: #eeee22;
+  --color-acento: #ff6f61;
+  --color-acento-hover: #ff856e;
+  
+  /* Tipografía */
+  --fuente-principal: "Roboto", sans-serif;
+  --peso-fuente-normal: 400;
+  
+  /* Sombra */
+  --sombra-defecto: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --sombra-fuerte: 0 6px 20px rgba(0, 0, 0, 0.1);
+  --sombra-texto: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  --sombra-subtexto: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  
+  /* Bordes */
+  --radio-defecto: 10px;
+  --radio-imagen: 15px;
+  --radio-pequeno: 6px;
+  --radio-boton: 8px;
+  
+  /* Transiciones */
+  --transicion-defecto: all 0.3s ease;
 
+  /* Footer */
+  --fondo-footer: midnightblue;
+  --texto-footer: white;
+  }
 /* ============================ CURSOS INTENSIVOS ============================ */
   
   #titulo-curso-intensivo {
-    font-size: 2.5rem;
-    color: var(--color-header-bg);
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    text-shadow: var(--shadow-strong);
+  font-size: 2.5rem;
+  color: var(--color-fondo-cabecera);
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: var(--sombra-fuerte);
   }
   
   .cursos-intensivos {
-    background-color: var(--color-bg);
-    color: var(--color-header-bg);
-    font-family: var(--font-main);
-    padding: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: var(--shadow-strong);
-    margin: 3rem auto;
-    text-align: center;
-    max-width: 900px;
-    transition: var(--transition-default);
+  background-color: var(--color-fondo);
+  color: var(--color-fondo-cabecera);
+  font-family: var(--fuente-principal);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--sombra-fuerte);
+  margin: 3rem auto;
+  text-align: center;
+  max-width: 900px;
+  transition: var(--transicion-defecto);
   }
   
   .cursos-intensivos h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1.2rem;
-    color: var(--color-header-bg);
-    text-shadow: var(--shadow-text);
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+  color: var(--color-fondo-cabecera);
+  text-shadow: var(--sombra-texto);
   }
   
   .cursos-intensivos h2 {
-    font-size: 2rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-header-bg);
-    text-shadow: var(--shadow-subtext);
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-fondo-cabecera);
+  text-shadow: var(--sombra-subtexto);
   }
   
   .cursos-intensivos p {
-    font-size: 1.15rem;
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-    color: var(--color-header-bg);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  color: var(--color-fondo-cabecera);
   }
   
   .cursos-intensivos ul,
   .cursos-intensivos ol {
-    text-align: left;
-    margin: 1.5rem auto;
-    padding-left: 1.5rem;
-    max-width: 700px;
+  text-align: left;
+  margin: 1.5rem auto;
+  padding-left: 1.5rem;
+  max-width: 700px;
   }
   
   .cursos-intensivos li {
-    font-size: 1.05rem;
-    margin-bottom: 0.9rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.9rem;
   }
   
   .cursos-intensivos li strong {
-    color: var(--color-accent-hover);
+  color: var(--color-acento-hover);
   }
   
   .cursos-intensivos a.btn-inscribete {
-    display: inline-block;
-    margin-top: 2.5rem;
-    padding: 0.9rem 1.8rem;
-    background-color: var(--color-accent);
-    color: var(--color-header-bg);
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: var(--radius-button);
-    transition: var(--transition-default);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.9rem 1.8rem;
+  background-color: var(--color-acento);
+  color: var(--color-fondo-cabecera);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radio-boton);
+  transition: var(--transicion-defecto);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
   }
   
   .cursos-intensivos a.btn-inscribete:hover {
-    background-color: var(--color-accent-hover);
-    transform: translateY(-3px) scale(1.03);
+  background-color: var(--color-acento-hover);
+  transform: translateY(-3px) scale(1.03);
   }
 
   #precio-intensivo{
-    background-color: midnightblue;
-    color: #f4f7f4;
+  background-color: midnightblue;
+  color: #f4f7f4;
   }
 
- 
+  @media (max-width: 768px) {
+  .cursos-intensivos {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  #titulo-curso-intensivo {
+    font-size: 2.2rem;
+  }
+
+  .cursos-intensivos h1 {
+    font-size: 2.3rem;
+  }
+
+  .cursos-intensivos h2 {
+    font-size: 1.6rem;
+  }
+
+  .cursos-intensivos p {
+    font-size: 1rem;
+  }
+
+  .cursos-intensivos ul {
+    padding-left: 1rem;
+  }
+
+  .cursos-intensivos a.btn-inscribete {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #titulo-curso-intensivo {
+    font-size: 1.8rem;
+  }
+
+  .cursos-intensivos {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .cursos-intensivos h1 {
+    font-size: 2rem;
+  }
+
+  .cursos-intensivos h2 {
+    font-size: 1.4rem;
+  }
+
+  .cursos-intensivos p {
+    font-size: 0.95rem;
+  }
+
+  .cursos-intensivos ul {
+    padding-left: 0.8rem;
+  }
+
+  .cursos-intensivos li {
+    font-size: 0.9rem;
+  }
+
+  .cursos-intensivos a.btn-inscribete {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.4rem;
+  }
+}
+

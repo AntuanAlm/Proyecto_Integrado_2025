@@ -142,18 +142,18 @@
     background-color: midnightblue;
   }
   
-  /* Responsive */
-  @media (max-width: 480px) {
-    .carrito-menu {
-        width: 90%;
-        right: 5%;
-        bottom: 90px;
-    }
-  
-    .carrito-icon {
-        bottom: 15px;
-        right: 15px;
-        padding: 10px 14px;
-        font-size: 14px;
-    }
+ @media (max-width: 480px) {
+  .carrito-menu {
+    padding: 16px;
+     max-height: 80vh; /* mejor que 500px */
   }
+
+  .carrito-header h2 {
+    font-size: 16px;
+  }
+
+  .btn-pago {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

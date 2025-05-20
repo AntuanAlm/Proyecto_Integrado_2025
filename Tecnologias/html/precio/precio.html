@@ -22,8 +22,9 @@
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/carrito_compra/carrito.js"></script>
     <script src="../../js/acceso_test/acceso_test.js"></script>
+    <!-- <script src="../../js/compras_con_bd/compras_con_bd.js"></script> -->
+
 
 </head>
 <body>
@@ -47,29 +48,30 @@
             
         </div>
 
-        <!-------------------------------- CARRITO DE LA COMPRA ---------------------------->
-              <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
-                <span>🛒 Carrito</span>
-                <span id="carrito-count" class="carrito-count">0</span>
-              </div>
+        <!-- ----------------------------- CARRITO DE LA COMPRA ----------------------------- -->
+<div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
+  <span>🛒 Carrito</span>
+  <span id="carrito-count" class="carrito-count">0</span>
+</div>
 
-              <div id="carrito-menu" class="carrito-menu">
-                <div id="carrito-header" class="carrito-header">
-                  <h2>Tu Carrito</h2>
-                  <button class="close-carrito" onclick="toggleCarrito()">✖</button>
-                </div>
-                <div id="carrito-vacio" class="carrito-vacio">
-                  <p>No tienes artículos en el carrito</p>
-                </div>
-                <div id="carrito-contenido" class="carrito-contenido">
-                  <div id="carrito-items" class="carrito-items"></div>
-                  <div id="carrito-total" class="carrito-total">
-                    <p>Total: <span id="total-carrito">0€</span></p>
-                  </div>
-                  <!-- <a data-enlace="pasarela_pago" class="btn-pago">Ir a pagar</a> -->
-                  <a href="../../php/verificar_usuario_pago/verificar_usuario.php" class="btn-pago">Ir a pagar</a>
-                </div>
-              </div>
+<div id="carrito-menu" class="carrito-menu">
+  <div id="carrito-header" class="carrito-header">
+    <h2>Tu Carrito</h2>
+    <button class="close-carrito" onclick="toggleCarrito()">✖</button>
+  </div>
+  <div id="carrito-vacio" class="carrito-vacio">
+    <p>No tienes artículos en el carrito</p>
+  </div>
+  <div id="carrito-contenido" class="carrito-contenido">
+    <div id="carrito-items" class="carrito-items"></div>
+    <div id="carrito-total" class="carrito-total">
+      <p>Total: <span id="total-carrito">0€</span></p>
+    </div>
+    <!-- Botón que ahora es manejado por JavaScript -->
+    <button class="btn-pago">Ir a pagar</button>
+  </div>
+</div>
+
 
         
         <!------------------------------------ HEADER -------------------------------------->
@@ -263,5 +265,8 @@
     </div>
   </footer>
     
+  <!-- ====================== CARGA DEL CARRITO ======================== -->
+
+    <script src="../../js/carrito_compra/carrito.js"></script>
 </body>
 </html>

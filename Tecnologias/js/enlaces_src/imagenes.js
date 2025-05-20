@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
         estrellas_google: '../../img/logo/reviews-google.png',
         profesor:'../../img/logo/profesor_auto.png',
         profesora:'../../img/logo/profesora_auto.png',
+        gif_estadisticas:'../../img/gif/estadisticas.gif',
+        gif_compras:'../../img/gif/compras.gif',
+        gif_test:'../../img/gif/test.gif',
     };
     
 

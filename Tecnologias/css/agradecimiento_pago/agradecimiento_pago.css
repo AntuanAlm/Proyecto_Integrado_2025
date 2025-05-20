@@ -91,6 +91,6 @@
     }
 }
 
-#container-agradecimiento {
+.container-agradecimiento {
     animation: slideIn 0.8s ease-out;
 }

@@ -24,13 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.classList.add("carrito-item", "fade-in");
 
             const nombre = document.createElement("p");
-            nombre.textContent = item.nombre;
+            nombre.textContent = `${item.nombre} (x${item.cantidad})`;
 
-            const precioConIva = item.precio;
-            const ivaIncluido = precioConIva - (precioConIva / (1 + ivaPorcentaje));
+            const precioTotal = item.precio * item.cantidad;
+            const ivaIncluido = precioTotal - (precioTotal / (1 + ivaPorcentaje));
 
             const precio = document.createElement("p");
-            precio.textContent = `${precioConIva.toFixed(2)}€ 💸`;
+            precio.textContent = `${precioTotal.toFixed(2)}€ 💸`;
 
             const ivaElemento = document.createElement("p");
             ivaElemento.textContent = `IVA incluido: ${ivaIncluido.toFixed(2)}€ 💡`;
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.appendChild(eliminar);
             carritoItems.appendChild(itemDiv);
 
-            total += precioConIva;
+            total += precioTotal;
         });
 
         const totalDiv = document.createElement("div");
@@ -76,7 +76,7 @@ function realizarPago() {
     if (carrito.length === 0) {
         alert("Tu carrito está vacío. No puedes realizar el pago. 🛒❌");
         window.location.href = "../precio/precio.html"; // redirige a la página principal
-        return; // No sigue con el pago
+        return;
     }
 
     alert("Procesando pago... por favor espere.");

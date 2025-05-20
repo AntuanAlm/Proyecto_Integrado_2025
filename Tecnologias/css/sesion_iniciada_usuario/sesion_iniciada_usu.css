@@ -10,7 +10,7 @@
   --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   --espaciado: 1rem;
-  --tamaño-avatar: 45px;
+  --tamaño-avatar: 50px; /* 🔹 Aumentamos el tamaño para mejor ajuste */
   --tamaño-fuente: 1rem;
 }
 
@@ -39,10 +39,15 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem; /* 🔹 Ajustamos el tamaño de letra */
+  line-height: var(--tamaño-avatar); /* 🔹 Centrado vertical */
   cursor: pointer;
   box-shadow: var(--sombra);
   transition: transform 0.3s ease;
+  overflow: hidden; /* 🔹 Evita que el texto sobresalga */
+  white-space: nowrap; /* 🔹 Mantiene el texto en una sola línea */
+  text-align: center;
+  padding: 0 2px; /* 🔹 Espaciado del nombre del avatar */
 }
 
 .avatar:hover {
@@ -89,7 +94,8 @@
 }
 
 .form-logout button:hover {
-  background: var(--color-hover);
+  background: red;
+  color: #eeee22;
 }
 
 a button {
@@ -98,7 +104,8 @@ a button {
 }
 
 a button:hover {
-  background: var(--color-hover);
+  background: #eeee22;
+  color: black;
 }
 
 .sesion-reducida {

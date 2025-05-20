@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       test_tematicos:'../../html/test_tematicos/menu_test_tematicos.html',
       login_usuario:'../../html/login_usuario/login_usuario.html',
       login_pago:'../../html/alumno_nuevoAlumno/alumno_nuevoAlumno.php',
+      compras_usuario:'../../html/perfil_usuario_compras/perfil_usuario_compras.html',
+      area_alumno:'../../html/area_alumnos/area_alumnos.php',
       
   };
 

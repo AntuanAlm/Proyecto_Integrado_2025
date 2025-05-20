@@ -1,30 +1,21 @@
 :root {
-  --font-family: 'Roboto', sans-serif;
-  --background-body: #f0f4f8;
-  --background-section: #ffffff;
-  --background-item: #fff;
-  --border-color: #ddd;
-  --text-primary: #333;
-  --text-secondary: #444;
-  --text-title: midnightblue;
-  --text-button-hover: #001c5c;
-  --box-shadow-light: 0 0 15px rgba(0,0,0,0.1);
-  --box-shadow-strong: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --fuente-principal: 'Roboto', sans-serif;
+  --fondo-cuerpo: #f0f4f8;
+  --fondo-seccion: #ffffff;
+  --fondo-item: #fff;
+  --color-borde: #ddd;
+  --texto-primario: #333;
+  --texto-secundario: #444;
+  --texto-titulo: midnightblue;
+  --texto-boton-hover: #001c5c;
+  --sombra-suave: 0 0 15px rgba(0,0,0,0.1);
+  --sombra-fuerte: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  /* Carrito */
-  --carrito-icon-bg: #1e3a8a;
-  --carrito-icon-hover: #2563eb;
-  --carrito-badge-bg: #ef4444;
-  --carrito-text: #1f2937;
-  --carrito-header-border: #ddd;
-  --carrito-empty-text: #6b7280;
-  --carrito-item-bg: #f3f4f6;
-  --carrito-total-text: #111827;
 }
 
 body {
-  font-family: var(--font-family);
-  background-color: var(--background-body);
+  font-family: var(--fuente-principal);
+  background-color: var(--fondo-cuerpo);
   margin: 0;
   padding: 0;
 }
@@ -33,22 +24,22 @@ body {
   max-width: 1200px;
   margin: 3rem auto;
   padding: 2rem;
-  background-color: var(--background-section);
+  background-color: var(--fondo-seccion);
   border-radius: 12px;
-  box-shadow: var(--box-shadow-light);
+  box-shadow: var(--sombra-suave);
   text-align: center;
 }
 
 #politica-pasarela-pago h2 {
   font-size: 2.5rem;
-  color: var(--text-title);
+  color: var(--texto-titulo);
   margin-bottom: 3rem;
 }
 
 #politica-pasarela-pago p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: var(--text-primary);
+  color: var(--texto-primario);
 }
 
 .precio-container {
@@ -59,12 +50,12 @@ body {
 }
 
 .precio-item {
-  background-color: var(--background-item);
-  border: 1px solid var(--border-color);
+  background-color: var(--fondo-item);
+  border: 1px solid var(--color-borde);
   border-radius: 10px;
   padding: 2rem;
   width: 300px;
-  box-shadow: var(--box-shadow-strong);
+  box-shadow: var(--sombra-fuerte);
   text-align: left;
   transition: transform 0.3s ease;
 }
@@ -74,14 +65,14 @@ body {
 }
 
 .precio-item h2 {
-  color: var(--text-title);
+  color: var(--texto-titulo);
   margin-bottom: 0.5rem;
 }
 
 .precio-item .precio {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--text-title);
+  color: var(--texto-titulo);
   margin-bottom: 1rem;
 }
 
@@ -92,12 +83,12 @@ body {
 
 .precio-item ul li {
   margin-bottom: 0.6rem;
-  color: var(--text-secondary);
+  color: var(--texto-secundario);
 }
 
 .btn-politica {
   display: inline-block;
-  background-color: var(--text-title);
+  background-color: var(--texto-titulo);
   color: #fff;
   padding: 12px 24px;
   border-radius: 6px;
@@ -108,7 +99,7 @@ body {
 }
 
 .btn-politica:hover {
-  background-color: var(--text-button-hover);
+  background-color: var(--texto-boton-hover);
   transform: scale(1.05);
 }
 
@@ -119,162 +110,4 @@ body {
   }
 }
 
-/* ============================= CARRITO DE LA COMPRA ========================= */
-
-.carrito-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--carrito-icon-bg);
-  color: #fff;
-  padding: 12px 16px;
-  border-radius: 30px;
-  font-size: 16px;
-  z-index: 999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.carrito-icon:hover {
-  background-color: var(--carrito-icon-hover);
-  transform: scale(1.05);
-}
-
-.carrito-count {
-  background-color: var(--carrito-badge-bg);
-  color: white;
-  border-radius: 50%;
-  padding: 2px 8px;
-  font-size: 14px;
-  margin-left: 8px;
-}
-
-.carrito-menu {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 350px;
-  max-height: 500px;
-  background-color: var(--background-section);
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 998;
-  transition: all 0.4s ease;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.carrito-menu.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.carrito-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--carrito-header-border);
-  padding-bottom: 8px;
-}
-
-.carrito-header h2 {
-  font-size: 18px;
-  color: var(--carrito-text);
-  margin: 0;
-}
-
-.close-carrito {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: var(--carrito-empty-text);
-  transition: color 0.3s;
-}
-
-.close-carrito:hover {
-  color: var(--carrito-total-text);
-}
-
-.carrito-vacio {
-  text-align: center;
-  color: var(--carrito-empty-text);
-  font-size: 15px;
-}
-
-.carrito-contenido {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.carrito-items {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.carrito-item {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--carrito-item-bg);
-  padding: 10px;
-  border-radius: 8px;
-  color: var(--carrito-text);
-}
-
-.carrito-total {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: right;
-  color: var(--carrito-total-text);
-}
-
-.btn-pago {
-  background-color: var(--text-title);
-  color: white;
-  text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.btn-pago:hover {
-  background-color: var(--text-title);
-}
-
-@media (max-width: 480px) {
-  #politica-pasarela-pago {
-    width: 90%;
-    padding: 1rem;
-    margin: 1rem auto;
-    box-sizing: border-box;
-  }
-
-  #politica-pasarela-pago h2 {
-    font-size: 2rem;
-  }
-
-  #politica-pasarela-pago p {
-    font-size: 1rem;
-  }
-
-  .precio-item {
-    width: 100%;
-    padding: 1.5rem;
-  }
-
-  .carrito-menu {
-    width: 95%;
-    right: 2.5%;
-  }
-}
 

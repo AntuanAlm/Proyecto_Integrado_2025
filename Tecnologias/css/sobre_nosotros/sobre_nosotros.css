@@ -1,105 +1,102 @@
-/* ======================================== VARIABLES ==================================== */
+/* 🎨 Variables */
 :root {
   --color-primario: midnightblue;
-  --color-fondo-sobre-nosotros: #f4f7fa;
-  --color-sombra: rgba(0, 0, 0, 0.1);
-  --color-sombra-intensa: rgba(0, 0, 0, 0.2);
-  --color-boton-hover: midnightblue;
-  --color-texto: #f4f7fa;
-  --ancho-maximo: 800px;
-  --padding-base: 1.5rem;
-  --transicion-base: 0.3s ease;
-  --fuente-titulo: 2.5rem;
-  --fuente-texto: 1.125rem;
-  --fuente-p: 1.2rem;
-  --ancho-boton: fit-content;
+  --color-secundario: #F1FAEE;
+  --color-acento: #47da22;
+  --color-texto: midnightblue;
+  --sombra-suave: rgba(0, 0, 0, 0.08);
+  --sombra-intensa: rgba(0, 0, 0, 0.15);
+  --ancho-maximo: 820px;
+  --transicion-base: 0.3s ease-in-out;
+  --fuente-titulo: 2.3rem;
+  --fuente-texto: 1.1rem;
 }
 
-/* ======================================== SECCIÓN SOBRE NOSOTROS ==================================== */
+/* Sección Principal */
 #titulo-sobre-nosotros {
   font-size: var(--fuente-titulo);
-  font-weight: 700;
+  font-weight: bold;
   text-align: center;
   color: var(--color-primario);
-  margin: 2rem 0;
-  letter-spacing: 1px;
+  margin-bottom: 1.8rem;
 }
 
 .texto-sobre-nosotros {
   max-width: var(--ancho-maximo);
   margin: 0 auto;
+  padding: 1.8rem;
+  font-size: var(--fuente-texto);
   text-align: justify;
-  line-height: 1.8;
-  font-size: var(--fuente-p);
-  color: var(--color-primario);
-  border-radius: 10px;
-  padding: var(--padding-base);
-  background-color: var(--color-fondo-sobre-nosotros);
-  box-shadow: 0 8px 16px var(--color-sombra);
+  line-height: 1.75;
+  color: midnightblue;
+  background-color: #f5f7fa;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px var(--sombra-intensa);
   transition: transform var(--transicion-base), box-shadow var(--transicion-base);
 }
 
 .texto-sobre-nosotros:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px var(--color-sombra);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--sombra-intensa);
 }
 
+/* Texto */
 .texto-sobre-nosotros p {
   margin-bottom: 1rem;
-  line-height: 1.8;
 }
 
-/* --------------------------------------- BOTÓN CONTACTAR ---------------------------------- */
+/* Botón Contactar */
 #boton-contactar {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--color-primario);
-  color: var(--color-texto);
+  padding: 0.9rem 1.6rem;
   font-size: var(--fuente-texto);
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px var(--color-sombra-intensa);
+  font-weight: bold;
+  color: #f7faf4;
+  background-color: var(--color-acento);
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform var(--transicion-base), box-shadow var(--transicion-base), filter var(--transicion-base);
-  width: var(--ancho-boton);
-  margin: 2rem auto;
-  text-align: center;
+  box-shadow: 0 4px 10px var(--sombra-intensa);
+  transition: all var(--transicion-base);
 }
 
 #boton-contactar:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 15px var(--color-sombra-intensa);
-  filter: brightness(1.1);
-}
-
-/* --------------------------------------- CONTENIDO SESIÓN ---------------------------------- */
-.contenido-sesion {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-login {
-  display: flex;
-  justify-content: center;
-}
-
-.form-login button {
-  padding: 0.8rem 1.5rem;
   background-color: var(--color-primario);
-  color: var(--color-texto);
-  font-size: var(--fuente-texto);
-  font-weight: 700;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform var(--transicion-base), box-shadow var(--transicion-base), filter var(--transicion-base);
-  box-shadow: 0 4px 8px var(--color-sombra-intensa);
+  box-shadow: 0 6px 14px var(--sombra-intensa);
+  transform: scale(1.05);
 }
 
-.form-login button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 15px var(--color-sombra-intensa);
-  filter: brightness(1.1);
+#boton-contactar:active {
+  transform: scale(0.96);
+}
+
+/* 📱 Responsividad */
+@media (max-width: 640px) {
+  #titulo-sobre-nosotros {
+    font-size: 2rem;
+  }
+  .texto-sobre-nosotros {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+  #boton-contactar {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.4rem;
+  }
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.texto-sobre-nosotros {
+  animation: fadeIn 0.8s ease-out;
 }

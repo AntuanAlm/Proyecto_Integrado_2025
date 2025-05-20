@@ -1,0 +1,88 @@
+:root {
+    --color-principal: midnightblue;
+    --color-acento: #eeee22;
+    --color-fondo: #f7faf4;
+    --color-texto: #2c3e50;
+    --color-secundario: #ecf0f1;
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --radio-borde: 12px;
+}
+
+
+/* Título principal */
+#titulo-compras {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--color-principal);
+}
+
+/* Sección principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Sección de compras */
+#compras-usuario {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-suave);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Subtítulo */
+#compras-usuario h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 10px;
+    color: var(--color-principal);
+}
+
+/* Lista de compras */
+#lista-compras ul {
+    list-style: none;
+}
+
+#lista-compras li {
+    background-color: var(--color-secundario);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-texto);
+}
+
+#lista-compras li:hover,
+#lista-compras li:focus {
+    background-color: #d0d7de;
+    outline: none;
+}
+
+/* Enlace de vuelta */
+#boton-area {
+    display: inline-block;
+    margin: 30px auto 0;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: var(--color-principal);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: fit-content;
+    cursor: pointer;
+}
+
+#boton-area:hover {
+    background-color: #191970cc; /* versión semitransparente de midnightblue */
+}
