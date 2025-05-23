@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       login_pago:'../../html/alumno_nuevoAlumno/alumno_nuevoAlumno.php',
       compras_usuario:'../../html/perfil_usuario_compras/perfil_usuario_compras.html',
       area_alumno:'../../html/area_alumnos/area_alumnos.php',
-      
+      resultados:'../../php/resultados_usuario/resultado.php',
   };
 
   // Asocia un evento a cada enlace

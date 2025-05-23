@@ -38,19 +38,27 @@ h1 {
     display: block;
 }
 
-/* Diseño de las opciones */
+.opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* espacio entre opciones */
+}
+
 .opciones label {
     display: block;
-    margin-bottom: 0.5rem;
     cursor: pointer;
     padding: 8px;
     border-radius: 6px;
     transition: var(--transicion);
+    background: white; /* mejor contraste */
+    border: 1px solid transparent;
 }
 
 .opciones label:hover {
     background: rgba(238, 238, 34, 0.2);
+    border-color: var(--amarillo);
 }
+
 
 input[type="radio"] {
     margin-right: 8px;

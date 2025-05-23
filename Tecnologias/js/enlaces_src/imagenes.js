@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         gif_estadisticas:'../../img/gif/estadisticas.gif',
         gif_compras:'../../img/gif/compras.gif',
         gif_test:'../../img/gif/test.gif',
+        test_2_gif:'../../img/gif/Test_2.gif',
+
     };
     
 

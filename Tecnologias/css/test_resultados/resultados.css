@@ -1,0 +1,86 @@
+:root {
+    --color-principal: #23395d;         /* Azul más moderno */
+    --color-acento: #ffd600;            /* Amarillo más vibrante */
+    --color-fondo: #f4f8fb;             /* Fondo más suave */
+    --color-fondo-fila: #e9f0fa;        /* Fondo alterno para filas */
+    --color-texto: #222b38;
+    --color-borde: #c5d0e6;
+    --color-link-hover: #ffb300;        /* Hover de enlace */
+    --color-link-focus: #ffec80;        /* Foco de enlace */
+    --radio-borde: 8px;
+    --fuente: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    font-family: var(--fuente);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 2rem;
+    color: var(--color-principal);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: var(--radio-borde);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(35, 57, 93, 0.08);
+    margin-bottom: 36px;
+}
+
+th {
+    background-color: var(--color-principal);
+    color: var(--color-acento);
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 0.94rem;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: var(--color-fondo-fila);
+}
+
+a {
+    display: block;
+    max-width: 220px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+    padding: 12px 24px;
+    border-radius: var(--radio-borde);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+a:hover {
+    background-color: var(--color-link-hover);
+    color: var(--color-principal);
+}
+
+a:focus {
+    background-color: var(--color-link-focus);
+    color: var(--color-principal);
+    box-shadow: 0 0 0 3px #ffe082;
+}

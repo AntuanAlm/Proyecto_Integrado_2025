@@ -1,0 +1,130 @@
+:root {
+    --fuente-principal: 'Roboto', Arial, Helvetica, sans-serif;
+    --fondo-pagina: #f9faff;
+    --color-texto: #333;
+    --ancho-maximo: 900px;
+    --color-titulo: #2a3f66;
+    --sombra-titulo: 0 1px 2px rgba(0,0,0,0.1);
+    --color-tabla-fondo: white;
+    --sombra-tabla: 0 4px 15px rgba(0,0,0,0.1);
+    --radio-borde-tabla: 12px;
+    --color-cabecera: #2a3f66;
+    --color-cabecera-texto: #fff;
+    --color-fila: #f4f7fb;
+    --color-hover-fila: #dbe6ff;
+    --color-correcto: #2ecc71;
+    --color-incorrecto: #e74c3c;
+    --color-no-contestada: #f1c40f;
+    --color-enlace: #2a3f66;
+    --color-enlace-hover: white;
+    --sombra-enlace-hover: 0 4px 15px rgba(42,63,102,0.4);
+}
+
+/* Fuentes y fondo */
+body {
+    font-family: var(--fuente-principal);
+    background: var(--fondo-pagina);
+    color: var(--color-texto);
+    padding: 30px;
+    max-width: var(--ancho-maximo);
+    margin: auto;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-titulo);
+    margin-bottom: 25px;
+    text-shadow: var(--sombra-titulo);
+}
+
+/* Tabla estilizada */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    box-shadow: var(--sombra-tabla);
+    background: var(--color-tabla-fondo);
+    border-radius: var(--radio-borde-tabla);
+    overflow: hidden;
+}
+
+/* Cabecera */
+th {
+    background: var(--color-cabecera);
+    color: var(--color-cabecera-texto);
+    font-weight: 600;
+    padding: 14px 18px;
+    text-align: left;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+}
+
+/* Filas */
+tr {
+    background: var(--color-fila);
+    transition: background-color 0.3s ease;
+}
+
+/* Evitar que el primer td tenga borde redondeado en las filas */
+tr td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* Evitar que el último td tenga borde redondeado en las filas */
+tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Celdas */
+td {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    vertical-align: middle;
+}
+
+/* Hover fila */
+tr:hover {
+    background: var(--color-hover-fila);
+}
+
+/* Estado correcto / incorrecto / no contestada */
+td:nth-child(3) {
+    font-weight: 600;
+}
+
+/* NOTA: :contains no es estándar en CSS puro, pero se deja como estaba */
+td:nth-child(3):contains("✅") {
+    color: var(--color-correcto);
+}
+
+td:nth-child(3):contains("❌") {
+    color: var(--color-incorrecto);
+}
+
+td:nth-child(3):contains("🟡") {
+    color: var(--color-no-contestada);
+}
+
+/* Enlace de volver */
+a {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: var(--color-enlace);
+    font-weight: 600;
+    border: 2px solid var(--color-enlace);
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background: var(--color-enlace);
+    color: var(--color-enlace-hover);
+    box-shadow: var(--sombra-enlace-hover);
+}

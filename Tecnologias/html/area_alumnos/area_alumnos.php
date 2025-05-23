@@ -221,7 +221,10 @@ if (isset($_SESSION['mensaje'])) {
           <button data-enlace="test" class="btn-alumno">¿Vamos a hacer test?</button>
           
           <img data-src="gif_estadisticas" alt="el gif de las estadisticas" width="150" height="150">
-          <button data-enlace="../../html/porcentaje_notas/porcentaje_notas.html" class="btn-alumno">¿Quieres consultar tu porcentaje de notas?</button>
+          <button onclick="window.location.href='/Proyecto_Integrado_2025/Tecnologias/php/resultados_usuario/resultado.php?usuario_id=<?= $_SESSION['usuario']['id'] ?>';" class="btn-alumno">
+          ¿Quieres consultar tus notas?
+          </button>
+
           
           <img data-src="gif_compras" alt="el gif de las compras" width="150" height="150">
           <button data-enlace="compras_usuario" class="btn-alumno">¿Qué has comprado?</button>
