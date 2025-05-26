@@ -1,101 +1,113 @@
+/* ======================== TEST DE AUTOESCUELA - ESTILO MODERNO VERDE ======================== */
+
+/* === VARIABLES EN ESPAÑOL === */
+:root {
+    /* Colores */
+    --color-fondo: #f0fdf4;
+    --color-principal: midnightblue; 
+    --color-secundario: #34d399;      
+    --color-claro: #ecfdf5;           
+    --color-texto: #1f2937;           
+    --color-hover: #eeee22;           
+    --sombra-suave: rgba(0, 0, 0, 0.05);
+    --sombra-fuerte: rgba(0, 0, 0, 0.15);
+
+    /* Tipografía y tamaños */
+    --fuente-titulo: 2.6rem;
+    --fuente-subtitulo: 2rem;
+    --fuente-tarjeta: 1.4rem;
+    --fuente-texto: 1rem;
+
+    /* Bordes y espaciado */
+    --radio-borde: 10px;
+    --espaciado-seccion: 3rem;
+    --ancho-maximo: 960px;
+    --transicion: 0.3s ease;
+}
 
 
-/* ======================== TEST DE AUTOESCUELA - NUEVO DISEÑO ======================== */
-
-/* Título principal */
+/* === TÍTULO PRINCIPAL === */
 #titulo-test {
-    font-size: 2.8rem;
+    font-size: var(--fuente-titulo);
     text-align: center;
-    margin: 2rem 0;
-    color: midnightblue; /* Azul oscuro */
+    margin: 2rem 0 1.5rem;
+    color: var(--color-principal);
     font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    line-height: 1.2; /* Mejor legibilidad */
 }
 
-/* Contenedor principal del menú */
+/* === CONTENEDOR PRINCIPAL === */
 .menu-test {
-    background: linear-gradient(to right, #2563eb, midnightblue);
-    margin: 3rem auto;
-    padding: 3rem 2rem;
-    max-width: 1000px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: var(--color-claro);
+    margin: var(--espaciado-seccion) auto;
+    padding: 2.5rem 2rem;
+    max-width: var(--ancho-maximo);
+    border-radius: var(--radio-borde);
+    box-shadow: 0 4px 20px var(--sombra-suave);
     text-align: center;
-    overflow: hidden; /* Evitar contenido desbordado */
 }
 
-/* Subtítulo */
 .menu-test h1 {
-    font-size: 2.2rem;
+    font-size: var(--fuente-subtitulo);
     margin-bottom: 2rem;
-    color: midnightblue;
-    font-weight: 600; /* Más consistencia visual */
+    color: var(--color-principal);
 }
 
-/* Contenedor de opciones */
+/* === OPCIONES EN GRID === */
 .test-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 1rem;
-    align-items: stretch; /* Asegurar altura uniforme */
-    margin-bottom: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
 }
 
-/* Tarjeta de cada opción */
+/* === TARJETAS DE OPCIÓN === */
 .test-option {
-    background-color: #f4f7fa;
-    border-radius: 12px;
-    padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    background: white;
+    border-radius: var(--radio-borde);
+    padding: 1.8rem;
+    box-shadow: 0 2px 10px var(--sombra-suave);
+    transition: transform var(--transicion), box-shadow var(--transicion);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Mejor distribución del contenido */
+    justify-content: space-between;
 }
 
 .test-option:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--sombra-fuerte);
 }
 
-/* Título de la opción */
 .test-option h2 {
-    font-size: 1.6rem;
+    font-size: var(--fuente-tarjeta);
+    color: var(--color-principal);
     margin-bottom: 1rem;
-    color: midnightblue;
-    text-align: center; /* Mejor alineación */
 }
 
-/* Descripción */
 .test-option p {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    color: midnightblue;
-    line-height: 1.5; /* Mejor legibilidad */
+    font-size: var(--fuente-texto);
+    color: var(--color-texto);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
 }
 
-/* Botón */
+/* === BOTÓN === */
 .btn-test {
-    background-color: midnightblue;
-    color: #f4f7fa;
+    background-color: var(--color-principal);
+    color: white;
     border: none;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 8px;
+    font-size: var(--fuente-texto);
+    border-radius: var(--radio-borde);
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-    align-self: center; /* Centrar el botón */
+    transition: background-color var(--transicion), transform 0.2s ease;
+    align-self: center;
 }
 
 .btn-test:hover {
-    background-color: #1e3a8a; /* Color más oscuro para hover */
-    transform: translateY(-4px);
+    background-color: var(--color-hover);
+    transform: scale(1.05);
 }
 
-/* Responsive mejoras */
+/* === RESPONSIVE === */
 @media (max-width: 600px) {
     #titulo-test {
         font-size: 2rem;
@@ -110,7 +122,7 @@
     }
 
     .test-option h2 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .btn-test {
@@ -118,8 +130,3 @@
         font-size: 0.95rem;
     }
 }
-
-
-    
-    
-    

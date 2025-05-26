@@ -165,17 +165,17 @@ if (!$acceso) {
     <section class="menu-test">
         <div class="test-options">
             <div class="test-option">
-                <h2>Test Temáticos</h2>
+                <h2>Test Temáticos 📚</h2>
                 <p>Realiza test organizados por temas específicos para reforzar tus conocimientos en áreas concretas.</p>
                 <button data-enlace="test_tematicos" class="btn-test">Ir a Test Temáticos</button>
             </div>
             <div class="test-option">
-                <h2>Test Aleatorios</h2>
+                <h2>Test Aleatorios 🎲</h2>
                 <p>Pon a prueba tus conocimientos con preguntas seleccionadas al azar de todos los temas.</p>
-                <button onclick="location.href='#test-aleatorios'" class="btn-test">Ir a Test Aleatorios</button>
+                <button data-enlace="test_aleatorio" class="btn-test">Ir a Test Aleatorios</button>
             </div>
             <div class="test-option">
-                <h2>Test de Exámenes</h2>
+                <h2>Test de Exámenes 📝</h2>
                 <p>Simula un examen real con preguntas similares a las que encontrarás en la prueba oficial.</p>
                 <button onclick="location.href='#test-examenes'" class="btn-test">Ir a Test de Exámenes</button>
             </div>
