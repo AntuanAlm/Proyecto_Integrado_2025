@@ -43,6 +43,7 @@ if ($resultado_ayuda) {
     <link rel="shortcut icon" href="/Proyecto_Integrado_2025/Tecnologias/img/logo/logo-autoescuela.png" type="image/x-icon">
 
     <script src="/Proyecto_Integrado_2025/Tecnologias/js/temporizador_test/temporizador_test.js"></script>
+    <script src="/Proyecto_Integrado_2025/Tecnologias/js/validaciones_test_respuestas/validaciones_test_respuestas.js"></script>
 
 </head>
 <body>

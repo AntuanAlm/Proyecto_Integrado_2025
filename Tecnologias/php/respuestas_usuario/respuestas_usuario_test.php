@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tema_id"])) {
         $fecha_respuesta = date("Y-m-d H:i:s");
 
         // Insertar respuesta del usuario
+        $tema_id = $_POST['tema_id'] ?? 101; // Si no existe, establece 101 por defecto - ULTIMA MODIFICADA PARA LEA LAS PREGUNTAS DEL TIPO TEMATICO Y ALEATORIO.
         $insert = "INSERT INTO respuestas_usuario (usuario_id, pregunta_id, respuesta, es_correcta, fecha_respuesta, intento, tema_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt_insert = $conexion->prepare($insert);
         $stmt_insert->bind_param("iisdssi", $usuario_id, $pregunta_id, $respuesta_usuario, $es_correcta, $fecha_respuesta, $intento_actual, $tema_id);
