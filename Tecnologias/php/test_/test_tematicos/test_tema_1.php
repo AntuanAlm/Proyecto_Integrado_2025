@@ -33,7 +33,7 @@ if ($resultado_ayuda) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Test 1: Señales de tráfico</title>
+    <title>Test 1: Señales de tráfico 📚</title>
 
     <link rel="stylesheet" href="/Proyecto_Integrado_2025/Tecnologias/css/test_tematicos/test_tematicos.css">
 
@@ -50,7 +50,7 @@ if ($resultado_ayuda) {
 
 <button class="boton-cerrar" onclick="if(confirm('Vas a volver al menú de test temáticos y no se va guardar el intento. ¿Deseas continuar?')){location.href='../../../../Tecnologias/html/test_tematicos/menu_test_tematicos.html';}" aria-label="Cerrar">×</button>
 
-<h1>Test 1: Señales de tráfico</h1>
+<h1>Test 1: Señales de tráfico 📚</h1>
 
 <div style="text-align:center; font-size:1.2rem; margin-bottom: 1rem;">
     Tiempo restante: <span id="tiempo">30:00</span>

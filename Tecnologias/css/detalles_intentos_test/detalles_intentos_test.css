@@ -1,23 +1,30 @@
 :root {
     --fuente-principal: 'Roboto', Arial, Helvetica, sans-serif;
-    --fondo-pagina: #f9faff;
-    --color-texto: #333;
+
+    /* Colores pastel */
+    --fondo-pagina: #f5f7fa;              /* Fondo muy suave */
+    --color-texto: #4a4a4a;               /* Texto gris oscuro */
     --ancho-maximo: 900px;
-    --color-titulo: #2a3f66;
-    --sombra-titulo: 0 1px 2px rgba(0,0,0,0.1);
-    --color-tabla-fondo: white;
-    --sombra-tabla: 0 4px 15px rgba(0,0,0,0.1);
-    --radio-borde-tabla: 12px;
-    --color-cabecera: #2a3f66;
-    --color-cabecera-texto: #fff;
-    --color-fila: #f4f7fb;
-    --color-hover-fila: #dbe6ff;
-    --color-correcto: #2ecc71;
-    --color-incorrecto: #e74c3c;
-    --color-no-contestada: #f1c40f;
-    --color-enlace: #2a3f66;
-    --color-enlace-hover: white;
-    --sombra-enlace-hover: 0 4px 15px rgba(42,63,102,0.4);
+    --color-titulo: #506680;              /* Azul pastel oscuro */
+    --sombra-titulo: 0 2px 6px rgba(80, 102, 128, 0.15);
+
+    --color-tabla-fondo: #ffffff;         /* Blanco puro para tabla */
+    --sombra-tabla: 0 8px 20px rgba(80, 102, 128, 0.1);
+    --radio-borde-tabla: 14px;
+
+    --color-cabecera: #9bb4d6;            /* Azul pastel claro para cabecera */
+    --color-cabecera-texto: #2e3e59;      /* Texto cabecera azul oscuro */
+
+    --color-fila: #f0f4fb;                /* Filas claras */
+    --color-hover-fila: #d7e1fc;          /* Hover suave azul pastel */
+
+    --color-correcto: #6fcf97;            /* Verde pastel */
+    --color-incorrecto: #ec6a5a;          /* Rojo pastel */
+    --color-no-contestada: #f2c66a;       /* Amarillo pastel */
+    
+    --color-enlace: #506680;              /* Azul pastel para enlaces */
+    --color-enlace-hover: #ffffff;
+    --sombra-enlace-hover: 0 6px 18px rgba(80, 102, 128, 0.35);
 }
 
 /* Fuentes y fondo */
@@ -25,7 +32,7 @@ body {
     font-family: var(--fuente-principal);
     background: var(--fondo-pagina);
     color: var(--color-texto);
-    padding: 30px;
+    padding: 40px 30px;
     max-width: var(--ancho-maximo);
     margin: auto;
 }
@@ -34,70 +41,78 @@ body {
 h1 {
     text-align: center;
     font-weight: 700;
+    font-size: 2.8rem;
     color: var(--color-titulo);
-    margin-bottom: 25px;
+    margin-bottom: 35px;
     text-shadow: var(--sombra-titulo);
+    letter-spacing: 1.5px;
 }
 
 /* Tabla estilizada */
 table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 12px;
+    border-spacing: 0 15px;
     box-shadow: var(--sombra-tabla);
     background: var(--color-tabla-fondo);
     border-radius: var(--radio-borde-tabla);
     overflow: hidden;
+    font-size: 1rem;
 }
 
 /* Cabecera */
 th {
     background: var(--color-cabecera);
     color: var(--color-cabecera-texto);
-    font-weight: 600;
-    padding: 14px 18px;
+    font-weight: 700;
+    padding: 18px 20px;
     text-align: left;
-    letter-spacing: 0.05em;
-    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    user-select: none;
 }
 
 /* Filas */
 tr {
     background: var(--color-fila);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.35s ease, box-shadow 0.3s ease;
+    cursor: default;
 }
 
-/* Evitar que el primer td tenga borde redondeado en las filas */
+/* Bordes redondeados en las celdas extremas de la fila */
 tr td:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
 }
 
-/* Evitar que el último td tenga borde redondeado en las filas */
 tr td:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 
 /* Celdas */
 td {
-    padding: 14px 18px;
-    font-size: 0.95rem;
-    color: #4a4a4a;
+    padding: 16px 20px;
+    color: #5a5a5a;
     vertical-align: middle;
+    transition: color 0.3s ease;
 }
 
 /* Hover fila */
 tr:hover {
     background: var(--color-hover-fila);
+    box-shadow: inset 4px 0 0 var(--color-cabecera);
 }
 
-/* Estado correcto / incorrecto / no contestada */
+/* Destacar el nombre del tema */
 td:nth-child(3) {
     font-weight: 600;
+    color: var(--color-titulo);
 }
 
-/* NOTA: :contains no es estándar en CSS puro, pero se deja como estaba */
+/* Estados correcto / incorrecto / no contestada (usar contenido con emojis o texto) */
+/* Como :contains no es estándar, es mejor aplicar clases dinámicamente desde PHP o JS */
+/* Pero dejamos como referencia */
 td:nth-child(3):contains("✅") {
     color: var(--color-correcto);
 }
@@ -110,21 +125,37 @@ td:nth-child(3):contains("🟡") {
     color: var(--color-no-contestada);
 }
 
+/* Subrayado de filas aprobado / suspendido */
+/* Se espera que se agreguen clases .fila-verde o .fila-roja desde PHP */
+.fila-verde {
+    text-decoration: underline;
+    color: var(--color-correcto);
+    font-weight: 600;
+}
+
+.fila-roja {
+    text-decoration: underline;
+    color: var(--color-incorrecto);
+    font-weight: 600;
+}
+
 /* Enlace de volver */
 a {
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 40px;
     text-decoration: none;
     color: var(--color-enlace);
-    font-weight: 600;
+    font-weight: 700;
     border: 2px solid var(--color-enlace);
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    padding: 12px 26px;
+    border-radius: 12px;
+    transition: all 0.35s ease;
+    user-select: none;
 }
 
-a:hover {
+a:hover, a:focus {
     background: var(--color-enlace);
     color: var(--color-enlace-hover);
     box-shadow: var(--sombra-enlace-hover);
+    outline: none;
 }

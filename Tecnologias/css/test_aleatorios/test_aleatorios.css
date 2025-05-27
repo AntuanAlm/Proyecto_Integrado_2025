@@ -61,7 +61,7 @@ h1::after {
 }
 
 .lista-test li::before {
-  content: '🎯';
+  
   position: absolute;
   top: 1rem;
   right: 1rem;

@@ -1,50 +1,54 @@
 <?php
 session_start();
 
-// Validar sesión del usuario
 if (!isset($_SESSION["usuario"]["id"])) {
     die("Error: Usuario no autenticado.");
 }
 
 include("C:/xampp/htdocs/Proyecto_Integrado_2025/Tecnologias/php/conexion/conexion.php");
 
-// Validar la conexión
 if (!$conexion) {
     die("Error de conexión con la base de datos.");
 }
 
-// Obtener usuario desde GET
 if (!isset($_GET["usuario_id"]) || empty($_GET["usuario_id"])) {
     die("Error: Usuario no especificado.");
 }
 $usuario_id = intval($_GET["usuario_id"]);
 
-// Consulta para obtener los resultados generales del test
-$consulta_general = "SELECT r.intento, 
+// Nueva consulta corregida:
+// - LEFT JOIN con preguntas para obtener tema_id de la pregunta (si existe)
+// - LEFT JOIN con temas dos veces:
+//   1. Por tema de pregunta (t_p)
+//   2. Por tema_id directo en respuestas_usuario (t_r) para casos sin pregunta
+// - Uso COALESCE para elegir nombre del tema correctamente
+// - Mantengo el CASE para test especiales
+
+$consulta_general = "
+SELECT r.intento,
+       r.tema_id,
        CASE 
-           WHEN r.tema_id = 101 THEN 'Test Aleatorio 1'
-           ELSE t.tema_id
-       END AS tema_id,
-       CASE 
-           WHEN r.tema_id = 101 THEN 'Test Aleatorio 1'
-           ELSE t.nombre_tema
+           WHEN r.tema_id BETWEEN 201 AND 205 THEN 'Test de Examen'
+           WHEN r.tema_id BETWEEN 101 AND 107 THEN 'Test Aleatorio'
+           ELSE COALESCE(t_p.nombre_tema, t_r.nombre_tema, 'Sin título')
        END AS nombre_tema,
-       COUNT(r.pregunta_id) AS total_preguntas, 
-       SUM(CASE WHEN r.es_correcta = 1 THEN 1 ELSE 0 END) AS total_aciertos, 
-       SUM(CASE WHEN r.es_correcta = 0 THEN 1 ELSE 0 END) AS total_errores
+       COUNT(r.pregunta_id) AS total_preguntas,
+       SUM(CASE WHEN r.es_correcta = 1 AND r.pregunta_id IS NOT NULL THEN 1 ELSE 0 END) AS total_aciertos,
+       SUM(CASE WHEN r.es_correcta = 0 AND r.pregunta_id IS NOT NULL THEN 1 ELSE 0 END) AS total_errores
 FROM respuestas_usuario r
 LEFT JOIN preguntas_test_tematicos p ON r.pregunta_id = p.id
-LEFT JOIN temas t ON p.tema_id = t.tema_id
+LEFT JOIN temas t_p ON p.tema_id = t_p.tema_id
+LEFT JOIN temas t_r ON r.tema_id = t_r.tema_id
 WHERE r.usuario_id = ?
-GROUP BY r.intento, r.tema_id, t.tema_id, t.nombre_tema
-ORDER BY r.intento ASC";
+GROUP BY r.intento, r.tema_id
+ORDER BY r.intento ASC
+";
 
 $stmt_general = $conexion->prepare($consulta_general);
 $stmt_general->bind_param("i", $usuario_id);
 $stmt_general->execute();
 $resultado_general = $stmt_general->get_result();
 
-// Verificar si hay resultados
 if ($resultado_general->num_rows === 0) {
     echo "<p>No hay registros para este usuario.</p>";
     exit();
@@ -97,7 +101,7 @@ if ($resultado_general->num_rows === 0) {
             </script>
 
             <td><?= htmlspecialchars($fila["tema_id"]) ?></td>
-            <td><?= htmlspecialchars($fila["nombre_tema"] ?? "Sin título") ?></td>
+            <td><?= htmlspecialchars($fila["nombre_tema"]) ?></td>
             <td><?= $fila["total_preguntas"] ?></td>
             <td><?= $fila["total_aciertos"] ?></td>
             <td><?= $fila["total_errores"] ?></td>

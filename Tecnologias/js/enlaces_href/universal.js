@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       area_alumno:'../../html/area_alumnos/area_alumnos.php',
       resultados:'../../php/resultados_usuario/resultado.php',
       test_aleatorio:'../../html/test_aleatorio/menu_test_aleatorio.html',
+      test_examen:'../../html/test_examen/menu_test_examen.html',
   };
 
   // Asocia un evento a cada enlace

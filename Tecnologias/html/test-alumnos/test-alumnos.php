@@ -177,7 +177,7 @@ if (!$acceso) {
             <div class="test-option">
                 <h2>Test de Exámenes 📝</h2>
                 <p>Simula un examen real con preguntas similares a las que encontrarás en la prueba oficial.</p>
-                <button onclick="location.href='#test-examenes'" class="btn-test">Ir a Test de Exámenes</button>
+                <button data-enlace="test_examen" class="btn-test">Ir a Test de Exámenes</button>
             </div>
         </div>
     </section>
