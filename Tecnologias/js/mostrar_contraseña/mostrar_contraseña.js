@@ -1,14 +1,18 @@
-function mostrarContraseña() {
-    const inputContrasena = document.getElementById('contrasena');
+document.addEventListener("DOMContentLoaded", function() {
     const botonAlternar = document.getElementById('mostrar-contrasena');
-    if (inputContrasena.type === 'password') {
-        inputContrasena.type = 'text';
-        botonAlternar.textContent = 'Ocultar';
-    } else {
-        inputContrasena.type = 'password';
-        botonAlternar.textContent = 'Mostrar';
-    }
-}
+    const inputContrasena = document.getElementById('contrasena');
 
-// Agregar el event listener para llamar a la función
-document.getElementById('mostrar-contrasena').addEventListener('click', mostrarContraseña);
+    if (botonAlternar && inputContrasena) {
+        botonAlternar.addEventListener('click', function() {
+            if (inputContrasena.type === 'password') {
+                inputContrasena.type = 'text';
+                botonAlternar.textContent = 'Ocultar';
+            } else {
+                inputContrasena.type = 'password';
+                botonAlternar.textContent = 'Mostrar';
+            }
+        });
+    } else {
+        console.error("El botón o el campo de contraseña no se encontraron en el DOM.");
+    }
+});

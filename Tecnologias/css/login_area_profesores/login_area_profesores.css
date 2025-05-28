@@ -12,7 +12,6 @@
   --fuente: 'Reboto', sans-serif;
 }
 
-/* Título */
 #titulo-login-profesor {
   text-align: center;
   color: var(--color-principal);
@@ -20,8 +19,8 @@
   margin-bottom: var(--espaciado);
 }
 
-/* Contenedor del formulario */
-#formulario-login-profesor {
+
+#formulario-login {
   background-color: var(--color-fondo-formulario);
   border: 1px solid var(--color-borde);
   padding: calc(var(--espaciado) * 2);
@@ -33,16 +32,14 @@
   color: var(--color-texto);
 }
 
-/* Etiquetas */
-#formulario-login-profesor label {
+#formulario-login label {
   display: block;
   margin-top: var(--espaciado);
   font-weight: bold;
 }
 
-/* Campos de entrada */
-#formulario-login-profesor input[type="email"],
-#formulario-login-profesor input[type="password"] {
+#formulario-login input[type="text"],
+#formulario-login input[type="password"] {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--color-borde);
@@ -52,31 +49,24 @@
   box-sizing: border-box;
 }
 
-/* Botón "Mostrar" */
-#formulario-login-profesor button[type="button"] {
-  margin-top: 10px;
+#formulario-login button {
+  margin-top: var(--espaciado);
   background-color: var(--color-secundario);
   color: var(--color-texto);
   border: none;
-  padding: 8px 16px;
-  font-size: 0.85rem;
+  padding: 10px 20px;
+  font-size: 0.9rem;
   border-radius: var(--radio-borde);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-#formulario-login-profesor button[type="button"]:hover {
+#formulario-login button:hover {
   background-color: var(--color-boton-hover);
   color: white;
 }
 
-/* Checkbox */
-#formulario-login-profesor input[type="checkbox"] {
-  margin-right: 5px;
-}
-
-/* Botón de envío */
-#formulario-login-profesor input[type="submit"] {
+#formulario-login input[type="submit"] {
   margin-top: var(--espaciado);
   background-color: var(--color-boton);
   color: white;
@@ -88,19 +78,14 @@
   transition: background-color 0.3s ease;
 }
 
-#formulario-login-profesor input[type="submit"]:hover {
+#formulario-login input[type="submit"]:hover {
   background-color: var(--color-boton-hover);
 }
 
-/* Mensajes de error */
-.mensaje-error {
-  color: crimson;
-  font-size: 0.9rem;
-  margin-top: 4px;
-  min-height: 18px;
+#formulario-login input[type="checkbox"] {
+  margin-right: 5px;
 }
 
-/* Enlace de recuperación */
 #enlace {
   display: block;
   text-align: center;
@@ -110,6 +95,32 @@
   font-weight: bold;
 }
 
-#enlace:hover {
-  text-decoration: underline;
+#campo {
+  margin-top: var(--espaciado);
+  margin-bottom: var(--espaciado);
 }
+
+#campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#campo input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+#campo .mensaje-error {
+  color: #d90429;
+  font-size: 0.95rem;
+  margin: 0;
+  min-height: 18px;
+}
+
+
