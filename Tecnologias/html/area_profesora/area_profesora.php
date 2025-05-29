@@ -17,11 +17,16 @@ $stmt = $conexion->prepare("
     GROUP BY clientes.id
 ");
 
-
-
 $stmt->execute();
 $resultados = $stmt->get_result();
+
+// 🔴 Guardamos los resultados en un array para evitar múltiples bucles
+$alumnos = [];
+while ($fila = $resultados->fetch_assoc()) {
+    $alumnos[] = $fila;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +49,15 @@ $resultados = $stmt->get_result();
     <!-- liks de js -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (urlParams.get("error") === "Ya_tienes_sesion_profesor") {
+        alert("⚠️ Ya tienes una sesión activa como profesor. Para acceder al área de alumnos, primero debes cerrar sesión.");
+    }
+});
+</script>
 
 
 </head>
@@ -118,47 +132,73 @@ $resultados = $stmt->get_result();
                   <a data-enlace="contacto">Contacto</a>
               </div>
           </nav>
-        </header>
+          <?php if (isset($_GET['cerrado']) && $_GET['cerrado'] == 1): ?>
+  <div class="sesion-cerrada">
+    <p class="mensaje-sesion">🔒 Sesión cerrada correctamente.</p>
+  </div>
+  <?php endif; ?>
+  
+  <?php if (isset($_SESSION['profesor_id'])): ?>
+        <form action="../../php/cerrar_sesion_profes/cerrar_sesion_profes.php" method="post">
+    <button type="submit" class="btn-logout">Cerrar sesión 🔒</button>
+</form>
 
+
+    <?php endif; ?>
+        </header>
+        
         <!-- =============================== AREA DE MARIA LOPEZ ========================= -->
 
-        <h2>Alumnos de María (Teóricas)</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>DNI</th>
-        <th>Teléfono</th>
-        <th>Correo</th>
-        <th>Fecha de Nacimiento (año,mes,día)</th>
-        <th>Profesora</th>
-        <th>Compras</th>
-        <th>Total Gastado</th>
-        <th>Acciones</th>
-    </tr>
-    <?php while ($fila = $resultados->fetch_assoc()) { ?>
-    <tr>
-        <td><?php echo $fila['id']; ?></td>
-        <td><?php echo $fila['nombre']; ?></td>
-        <td><?php echo $fila['apellidos']; ?></td>
-        <td><?php echo $fila['dni']; ?></td>
-        <td><?php echo $fila['telefono']; ?></td>
-        <td><?php echo $fila['correo']; ?></td>
-        <td><?php echo $fila['fecha_nacimiento']; ?></td>
-        <td><?php echo ($fila['profesor_id'] == 2) ? 'María' : 'Juan'; ?></td>
-        <td><?php echo $fila['productos_comprados']; ?></td>
-        <td><?php echo number_format($fila['total_gastado'], 2) . '€'; ?></td>
-        <td>
-            <a href="http://localhost/Proyecto_Integrado_2025/Tecnologias/php/resultados_usuario/resultado.php?alumno_id=<?php echo $fila['id']; ?>" class="btn-resultados">
-    Ver Resultados
-</a>
+        <h1>Alumnos de María (Teóricas)</h1>
+<h2>Selecciona un alumno para ver su información</h2>
 
-        </td>
-    </tr>
-    <?php } ?>
-</table>
+<div class="contenedor-alumnos">
+    <select id="selector-alumnos">
+        <option value="">-- Seleccionar Alumno --</option>
+        <?php foreach ($alumnos as $fila) { ?>
+            <option value="alumno-<?= $fila['id']; ?>">
+                <?= htmlspecialchars($fila["nombre"] . " " . $fila["apellidos"]); ?>
+            </option>
+        <?php } ?>
+    </select>
+</div>
 
+<?php foreach ($alumnos as $fila) { ?>
+<div id="alumno-<?= $fila['id']; ?>" class="tarjeta-alumno">
+    <h3><?= htmlspecialchars($fila["nombre"] . " " . $fila["apellidos"]); ?></h3>
+    <p><strong>DNI:</strong> <?= htmlspecialchars($fila["dni"]); ?></p>
+    <p><strong>Teléfono:</strong> <?= htmlspecialchars($fila["telefono"]); ?></p>
+    <p><strong>Correo:</strong> <?= htmlspecialchars($fila["correo"]); ?></p>
+    <p><strong>Fecha de nacimiento:</strong> <?= htmlspecialchars($fila["fecha_nacimiento"]); ?></p>
+    <p><strong>Profesora:</strong> <?= ($fila["profesor_id"] == 2) ? "María" : "Juan"; ?></p>
+    <p><strong>Compras:</strong> <?= htmlspecialchars($fila["productos_comprados"]); ?></p>
+    <p><strong>Total gastado:</strong> <?= number_format($fila["total_gastado"], 2) . "€"; ?></p>
+    <a href="../../php/resultados_usuario/resultado.php?usuario_id=<?= $fila['id']; ?>" class="btn-ver-resultados">
+        Ver Resultados
+    </a>
+</div>
+<?php } ?>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const selectorAlumnos = document.getElementById("selector-alumnos");
+
+            selectorAlumnos.addEventListener("change", function () {
+                const alumnoSeleccionado = this.value;
+
+                // Ocultar todas las tarjetas
+                document.querySelectorAll(".tarjeta-alumno").forEach(tarjeta => {
+                    tarjeta.style.display = "none";
+                });
+
+                // Mostrar la tarjeta del alumno seleccionado
+                if (alumnoSeleccionado) {
+                    document.getElementById(alumnoSeleccionado).style.display = "block";
+                }
+            });
+        });
+    </script>
 
 
     

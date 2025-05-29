@@ -69,14 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tema_id"])) {
     }
 
     // Registrar el intento aunque no haya respuestas
-    if ($respuestas_procesadas === 0) {
-        $fecha_respuesta = date("Y-m-d H:i:s");
-        $insert_vacio = "INSERT INTO respuestas_usuario (usuario_id, pregunta_id, respuesta, es_correcta, fecha_respuesta, intento, tema_id) VALUES (?, NULL, NULL, 0, ?, ?, ?)";
-        $stmt_vacio = $conexion->prepare($insert_vacio);
-        $stmt_vacio->bind_param("issi", $usuario_id, $fecha_respuesta, $intento_actual, $tema_id);
-        $stmt_vacio->execute();
-    }
-
+   if ($respuestas_procesadas === 0) {
+    $fecha_respuesta = date("Y-m-d H:i:s");
+    $insert_vacio = "INSERT INTO respuestas_usuario (usuario_id, intento, fecha_respuesta, tema_id) VALUES (?, ?, ?, ?)";
+    $stmt_vacio = $conexion->prepare($insert_vacio);
+    $stmt_vacio->bind_param("iisi", $usuario_id, $intento_actual, $fecha_respuesta, $tema_id);
+    $stmt_vacio->execute();
+}
+    // Redirigir a la página de resultados
     header("Location: ../../php/resultados_usuario/resultado.php?usuario_id=" . urlencode($usuario_id));
     exit();
 } else {

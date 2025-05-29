@@ -1,29 +1,29 @@
 <?php
 session_start();
-
-if (!isset($_SESSION["usuario"]["id"])) {
-    die("Error: Usuario no autenticado.");
-}
-
 include("C:/xampp/htdocs/Proyecto_Integrado_2025/Tecnologias/php/conexion/conexion.php");
 
+// Validar que `usuario_id` ha sido pasado por URL
+if (!isset($_GET["usuario_id"]) && !isset($_GET["alumno_id"])) {
+    die("Error: Usuario no especificado.");
+}
+
+$usuario_id = isset($_GET["usuario_id"]) ? intval($_GET["usuario_id"]) : intval($_GET["alumno_id"]);
+
+// Verificar conexión con la base de datos
 if (!$conexion) {
     die("Error de conexión con la base de datos.");
 }
 
-if (!isset($_GET["usuario_id"]) || empty($_GET["usuario_id"])) {
-    die("Error: Usuario no especificado.");
-}
-$usuario_id = intval($_GET["usuario_id"]);
+// 🔹 **Verificar si el usuario tiene test realizados**
+$consulta_test = "SELECT COUNT(*) AS total_tests FROM respuestas_usuario WHERE usuario_id = ?";
+$stmt_test = $conexion->prepare($consulta_test);
+$stmt_test->bind_param("i", $usuario_id);
+$stmt_test->execute();
+$resultado_test = $stmt_test->get_result();
+$fila_test = $resultado_test->fetch_assoc();
+$sin_tests = ($fila_test["total_tests"] == 0);
 
-// Nueva consulta corregida:
-// - LEFT JOIN con preguntas para obtener tema_id de la pregunta (si existe)
-// - LEFT JOIN con temas dos veces:
-//   1. Por tema de pregunta (t_p)
-//   2. Por tema_id directo en respuestas_usuario (t_r) para casos sin pregunta
-// - Uso COALESCE para elegir nombre del tema correctamente
-// - Mantengo el CASE para test especiales
-
+// 🔹 **Consulta original sin modificar**
 $consulta_general = "
 SELECT r.intento,
        r.tema_id,
@@ -33,7 +33,7 @@ SELECT r.intento,
            ELSE COALESCE(t_p.nombre_tema, t_r.nombre_tema, 'Sin título')
        END AS nombre_tema,
        COUNT(r.pregunta_id) AS total_preguntas,
-       SUM(CASE WHEN r.es_correcta = 1 AND r.pregunta_id IS NOT NULL THEN 1 ELSE 0 END) AS total_aciertos,
+       SUM(CASE WHEN r.es_correcta = 1 THEN 1 ELSE 0 END) AS total_aciertos,
        SUM(CASE WHEN r.es_correcta = 0 AND r.pregunta_id IS NOT NULL THEN 1 ELSE 0 END) AS total_errores
 FROM respuestas_usuario r
 LEFT JOIN preguntas_test_tematicos p ON r.pregunta_id = p.id
@@ -48,11 +48,6 @@ $stmt_general = $conexion->prepare($consulta_general);
 $stmt_general->bind_param("i", $usuario_id);
 $stmt_general->execute();
 $resultado_general = $stmt_general->get_result();
-
-if ($resultado_general->num_rows === 0) {
-    echo "<p>No hay registros para este usuario.</p>";
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -62,11 +57,26 @@ if ($resultado_general->num_rows === 0) {
     <title>Resultados del Test</title>
     <link rel="stylesheet" href="../../css/test_resultados/resultados.css">
     <link rel="shortcut icon" href="../../img/logo/logo-autoescuela.png">
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    <?php if ($sin_tests): ?>
+        alert("⚠️ Aún no ha realizado ningún test.");
+    <?php endif; ?>
+});
+</script>
+
 </head>
 <body>
 
 <h1>Resultados del Test</h1>
-<table border="1">
+
+<?php if ($sin_tests): ?>
+    <p style="text-align:center; font-size:1.2rem; color:#ff4d4d;">
+        ⚠️ Aún no ha realizado ningún test.
+    </p>
+<?php else: ?>
+<table>
     <tr>
         <th>Intento</th>
         <th>Número del Tema</th>
@@ -75,6 +85,7 @@ if ($resultado_general->num_rows === 0) {
         <th>Aciertos</th>
         <th>Errores</th>
         <th>Porcentaje de aciertos</th>
+        <th>Estado</th>
     </tr>
 
     <?php while ($fila = $resultado_general->fetch_assoc()): ?>
@@ -82,35 +93,59 @@ if ($resultado_general->num_rows === 0) {
         $porcentaje = ($fila["total_preguntas"] > 0) 
                       ? ($fila["total_aciertos"] / $fila["total_preguntas"]) * 100 
                       : 0;
+
+        // Lógica de aprobado: mínimo 27 preguntas y 27 aciertos
+        $estado = "Suspenso";
+        $clase_estado = "estado-suspenso";
+        if ($fila["total_preguntas"] >= 27 && $fila["total_aciertos"] >= 27) {
+            $estado = "Aprobado";
+            $clase_estado = "estado-aprobado";
+        }
         ?>
         <tr>
             <td>
                 <a href="#" onclick="validarIntento(event, <?= $fila['total_preguntas'] ?>, <?= $fila['intento'] ?>, <?= $usuario_id ?>)">
-                <?= htmlspecialchars($fila["intento"]) ?>
+                    <?= htmlspecialchars($fila["intento"]) ?>
                 </a>
             </td>
-            <script>
-                function validarIntento(event, totalPreguntas, intento, usuarioId) {
-                    if (totalPreguntas === 0) {
-                        alert("Este intento está vacío. No puedes acceder a él.");
-                        event.preventDefault();
-                    } else {
-                        window.location.href = `../../php/detalles_intento_test/detalles_intentos_test.php?intento=${intento}&usuario_id=${usuarioId}`;
-                    }
-                }
-            </script>
-
             <td><?= htmlspecialchars($fila["tema_id"]) ?></td>
             <td><?= htmlspecialchars($fila["nombre_tema"]) ?></td>
             <td><?= $fila["total_preguntas"] ?></td>
             <td><?= $fila["total_aciertos"] ?></td>
             <td><?= $fila["total_errores"] ?></td>
             <td><?= round($porcentaje, 2) ?>%</td>
+            <td class="<?= $clase_estado ?>"><?= $estado ?></td>
         </tr>
     <?php endwhile; ?>
 </table>
+<?php endif; ?>
 
-<a href="../../html/area_alumnos/area_alumnos.php">Volver al perfil</a>
+<div class="volver">
+    <?php
+    if (isset($_SESSION["profesor_id"])) {
+        // 🔹 Si el profesor tiene sesión activa, redirigir a su área
+        echo '<a href="../../html/area_profesora/area_profesora.php">← Volver al perfil</a>';
+    } elseif (isset($_SESSION["usuario"]["id"])) {
+        // 🔹 Si el usuario es alumno, redirigir a área alumnos
+        echo '<a href="../../html/area_alumnos/area_alumnos.php">← Volver al perfil</a>';
+    } else {
+        // 🔹 Si no hay sesión activa, redirigir al login
+        echo '<a href="../../html/login_usuario/login_usuario.html">← Volver al inicio</a>';
+    }
+    ?>
+</div>
+
+
+<script>
+    function validarIntento(event, totalPreguntas, intento, usuarioId) {
+        if (totalPreguntas === 0) {
+            alert("Este intento está vacío. No puedes acceder a él.");
+            event.preventDefault();
+        } else {
+            window.location.href = `../../php/detalles_intento_test/detalles_intentos_test.php?intento=${intento}&usuario_id=${usuarioId}`;
+        }
+    }
+</script>
 
 </body>
 </html>

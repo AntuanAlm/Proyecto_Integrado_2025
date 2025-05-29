@@ -1,7 +1,14 @@
 <?php
 session_start();
-include("../../php/conexion/conexion.php");
+include("C:/xampp/htdocs/Proyecto_Integrado_2025/Tecnologias/php/conexion/conexion.php");
 
+// 🔴 **Bloquear el acceso al login de profesores si ya hay una sesión activa como alumno**
+if (isset($_SESSION["usuario"]["id"])) {
+    header("Location: ../../html/area_alumnos/area_alumnos.php?error=Ya_tienes_sesion");
+    exit();
+}
+
+// Verificar que se recibió una solicitud POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
@@ -15,11 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($resultado->num_rows === 1) {
         $profesor = $resultado->fetch_assoc();
 
-        // Verificar la contraseña encriptada con `bcrypt`
+        // Verificar la contraseña encriptada
         if (password_verify($contrasena, $profesor["contrasena"])) {
+            // Establecer sesión correctamente
             $_SESSION["profesor_id"] = $profesor["id"];
             $_SESSION["profesor_nombre"] = $profesor["nombre"];
             $_SESSION["tipo_clase"] = $profesor["tipo_clase"];
+
+            // Confirmar que la sesión se estableció correctamente
+            if (!isset($_SESSION["profesor_id"])) {
+                die("Error: La sesión no se ha guardado correctamente.");
+            }
 
             // Redirigir según el profesor
             if ($profesor["nombre"] === "Juan") {
@@ -36,5 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo "Error: Correo no registrado.";
     }
+} else {
+    echo "Error: Método de solicitud no válido.";
 }
 ?>

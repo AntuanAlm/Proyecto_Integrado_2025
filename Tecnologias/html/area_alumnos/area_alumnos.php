@@ -36,6 +36,15 @@ if (isset($_SESSION['mensaje'])) {
     <script src="../../js/menu_flotante_sesion/menu_flotante_sesion.js"></script>
     <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script>
     <script src="../../js/animacion_titulo_index/animacion_titulo_index.js"></script>
+     <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (urlParams.get("error") === "Ya_tienes_sesion") {
+        alert("⚠️ Ya tienes una sesión activa como alumno. Para acceder al área de profesores, primero debes cerrar sesión.");
+    }
+});
+</script>
 
 
 
