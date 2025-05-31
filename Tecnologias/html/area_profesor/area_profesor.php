@@ -2,43 +2,46 @@
 session_start();
 include("C:/xampp/htdocs/Proyecto_Integrado_2025/Tecnologias/php/conexion/conexion.php");
 
-if (!isset($_SESSION["profesor_id"]) || $_SESSION["profesor_id"] !== 2) {
+// Verificar que el usuario tenga sesión activa como profesor
+if (!isset($_SESSION["profesor_id"])) {
     die("Acceso denegado.");
 }
 
-// Obtener alumnos asignados a María y sus compras desde la tabla `compras`
+// Obtener alumnos asignados al profesor que ha iniciado sesión
 $stmt = $conexion->prepare("
     SELECT clientes.id, clientes.nombre, clientes.apellidos, clientes.dni, clientes.telefono, clientes.correo, 
     DATE(clientes.fecha_registro) AS fecha_inscripcion, clientes.fecha_nacimiento, clientes.profesor_id, 
+    clientes.clases_practicas, clientes.oportunidades_examen, clientes.teorico_aprobado,
     IFNULL(GROUP_CONCAT(CONCAT(compras.producto, ' - ', compras.precio, '€') SEPARATOR ', '), 'Sin compras') AS productos_comprados,
     IFNULL(SUM(compras.precio), 0) AS total_gastado
     FROM clientes 
     LEFT JOIN compras ON clientes.id = compras.usuario_id 
-    WHERE clientes.profesor_id = 2 
+    WHERE clientes.profesor_id = ?
     GROUP BY clientes.id
 ");
 
 
+// Vincular el ID del profesor a la consulta
+$stmt->bind_param("i", $_SESSION["profesor_id"]);
 $stmt->execute();
 $resultados = $stmt->get_result();
 
-// 🔴 Guardamos los resultados en un array para evitar múltiples bucles
+// Guardamos los resultados en un array para evitar múltiples bucles
 $alumnos = [];
 while ($fila = $resultados->fetch_assoc()) {
     $alumnos[] = $fila;
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area de María López</title>
+    <title>Area profesor Autoescuela Almansa.es</title>
 
     <!-- Links de css -->
-    <link rel="stylesheet" href="../../css/area_profesora/area_profesora.css">
+    <link rel="stylesheet" href="../../css/area_profesor/area_profesor.css">
     <link rel="stylesheet" href="../../css/calendario/calendario.css">
     <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">  
     <link rel="stylesheet" href="../../css/footer_generico/footer.css">
@@ -63,12 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
-
+     
 
 </head>
 <body>
-
-    <div class="container">
+     <div class="container">
         
             <p class="email">
                 <img data-src="gmail" alt="email" width="35" height="35" mailto="autoescuelaalmansa@hotmail.com">
@@ -151,10 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <?php endif; ?>
         </header>
-        
-        <!-- =============================== AREA DE MARIA LOPEZ ========================= -->
 
-        <h1>Alumnos de María (Teóricas)</h1>
+    <h1>Alumnos de <?= htmlspecialchars($_SESSION["profesor_nombre"]); ?> (Prácticas)</h1>
 <h2>Selecciona un alumno para ver su información</h2>
 
 <div class="contenedor-alumnos">
@@ -176,39 +176,81 @@ document.addEventListener("DOMContentLoaded", function () {
     <p><strong>Fecha de inscripción:</strong> <?= date_format(date_create($fila["fecha_inscripcion"]), 'd/m/Y'); ?></p>
     <p><strong>Correo:</strong> <?= htmlspecialchars($fila["correo"]); ?></p>
     <p><strong>Fecha de nacimiento:</strong> <?= htmlspecialchars($fila["fecha_nacimiento"]); ?></p>
-    <p><strong>Profesora:</strong> <?= ($fila["profesor_id"] == 2) ? "María" : "Juan"; ?></p>
+    <p><strong>Teórico aprobado:</strong> <?= $fila["teorico_aprobado"] ? "✅ Sí" : "❌ No"; ?></p>
+    <p><strong>Profesor:</strong> <?= htmlspecialchars($_SESSION["profesor_nombre"]); ?></p>
     <p><strong>Compras:</strong> <?= htmlspecialchars($fila["productos_comprados"]); ?></p>
     <p><strong>Total gastado:</strong> <?= number_format($fila["total_gastado"], 2) . "€"; ?></p>
+
+    <!-- MOSTRAR CLASES Y OPORTUNIDADES -->
+    <p><strong>Clases prácticas restantes:</strong> <span class="clases-practicas"><?= htmlspecialchars($fila["clases_practicas"]); ?></span></p>
+    <p><strong>Oportunidades de examen restantes:</strong> <span class="oportunidades-examen"><?= htmlspecialchars($fila["oportunidades_examen"]); ?></span></p>
+
+    <!-- BOTONES PARA MODIFICAR CLASES PRÁCTICAS -->
+    <div>
+        <button class="btn-modificar" onclick="modificarClases(<?= $fila['id']; ?>, 1)">➕ Añadir 1 Clase</button>
+        <button class="btn-modificar" onclick="modificarClases(<?= $fila['id']; ?>, -1)">➖ Quitar 1 Clase</button>
+    </div>
+
     <a href="../../php/resultados_usuario/resultado.php?usuario_id=<?= $fila['id']; ?>" class="btn-ver-resultados">
         Ver Resultados de los test
     </a>
 </div>
 <?php } ?>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const selectorAlumnos = document.getElementById("selector-alumnos");
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const selectorAlumnos = document.getElementById("selector-alumnos");
+    selectorAlumnos.addEventListener("change", function () {
+        const alumnoSeleccionado = this.value;
 
-            selectorAlumnos.addEventListener("change", function () {
-                const alumnoSeleccionado = this.value;
-
-                // Ocultar todas las tarjetas
-                document.querySelectorAll(".tarjeta-alumno").forEach(tarjeta => {
-                    tarjeta.style.display = "none";
-                });
-
-                // Mostrar la tarjeta del alumno seleccionado
-                if (alumnoSeleccionado) {
-                    document.getElementById(alumnoSeleccionado).style.display = "block";
-                }
-            });
+        // Ocultar todas las tarjetas
+        document.querySelectorAll(".tarjeta-alumno").forEach(tarjeta => {
+            tarjeta.style.display = "none";
         });
-    </script>
 
-<!-- ======================= CALENDARIO ========================== -->
-<h2 id = titulo-calendario>Calendarío de clases y examenes</h2>
+        // Mostrar la tarjeta del alumno seleccionado
+        if (alumnoSeleccionado) {
+            document.getElementById(alumnoSeleccionado).style.display = "block";
+        }
+    });
+});
 
+function modificarClases(alumnoId, cambio) {
+    console.log("Enviando datos:", { id: alumnoId, cambio: cambio }); 
+
+    fetch("/Proyecto_Integrado_2025/Tecnologias/php/modificar_clases_profesor/modificar_clases_profesor.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: alumnoId, cambio: cambio })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Error en la respuesta del servidor. Estado: " + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Respuesta del servidor:", data);
+
+        if (data.success) {
+            let clasesElement = document.querySelector(`#alumno-${alumnoId} .clases-practicas`);
+            if (clasesElement) {
+                let nuevasClases = parseInt(clasesElement.innerText) + cambio;
+                clasesElement.innerText = nuevasClases >= 0 ? nuevasClases : 0;
+            }
+        } else {
+            alert("Error al modificar clases prácticas: " + (data.error || "Intenta nuevamente."));
+        }
+    })
+    .catch(error => {
+        console.error("Error en la solicitud:", error);
+        alert("Hubo un problema al conectar con el servidor.");
+    });
+}
+
+</script>
+     <!-- ======================= CALENDARIO ========================== -->
     <div class="calendario">
       <div class="encabezado">
         <div class="botones-mes">
@@ -316,6 +358,10 @@ document.addEventListener("DOMContentLoaded", function () {
       <p id="texto-pie-pagina">Desarrollado por: Antonio Almansa</p>
     </div>
   </footer>
+
+    
+
+
     
 </body>
 </html>

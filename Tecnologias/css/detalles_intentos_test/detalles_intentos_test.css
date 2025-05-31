@@ -1,161 +1,142 @@
+/* ==========================
+   🎨 Paleta de colores y estilos base
+   ========================== */
 :root {
-    --fuente-principal: 'Roboto', Arial, Helvetica, sans-serif;
-
-    /* Colores pastel */
-    --fondo-pagina: #f5f7fa;              /* Fondo muy suave */
-    --color-texto: #4a4a4a;               /* Texto gris oscuro */
-    --ancho-maximo: 900px;
-    --color-titulo: #506680;              /* Azul pastel oscuro */
-    --sombra-titulo: 0 2px 6px rgba(80, 102, 128, 0.15);
-
-    --color-tabla-fondo: #ffffff;         /* Blanco puro para tabla */
-    --sombra-tabla: 0 8px 20px rgba(80, 102, 128, 0.1);
-    --radio-borde-tabla: 14px;
-
-    --color-cabecera: #9bb4d6;            /* Azul pastel claro para cabecera */
-    --color-cabecera-texto: #2e3e59;      /* Texto cabecera azul oscuro */
-
-    --color-fila: #f0f4fb;                /* Filas claras */
-    --color-hover-fila: #d7e1fc;          /* Hover suave azul pastel */
-
-    --color-correcto: #6fcf97;            /* Verde pastel */
-    --color-incorrecto: #ec6a5a;          /* Rojo pastel */
-    --color-no-contestada: #f2c66a;       /* Amarillo pastel */
-    
-    --color-enlace: #506680;              /* Azul pastel para enlaces */
-    --color-enlace-hover: #ffffff;
-    --sombra-enlace-hover: 0 6px 18px rgba(80, 102, 128, 0.35);
+  --color-principal: #191970;
+  --color-acento: #eeee22;
+  --color-fondo: #f7faf4;
+  --color-fila-alterna: #eef1f6;
+  --color-borde: #ccc;
+  --radio-borde: 10px;
+  --fuente: "Segoe UI", Roboto, sans-serif;
 }
 
-/* Fuentes y fondo */
+/* ==========================
+   🧱 Estructura general
+   ========================== */
 body {
-    font-family: var(--fuente-principal);
-    background: var(--fondo-pagina);
-    color: var(--color-texto);
-    padding: 40px 30px;
-    max-width: var(--ancho-maximo);
-    margin: auto;
+  font-family: var(--fuente);
+  background-color: var(--color-fondo);
+  color: #1c1c1c;
+  margin: 0;
+  padding: 40px 20px;
+  line-height: 1.6;
 }
 
-/* Título */
 h1 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 2.8rem;
-    color: var(--color-titulo);
-    margin-bottom: 35px;
-    text-shadow: var(--sombra-titulo);
-    letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--color-principal);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
 }
 
-/* Tabla estilizada */
+/* ==========================
+   📋 Tabla de detalles
+   ========================== */
 table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 15px;
-    box-shadow: var(--sombra-tabla);
-    background: var(--color-tabla-fondo);
-    border-radius: var(--radio-borde-tabla);
-    overflow: hidden;
-    font-size: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
-/* Cabecera */
 th {
-    background: var(--color-cabecera);
-    color: var(--color-cabecera-texto);
-    font-weight: 700;
-    padding: 18px 20px;
-    text-align: left;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    user-select: none;
+  background-color: var(--color-principal);
+  color: var(--color-acento);
+  padding: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
 }
 
-/* Filas */
-tr {
-    background: var(--color-fila);
-    transition: background-color 0.35s ease, box-shadow 0.3s ease;
-    cursor: default;
-}
-
-/* Bordes redondeados en las celdas extremas de la fila */
-tr td:first-child {
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-}
-
-tr td:last-child {
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
-}
-
-/* Celdas */
 td {
-    padding: 16px 20px;
-    color: #5a5a5a;
-    vertical-align: middle;
-    transition: color 0.3s ease;
+  padding: 14px;
+  border-bottom: 1px solid var(--color-borde);
+  text-align: center;
+  font-size: 0.95rem;
 }
 
-/* Hover fila */
-tr:hover {
-    background: var(--color-hover-fila);
-    box-shadow: inset 4px 0 0 var(--color-cabecera);
+tr:nth-child(even) {
+  background-color: var(--color-fila-alterna);
 }
 
-/* Destacar el nombre del tema */
-td:nth-child(3) {
-    font-weight: 600;
-    color: var(--color-titulo);
+tr:last-child td {
+  border-bottom: none;
 }
 
-/* Estados correcto / incorrecto / no contestada (usar contenido con emojis o texto) */
-/* Como :contains no es estándar, es mejor aplicar clases dinámicamente desde PHP o JS */
-/* Pero dejamos como referencia */
-td:nth-child(3):contains("✅") {
-    color: var(--color-correcto);
+/* Estados visuales con emojis */
+td:has(.estado) {
+  font-weight: bold;
 }
 
-td:nth-child(3):contains("❌") {
-    color: var(--color-incorrecto);
-}
-
-td:nth-child(3):contains("🟡") {
-    color: var(--color-no-contestada);
-}
-
-/* Subrayado de filas aprobado / suspendido */
-/* Se espera que se agreguen clases .fila-verde o .fila-roja desde PHP */
-.fila-verde {
-    text-decoration: underline;
-    color: var(--color-correcto);
-    font-weight: 600;
-}
-
-.fila-roja {
-    text-decoration: underline;
-    color: var(--color-incorrecto);
-    font-weight: 600;
-}
-
-/* Enlace de volver */
+/* ==========================
+   🔗 Enlace de volver
+   ========================== */
 a {
-    display: inline-block;
-    margin-top: 40px;
-    text-decoration: none;
-    color: var(--color-enlace);
-    font-weight: 700;
-    border: 2px solid var(--color-enlace);
-    padding: 12px 26px;
-    border-radius: 12px;
-    transition: all 0.35s ease;
-    user-select: none;
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-principal);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radio-borde);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin: 0 auto;
 }
 
-a:hover, a:focus {
-    background: var(--color-enlace);
-    color: var(--color-enlace-hover);
-    box-shadow: var(--sombra-enlace-hover);
-    outline: none;
+a:hover {
+  background-color: #dada10;
+}
+
+/* ==========================
+   📱 Responsive para móviles
+   ========================== */
+@media screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: var(--radio-borde);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    font-weight: bold;
+    color: #444;
+    width: 45%;
+    text-align: left;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+  }
 }

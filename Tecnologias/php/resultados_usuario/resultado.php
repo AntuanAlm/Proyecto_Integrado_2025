@@ -58,13 +58,13 @@ $resultado_general = $stmt_general->get_result();
     <link rel="stylesheet" href="../../css/test_resultados/resultados.css">
     <link rel="shortcut icon" href="../../img/logo/logo-autoescuela.png">
 
-    <script>
+    <!-- <script>
 document.addEventListener("DOMContentLoaded", function () {
     <?php if ($sin_tests): ?>
         alert("⚠️ Aún no ha realizado ningún test.");
     <?php endif; ?>
 });
-</script>
+</script> -->
 
 </head>
 <body>
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ?>
         <tr>
             <td>
-                <a href="#" onclick="validarIntento(event, <?= $fila['total_preguntas'] ?>, <?= $fila['intento'] ?>, <?= $usuario_id ?>)">
+                <a href="#" title="Ver tus respuestas" onclick="validarIntento(event, <?= $fila['total_preguntas'] ?>, <?= $fila['intento'] ?>, <?= $usuario_id ?>)">
                     <?= htmlspecialchars($fila["intento"]) ?>
                 </a>
             </td>
@@ -123,17 +123,26 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="volver">
     <?php
     if (isset($_SESSION["profesor_id"])) {
-        // 🔹 Si el profesor tiene sesión activa, redirigir a su área
-        echo '<a href="../../html/area_profesora/area_profesora.php">← Volver al perfil</a>';
-    } elseif (isset($_SESSION["usuario"]["id"])) {
-        // 🔹 Si el usuario es alumno, redirigir a área alumnos
+        // 🔹 Si el profesor es Juan (ID = 1), redirigir a `area_profesor.php`
+        if ($_SESSION["profesor_id"] == 1) {
+            echo '<a href="../../html/area_profesor/area_profesor.php">← Volver al perfil</a>';
+        }
+        // 🔹 Si el profesor es María (ID = 2), redirigir a `area_profesora.php`
+        elseif ($_SESSION["profesor_id"] == 2) {
+            echo '<a href="../../html/area_profesora/area_profesora.php">← Volver al perfil</a>';
+        }
+    } 
+    // 🔹 Si el usuario es alumno, redirigir a área alumnos
+    elseif (isset($_SESSION["usuario"]["id"])) {
         echo '<a href="../../html/area_alumnos/area_alumnos.php">← Volver al perfil</a>';
-    } else {
-        // 🔹 Si no hay sesión activa, redirigir al login
+    } 
+    // 🔹 Si no hay sesión activa, redirigir al login
+    else {
         echo '<a href="../../html/login_usuario/login_usuario.html">← Volver al inicio</a>';
     }
     ?>
 </div>
+
 
 
 <script>

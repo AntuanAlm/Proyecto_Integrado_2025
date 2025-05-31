@@ -1,97 +1,188 @@
+/* ==============================
+   🎨 Variables de diseño
+   ============================== */
 :root {
-  --color-principal: #23395d;
-  --color-acento: #ffd600;
-  --color-fondo: #f4f8fb;
-  --color-fondo-fila: #e9f0fa;
-  --color-texto: #222b38;
-  --color-borde: #c5d0e6;
-  --color-link-hover: #ffb300;
-  --color-link-focus: #ffec80;
-  --radio-borde: 8px;
+  --color-principal: #191970;        /* Midnight Blue */
+  --color-acento: #eeee22;           /* Amarillo vibrante */
+  --color-fondo: #f7faf4;            /* Fondo claro */
+  --color-fondo-fila: #edf2f9;
+  --color-texto: #1c1c1c;
+  --color-borde: #ccd6dd;
+  --color-link-hover: #dcd916;
+  --color-link-focus: #f4f486;
+  --color-aprobado: #e0f5e0;
+  --color-suspenso: #fde0e0;
+  --radio-borde: 10px;
   --fuente: "Segoe UI", Roboto, sans-serif;
 }
 
+/* ==============================
+   🧱 Estructura general
+   ============================== */
 body {
   font-family: var(--fuente);
   background-color: var(--color-fondo);
   color: var(--color-texto);
   padding: 40px 20px;
+  margin: 0;
   line-height: 1.6;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 32px;
-  font-size: 2rem;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
   color: var(--color-principal);
 }
 
+/* ==============================
+   📊 Tabla de resultados
+   ============================== */
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: #fff;
   border-radius: var(--radio-borde);
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(35, 57, 93, 0.08);
-  margin-bottom: 36px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
 }
 
 th {
   background-color: var(--color-principal);
   color: var(--color-acento);
   padding: 14px;
-  text-align: left;
+  text-align: center;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  border-right: 1px solid var(--color-borde);
+}
+
+th:last-child {
+  border-right: none;
 }
 
 td {
   padding: 14px;
   border-bottom: 1px solid var(--color-borde);
-  font-size: 0.94rem;
+  border-right: 1px solid var(--color-borde);
+  font-size: 0.95rem;
   text-align: center;
 }
 
-tr:last-child td {
-  border-bottom: none;
+td:last-child {
+  border-right: none;
 }
 
 tr:nth-child(even) {
   background-color: var(--color-fondo-fila);
 }
 
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==============================
+   ✅ Estado aprobado / ❌ suspenso
+   ============================== */
 .estado-aprobado {
+  background-color: var(--color-aprobado);
   color: green;
   font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
 .estado-suspenso {
+  background-color: var(--color-suspenso);
   color: red;
   font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
+/* ==============================
+   🔗 Botón de volver y enlaces
+   ============================== */
 a {
-  display: block;
-  max-width: 220px;
-  margin: 0 auto;
-  text-align: center;
+  display: inline-block;
   background-color: var(--color-acento);
   color: var(--color-principal);
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: var(--radio-borde);
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
   outline: none;
+  text-align: center;
+  margin: 0 auto;
 }
 
 a:hover {
   background-color: var(--color-link-hover);
-  color: var(--color-principal);
 }
 
 a:focus {
   background-color: var(--color-link-focus);
-  color: var(--color-principal);
-  box-shadow: 0 0 0 3px #ffe082;
+  box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.4);
+}
+
+/* Enlace volver centrado */
+.volver {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.volver a {
+  background-color: var(--color-principal);
+  color: white;
+}
+
+.volver a:hover {
+  background-color: #00004d;
+}
+
+/* ==============================
+   📱 Diseño Responsive
+   ============================== */
+@media screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: var(--radio-borde);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+  }
+
+  td {
+    padding-left: 50%;
+    position: relative;
+    text-align: right;
+    border-bottom: 1px solid var(--color-borde);
+    border-right: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    font-weight: bold;
+    color: #444;
+    width: 45%;
+    text-align: left;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
 }
