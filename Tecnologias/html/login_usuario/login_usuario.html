@@ -31,6 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (urlParams.get("error") === "Ya_tienes_sesion_profesor") {
+        alert("⚠️ Ya tienes una sesión activa como profesor. Para acceder al área de alumnos, primero debes cerrar sesión.");
+    }
+});
+</script>
+
 </head>
 <body>
 
@@ -83,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a>Profesores</a>
                 <div id="submenu-profesores">
                     <a data-enlace="profesores">Conoce a tus profesores</a>
-                    <a data-enlace="login">Area profesores</a>
+                    <a data-enlace="login_profesores">Area profesores</a>
                 </div>
             </div>
         

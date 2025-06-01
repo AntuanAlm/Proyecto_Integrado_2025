@@ -103,7 +103,7 @@ session_start(); // Inicia la sesión
                   <a>Profesores</a>
                   <div id="submenu-profesores">
                       <a data-enlace="profesores">Conoce a tus profesores</a>
-                      <a data-enlace="login">Area profesores</a>
+                      <a data-enlace="login_profesores">Area profesores</a>
                   </div>
               </div>
           

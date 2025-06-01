@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+// Si el profesor ya tiene sesión activa, redirigirlo a su área correspondiente
+if (isset($_SESSION["profesor_id"])) {
+    if ($_SESSION["profesor_nombre"] === "Juan") {
+        header("Location: ../../html/area_profesor/area_profesor.php");
+    } elseif ($_SESSION["profesor_nombre"] === "María") {
+        header("Location: ../../html/area_profesora/area_profesora.php");
+    }
+    exit();
+}
+
+// Si no hay sesión activa, mostrar el formulario de login normalmente
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

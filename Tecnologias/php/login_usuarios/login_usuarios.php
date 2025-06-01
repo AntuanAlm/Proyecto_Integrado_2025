@@ -6,7 +6,7 @@ session_regenerate_id(true);
 // 🔹 Bloquear acceso si ya hay una sesión de profesor activa
 if (isset($_SESSION["profesor_id"])) {
     $_SESSION['mensaje'] = "⚠️ Ya tienes una sesión activa como profesor. Para iniciar sesión como alumno, primero debes cerrar sesión.";
-    header("Location: ../../html/area_profesora/area_profesora.php?error=Ya_tienes_sesion_profesor");
+    header("Location: ../../html/login_usuario/login_usuario.html?error=Ya_tienes_sesion_profesor");
     exit();
 }
 

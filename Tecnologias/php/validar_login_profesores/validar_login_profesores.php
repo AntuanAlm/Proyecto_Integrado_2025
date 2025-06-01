@@ -2,13 +2,23 @@
 session_start();
 include("C:/xampp/htdocs/Proyecto_Integrado_2025/Tecnologias/php/conexion/conexion.php");
 
-// 🔴 **Bloquear el acceso al login de profesores si ya hay una sesión activa como alumno**
+// Si el profesor ya tiene sesión activa, evitar que vuelva a iniciar sesión
+if (isset($_SESSION["profesor_id"])) {
+    if ($_SESSION["profesor_nombre"] === "Juan") {
+        header("Location: ../../html/area_profesor/area_profesor.php");
+    } elseif ($_SESSION["profesor_nombre"] === "María") {
+        header("Location: ../../html/area_profesora/area_profesora.php");
+    }
+    exit();
+}
+
+// Bloquear el acceso al login de profesores si ya hay una sesión activa como alumno
 if (isset($_SESSION["usuario"]["id"])) {
     header("Location: ../../html/area_alumnos/area_alumnos.php?error=Ya_tienes_sesion");
     exit();
 }
 
-// Verificar que se recibió una solicitud POST
+// Verificar que se recibió una solicitud POST antes de procesar el login
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
@@ -29,15 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["profesor_nombre"] = $profesor["nombre"];
             $_SESSION["tipo_clase"] = $profesor["tipo_clase"];
 
-            // Confirmar que la sesión se estableció correctamente
-            if (!isset($_SESSION["profesor_id"])) {
-                die("Error: La sesión no se ha guardado correctamente.");
-            }
+            // Asegurar que la sesión dura más tiempo
+            setcookie(session_name(), session_id(), time() + 86400, "/");
 
-            // Redirigir según el profesor
-            if ($profesor["nombre"] === "Juan") {
+            // Redirigir automáticamente según el profesor
+            if ($_SESSION["profesor_nombre"] === "Juan") {
                 header("Location: ../../html/area_profesor/area_profesor.php");
-            } elseif ($profesor["nombre"] === "María") {
+            } elseif ($_SESSION["profesor_nombre"] === "María") {
                 header("Location: ../../html/area_profesora/area_profesora.php");
             } else {
                 echo "Error: Profesor no identificado.";

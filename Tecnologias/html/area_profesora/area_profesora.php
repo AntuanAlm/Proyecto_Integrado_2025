@@ -22,7 +22,7 @@ $stmt = $conexion->prepare("
 $stmt->execute();
 $resultados = $stmt->get_result();
 
-// 🔴 Guardamos los resultados en un array para evitar múltiples bucles
+// Guardamos los resultados en un array para evitar múltiples bucles
 $alumnos = [];
 while ($fila = $resultados->fetch_assoc()) {
     $alumnos[] = $fila;
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <a>Profesores</a>
                   <div id="submenu-profesores">
                       <a data-enlace="profesores">Conoce a tus profesores</a>
-                      <a data-enlace="login">Area profesores</a>
+                      <a data-enlace="login_profesores">Area profesores</a>
                   </div>
               </div>
           
