@@ -103,3 +103,10 @@
 #enlace:hover, #crear-cuenta:hover {
   text-decoration: underline;
 }
+
+
+.mensaje-error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}

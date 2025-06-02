@@ -1,3 +1,8 @@
+<?php
+session_start(); // 🔹 Iniciar sesión
+$esProfesor = isset($_SESSION["profesor_id"]); // Verificar si el usuario es profesor
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,74 +132,42 @@
   </header>
   
     <!-- ======================= CALENDARIO ========================== -->
-    <div class="calendario">
-      <div class="encabezado">
+<div class="calendario">
+    <div class="encabezado">
         <div class="botones-mes">
-          <button>&lt; Mes anterior</button>
+            <button>&lt; Mes anterior</button>
         </div>
-        <h2>Mayo 2025</h2>
+        <h2>Junio 2025</h2>
         <div class="botones-mes">
-          <button>Mes siguiente &gt;</button>
+            <button>Mes siguiente &gt;</button>
         </div>
-      </div>
-      
-      <div class="dias-semana">
-        <div>Lun</div>
-        <div>Mar</div>
-        <div>Mié</div>
-        <div>Jue</div>
-        <div>Vie</div>
-        <div>Sáb</div>
-        <div>Dom</div>
-      </div>
-      
-      <div class="dias">
-        <div class="vacío"></div>
-        <div class="vacío"></div>
-        <div class="vacío"></div>
-        <div>1</div>
-        <div>2</div>
-        <div class="hoy">3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
-        <div>14</div>
-        <div>15</div>
-        <div>16</div>
-        <div>17</div>
-        <div>18</div>
-        <div>19</div>
-        <div>20</div>
-        <div>21</div>
-        <div>22</div>
-        <div>23</div>
-        <div>24</div>
-        <div>25</div>
-        <div>26</div>
-        <div>27</div>
-        <div>28</div>
-        <div>29</div>
-        <div>30</div>
-        <div>31</div>
-      </div>
-      </div>
-      
-      <!-- Botón flotante -->
-      <div class="boton-flotante">
-      ☰
-      <div class="menu-acciones" id="menuAcciones">
-        <button id="btnAñadir">➕ Añadir</button>
-        <button id="btnBorrar">🗑️ Borrar</button>
-        <button id="btnModificar">✏️ Modificar</button>
-      </div>
-      </div>
+    </div>
+    
+    <div class="dias-semana">
+        <div>Lun</div> <div>Mar</div> <div>Mié</div> <div>Jue</div> <div>Vie</div> <div>Sáb</div> <div>Dom</div>
+    </div>
+    
+    <div class="dias">
+        <div class="vacío"></div><div class="vacío"></div><div class="vacío"></div>
+        <div>1</div> <div>2</div> <div class="hoy">3</div> <div>4</div> <div>5</div>
+        <div>6</div> <div>7</div> <div>8</div> <div>9</div> <div>10</div> <div>11</div> <div>12</div>
+        <div>13</div> <div>14</div> <div>15</div> <div>16</div> <div>17</div> <div>18</div> <div>19</div>
+        <div>20</div> <div>21</div> <div>22</div> <div>23</div> <div>24</div> <div>25</div> <div>26</div>
+        <div>27</div> <div>28</div> <div>29</div> <div>30</div> <div>31</div>
+    </div>
+</div>
+
+<!-- Botón flotante solo visible para profesores -->
+<?php if ($esProfesor): ?>
+    <div class="boton-flotante">
+        ☰
+        <div class="menu-acciones" id="menuAcciones">
+            <button id="btnAñadir">➕ Añadir</button>
+            <button id="btnBorrar">🗑️ Borrar</button>
+            <button id="btnModificar">✏️ Modificar</button>
+        </div>
+    </div>
+<?php endif; ?>
 
  <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
 

@@ -1,3 +1,9 @@
+<?php
+session_start(); // 🔹 Iniciar la sesión
+
+$esProfesor = isset($_SESSION["profesor_id"]); // 🔹 Verifica si el usuario es un profesor
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,53 +148,67 @@
     <div id="etiquetas">
 
       <!-- Etiqueta 1 -->
-      <div id="etiqueta-reseñas">
-      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-      <h3>Lucía ***</h3>
-      <p>¡Increíble experiencia! Aunque solo hice las prácticas aquí, María es una profesora espectacular que hace que aprender sea un placer. ¡Recomendada al 100%!</p>
-      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
-      </div>
+    <div id="etiqueta-reseñas">
+        <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+        <h3>Lucía ***</h3>
+        <p>¡Increíble experiencia! Aunque solo hice las prácticas aquí, María es una profesora espectacular que hace que aprender sea un placer. ¡Recomendada al 100%!</p>
+        <?php if ($esProfesor): ?> 
+            <button class="boton-borrar">❌ Borrar</button>
 
-      <!-- Etiqueta 2 -->
-      <div id="etiqueta-reseñas">
-      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-      <h3>Carlos ***</h3>
-      <p>La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!</p>
-      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
-      </div>
-
-      <!-- Etiqueta 3 -->
-      <div id="etiqueta-reseñas">
-      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-      <h3>Ana ***</h3>
-      <p>Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso.</p>
-      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
-      </div>
-
-      <!-- Etiqueta 4 -->
-      <div id="etiqueta-reseñas">
-      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-      <h3>Juan ***</h3>
-      <p>El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases.</p>
-      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
-      </div>
-
-      <!-- Etiqueta 5 -->
-      <div id="etiqueta-reseñas">
-      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-      <h3>María ***</h3>
-      <p>Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación.</p>
-      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
-      </div>
-
-      <!-- Etiqueta 6 -->
-      <div id="etiqueta-reseñas">
-      <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
-      <h3>José ***</h3>
-      <p>Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!</p>
-      <button class="boton-borrar" onclick="borrarReseñaExistente(this)">❌ Borrar</button>
-      </div>
+        <?php endif; ?>
     </div>
+
+    <!-- Etiqueta 2 -->
+    <div id="etiqueta-reseñas">
+        <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+        <h3>Carlos ***</h3>
+        <p>La experiencia ha sido increíble, aprendí muchísimo en poco tiempo. Los instructores son muy profesionales y amables. ¡Altamente recomendados!</p>
+        <?php if ($esProfesor): ?> 
+            <button class="boton-borrar">❌ Borrar</button>
+        <?php endif; ?>
+    </div>
+
+    <!-- Etiqueta 3 -->
+    <div id="etiqueta-reseñas">
+        <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+        <h3>Ana ***</h3>
+        <p>Un excelente lugar para aprender. Las clases son muy claras y el ambiente es muy agradable. Me sentí muy segura durante todo el proceso.</p>
+        <?php if ($esProfesor): ?> 
+            <button class="boton-borrar">❌ Borrar</button>
+        <?php endif; ?>
+    </div>
+
+    <!-- Etiqueta 4 -->
+    <div id="etiqueta-reseñas">
+        <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+        <h3>Juan ***</h3>
+        <p>El mejor lugar para aprender a conducir. Instructores con mucha paciencia y experiencia. Gracias por todo el apoyo durante mis clases.</p>
+        <?php if ($esProfesor): ?> 
+            <button class="boton-borrar">❌ Borrar</button>
+        <?php endif; ?>
+    </div>
+
+    <!-- Etiqueta 5 -->
+    <div id="etiqueta-reseñas">
+        <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+        <h3>María ***</h3>
+        <p>Me ayudaron a aprobar el examen con facilidad. Las clases son muy completas y me dieron confianza para manejar en cualquier situación.</p>
+        <?php if ($esProfesor): ?> 
+            <button class="boton-borrar">❌ Borrar</button>
+        <?php endif; ?>
+    </div>
+
+    <!-- Etiqueta 6 -->
+    <div id="etiqueta-reseñas">
+        <img data-src="reseñas_google" alt="reseña-verificada" width="100" height="100">
+        <h3>José ***</h3>
+        <p>Una experiencia maravillosa. Los instructores se preocupan por tu progreso y están siempre disponibles para resolver dudas. ¡Muy recomendables!</p>
+        <?php if ($esProfesor): ?> 
+            <button class="boton-borrar">❌ Borrar</button>
+        <?php endif; ?>
+    </div>
+
+</div>
 
     <a data-enlace="contacto" id="boton-contactar">Contacta con nosotros!</a>
 

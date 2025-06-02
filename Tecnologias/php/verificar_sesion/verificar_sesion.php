@@ -12,3 +12,4 @@ if (isset($_SESSION['usuario_id'])) {
     exit();
 }
 ?>
+<!-- Este php está hecho por la redirección del pago -->

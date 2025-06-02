@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rutas = {
       inicio: '../../html/Vista_Principal/index.php',
       sobre_nosotros: '../../html/sobre_nosotros/sobre_nosotros.html',
-      reseñas: '../../html/reseñas/reseñas.html',
+      reseñas: '../../html/reseñas/reseñas.php',
       precio: '../../html/precio/precio.html',
       politica_pasarela_pago: '../../html/politica_pasarela_pago/politica_pasarela_pago.html',
       pasarela_pago: '../../html/pasarela_pago/pasarela_pago.html',
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clases_reciclaje: '../../html/clases_reciclajes/clases_reciclajes.html',
       profesores: '../../html/conoce_profesores/conoce_profesores.html',
       test: '../../html/test-alumnos/test-alumnos.php',
-      calendario: '../../html/calendario/calendario.html',
+      calendario: '../../html/calendario/calendario.php',
       formulario_registro_nuevo_cliente: '../../html/formularios/formulario_registro_cliente/formulario_registro_cliente.html',
       agradecimiento: '../../html/agradecimiento_pago/agradecimiento_pago.html',
       descripcion_coche_autoescuela:'../../html/descripcion_coche_autoescuela/descripción_coche_autoescuela.html',

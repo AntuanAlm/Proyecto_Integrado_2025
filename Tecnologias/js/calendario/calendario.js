@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
   let añoActual = 2025;
-  let mesActualIndex = 4; // Mayo
+  let mesActualIndex = 5; // Estamos en junio (mes 5, ya que enero es 0) como los array empiezan en 0
+  
 
   const meses = [
     "Enero", "Febrero", "Marzo", "Abril",
@@ -305,78 +306,109 @@ function borrarEvento() {
 }
 
 // ========================== MODIFICAR EVENTO =========================
-// Función para modificar un evento del calendario
+
 
   function modificarEvento() {
-    const fecha = prompt("Ingrese la fecha del evento a modificar (día/mes/año):");
-    const fechaArray = fecha.split("/");
-  
-    if (fechaArray.length === 3) {
-      const dia = parseInt(fechaArray[0].trim());
-      const mes = parseInt(fechaArray[1].trim()) - 1;
-      const año = parseInt(fechaArray[2].trim());
-  
-      const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
-      const evento = eventos.find(e => e.fecha === fechaFormateada);
-  
-      if (evento) {
-        const nuevoTitulo = prompt("Nuevo título del evento:", evento.titulo);
-        const nuevoDia = prompt("Nuevo día del evento (dejar en blanco si no desea cambiar):");
-        const nuevoColor = prompt("Nuevo color del evento (dejar en blanco si no desea cambiar):");
-  
-        // Modificar título si es necesario
-        if (nuevoTitulo && nuevoTitulo.trim() !== "") {
-          evento.titulo = nuevoTitulo;
-        }
-  
-        // Modificar día si es necesario
-        if (nuevoDia && nuevoDia.trim() !== "") {
-          const nuevoDiaArray = nuevoDia.split("/");
-  
-          if (nuevoDiaArray.length === 3) {
-            const diaNuevo = parseInt(nuevoDiaArray[0].trim());
-            const mesNuevo = parseInt(nuevoDiaArray[1].trim()) - 1;
-            const añoNuevo = parseInt(nuevoDiaArray[2].trim());
-  
-            const fechaNuevaFormateada = formatearFechaCorrectamente(añoNuevo, mesNuevo, diaNuevo);
-  
-            // Mover evento a nueva fecha
-            evento.fecha = fechaNuevaFormateada;
-          } else {
-            alert("Formato de fecha incorrecto. Use: día/mes/año.");
-          }
-        }
-  
-        // Modificar color si es necesario
-        if (nuevoColor && nuevoColor.trim() !== "") {
-          const coloresPermitidos = {
-            rojo: "red",
-            verde: "green",
-            amarillo: "gold",
-            azul: "blue",
-            morado: "purple"
-          };
-  
-          const colorNuevo = coloresPermitidos[nuevoColor.toLowerCase()];
-  
-          if (colorNuevo) {
-            evento.color = colorNuevo;
-          } else {
-            alert("Color inválido. Use uno de los siguientes: rojo, verde, amarillo, azul, morado.");
-          }
-        }
-  
-        // Guardar cambios
-        localStorage.setItem("eventos", JSON.stringify(eventos));
-        alert("Evento modificado correctamente.");
-        generarCalendario(añoActual, mesActualIndex);
-      } else {
-        alert("No se encontró evento en esa fecha.");
-      }
+  const titulosPermitidos = [
+    "Examen práctico",
+    "Curso intensivo",
+    "Examen teórico",
+    "Medico",
+    "Cumpleaños",
+    "Reunión",
+  ];
+
+  const coloresPermitidos = {
+    rojo: "red",
+    verde: "green",
+    amarillo: "gold",
+    azul: "blue",
+    morado: "purple",
+  };
+
+  let fecha = null;
+  let fechaArray = [];
+
+  // Pedir fecha válida
+  while (true) {
+    fecha = prompt("Ingrese la fecha del evento a modificar (día/mes/año):");
+    if (fecha === null) return; // Cancelar
+    fechaArray = fecha.split("/");
+    if (fechaArray.length === 3) break;
+    alert("Formato incorrecto. Usa día/mes/año.");
+  }
+
+  const dia = parseInt(fechaArray[0].trim());
+  const mes = parseInt(fechaArray[1].trim()) - 1;
+  const año = parseInt(fechaArray[2].trim());
+
+  const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
+  const evento = eventos.find(e => e.fecha === fechaFormateada);
+
+  if (!evento) {
+    alert("No se encontró evento en esa fecha.");
+    return;
+  }
+
+  // Pedir título válido (o dejar el actual)
+  let nuevoTitulo;
+  while (true) {
+    nuevoTitulo = prompt("Nuevo título del evento (dejar en blanco para mantener actual):", evento.titulo);
+    if (nuevoTitulo === null) return; // Cancelar
+    if (nuevoTitulo.trim() === "") break; // Mantener actual
+    if (titulosPermitidos.includes(nuevoTitulo.trim())) {
+      evento.titulo = nuevoTitulo.trim();
+      break;
     } else {
-      alert("Formato de fecha incorrecto.");
+      alert("Título no permitido. Usa uno de estos:\n" + titulosPermitidos.join(", "));
     }
   }
+
+  // Pedir nueva fecha válida o dejar en blanco
+  let nuevoDia;
+  while (true) {
+    nuevoDia = prompt("Nuevo día del evento (día/mes/año) (dejar en blanco si no deseas cambiar):");
+    if (nuevoDia === null) return; // Cancelar
+    if (nuevoDia.trim() === "") break; // No cambiar fecha
+
+    const nuevoDiaArray = nuevoDia.split("/");
+    if (nuevoDiaArray.length === 3) {
+      const diaNuevo = parseInt(nuevoDiaArray[0].trim());
+      const mesNuevo = parseInt(nuevoDiaArray[1].trim()) - 1;
+      const añoNuevo = parseInt(nuevoDiaArray[2].trim());
+      const nuevaFecha = new Date(añoNuevo, mesNuevo, diaNuevo);
+
+      if (!isNaN(nuevaFecha.getTime())) {
+        const nuevaFechaFormateada = formatearFechaCorrectamente(añoNuevo, mesNuevo, diaNuevo);
+        evento.fecha = nuevaFechaFormateada;
+        break;
+      }
+    }
+    alert("Fecha inválida. Usa el formato día/mes/año.");
+  }
+
+  // Pedir nuevo color válido o dejar en blanco
+  let nuevoColor;
+  while (true) {
+    nuevoColor = prompt("Nuevo color del evento (rojo, verde, amarillo, azul, morado) (dejar en blanco si no deseas cambiar):");
+    if (nuevoColor === null) return; // Cancelar
+    if (nuevoColor.trim() === "") break; // No cambiar color
+
+    const colorElegido = coloresPermitidos[nuevoColor.toLowerCase().trim()];
+    if (colorElegido) {
+      evento.color = colorElegido;
+      break;
+    }
+    alert("Color inválido. Usa uno de estos: " + Object.keys(coloresPermitidos).join(", "));
+  }
+
+  // Guardar cambios
+  localStorage.setItem("eventos", JSON.stringify(eventos));
+  alert("Evento modificado correctamente.");
+  generarCalendario(añoActual, mesActualIndex);
+}
+
+
   
   document.getElementById("btnAñadir").addEventListener("click", añadirEvento);
   document.getElementById("btnBorrar").addEventListener("click", borrarEvento);

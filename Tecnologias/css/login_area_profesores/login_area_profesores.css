@@ -116,11 +116,23 @@
   margin-bottom: 5px;
 }
 
-#campo .mensaje-error {
+.mensaje-error {
   color: #d90429;
-  font-size: 0.95rem;
-  margin: 0;
-  min-height: 18px;
+  font-size: 0.95em;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-family: var(--fuente);
+  display: block;
+  min-height: 1.2em;
 }
 
+/* Error debajo del input de correo */
+#error-correo {
+  display: block;
+}
 
+/* Error debajo del input de contraseña */
+#error-contrasena {
+  display: block;
+}

@@ -37,6 +37,7 @@ if (isset($_SESSION["profesor_id"])) {
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/mostrar_contraseña/mostrar_contraseña.js"></script>
+    <script src="../../js/validaciones_login_profes/validaciones_login_profes.js" defer></script>
 
 
 </head>
@@ -121,14 +122,14 @@ if (isset($_SESSION["profesor_id"])) {
   <div id="campo">
     <label for="correo">Correo:</label>
     <input type="email" name="correo" id="correo" placeholder="Introduce tu correo" required><br><br>
-    <p class="mensaje-error" id="error-correo"></p>
+    <p id="mensaje-error-correo" class="mensaje-error"></p>
   </div>
 
   <div id="campo">
     <label for="contrasena">Contraseña:</label>
     <input type="password" name="contrasena" id="contrasena" placeholder="Introduce tu contraseña" required>
     <button type="button" id="mostrar-contrasena">Mostrar</button>
-    <p class="mensaje-error" id="error-contrasena"></p>
+    <p id="mensaje-error-contrasena" class="mensaje-error"></p>
   </div>
 
   <label>
