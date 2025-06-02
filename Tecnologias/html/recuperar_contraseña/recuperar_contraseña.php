@@ -1,52 +1,61 @@
 <?php
-session_start();
+header("Content-Type: text/html; charset=UTF-8");
+require_once('../../php/conexion/conexion.php');
 
-// Si el profesor ya tiene sesión activa, redirigirlo a su área correspondiente
-if (isset($_SESSION["profesor_id"])) {
-    if ($_SESSION["profesor_nombre"] === "Juan") {
-        header("Location: ../../html/area_profesor/area_profesor.php");
-    } elseif ($_SESSION["profesor_nombre"] === "María") {
-        header("Location: ../../html/area_profesora/area_profesora.php");
+$correo = $_POST['correo'] ?? '';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($correo)) {
+    // Verificar si el correo está en la base de datos
+    $stmt = $conexion->prepare("SELECT 'profesor' AS tipo_usuario FROM profesores WHERE correo = ? 
+                                UNION 
+                                SELECT 'alumno' AS tipo_usuario FROM clientes WHERE correo = ?");
+    $stmt->bind_param("ss", $correo, $correo);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $tipo_usuario = $resultado->fetch_assoc()['tipo_usuario'] ?? null;
+
+    if (!$tipo_usuario) {
+        $mensaje_error = "⚠️ Este correo no está registrado.";
+    } else {
+        echo "<p style='color: green;'>📩 Correo enviado. Redirigiendo en 5 segundos...</p>";
+        echo "<script>setTimeout(function(){ window.location.href = '../../html/establecer_contraseña/establecer_contraseña.php?correo=$correo&tipo=$tipo_usuario'; }, 5000);</script>";
+        exit();
     }
-    exit();
 }
-
-// Si no hay sesión activa, mostrar el formulario de login normalmente
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Profesores Autoescuela Almansa.es</title>
+    <title>Recuperar contraseña</title>
 
     <!-- links de css -->
-    <link rel="stylesheet" href="../../css/login_area_profesores/login_area_profesores.css">
-    <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">  
+    <link rel="stylesheet" href="../../css/recuperar_contraseña/recuperar_contraseñas.css">
+    <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">
     <link rel="stylesheet" href="../../css/footer_generico/footer.css">
 
-    <!-- links de fuentes de google -->
+
+    <!-- Link de las fuentes de google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Matemasie&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../../img/logo/logo-autoescuela.png" type="image/x-icon">
 
-    <!-- liks de js -->
+    <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/mostrar_contraseña/mostrar_contraseña.js"></script>
-    <script src="../../js/validaciones_login_profes/validaciones_login_profes.js" defer></script>
-
 
 </head>
 <body>
 
-     <div class="container">
+ <!-- ----------------------------- CONTAINER PRINCIPAL ------------------------- -->
+
+    <div class="container">
         
             <p class="email">
-                <img data-src="gmail" alt="email" width="35" height="35" mailto="autoescuelaalmansa@hotmail.com">
+                <img data-src="gmail" alt="email" width="35" height="35">
                 autoescuelaalmansa@hotmail.com
             </p>
     
@@ -60,25 +69,26 @@ if (isset($_SESSION["profesor_id"])) {
             
         </div>
 
-         <!------------------------------------ HEADER -------------------------------------->
+        
+        <!------------------------------------ HEADER -------------------------------------->
 
         <header class="header">
           <div class="logo-container">
               <a class="logo-principal" data-enlace="inicio">
-                <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
+                  <img data-src="logo_autoescuela" alt="Logo Autoescuela Almansa" width="100" height="100">
               </a>
           </div>
           
           <nav id="menu-navegacion">
-              <div id="menu-carnets">
-                  <a href="#carnets" data-enlace="carnets">Carnets</a>
-                  <div id="submenu-carnets">
-                      <a id="submenu-coche" data-enlace="coche">Coche - B</a>
-                      <a id="submenu-precio" data-enlace="precio">Precios - B</a>
-                      <a id="submenu-intensivos" data-enlace="cursos_intensivos">Cursos Intensivos</a>
-                      <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
-                  </div>
-              </div>
+            <div id="menu-carnets">
+                <a href="#carnets" data-enlace="carnets">Carnets</a>
+                <div id="submenu-carnets">
+                    <a id="submenu-coche" data-enlace="coche">Coche - B</a>
+                    <a id="submenu-precio" data-enlace="precio">Precios - B</a>
+                    <a id="submenu-intensivos"data-enlace="cursos_intensivos">Cursos Intensivos</a>
+                    <a id="submenu-reciclaje" data-enlace="clases_reciclaje">Clases de Reciclaje</a>
+                </div>
+            </div>
           
               <div id="menu-alumnos">
                   <a href="#alumnos" data-enlace="alumnos">Alumnos</a>
@@ -92,7 +102,7 @@ if (isset($_SESSION["profesor_id"])) {
                   <a>Profesores</a>
                   <div id="submenu-profesores">
                       <a data-enlace="profesores">Conoce a tus profesores</a>
-                      <a data-enlace="login">Area profesores</a>
+                      <a data-enlace="login_profesores">Area profesores</a>
                   </div>
               </div>
           
@@ -112,38 +122,22 @@ if (isset($_SESSION["profesor_id"])) {
                   <a data-enlace="contacto">Contacto</a>
               </div>
           </nav>
-          </header>
+      </header>
 
-        <!--================================= AREA DE PROFESORES ============================  -->
 
-        <h2 id="titulo-login-profesor">Login de profesores</h2>
-<form action="../../php/validar_login_profesores/validar_login_profesores.php" method="POST" id="formulario-login">
 
-  <div id="campo">
-    <label for="correo">Correo:</label>
-    <input type="email" name="correo" id="correo" placeholder="Introduce tu correo" required><br><br>
-    <p id="mensaje-error-correo" class="mensaje-error"></p>
-  </div>
+    <!-- =============================== RECUPERAR CONTRASEÑA ============================= -->
+    <h2>Recuperar contraseña</h2>
 
-  <div id="campo">
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" name="contrasena" id="contrasena" placeholder="Introduce tu contraseña" required>
-    <button type="button" id="mostrar-contrasena">Mostrar</button>
-    <p id="mensaje-error-contrasena" class="mensaje-error"></p>
-  </div>
+    <form method="POST" id="formulario-recuperar">
+        <label for="correo">Introduce tu correo:</label>
+        <input type="email" name="correo" id="correo" placeholder="Correo electrónico" required>
+        <p class="mensaje-error"><?= $mensaje_error ?? '' ?></p>
+        <input type="submit" value="Recuperar contraseña">
+    </form>
 
-  <label>
-    <input type="checkbox" name="recordar" value="1"> Recordarme
-  </label><br><br>
 
-  <input type="submit" value="Iniciar sesión">
-</form>
-
-    <p><a id="enlace" href="../../html/recuperar_contraseña/recuperar_contraseña.php">¿Olvidaste tu contraseña?</a></p>
-
-     
-     <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->
-
+      <!-------------------------------- FOOTER ------------------------------------>
 
      <footer id="pie-pagina">
       <div class="container-footer">
@@ -155,10 +149,10 @@ if (isset($_SESSION["profesor_id"])) {
           </p>
     
           <div class="social-icons">
-            <a data-src="gmail" target="_blank">
+            <a href="https://www.facebook.com/" target="_blank">
               <img data-src="fb" alt="facebook" width="30" height="30">
             </a>
-            <a data-src="instagram" target="_blank">
+            <a href="https://www.instagram.com/" target="_blank">
               <img data-src="instagram" alt="instagram" width="30" height="30">
             </a>
           </div>
@@ -180,8 +174,5 @@ if (isset($_SESSION["profesor_id"])) {
         <p id="texto-pie-pagina">Desarrollado por: Antonio Almansa</p>
       </div>
     </footer>
-
-    
-    
 </body>
 </html>

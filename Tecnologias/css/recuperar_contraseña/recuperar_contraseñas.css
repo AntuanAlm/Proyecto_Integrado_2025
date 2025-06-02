@@ -1,0 +1,101 @@
+:root {
+    --color-fondo: #f7faf4;               /* Fondo general claro */
+    --color-principal: midnightblue;      /* Color principal (azul oscuro) */
+    --color-secundario: #eeee22;          /* Amarillo suave */
+    --color-texto: #1a1a1a;               /* Texto principal */
+    --color-error: #e74c3c;               /* Mensajes de error */
+    --borde-radio: 10px;                  /* Bordes redondeados */
+    --sombra: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --transicion: 0.3s ease;
+}
+
+
+#formulario-recuperar {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* centra horizontalmente */
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: aparecer 0.8s ease forwards;
+}
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== ANIMACIÓN DE ENTRADA ========== */
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== TÍTULO ========== */
+h2 {
+    color: var(--color-principal);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ========== ETIQUETAS ========== */
+label {
+    font-size: 1rem;
+    color: var(--color-texto);
+    margin-bottom: 0.3rem;
+}
+
+/* ========== CAMPOS DE TEXTO ========== */
+input[type="email"] {
+    padding: 0.7rem;
+    border: 2px solid #d0d0d0;
+    border-radius: var(--borde-radio);
+    font-size: 1rem;
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+input[type="email"]:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 5px var(--color-principal);
+    outline: none;
+}
+
+/* ========== MENSAJE DE ERROR ========== */
+.mensaje-error {
+    color: var(--color-error);
+    font-size: 0.95rem;
+    min-height: 1.2em;
+    margin-top: -0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ========== BOTÓN ========== */
+input[type="submit"] {
+    background: var(--color-principal);
+    color: var(--color-secundario);
+    border: none;
+    border-radius: var(--borde-radio);
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background var(--transicion), transform var(--transicion);
+}
+
+input[type="submit"]:hover {
+    background: #00004a;
+    transform: translateY(-2px) scale(1.03);
+}
