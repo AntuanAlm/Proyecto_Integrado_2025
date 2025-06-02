@@ -24,7 +24,7 @@ session_start(); // Inicia la sesión
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/carrito_compra/carrito.js"></script>
+    <script src="../../js/carritoFinal.js"></script>
 
 
 </head>

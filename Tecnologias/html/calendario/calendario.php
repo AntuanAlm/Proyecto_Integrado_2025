@@ -26,7 +26,7 @@ $esProfesor = isset($_SESSION["profesor_id"]); // Verificar si el usuario es pro
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/carrito_compra/carrito.js"></script>
+    <script src="../../js/carritoFinal.js"></script>
     <script src="../../js/calendario/calendario.js"></script>
     <script src="../../js/cerrar_ventanas_emergentes/cerrar_ventanas_emergentes.js"></script>
 

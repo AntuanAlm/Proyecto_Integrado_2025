@@ -33,7 +33,7 @@ if (isset($_SESSION['mensaje'])) {
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/carrito_compra/carrito.js"></script>
+    <script src="../../js/carritoFinal.js"></script>
     <script src="../../js/carrusel_reseñas/carrusel_reseñas.js"></script>
     <script src="../../js/validaciones_formulario_contacto/validaciones_formulario_contacto.js"></script>
     <script src="../../js/menu_flotante_sesion/menu_flotante_sesion.js"></script>

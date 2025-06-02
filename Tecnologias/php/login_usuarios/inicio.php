@@ -4,7 +4,7 @@ session_start();
 // Verificar si el usuario está logueado
 if (!isset($_SESSION['usuario'])) {
     // Si no hay sesión activa, redirigir al login
-    header("Location: ../html/login_usuario/login_usuario.html"); // Asegúrate de que la ruta sea correcta
+    header("Location: ../html/login_usuario/login_usuario.html"); 
     exit;
 }
 ?>

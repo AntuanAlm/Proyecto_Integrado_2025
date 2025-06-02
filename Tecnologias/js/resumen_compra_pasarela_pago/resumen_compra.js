@@ -81,5 +81,5 @@ function realizarPago() {
 
     alert("Procesando pago... por favor espere.");
     localStorage.removeItem("carrito");
-    window.location.href = "../agradecimiento_pago/agradecimiento_pago.html"; // redirige tras pagar
+    window.location.href = "../agradecimiento_pago/agradecimiento_pago.html"; 
 }

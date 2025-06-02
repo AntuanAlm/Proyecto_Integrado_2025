@@ -22,9 +22,11 @@
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/carrito_compra/carrito.js"></script>
+    <!-- <script src="../../js/carrito_compra/carrito.js"></script> -->
     <script src="../../js/resumen_compra_pasarela_pago/resumen_compra.js"></script>
     <script src="../../js/pagos_diferentes/pagos_diferentes.js"></script>
+    <!-- <script src="../../js/registrar_compra/registrar_compra.js"></script> -->
+     <script src="../../js/carritoFinal.js"></script>
   
 
 
@@ -105,17 +107,17 @@
 
     <!-- ============================== PASARELA DE PAGO ================================= -->
     <h1>Resumen de tu compra</h1>
-    <div id="carrito-contenedor"></div>
-    
-    <!-- botones para métodos de pago diferentes -->
-    <div id="metodos-pago">
-      <h2>Elige tu método de pago</h2>
-      <button class="boton-pago paypal" onclick="pagarConPaypal()">💳 PayPal</button>
-      <button class="boton-pago bizum" onclick="pagarConBizum()">📱 Bizum</button>
-      <button class="boton-pago tarjeta" onclick="pagarConTarjeta()">🏦 Tarjeta</button>
-      <button class="boton-pago simulacion" onclick="realizarPago()">🛠 Simulación</button>
-      
-    </div>
+<div id="carrito-contenedor"></div>
+
+<!-- Botones para métodos de pago -->
+<div id="metodos-pago">
+  <h2>Elige tu método de pago</h2>
+  <button class="boton-pago paypal" onclick="procesarPago('PayPal')">💳 PayPal</button>
+  <button class="boton-pago bizum" onclick="procesarPago('Bizum')">📱 Bizum</button>
+  <button class="boton-pago tarjeta" onclick="procesarPago('Tarjeta')">🏦 Tarjeta</button>
+  <button class="boton-pago simulacion" onclick="procesarPago('Simulación')">🛠 Simulación</button>
+</div>
+
     
 
 <!-- -------------------------- FOOTER O PIE DE PAGINA -------------------------- -->

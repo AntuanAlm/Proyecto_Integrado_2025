@@ -2,7 +2,7 @@
 session_start();
 
 // Incluir el archivo de conexión a la base de datos
-require_once '../conexion/conexion.php'; // Asegúrate de que la ruta sea correcta
+require_once '../conexion/conexion.php'; 
 
 // Generar un CSRF token para el formulario : Esto es para la seguridad. Un token CSRF protege contra ataques en los 
 // que un atacante intenta enviar solicitudes maliciosas en nombre de un usuario legítimo.
@@ -87,9 +87,10 @@ if (!empty($errores)) {
     $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
     // Preparar la consulta SQL de inserción
-    $query = "INSERT INTO clientes (nombre, apellidos, dni, telefono, correo, contrasena, fecha_nacimiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conexion->prepare($query); // Prepara la consulta de inserción.
-    $stmt->bind_param("sssssss", $nombre, $apellidos, $dni, $telefono, $correo, $contrasena_hash, $fecha_nacimiento); // Asocia los parámetros a la consulta.
+    $query = "INSERT INTO clientes (nombre, apellidos, dni, telefono, correo, contrasena, fecha_nacimiento, profesor_id) VALUES (?, ?, ?, ?, ?, ?, ?, 2)";
+    $stmt = $conexion->prepare($query);
+    $stmt->bind_param("sssssss", $nombre, $apellidos, $dni, $telefono, $correo, $contrasena_hash, $fecha_nacimiento);
+
 
     // Ejecutar la consulta
     if ($stmt->execute()) { // Si la consulta se ejecuta correctamente, se inserta el nuevo cliente.

@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ];
             $_SESSION['ultimo_acceso'] = time();
 
-            session_regenerate_id(true); // Seguridad extra contra robo de sesión
+            session_regenerate_id(true); // Seguridad extra para evitar el robo de sesión
 
             // Redirige al área de alumnos
             header("Location: ../../html/area_alumnos/area_alumnos.php");

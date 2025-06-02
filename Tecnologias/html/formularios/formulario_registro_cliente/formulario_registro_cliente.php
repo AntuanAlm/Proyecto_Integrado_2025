@@ -39,7 +39,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
   <!-- JS -->
    <script src="../../../js/enlaces_href/universal_form_registro.js"></script>    
    <script src="../../../js/enlaces_src/imagenes_form_registro.js"></script>
-   <script src="../../../js/carrito_compra/carrito.js"></script>
+   <script src="../../../js/carritoFinal.js"></script>
    <script src="../../../js/validaciones_formulario_registro/validaciones_formularios_registro.js"></script>
 </head>
 <body>

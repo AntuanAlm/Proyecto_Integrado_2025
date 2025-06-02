@@ -27,7 +27,7 @@ $esProfesor = isset($_SESSION["profesor_id"]); // 🔹 Verifica si el usuario es
     <!-- JS -->
     <script src="../../js/enlaces_href/universal.js"></script>
     <script src="../../js/enlaces_src/imagenes.js"></script>
-    <script src="../../js/carrito_compra/carrito.js"></script>
+    <script src="../../js/carritoFinal.js"></script>
     <script src="../../js/borrar_reseñas/borrar_reseñas.js"></script>
     <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script>
 
