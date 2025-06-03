@@ -253,3 +253,19 @@
   background-color: var(--color-principal);
   transform: scale(1.1);
 }
+
+.boton-editar{
+  background-color: var(--color-secundario);
+  color: #fff;
+  border: none;
+  padding: var(--relleno-pequeno);
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-size: var(--tamano-fuente-parrafo);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.boton-editar:hover {
+  background-color: var(--color-principal);
+  transform: scale(1.1);
+}

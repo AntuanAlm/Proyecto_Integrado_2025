@@ -166,7 +166,6 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
       <div>
         <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
         <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required onkeydown="return false" onpaste="return false">
-
         <p id="error-fecha_nacimiento" class="error-message"></p>
       </div>
 

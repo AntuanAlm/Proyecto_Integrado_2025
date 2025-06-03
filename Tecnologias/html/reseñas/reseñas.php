@@ -29,7 +29,7 @@ $esProfesor = isset($_SESSION["profesor_id"]); // 🔹 Verifica si el usuario es
     <script src="../../js/enlaces_src/imagenes.js"></script>
     <script src="../../js/carritoFinal.js"></script>
     <script src="../../js/borrar_reseñas/borrar_reseñas.js"></script>
-    <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script>
+    <!-- <script src="../../js/cerrar_sesion/cerrar_sesion.js"></script> -->
 
 
 </head>
@@ -154,7 +154,6 @@ $esProfesor = isset($_SESSION["profesor_id"]); // 🔹 Verifica si el usuario es
         <p>¡Increíble experiencia! Aunque solo hice las prácticas aquí, María es una profesora espectacular que hace que aprender sea un placer. ¡Recomendada al 100%!</p>
         <?php if ($esProfesor): ?> 
             <button class="boton-borrar">❌ Borrar</button>
-
         <?php endif; ?>
     </div>
 
