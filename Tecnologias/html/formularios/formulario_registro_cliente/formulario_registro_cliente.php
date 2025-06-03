@@ -165,7 +165,8 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
       <div>
         <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-        <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required >
+        <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required onkeydown="return false" onpaste="return false">
+
         <p id="error-fecha_nacimiento" class="error-message"></p>
       </div>
 
@@ -190,6 +191,13 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
       <div>
         <label for="contrasena">Contraseña:</label>
         <input id="contrasena" name="contrasena" type="password" placeholder="Tu contraseña" required>
+        <button type="button" onclick="mostrarContraseña()">Mostrar contraseña</button>
+        <script>
+        function mostrarContraseña() {
+          const input = document.getElementById('contrasena');
+          input.type = input.type === 'password' ? 'text' : 'password';
+        }
+        </script>
         <p id="error-contrasena" class="error-message"></p>
       </div>
 
