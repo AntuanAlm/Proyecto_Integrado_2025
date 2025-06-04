@@ -156,6 +156,87 @@ button:active {
   opacity: 0.8;
 }
 
+/* ================= FORMULARIO DE PAGO =================== */
+
+#formulario-pago {
+  background: var(--color-terciario);
+  border-radius: var(--borde-radio);
+  box-shadow: var(--sombra-suave);
+  padding: 24px 18px 18px 18px;
+  margin: 20px auto 0 auto;
+  width: 100%;
+  max-width: 400px;
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  animation: fadeUp 0.6s ease-out;
+}
+
+#formulario-pago h2 {
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 1.3rem;
+}
+
+#formulario-pago label {
+  color: var(--color-primario);
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+  font-size: 1rem;
+}
+
+#formulario-pago input[type="text"],
+#formulario-pago input[type="email"],
+#formulario-pago input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #bfc4d6;
+  border-radius: var(--borde-radio);
+  background: var(--color-secundario);
+  color: var(--color-primario);
+  font-size: 1rem;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+#formulario-pago input:focus {
+  border-color: var(--color-primario);
+  outline: none;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+#finalizarPago {
+  width: 100%;
+  max-width: 400px;
+  margin: 18px auto 0 auto;
+  display: none;
+}
+
+@media (max-width: 600px) {
+  #carrito-contenedor,
+  #carrito-contenido,
+  #formulario-pago,
+  #finalizarPago {
+    max-width: 98vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+  .carrito-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .boton-pago {
+    width: 90%;
+    font-size: 1rem;
+  }
+}
+
 @keyframes fadeUp {
   to {
     opacity: 1;

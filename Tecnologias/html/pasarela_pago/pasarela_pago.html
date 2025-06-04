@@ -112,11 +112,16 @@
 <!-- Botones para métodos de pago -->
 <div id="metodos-pago">
   <h2>Elige tu método de pago</h2>
-  <button class="boton-pago paypal" onclick="procesarPago('PayPal')">💳 PayPal</button>
-  <button class="boton-pago bizum" onclick="procesarPago('Bizum')">📱 Bizum</button>
-  <button class="boton-pago tarjeta" onclick="procesarPago('Tarjeta')">🏦 Tarjeta</button>
-  <button class="boton-pago simulacion" onclick="procesarPago('Simulación')">🛠 Simulación</button>
+  <button class="boton-pago paypal" onclick="mostrarFormulario('PayPal')">💳 PayPal</button>
+  <button class="boton-pago bizum" onclick="mostrarFormulario('Bizum')">📱 Bizum</button>
+  <button class="boton-pago tarjeta" onclick="mostrarFormulario('Tarjeta')">🏦 Tarjeta</button>
 </div>
+
+<!-- Contenedor para el formulario de pago dinámico -->
+<div id="formulario-pago" style="display: none;"></div>
+
+<!-- Botón para finalizar el pago -->
+<button id="finalizarPago" style="display: none;" onclick="procesarPago()">Finalizar Pago ✅</button>
 
     
 

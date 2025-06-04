@@ -153,19 +153,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnPagar) btnPagar.addEventListener("click", verificarSesionYPagar);
 });
 
-function procesarPago(metodo) {
+function procesarPago() {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let metodoPago = localStorage.getItem("metodoPago");
+
+    if (!metodoPago) {
+        alert("⚠️ Selecciona un método de pago antes de proceder.");
+        return;
+    }
 
     if (carrito.length === 0) {
         alert("⚠️ No hay productos en el carrito.");
         window.location.href = "../../html/precio/precio.html";
         return;
     }
+    if (metodoPago === "Tarjeta") {
+        let numero = document.getElementById("numero").value.trim();
+        let fecha = document.getElementById("fecha").value.trim();
+        let cvv = document.getElementById("cvv").value.trim();
 
-    alert(`⏳ Procesando pago con ${metodo}...`);
+        if (numero === "" || fecha === "" || cvv === "") {
+            alert("⚠️ Completa todos los campos de la tarjeta para proceder.");
+            return;
+        }
+    }
+
+    alert(`⏳ Procesando pago con ${metodoPago}...`);
 
     setTimeout(() => {
-        alert(`✅ Pago realizado con éxito usando ${metodo}.`);
+        alert(`✅ Pago realizado con éxito usando ${metodoPago}.`);
         realizarPago(carrito);
     }, 2000);
 }
