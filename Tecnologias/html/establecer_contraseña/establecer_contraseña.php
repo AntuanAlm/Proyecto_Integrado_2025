@@ -34,6 +34,9 @@ if (empty($correo) || empty($tipo_usuario)) {
     <script src="../../js/enlaces_src/imagenes.js"></script>
 </head>
 <body>
+
+<!-- ======================= RECUPERAR CONTRASEÑA Y CAMBIAR ================= -->
+ 
     <h2>Establecer nueva contraseña</h2>
 
     <form id="formulario-cambio" method="POST" action="../../php/procesar_cambio_contraseña/procesar_cambio_contraseña.php">

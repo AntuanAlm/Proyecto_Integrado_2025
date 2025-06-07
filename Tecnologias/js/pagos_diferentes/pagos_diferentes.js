@@ -22,7 +22,7 @@ function mostrarFormulario(tipo) {
             <input type="text" id="fecha" placeholder="MM/AA">
             <label for="cvv">CVV:</label>
             <div style="display: flex; align-items: center;">
-          <input type="password" id="cvv" maxlength="4" placeholder="123" style="margin-right:5px;">
+          <input type="password" id="cvv" maxlength="3" placeholder="123" style="margin-right:5px;">
           <button type="button" id="toggle-cvv" tabindex="-1" style="padding:2px 8px;">👁️</button>
             </div>
         `;

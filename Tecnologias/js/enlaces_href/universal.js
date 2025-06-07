@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Obtén todos los enlaces con el atributo data-enlace
+  // Obtengo todos los enlaces con el atributo data-enlace
   const enlaces = document.querySelectorAll('[data-enlace]');
 
   // Configura las rutas en un objeto (rutas relativas ajustadas)

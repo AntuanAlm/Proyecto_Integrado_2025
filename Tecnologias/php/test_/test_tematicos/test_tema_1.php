@@ -103,85 +103,130 @@ if ($resultado_ayuda) {
 </form>
 
 <script>
+// Variable para saber en qué pregunta estamos
 let indiceActual = 0;
 
+// Cambia la imagen según el número de la pregunta
 function cambiarImagen(numeroPregunta) {
+    // Si el número es menor que 1, lo pone a 1
     if (numeroPregunta < 1) numeroPregunta = 1;
+    // Crea la ruta de la imagen usando el número de la pregunta
     const ruta = "http://localhost/Proyecto_Integrado_2025/Tecnologias/img/test_tematicos/tema_1/" + numeroPregunta + ".png";
+    // Cambia la imagen en la página
     document.getElementById("imagenPregunta").src = ruta;
 }
 
+// Muestra solo la pregunta que toca y oculta las demás
 function mostrarPregunta(indice) {
+    // Busca todas las preguntas
     const preguntas = document.querySelectorAll('.pregunta');
+    // Recorre todas las preguntas
     preguntas.forEach((p, i) => {
+        // Solo muestra la pregunta actual, oculta las otras
         p.style.display = i === indice ? 'block' : 'none';
     });
 
+    // Busca el número de la pregunta actual
     const numero = preguntas[indice]?.dataset.numero;
+    // Si hay número, cambia la imagen
     if (numero) cambiarImagen(parseInt(numero));
 
+    // Busca todos los botones de navegación
     const botones = document.querySelectorAll('#cuadrosNavegacion button.cuadro-navegacion');
+    // Recorre los botones
     botones.forEach((btn, i) => {
+        // Marca el botón de la pregunta actual
         if (i === indice) btn.classList.add('active');
+        // Quita la marca a los demás
         else btn.classList.remove('active');
     });
 }
 
+// Pasa a la siguiente pregunta si no es la última
 function siguientePregunta() {
+    // Busca todas las preguntas
     const preguntas = document.querySelectorAll('.pregunta');
+    // Si no estamos en la última pregunta
     if (indiceActual < preguntas.length - 1) {
+        // Suma uno al índice
         indiceActual++;
+        // Muestra la nueva pregunta
         mostrarPregunta(indiceActual);
     }
 }
 
+// Vuelve a la pregunta anterior si no es la primera
 function anteriorPregunta() {
+    // Si no estamos en la primera pregunta
     if (indiceActual > 0) {
+        // Resta uno al índice
         indiceActual--;
+        // Muestra la pregunta anterior
         mostrarPregunta(indiceActual);
     }
 }
 
+// Borra la respuesta marcada en la pregunta actual
 function eliminarRespuestaVisible() {
+    // Busca todas las preguntas
     const preguntas = document.querySelectorAll('.pregunta');
+    // Busca la pregunta actual
     const actual = preguntas[indiceActual];
+    // Si no hay pregunta, sale
     if (!actual) return;
+    // Busca todos los radios (opciones) de la pregunta
     const radios = actual.querySelectorAll('input[type="radio"]');
+    // Desmarca todas las opciones
     radios.forEach(r => r.checked = false);
 }
 
+// Crea los botones para navegar entre preguntas
 function crearCuadrosNavegacion() {
+    // Busca el contenedor de los botones
     const contenedor = document.getElementById('cuadrosNavegacion');
+    // Busca todas las preguntas
     const preguntas = document.querySelectorAll('.pregunta');
 
+    // Limpia el contenedor
     contenedor.innerHTML = '';
 
+    // Recorre todas las preguntas
     preguntas.forEach((p, i) => {
+        // Crea un botón para cada pregunta
         const boton = document.createElement('button');
         boton.type = 'button';
-        boton.textContent = i + 1;
+        boton.textContent = i + 1; // El número del botón
         boton.classList.add('cuadro-navegacion');
 
+        // Cuando se hace clic, muestra esa pregunta
         boton.addEventListener('click', () => {
             indiceActual = i;
             mostrarPregunta(indiceActual);
         });
 
+        // Añade el botón al contenedor
         contenedor.appendChild(boton);
     });
 }
 
+// Muestra u oculta la ayuda de una pregunta
 function toggleAyuda(preguntaId) {
+    // Busca el div de la ayuda de esa pregunta
     const divAyuda = document.getElementById('ayuda_' + preguntaId);
+    // Si está visible, la oculta
     if (divAyuda.style.display === 'block') {
         divAyuda.style.display = 'none';
     } else {
+        // Si está oculta, la muestra
         divAyuda.style.display = 'block';
     }
 }
 
+// Cuando la página termina de cargar
 document.addEventListener("DOMContentLoaded", () => {
+    // Crea los botones de navegación
     crearCuadrosNavegacion();
+    // Muestra la primera pregunta
     mostrarPregunta(indiceActual);
 });
 </script>

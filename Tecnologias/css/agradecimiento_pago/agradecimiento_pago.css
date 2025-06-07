@@ -1,76 +1,120 @@
- .container-agradecimiento {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 30px 25px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: midnightblue;
+:root {
+    --ancho-maximo-contenedor: 800px;
+    --margen-vertical-contenedor: 60px;
+    --relleno-contenedor: 30px 25px;
+    --color-fondo-contenedor: #ffffff;
+    --radio-borde-contenedor: 16px;
+    --sombra-contenedor: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --alineacion-texto: center;
+    --color-texto-principal: midnightblue;
+
+    --tamano-titulo: 2.5rem;
+    --margen-inferior-titulo: 1.5rem;
+    --sombra-texto-titulo: 0 2px 4px rgba(0, 0, 0, 0.08);
+
+    --tamano-parrafo: 1.15rem;
+    --altura-linea-parrafo: 1.7;
+    --margen-inferior-parrafo: 1.5rem;
+
+    --espacio-entre-botones: 16px;
+    --margen-superior-botones: 20px;
+
+    --relleno-boton: 12px 24px;
+    --color-fondo-boton: midnightblue;
+    --color-texto-boton: white;
+    --tamano-texto-boton: 1rem;
+    --peso-texto-boton: 600;
+    --radio-borde-boton: 8px;
+    --transicion-boton: background-color 0.3s ease, transform 0.2s ease;
+    --sombra-boton: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    --color-fondo-boton-hover: #2c3e90;
+    --escala-boton-hover: 1.05;
+
+    --borde-focus-boton: 2px solid #2c3e90;
+    --separacion-borde-focus: 4px;
+
+    /* Responsive */
+    --relleno-contenedor-movil: 20px 15px;
+    --tamano-titulo-movil: 2rem;
+    --tamano-parrafo-movil: 1rem;
+    --espacio-entre-botones-movil: 12px;
+}
+
+.container-agradecimiento {
+    max-width: var(--ancho-maximo-contenedor);
+    margin: var(--margen-vertical-contenedor) auto;
+    padding: var(--relleno-contenedor);
+    background-color: var(--color-fondo-contenedor);
+    border-radius: var(--radio-borde-contenedor);
+    box-shadow: var(--sombra-contenedor);
+    text-align: var(--alineacion-texto);
+    color: var(--color-texto-principal);
+    animation: slideIn 0.8s ease-out;
 }
 
 .container-agradecimiento h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: midnightblue;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-size: var(--tamano-titulo);
+    margin-bottom: var(--margen-inferior-titulo);
+    color: var(--color-texto-principal);
+    text-shadow: var(--sombra-texto-titulo);
 }
 
 .container-agradecimiento p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    color: midnightblue;
+    font-size: var(--tamano-parrafo);
+    line-height: var(--altura-linea-parrafo);
+    margin-bottom: var(--margen-inferior-parrafo);
+    color: var(--color-texto-principal);
 }
 
 .botones {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: var(--espacio-entre-botones);
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: var(--margen-superior-botones);
 }
 
 .button {
     display: inline-block;
-    padding: 12px 24px;
-    background-color: midnightblue;
-    color: white;
+    padding: var(--relleno-boton);
+    background-color: var(--color-fondo-boton);
+    color: var(--color-texto-boton);
     text-decoration: none;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    font-size: var(--tamano-texto-boton);
+    font-weight: var(--peso-texto-boton);
+    border-radius: var(--radio-borde-boton);
+    transition: var(--transicion-boton);
+    box-shadow: var(--sombra-boton);
 }
 
 .button:hover {
-    background-color: #2c3e90;
-    transform: scale(1.05);
+    background-color: var(--color-fondo-boton-hover);
+    transform: scale(var(--escala-boton-hover));
 }
 
 .button:focus {
-    outline: 2px solid #2c3e90;
-    outline-offset: 4px;
+    outline: var(--borde-focus-boton);
+    outline-offset: var(--separacion-borde-focus);
 }
 
 @media (max-width: 480px) {
     .container-agradecimiento {
-        padding: 20px 15px;
+        padding: var(--relleno-contenedor-movil);
     }
 
     .container-agradecimiento h1 {
-        font-size: 2rem;
+        font-size: var(--tamano-titulo-movil);
     }
 
     .container-agradecimiento p {
-        font-size: 1rem;
+        font-size: var(--tamano-parrafo-movil);
     }
 
     .botones {
         flex-direction: column;
-        gap: 12px;
+        gap: var(--espacio-entre-botones-movil);
     }
 
     .button {
@@ -79,7 +123,7 @@
     }
 }
 
-/* Animanacion para el pago */
+/* Animación para el pago */
 @keyframes slideIn {
     from {
         transform: translateY(-50px);
@@ -89,8 +133,4 @@
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.container-agradecimiento {
-    animation: slideIn 0.8s ease-out;
 }

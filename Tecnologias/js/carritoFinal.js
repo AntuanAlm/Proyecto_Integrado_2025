@@ -18,6 +18,25 @@ function agregarAlCarrito(nombre, precio, tipo) {
             }
 
             let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+            // Verificar restricción entre "Pack Completo" y "Teórico"
+            let tienePackCompleto = carrito.some(item => item.nombre === "Pack Completo");
+            let tieneTeorico = carrito.some(item => item.nombre === "Teórico");
+
+            if ((nombre === "Pack Completo" && tieneTeorico) || (nombre === "Teórico" && tienePackCompleto)) {
+                alert(`❌ No puedes añadir '${nombre}' porque ya tienes en el carrito un producto que es compatible con el teórico.`);
+                return;
+            }
+
+            // No permitir añadir dos veces "Teórico" o "Pack Completo"
+            if (
+                (nombre === "Teórico" && carrito.some(item => item.nombre === "Teórico")) ||
+                (nombre === "Pack Completo" && carrito.some(item => item.nombre === "Pack Completo"))
+            ) {
+                alert(`❌ No puedes añadir '${nombre}' más de una vez al carrito.`);
+                return;
+            }
+
             let existente = carrito.find(item => item.nombre === nombre);
 
             if (existente) {
@@ -32,6 +51,7 @@ function agregarAlCarrito(nombre, precio, tipo) {
         })
         .catch(error => console.error("❌ Error al verificar usuario:", error));
 }
+
 
 // ================== ELIMINAR PRODUCTO DEL CARRITO ==================
 function eliminarDelCarrito(nombre) {
@@ -102,10 +122,10 @@ function verificarSesionYPagar() {
                 return;
             }
 
-            // 🔹 Guardamos el carrito antes de redirigir
+            // Guardamos el carrito antes de redirigir
             localStorage.setItem("carrito", JSON.stringify(carrito));
 
-            // 🔹 Redirigir a la pasarela de pago
+            // Redirigir a la pasarela de pago
             window.location.href = "../../html/pasarela_pago/pasarela_pago.html";
         })
         .catch(error => console.error("❌ Error al verificar sesión:", error));

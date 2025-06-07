@@ -12,6 +12,8 @@
   animation: fadeInDown 0.8s ease forwards;
 }
 
+/* --------------------------- ANIMACIÓN PRINCIPAL -------------------------------- */
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -190,44 +192,6 @@
   }
 }
 
-
-/* ======================== LOS TESTS ========================= */
-
-/* #titulo-acceso-test-alumnos {
-font-size: 2rem;
-color: midnightblue;
-text-align: center;
-margin: 30px 0;
-font-weight: bold;
-text-transform: uppercase;
-letter-spacing: 1.5px;
-}
-
-#enlace-test-alumnos {
-display: flex;
-justify-content: center;
-margin: 20px 0;
-}
-
-#enlace-test-alumnos a {
-font-size: 1.2rem;
-color: white;
-background-color: midnightblue;
-padding: 10px 20px;
-border-radius: 10px;
-text-decoration: none;
-font-weight: bold;
-transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#enlace-test-alumnos a:hover {
-background-color: royalblue;
-transform: scale(1.05);
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-} */
-
-
-
 #auto-titulo{
   color: #eeee22;
 }
@@ -246,7 +210,7 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   margin: 60px auto 20px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px; /* Espaciado elegante entre letras */
+  letter-spacing: 2px; 
   position: relative;
 }
 
@@ -258,38 +222,38 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background-color: #f4f7fa;
   margin: 10px auto 0;
   border-radius: 2px;
-  box-shadow: 0px 0px 6px rgba(244, 247, 250, 0.6); /* Detalle decorativo */
+  box-shadow: 0px 0px 6px rgba(244, 247, 250, 0.6); 
 }
 
 /* Contenedor del texto */
 #container-texto-direfencias {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espacio entre los párrafos */
-  background: linear-gradient(to bottom, midnightblue, #1e3a77); /* Degradado más elegante */
+  gap: 20px; 
+  background: linear-gradient(to bottom, midnightblue, #1e3a77); 
   border-radius: 15px; /* Bordes más suaves */
   padding: 40px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más profesional */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); 
   max-width: 900px;
-  margin: 0 auto; /* Centra el contenedor */
+  margin: 0 auto; 
   transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 #container-texto-direfencias:hover {
   box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(to bottom, midnightblue, #283f80); /* Cambia ligeramente el fondo */
+  background: linear-gradient(to bottom, midnightblue, #283f80); 
 }
 
 /* Estilo para los párrafos */
 #container-texto-direfencias #texto-diferencias,
 #texto-diferencias-3 {
-  line-height: 1.8; /* Mejora la legibilidad */
-  color: #f4f7fa; /* Color agradable para el texto */
+  line-height: 1.8; 
+  color: #f4f7fa; 
   text-align: justify;
-  transition: transform 0.3s ease, color 0.3s ease, scale 0.3s ease; /* Suaviza la animación */
-  font-size: 1.2rem; /* Ajusta el tamaño del texto */
-  font-weight: 400; /* Peso de fuente estándar */
-  margin: 10px 0; /* Espaciado entre párrafos */
+  transition: transform 0.3s ease, color 0.3s ease, scale 0.3s ease; 
+  font-size: 1.2rem; 
+  font-weight: 400; 
+  margin: 10px 0; 
 }
 
 #texto-diferencias-3 {
@@ -298,25 +262,25 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
 #texto-diferencias-3:hover,
 #container-texto-direfencias #texto-diferencias:hover {
-  transform: scale(1.05); /* Agranda ligeramente el texto */
-  color: #dce6f1; /* Resalta el texto con un tono más claro */
+  transform: scale(1.05); 
+  color: #dce6f1; 
 }
 
 /* Diseño responsive para pantallas más pequeñas */
 @media (max-width: 768px) {
   #subtitulo-diferencias {
-    font-size: 1.6rem; /* Ajusta el tamaño del subtítulo */
-    margin-top: 40px; /* Reduce el margen superior */
+    font-size: 1.6rem; 
+    margin-top: 40px; 
   }
 
   #container-texto-direfencias {
-    padding: 20px; /* Reduce el espacio interno */
-    gap: 15px; /* Reduce el espacio entre párrafos */
+    padding: 20px; 
+    gap: 15px; 
   }
 
   #container-texto-direfencias #texto-diferencias,
   #texto-diferencias-3 {
-    font-size: 1rem; /* Reduce el tamaño del texto */
+    font-size: 1rem; 
   }
 }
 
@@ -334,7 +298,7 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   color: midnightblue;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px; /* Añade espaciado entre letras */
+  letter-spacing: 1.5px; 
 }
 
 .carrusel-contenedor {
@@ -344,7 +308,7 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   background-color: #1a1a1a;
   border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); 
 }
 
 .carrusel-item {
@@ -353,34 +317,34 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background: midnightblue;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Mejora la sombra */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .carrusel-item img {
   border-radius: 50%;
-  margin-bottom: 15px; /* Más espacio debajo de la imagen */
-  width: 110px; /* Imagen ligeramente más grande */
+  margin-bottom: 15px; 
+  width: 110px; 
   height: 110px;
-  border: 3px solid white; /* Borde para destacar */
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Sombra suave en la imagen */
+  border: 3px solid white; 
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); 
 }
 
 .carrusel-item h3 {
-  color: #ffdd57; /* Amarillo más vivo */
+  color: #ffdd57; 
   font-size: 20px;
   margin-bottom: 10px;
 }
 
 .carrusel-item p {
-  color: #e0e0e0; /* Color más claro para el texto */
+  color: #e0e0e0; 
   font-size: 16px;
-  line-height: 1.6; /* Mejora la legibilidad */
+  line-height: 1.6; 
 }
 
 .carrusel-item.activo {
   display: block;
-  transform: scale(1.02); /* Pequeña ampliación para destacar el elemento activo */
+  transform: scale(1.02); 
   opacity: 1;
 }
 
@@ -390,7 +354,7 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .carrusel-controles button {
-  background: linear-gradient(135deg, royalblue, #1e90ff); /* Degradado para los botones */
+  background: linear-gradient(135deg, royalblue, #1e90ff); 
   border: none;
   color: white;
   font-size: 18px;
@@ -399,14 +363,14 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Añade sombra */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
 .carrusel-controles button:hover {
-  background-color: #3b82f6; /* Azul más claro */
-  transform: translateY(-2px); /* Efecto sutil de elevación */
+  background-color: #3b82f6; 
+  transform: translateY(-2px); 
 }
 
 .carrusel-controles button:active {
-  transform: translateY(1px); /* Da sensación de clic */
+  transform: translateY(1px); 
 }

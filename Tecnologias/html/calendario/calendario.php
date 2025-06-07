@@ -1,5 +1,5 @@
 <?php
-session_start(); // 🔹 Iniciar sesión
+session_start(); // Iniciar sesión
 $esProfesor = isset($_SESSION["profesor_id"]); // Verificar si el usuario es profesor
 ?>
 

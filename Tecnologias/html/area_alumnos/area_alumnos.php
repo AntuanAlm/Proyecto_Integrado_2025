@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
        <?php
 if (isset($_SESSION['mensaje'])) {
     echo "<script>alert('" . htmlspecialchars($_SESSION['mensaje']) . "');</script>";
-    unset($_SESSION['mensaje']); // 🔹 Borra el mensaje para que no se repita
+    unset($_SESSION['mensaje']); // Borra el mensaje para que no se repita
 }
 ?>
 

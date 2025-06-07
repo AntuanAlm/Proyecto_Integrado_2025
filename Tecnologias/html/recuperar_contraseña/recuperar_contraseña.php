@@ -1,26 +1,26 @@
 <?php
-header("Content-Type: text/html; charset=UTF-8");
-require_once('../../php/conexion/conexion.php');
+header("Content-Type: text/html; charset=UTF-8"); // Establece el tipo de contenido y la codificación
+require_once('../../php/conexion/conexion.php'); // Incluye el archivo de conexión a la base de datos
 
-$correo = $_POST['correo'] ?? '';
+$correo = $_POST['correo'] ?? ''; // Obtiene el correo del formulario o asigna cadena vacía
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($correo)) {
-    // Verificar si el correo está en la base de datos
-    $stmt = $conexion->prepare("SELECT 'profesor' AS tipo_usuario FROM profesores WHERE correo = ? 
-                                UNION 
-                                SELECT 'alumno' AS tipo_usuario FROM clientes WHERE correo = ?");
-    $stmt->bind_param("ss", $correo, $correo);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
-    $tipo_usuario = $resultado->fetch_assoc()['tipo_usuario'] ?? null;
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($correo)) { // Si el método es POST y el correo no está vacío
+  // Verificar si el correo está en la base de datos
+  $stmt = $conexion->prepare("SELECT 'profesor' AS tipo_usuario FROM profesores WHERE correo = ? 
+                UNION 
+                SELECT 'alumno' AS tipo_usuario FROM clientes WHERE correo = ?"); // Prepara la consulta para buscar el correo en profesores o clientes
+  $stmt->bind_param("ss", $correo, $correo); // Asocia los parámetros a la consulta
+  $stmt->execute(); // Ejecuta la consulta
+  $resultado = $stmt->get_result(); // Obtiene el resultado de la consulta
+  $tipo_usuario = $resultado->fetch_assoc()['tipo_usuario'] ?? null; // Obtiene el tipo de usuario o null si no existe
 
-    if (!$tipo_usuario) {
-        $mensaje_error = "⚠️ Este correo no está registrado.";
-    } else {
-        echo "<p style='color: green;'>📩 Correo enviado. Redirigiendo en 5 segundos...</p>";
-        echo "<script>setTimeout(function(){ window.location.href = '../../html/establecer_contraseña/establecer_contraseña.php?correo=$correo&tipo=$tipo_usuario'; }, 5000);</script>";
-        exit();
-    }
+  if (!$tipo_usuario) { // Si no se encontró el correo
+    $mensaje_error = "⚠️ Este correo no está registrado."; // Muestra mensaje de error
+  } else { // Si el correo existe
+    echo "<p style='color: green;'>📩 Correo enviado. Redirigiendo en 5 segundos...</p>"; // Mensaje de éxito
+    echo "<script>setTimeout(function(){ window.location.href = '../../html/establecer_contraseña/establecer_contraseña.php?correo=$correo&tipo=$tipo_usuario'; }, 5000);</script>"; // Redirige tras 5 segundos
+    exit(); // Finaliza la ejecución del script
+  }
 }
 ?>
 

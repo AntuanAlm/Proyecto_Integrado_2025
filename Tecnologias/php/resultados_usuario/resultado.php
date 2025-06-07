@@ -14,7 +14,7 @@ if (!$conexion) {
     die("Error de conexión con la base de datos.");
 }
 
-// 🔹 **Verificar si el usuario tiene test realizados**
+// **Verificar si el usuario tiene test realizados**
 $consulta_test = "SELECT COUNT(*) AS total_tests FROM respuestas_usuario WHERE usuario_id = ?";
 $stmt_test = $conexion->prepare($consulta_test);
 $stmt_test->bind_param("i", $usuario_id);
@@ -23,7 +23,7 @@ $resultado_test = $stmt_test->get_result();
 $fila_test = $resultado_test->fetch_assoc();
 $sin_tests = ($fila_test["total_tests"] == 0);
 
-// 🔹 **Consulta original sin modificar**
+// **Consulta original sin modificar**
 $consulta_general = "
 SELECT r.intento,
        r.tema_id,
@@ -123,20 +123,20 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="volver">
     <?php
     if (isset($_SESSION["profesor_id"])) {
-        // 🔹 Si el profesor es Juan (ID = 1), redirigir a `area_profesor.php`
+        // Si el profesor es Juan (ID = 1), redirigir a `area_profesor.php`
         if ($_SESSION["profesor_id"] == 1) {
             echo '<a href="../../html/area_profesor/area_profesor.php">← Volver al perfil</a>';
         }
-        // 🔹 Si el profesor es María (ID = 2), redirigir a `area_profesora.php`
+        // Si el profesor es María (ID = 2), redirigir a `area_profesora.php`
         elseif ($_SESSION["profesor_id"] == 2) {
             echo '<a href="../../html/area_profesora/area_profesora.php">← Volver al perfil</a>';
         }
     } 
-    // 🔹 Si el usuario es alumno, redirigir a área alumnos
+    // Si el usuario es alumno, redirigir a área alumnos
     elseif (isset($_SESSION["usuario"]["id"])) {
         echo '<a href="../../html/area_alumnos/area_alumnos.php">← Volver al perfil</a>';
     } 
-    // 🔹 Si no hay sesión activa, redirigir al login
+    // Si no hay sesión activa, redirigir al login
     else {
         echo '<a href="../../html/login_usuario/login_usuario.html">← Volver al inicio</a>';
     }
@@ -155,6 +155,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 </script>
+
+<script>
+    // Evita volver al test con el botón atrás
+    window.history.pushState(null, null, window.location.href);
+    window.onpopstate = function () {
+        window.history.pushState(null, null, window.location.href);
+        alert("🚫 No puedes volver al test una vez terminado.");
+    };
+</script>
+
 
 </body>
 </html>

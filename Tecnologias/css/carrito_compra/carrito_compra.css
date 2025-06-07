@@ -145,7 +145,7 @@
  @media (max-width: 480px) {
   .carrito-menu {
     padding: 16px;
-     max-height: 80vh; /* mejor que 500px */
+     max-height: 80vh; 
   }
 
   .carrito-header h2 {

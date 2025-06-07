@@ -1,10 +1,11 @@
 // Espera a que todo el contenido del DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function() {
 
-    // Inicializa el tiempo restante en segundos (30 minutos = 1800 segundos)
+    // Inicializa el tiempo total en segundos (30 minutos = 1800 segundos)
     let tiempoRestante = 1800;
 
-    // Inicia un intervalo que se ejecuta cada 1000 milisegundos (1 segundo)
+    // Inicia el temporizador que se ejecuta cada 1 segundo o 1000 milisegundos
+    // Utiliza setInterval para llamar a la función actualizarTemporizador cada segundo
     let intervalo = setInterval(actualizarTemporizador, 1000);
 
     // Función que actualiza el temporizador cada segundo
@@ -15,17 +16,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Calcula los segundos restantes que no forman un minuto completo
         let segundos = tiempoRestante % 60;
 
-        // Obtiene el elemento HTML con id="tiempo" y actualiza su contenido
-        // Formatea los minutos y segundos para que siempre tengan 2 dígitos (ej. 09:05)
+        // Coge el id="tiempo" y actualiza su contenido
+        // Formatea los minutos y segundos para que siempre tengan 2 dígitos (como un reloj normal 09:05)
         const elementoTiempo = document.getElementById("tiempo");
         elementoTiempo.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 
-        // Si el tiempo restante es de 60 segundos o menos, cambia el color del texto a rojo
+        // Si el tiempo restante es de 60 segundos o menos, cambia el color del texto a rojo para advertir al usuario
         if (tiempoRestante <= 60) {
             elementoTiempo.style.color = "red";
         }
 
-        // Si aún queda tiempo, lo decrementa en 1 segundo
+        // Si aún queda tiempo, lo baja a 1 segundo
         if (tiempoRestante > 0) {
             tiempoRestante--;
         } else {

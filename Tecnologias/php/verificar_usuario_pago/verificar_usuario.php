@@ -12,7 +12,7 @@ require_once("../../php/conexion/conexion.php");
 $response = [
     "sesion_activa" => isset($_SESSION['usuario']),
     "puede_acceder_test" => false,
-    "productos_comprados" => [] // 🔹 Guarda todos los productos comprados sin duplicados
+    "productos_comprados" => [] // Guarda todos los productos comprados sin duplicados
 ];
 
 // Si no hay sesión activa, devuelve la respuesta y termina la ejecución

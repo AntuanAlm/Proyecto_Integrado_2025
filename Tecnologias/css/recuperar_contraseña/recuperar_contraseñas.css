@@ -1,11 +1,11 @@
 :root {
-    --color-fondo: #f7faf4;               /* Fondo general claro */
-    --color-principal: midnightblue;      /* Color principal (azul oscuro) */
-    --color-secundario: #eeee22;          /* Amarillo suave */
-    --color-texto: #1a1a1a;               /* Texto principal */
-    --color-error: #e74c3c;               /* Mensajes de error */
-    --borde-radio: 10px;                  /* Bordes redondeados */
-    --sombra: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --color-fondo: #f7faf4;              
+    --color-principal: midnightblue;      
+    --color-secundario: #eeee22;          
+    --color-texto: #1a1a1a;               
+    --color-error: #e74c3c;               
+    --borde-radio: 10px;                  
+    --sombra: 0 6px 18px rgba(0, 0, 0, 0.1); 
     --transicion: 0.3s ease;
 }
 

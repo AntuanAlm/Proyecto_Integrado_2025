@@ -43,8 +43,8 @@ if (isset($_SESSION['mensaje'])) {
 </head>
 <body>
 
-
-    <div class="container">
+      <!-- ======================= PARTE SUPERIOR DEL HEADER ========================== -->
+        <div class="container">
         
             <p class="email">
                 <img data-src="gmail" alt="email" width="35" height="35" mailto="autoescuelaalmansa@hotmail.com">
@@ -62,28 +62,29 @@ if (isset($_SESSION['mensaje'])) {
         </div>
 
         <!-- ----------------------------- CARRITO DE LA COMPRA ----------------------------- -->
-<div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
-  <span>🛒 Carrito</span>
-  <span id="carrito-count" class="carrito-count">0</span>
-</div>
 
-<div id="carrito-menu" class="carrito-menu">
-  <div id="carrito-header" class="carrito-header">
-    <h2>Tu Carrito</h2>
-    <button class="close-carrito" onclick="toggleCarrito()">✖</button>
-  </div>
-  <div id="carrito-vacio" class="carrito-vacio">
-    <p>No tienes artículos en el carrito</p>
-  </div>
-  <div id="carrito-contenido" class="carrito-contenido">
-    <div id="carrito-items" class="carrito-items"></div>
-    <div id="carrito-total" class="carrito-total">
-      <p>Total: <span id="total-carrito">0€</span></p>
-    </div>
-    <!-- Botón que ahora es manejado por JavaScript -->
-    <button class="btn-pago">Ir a pagar</button>
-  </div>
-</div>
+          <div id="carrito" class="carrito-icon" onclick="toggleCarrito()">
+        <span>🛒 Carrito</span>
+        <span id="carrito-count" class="carrito-count">0</span>
+          </div>
+
+          <div id="carrito-menu" class="carrito-menu">
+            <div id="carrito-header" class="carrito-header">
+              <h2>Tu Carrito</h2>
+              <button class="close-carrito" onclick="toggleCarrito()">✖</button>
+          </div>
+            <div id="carrito-vacio" class="carrito-vacio">
+              <p>No tienes artículos en el carrito</p>
+          </div>
+            <div id="carrito-contenido" class="carrito-contenido">
+              <div id="carrito-items" class="carrito-items"></div>
+                <div id="carrito-total" class="carrito-total">
+                <p>Total: <span id="total-carrito">0€</span></p>
+          </div>
+          <!-- Botón que ahora es manejado por JavaScript -->
+                <button class="btn-pago">Ir a pagar</button>
+          </div>
+      </div>
 
         
         <!------------------------------------ HEADER -------------------------------------->
@@ -110,7 +111,6 @@ if (isset($_SESSION['mensaje'])) {
                   <a href="#alumnos" data-enlace="alumnos">Alumnos</a>
                   <div id="submenu-alumnos">
                       <a id="submenu-test" data-enlace="test">Test</a>
-                      <a id="submenu-nota" data-enlace="nota">Consulta tu Nota</a>
                   </div>
               </div>
       
@@ -153,24 +153,24 @@ if (isset($_SESSION['mensaje'])) {
   <button id="toggleSesion" class="avatar" title="Menú de sesión">
     <?php 
       if (isset($_SESSION['usuario']) && isset($_SESSION['usuario']['id'])) {
-        $usuario_id = $_SESSION['usuario']['id']; // 🔹 Obtiene el ID del usuario
-        $nombre = $_SESSION['usuario']['nombre']; // 🔹 Obtiene el nombre del usuario
+        $usuario_id = $_SESSION['usuario']['id']; // Obtiene el ID del usuario
+        $nombre = $_SESSION['usuario']['nombre']; // Obtiene el nombre del usuario
 
         if (is_array($nombre)) {
           $nombre = implode(' ', $nombre); // Convertimos array a cadena
         }
 
-        // 🔹 Elimina números y caracteres extraños en el nombre (pero mantiene el ID)
+        // Elimina números y caracteres extraños en el nombre (pero mantiene el ID)
         $nombreLimpio = preg_replace('/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/u', '', $nombre);
 
         $iniciales = '';
         foreach (explode(' ', trim($nombreLimpio)) as $palabra) {
           if (!empty($palabra)) {
-            $iniciales .= strtoupper($palabra[0]); // ✅ Toma solo iniciales
+            $iniciales .= strtoupper($palabra[0]); // Toma solo iniciales
           }
         }
 
-        // 🔹 Avatar con ID + Iniciales (Ejemplo: "10PP")
+        // Avatar con ID + Iniciales (Ejemplo: "10PP")
         echo $usuario_id . $iniciales;
       } else {
         echo '👤';
@@ -231,7 +231,7 @@ if (isset($_SESSION['mensaje'])) {
     </div>
      
          
-     <!-- ==================================== NUEVOS CLIENTES ================================ -->
+     <!-- ==================================== NUEVOS CLIENTES E INICIAR SESIÓN ================================ -->
 
     <h1 class="titulo-principal">¿Ya eres alumno de nuestra autoescuela o te gustaría unirte?</h1>
      

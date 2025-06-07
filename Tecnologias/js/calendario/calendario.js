@@ -121,12 +121,13 @@ function añadirEvento() {
     "Medico",
     "Cumpleaños",
     "Reunión",
+    "Clase práctica",
   ];
 
   let titulo;
   // Pedir el título hasta que sea válido
   do {
-    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intensivo // Examen teórico // Médico // Cumpleaños...");
+    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intensivo // Examen teórico // Médico // Cumpleaños // Clase práctica...");
     if (!titulosPermitidos.some(t => t.toLowerCase() === titulo?.toLowerCase())) {
       if (titulo) {
         alert("Título inválido. Debe ser uno de los siguientes: " + titulosPermitidos.join(", "));
@@ -135,17 +136,28 @@ function añadirEvento() {
         return; // Si no se ingresa nada, salimos de la función
       }
     }
-  } while (!titulosPermitidos.some(t => t.toLowerCase() === titulo?.toLowerCase())); // Continuar pidiendo hasta que el título sea válido
+  } while (!titulosPermitidos.some(t => t.toLowerCase() === titulo?.toLowerCase()));
 
   // Convertir el título ingresado a su formato original (mayúsculas/minúsculas)
   titulo = titulosPermitidos.find(t => t.toLowerCase() === titulo?.toLowerCase());
+
+  // Si el evento es "Clase práctica", pedir el nombre del alumno
+  let nombreAlumno = "";
+  if (titulo === "Clase práctica") {
+    nombreAlumno = prompt("Ingrese el nombre del alumno:");
+    if (nombreAlumno) {
+      titulo += ` - ${nombreAlumno}`;
+    } else {
+      alert("Debe ingresar un nombre para el alumno.");
+      return; // Si no se ingresa un nombre, salimos de la función
+    }
+  }
 
   let fecha;
   let fechaValida = false;
   // Pedir la fecha hasta que sea válida
   do {
     fecha = prompt("Ingrese la fecha en formato: día/mes/año (ejemplo: 15/5/2025)");
-
     if (fecha) {
       const fechaArray = fecha.split("/");
       if (fechaArray.length === 3) {
@@ -194,11 +206,11 @@ function añadirEvento() {
       diaSemana = fechaIngresada.getDay(); // 0 = domingo, 6 = sábado
 
       // Si es sábado o domingo, pedir una nueva fecha
-      if (diaSemana === 0 || diaSemana === 6) { // Si es sábado o domingo
+      if (diaSemana === 0 || diaSemana === 6) { 
         alert("No se puede añadir un examen en fin de semana. Elija otro día.");
         fecha = prompt("Ingrese una nueva fecha en formato: día/mes/año (ejemplo: 15/5/2025)");
       }
-    } while (diaSemana === 0 || diaSemana === 6); // Continuar hasta que la fecha no sea fin de semana
+    } while (diaSemana === 0 || diaSemana === 6);
   }
 
   // Pedir color hasta que sea válido
@@ -234,8 +246,8 @@ function añadirEvento() {
   const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
 
   const eventosDelDia = eventos.filter(e => e.fecha === fechaFormateada);
-  if (eventosDelDia.length >= 2) {
-    alert("No se pueden añadir más de 2 eventos en un mismo día.");
+  if (eventosDelDia.length >= 3) {
+    alert("No se pueden añadir más de 3 eventos en un mismo día.");
     return;
   }
 
@@ -309,104 +321,172 @@ function borrarEvento() {
 
 
   function modificarEvento() {
-  const titulosPermitidos = [
-    "Examen práctico",
-    "Curso intensivo",
-    "Examen teórico",
-    "Medico",
-    "Cumpleaños",
-    "Reunión",
-  ];
+    const titulosPermitidos = [
+      "Examen práctico",
+      "Curso intensivo",
+      "Examen teórico",
+      "Medico",
+      "Cumpleaños",
+      "Reunión",
+      "Clase práctica",
+    ];
 
-  const coloresPermitidos = {
-    rojo: "red",
-    verde: "green",
-    amarillo: "gold",
-    azul: "blue",
-    morado: "purple",
-  };
+    const coloresPermitidos = {
+      rojo: "red",
+      verde: "green",
+      amarillo: "gold",
+      azul: "blue",
+      morado: "purple",
+    };
 
-  let fecha = null;
-  let fechaArray = [];
+    let fecha = null;
+    let fechaArray = [];
 
-  // Pedir fecha válida
-  while (true) {
-    fecha = prompt("Ingrese la fecha del evento a modificar (día/mes/año):");
-    if (fecha === null) return; // Cancelar
-    fechaArray = fecha.split("/");
-    if (fechaArray.length === 3) break;
-    alert("Formato incorrecto. Usa día/mes/año.");
-  }
-
-  const dia = parseInt(fechaArray[0].trim());
-  const mes = parseInt(fechaArray[1].trim()) - 1;
-  const año = parseInt(fechaArray[2].trim());
-
-  const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
-  const evento = eventos.find(e => e.fecha === fechaFormateada);
-
-  if (!evento) {
-    alert("No se encontró evento en esa fecha.");
-    return;
-  }
-
-  // Pedir título válido (o dejar el actual)
-  let nuevoTitulo;
-  while (true) {
-    nuevoTitulo = prompt("Nuevo título del evento (dejar en blanco para mantener actual):", evento.titulo);
-    if (nuevoTitulo === null) return; // Cancelar
-    if (nuevoTitulo.trim() === "") break; // Mantener actual
-    if (titulosPermitidos.includes(nuevoTitulo.trim())) {
-      evento.titulo = nuevoTitulo.trim();
-      break;
-    } else {
-      alert("Título no permitido. Usa uno de estos:\n" + titulosPermitidos.join(", "));
+    // Pedir fecha válida
+    while (true) {
+      fecha = prompt("Ingrese la fecha del evento a modificar (día/mes/año):");
+      if (fecha === null) return; // Cancelar
+      fechaArray = fecha.split("/");
+      if (fechaArray.length === 3) break;
+      alert("Formato incorrecto. Usa día/mes/año.");
     }
-  }
 
-  // Pedir nueva fecha válida o dejar en blanco
-  let nuevoDia;
-  while (true) {
-    nuevoDia = prompt("Nuevo día del evento (día/mes/año) (dejar en blanco si no deseas cambiar):");
-    if (nuevoDia === null) return; // Cancelar
-    if (nuevoDia.trim() === "") break; // No cambiar fecha
+    const dia = parseInt(fechaArray[0].trim());
+    const mes = parseInt(fechaArray[1].trim()) - 1;
+    const año = parseInt(fechaArray[2].trim());
 
-    const nuevoDiaArray = nuevoDia.split("/");
-    if (nuevoDiaArray.length === 3) {
-      const diaNuevo = parseInt(nuevoDiaArray[0].trim());
-      const mesNuevo = parseInt(nuevoDiaArray[1].trim()) - 1;
-      const añoNuevo = parseInt(nuevoDiaArray[2].trim());
-      const nuevaFecha = new Date(añoNuevo, mesNuevo, diaNuevo);
+    const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
+    const eventosEnFecha = eventos.filter(e => e.fecha === fechaFormateada);
 
-      if (!isNaN(nuevaFecha.getTime())) {
-        const nuevaFechaFormateada = formatearFechaCorrectamente(añoNuevo, mesNuevo, diaNuevo);
-        evento.fecha = nuevaFechaFormateada;
+    if (eventosEnFecha.length === 0) {
+      alert("No se encontró evento en esa fecha.");
+      return;
+    }
+
+    // Si hay más de un evento ese día, dejar elegir cuál modificar
+    let evento;
+    if (eventosEnFecha.length > 1) {
+      let lista = "Elija el evento a modificar:\n";
+      eventosEnFecha.forEach((ev, idx) => {
+        lista += `${idx + 1}. ${ev.titulo}\n`;
+      });
+      let opcion = prompt(lista);
+      if (opcion === null) return;
+      opcion = parseInt(opcion);
+      if (isNaN(opcion) || opcion < 1 || opcion > eventosEnFecha.length) {
+        alert("Opción inválida.");
+        return;
+      }
+      evento = eventosEnFecha[opcion - 1];
+    } else {
+      evento = eventosEnFecha[0];
+    }
+
+    // Obtener el título base y nombre de alumno si es clase práctica
+    let tituloBase = evento.titulo;
+    let nombreAlumno = "";
+    if (tituloBase.startsWith("Clase práctica")) {
+      const partes = tituloBase.split(" - ");
+      tituloBase = "Clase práctica";
+      nombreAlumno = partes[1] || "";
+    }
+
+    // Pedir título válido (o dejar el actual)
+    let nuevoTitulo;
+    while (true) {
+      nuevoTitulo = prompt(
+        "Nuevo título del evento (dejar en blanco para mantener actual):",
+        tituloBase
+      );
+      if (nuevoTitulo === null) return; // Cancelar
+      if (nuevoTitulo.trim() === "") {
+        nuevoTitulo = tituloBase;
+        break; // Mantener actual
+      }
+      if (titulosPermitidos.includes(nuevoTitulo.trim())) {
         break;
+      } else {
+        alert("Título no permitido. Usa uno de estos:\n" + titulosPermitidos.join(", "));
       }
     }
-    alert("Fecha inválida. Usa el formato día/mes/año.");
-  }
 
-  // Pedir nuevo color válido o dejar en blanco
-  let nuevoColor;
-  while (true) {
-    nuevoColor = prompt("Nuevo color del evento (rojo, verde, amarillo, azul, morado) (dejar en blanco si no deseas cambiar):");
-    if (nuevoColor === null) return; // Cancelar
-    if (nuevoColor.trim() === "") break; // No cambiar color
-
-    const colorElegido = coloresPermitidos[nuevoColor.toLowerCase().trim()];
-    if (colorElegido) {
-      evento.color = colorElegido;
-      break;
+    // Si es clase práctica, pedir nombre de alumno (o mantener)
+    if (nuevoTitulo === "Clase práctica") {
+      let nuevoNombreAlumno = prompt(
+        "Nombre del alumno para la clase práctica (dejar en blanco para mantener actual):",
+        nombreAlumno
+      );
+      if (nuevoNombreAlumno === null) return; // Cancelar
+      if (nuevoNombreAlumno.trim() === "" && nombreAlumno) {
+        nuevoNombreAlumno = nombreAlumno;
+      }
+      if (!nuevoNombreAlumno.trim()) {
+        alert("Debe ingresar un nombre para el alumno.");
+        return;
+      }
+      nuevoTitulo = "Clase práctica - " + nuevoNombreAlumno.trim();
     }
-    alert("Color inválido. Usa uno de estos: " + Object.keys(coloresPermitidos).join(", "));
-  }
 
-  // Guardar cambios
-  localStorage.setItem("eventos", JSON.stringify(eventos));
-  alert("Evento modificado correctamente.");
-  generarCalendario(añoActual, mesActualIndex);
-}
+    // Pedir nueva fecha válida o dejar en blanco
+    let nuevoDia;
+    let nuevaFechaFormateada = evento.fecha;
+    while (true) {
+      nuevoDia = prompt("Nuevo día del evento (día/mes/año) (dejar en blanco si no deseas cambiar):");
+      if (nuevoDia === null) return; // Cancelar
+      if (nuevoDia.trim() === "") break; // No cambiar fecha
+
+      const nuevoDiaArray = nuevoDia.split("/");
+      if (nuevoDiaArray.length === 3) {
+        const diaNuevo = parseInt(nuevoDiaArray[0].trim());
+        const mesNuevo = parseInt(nuevoDiaArray[1].trim()) - 1;
+        const añoNuevo = parseInt(nuevoDiaArray[2].trim());
+        const nuevaFecha = new Date(añoNuevo, mesNuevo, diaNuevo);
+
+        if (!isNaN(nuevaFecha.getTime())) {
+          nuevaFechaFormateada = formatearFechaCorrectamente(añoNuevo, mesNuevo, diaNuevo);
+
+          // No permitir más de 2 eventos en la nueva fecha
+          const eventosEnNuevaFecha = eventos.filter(e => e.fecha === nuevaFechaFormateada);
+          // Si el evento no cambia de fecha, no cuenta doble
+          let cuenta = eventosEnNuevaFecha.length;
+          if (nuevaFechaFormateada === evento.fecha) cuenta--; 
+          if (cuenta >= 3) {
+            alert("No se pueden añadir más de 3 eventos en un mismo día.");
+            continue;
+          }
+          break;
+        }
+      }
+      alert("Fecha inválida. Usa el formato día/mes/año.");
+    }
+
+    // Pedir nuevo color válido o dejar en blanco
+    let nuevoColor;
+    while (true) {
+      nuevoColor = prompt(
+        "Nuevo color del evento (rojo, verde, amarillo, azul, morado) (dejar en blanco si no deseas cambiar):",
+        Object.keys(coloresPermitidos).find(key => coloresPermitidos[key] === evento.color) || ""
+      );
+      if (nuevoColor === null) return; // Cancelar
+      if (nuevoColor.trim() === "") break; // No cambiar color
+
+      const colorElegido = coloresPermitidos[nuevoColor.toLowerCase().trim()];
+      if (colorElegido) {
+        evento.color = colorElegido;
+        break;
+      }
+      alert("Color inválido. Usa uno de estos: " + Object.keys(coloresPermitidos).join(", "));
+    }
+
+    // Actualizar datos
+    evento.titulo = nuevoTitulo;
+    evento.fecha = nuevaFechaFormateada;
+
+    // Guardar cambios
+    localStorage.setItem("eventos", JSON.stringify(eventos));
+    alert("Evento modificado correctamente.");
+    generarCalendario(añoActual, mesActualIndex);
+  }
 
 
   
