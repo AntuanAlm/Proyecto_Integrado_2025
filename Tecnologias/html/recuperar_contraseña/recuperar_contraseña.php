@@ -160,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($correo)) { // Si el método
     
         <div class="footer-section" id="ubicacion-footer">
           <p id="texto-ubicacion">📍 C. Pez Espada, 1, Supeco, 11207 Algeciras, Cádiz</p>
-          <p id="texto-ubicacion">📞 *** *** ***</p>
+          <p id="texto-ubicacion">📞 666 666 666</p>
           <p id="texto-ubicacion">🕒 Lunes a Viernes de 10:00 a 13:00 y de 17:00 a 20:00</p>
         </div>
       </div>

@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $nombre, $apellidos, $email, $telefono, $asunto, $mensaje);
 
     if ($stmt->execute()) {
-        // ✅ Redirige a la página de confirmación HTML
+        // Redirige a la página de confirmación HTML
         header("Location: /Proyecto_Integrado_2025/Tecnologias/html/confirmacion_form_contacto_enviado/confirmacion_form_enviado.html");
         exit(); // ¡Muy importante! Detiene el script tras redirigir
     } else {

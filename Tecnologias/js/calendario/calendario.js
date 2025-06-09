@@ -122,12 +122,13 @@ function añadirEvento() {
     "Cumpleaños",
     "Reunión",
     "Clase práctica",
+    "Festivo"
   ];
 
   let titulo;
   // Pedir el título hasta que sea válido
   do {
-    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intensivo // Examen teórico // Médico // Cumpleaños // Clase práctica...");
+    titulo = prompt("Ingrese el título del evento: Ej: Examen práctico // Curso intensivo // Examen teórico // Médico // Cumpleaños // Clase práctica // Festivo...");
     if (!titulosPermitidos.some(t => t.toLowerCase() === titulo?.toLowerCase())) {
       if (titulo) {
         alert("Título inválido. Debe ser uno de los siguientes: " + titulosPermitidos.join(", "));
@@ -246,8 +247,8 @@ function añadirEvento() {
   const fechaFormateada = formatearFechaCorrectamente(año, mes, dia);
 
   const eventosDelDia = eventos.filter(e => e.fecha === fechaFormateada);
-  if (eventosDelDia.length >= 3) {
-    alert("No se pueden añadir más de 3 eventos en un mismo día.");
+  if (eventosDelDia.length >= 8) {
+    alert("No se pueden añadir más de 8 eventos en un mismo día.");
     return;
   }
 

@@ -1,7 +1,7 @@
 <?php
 session_start();  // Iniciar sesión
 
-// 🔎 Ajustamos la conexión con la base de datos
+// Ajustamos la conexión con la base de datos
 $ruta_conexion = __DIR__ . "/conexion/conexion.php";
 
 if (file_exists($ruta_conexion)) {
@@ -13,7 +13,7 @@ if (file_exists($ruta_conexion)) {
 if (isset($_SESSION['usuario']['email'])) {
     $usuario = mysqli_real_escape_string($conexion, $_SESSION['usuario']['email']);
 
-    // 🔴 **Forzar el cierre de sesión en la base de datos**
+    // **Forzar el cierre de sesión en la base de datos**
     $query = "UPDATE clientes SET sesion_activa = 0 WHERE correo = '$usuario'";
     if (!mysqli_query($conexion, $query)) {
         die("⚠️ Error al cerrar sesión en la base de datos: " . mysqli_error($conexion));
@@ -40,23 +40,23 @@ if (isset($_SESSION['usuario']['email'])) {
     }
 }
 
-// 🔴 **Eliminar todas las variables de sesión**
+// **Eliminar todas las variables de sesión**
 session_unset();
 $_SESSION = [];  
 
-// 🔴 **Eliminar la cookie PHPSESSID**
+// **Eliminar la cookie PHPSESSID**
 if (isset($_COOKIE[session_name()])) {
     setcookie(session_name(), '', time() - 3600, '/', '', false, true);
 }
 
-// 🔴 **Destruir la sesión**
+// **Destruir la sesión**
 session_destroy();
 
-// 🔄 **Regenerar ID de sesión**
+// **Regenerar ID de sesión**
 session_start();
 session_regenerate_id(true);
 
-// 🔄 **Redirigir a `index.php`**
+// **Redirigir a `index.php`**
 header("Location: ../html/Vista_Principal/index.php?cerrado=1");
 exit;
 ?>

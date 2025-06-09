@@ -1,17 +1,17 @@
 :root {
   /* COLORES */
-  --color-principal: #f4f7fa; /* Color principal */
-  --color-texto: midnightblue; /* Color del texto */
-  --color-hover: midnightblue; /* Color para hover */
-  --color-sombra: rgba(0, 0, 0, 0.2); /* Sombra suave */
-  --color-sombra-intensa: rgba(0, 0, 0, 0.8); /* Sombra intensa */
-  --color-fondo: #ffffff; /* Fondo general */
-  --color-gris: gray; /* Gris oscuro */
-  --color-gris-claro: #888888; /* Gris claro */
-  --color-fondo-sobre-nosotros: #f4f7fa; /* Fondo sobre nosotros */
-  --color-boton: midnightblue; /* Color del botón */
-  --color-boton-texto: midnightblue; /* Color del texto del botón */
+  --color-principal: #f4f7fa; 
+  --color-texto: midnightblue; 
+  --color-hover: midnightblue; 
+  --color-sombra: rgba(0, 0, 0, 0.2); 
+  --color-sombra-intensa: rgba(0, 0, 0, 0.8); 
+  --color-fondo: #ffffff; 
+  --color-gris: gray; 
+  --color-gris-claro: #888888; 
+  --color-fondo-sobre-nosotros: #f4f7fa; 
+  --color-boton: midnightblue; 
+  --color-boton-texto: midnightblue; 
   
   /* FUENTES */
-  --fuente-principal: "Roboto", sans-serif; /* Fuente principal */
+  --fuente-principal: "Roboto", sans-serif; 
 }

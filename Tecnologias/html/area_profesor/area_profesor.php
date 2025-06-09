@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
                   <a>Profesores</a>
                   <div id="submenu-profesores">
                       <a data-enlace="profesores">Conoce a tus profesores</a>
-                      <a data-enlace="login_profesores">Area profesores</a>
                   </div>
               </div>
           
@@ -344,7 +343,7 @@ function modificarClases(alumnoId, cambio) {
   
       <div class="footer-section" id="ubicacion-footer">
         <p id="texto-ubicacion">📍 C. Pez Espada, 1, Supeco, 11207 Algeciras, Cádiz</p>
-        <p id="texto-ubicacion">📞 *** *** ***</p>
+        <p id="texto-ubicacion">📞 666 666 666</p>
         <p id="texto-ubicacion">🕒 Lunes a Viernes de 10:00 a 13:00 y de 17:00 a 20:00</p>
       </div>
     </div>

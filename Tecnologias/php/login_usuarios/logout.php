@@ -1,7 +1,7 @@
 <?php
 session_start();  // Iniciar sesión
 
-// 🔎 Ajustamos la conexión con la base de datos
+// Ajustamos la conexión con la base de datos
 $ruta_conexion = __DIR__ . "/../conexion/conexion.php";
 
 if (file_exists($ruta_conexion)) {

@@ -12,7 +12,7 @@
 }
 
 /* ==========================
-   🧱 Estructura general
+   Estructura general
    ========================== */
 body {
   font-family: var(--fuente);
@@ -31,7 +31,7 @@ h1 {
 }
 
 /* ==========================
-   📋 Tabla de detalles
+   Tabla de detalles
    ========================== */
 table {
   width: 100%;
@@ -73,7 +73,7 @@ td:has(.estado) {
 }
 
 /* ==========================
-   🔗 Enlace de volver
+   Enlace de volver
    ========================== */
 a {
   display: inline-block;
@@ -93,7 +93,7 @@ a:hover {
 }
 
 /* ==========================
-   📱 Responsive para móviles
+   Responsive para móviles
    ========================== */
 @media screen and (max-width: 768px) {
   table, thead, tbody, th, td, tr {

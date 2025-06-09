@@ -14,7 +14,7 @@
 }
 
 /* =======================
-   🎯 Tipografía general
+   Tipografía general
    ======================= */
 body {
   font-family: var(--fuente);
@@ -40,7 +40,7 @@ h2 {
 }
 
 /* =======================
-   🧾 Selector de alumnos
+  Selector de alumnos
    ======================= */
 .contenedor-alumnos {
   display: flex;
@@ -64,7 +64,7 @@ h2 {
 }
 
 /* =======================
-   👤 Tarjeta de alumno
+   Tarjeta de alumno
    ======================= */
 .tarjeta-alumno {
   max-width: 500px;
@@ -90,7 +90,7 @@ h2 {
 }
 
 /* =======================
-   🔗 Botón ver resultados
+  Botón ver resultados
    ======================= */
 .btn-ver-resultados {
   display: inline-block;
@@ -110,7 +110,7 @@ h2 {
 }
 
 /* =======================
-   🔐 Botón logout
+   Botón logout
    ======================= */
 .btn-logout {
   background-color: var(--color-rojo);
@@ -135,7 +135,7 @@ h2 {
 }
 
 /* =======================
-   ✨ Animación de aparición
+  Animación de aparición
    ======================= */
 @keyframes fadeIn {
   from {

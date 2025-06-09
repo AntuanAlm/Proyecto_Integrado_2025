@@ -31,7 +31,7 @@ if (headers_sent($file, $line)) {
     echo "<p>✅ Las cabeceras aún no se han enviado.</p>";
 }
 
-// 🔎 **Verificar sesiones activas en la base de datos**
+// **Verificar sesiones activas en la base de datos**
 echo "<h2>Sesiones activas en la base de datos</h2>";
 
 // Ajustamos la ruta del archivo de conexión

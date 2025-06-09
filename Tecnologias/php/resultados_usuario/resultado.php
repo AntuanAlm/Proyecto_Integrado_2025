@@ -156,14 +156,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 </script>
 
-<script>
+<!-- <script>
     // Evita volver al test con el botón atrás
     window.history.pushState(null, null, window.location.href);
     window.onpopstate = function () {
         window.history.pushState(null, null, window.location.href);
         alert("🚫 No puedes volver al test una vez terminado.");
     };
-</script>
+</script> -->
 
 
 </body>

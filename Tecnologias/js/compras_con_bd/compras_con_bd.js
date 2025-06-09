@@ -40,7 +40,7 @@ function agregarAlCarrito(nombre, precio, tipo) {
             }
 
             localStorage.setItem("carrito", JSON.stringify(carrito));
-            actualizarCarrito(); // 🔹 Refresca la visualización del carrito
+            actualizarCarrito(); // Refresca la visualización del carrito
 
             alert(`✅ '${nombre}' ha sido añadido al carrito.`);
         })

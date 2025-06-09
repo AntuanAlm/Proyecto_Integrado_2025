@@ -101,7 +101,6 @@ $esProfesor = isset($_SESSION["profesor_id"]); // Verificar si el usuario es pro
               <a href="#alumnos" data-enlace="alumnos">Alumnos</a>
               <div id="submenu-alumnos">
                   <a id="submenu-test" data-enlace="test">Test</a>
-                  <a id="submenu-nota" data-enlace="nota">Consulta tu Nota</a>
               </div>
           </div>
   
@@ -193,7 +192,7 @@ $esProfesor = isset($_SESSION["profesor_id"]); // Verificar si el usuario es pro
   
       <div class="footer-section" id="ubicacion-footer">
         <p id="texto-ubicacion">📍 C. Pez Espada, 1, Supeco, 11207 Algeciras, Cádiz</p>
-        <p id="texto-ubicacion">📞 *** *** ***</p>
+        <p id="texto-ubicacion">📞 666 666 666</p>
         <p id="texto-ubicacion">🕒 Lunes a Viernes de 10:00 a 13:00 y de 17:00 a 20:00</p>
       </div>
     </div>

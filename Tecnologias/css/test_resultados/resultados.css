@@ -17,7 +17,7 @@
 }
 
 /* ==============================
-   🧱 Estructura general
+   Estructura general
    ============================== */
 body {
   font-family: var(--fuente);
@@ -36,7 +36,7 @@ h1 {
 }
 
 /* ==============================
-   📊 Tabla de resultados
+   Tabla de resultados
    ============================== */
 table {
   width: 100%;
@@ -83,7 +83,7 @@ tr:last-child td {
 }
 
 /* ==============================
-   ✅ Estado aprobado / ❌ suspenso
+   Estado aprobado / suspenso
    ============================== */
 .estado-aprobado {
   background-color: var(--color-aprobado);
@@ -102,7 +102,7 @@ tr:last-child td {
 }
 
 /* ==============================
-   🔗 Botón de volver y enlaces
+   Botón de volver y enlaces
    ============================== */
 a {
   display: inline-block;
@@ -144,7 +144,7 @@ a:focus {
 }
 
 /* ==============================
-   📱 Diseño Responsive
+   Diseño Responsive
    ============================== */
 @media screen and (max-width: 768px) {
   table, thead, tbody, th, td, tr {
