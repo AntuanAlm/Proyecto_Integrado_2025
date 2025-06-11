@@ -7,7 +7,7 @@ session_start(); // Inicia la sesión
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alumnos</title>
 
     <!-- Links de css -->
      <link rel="stylesheet" href="../../css/body_header_nav/body_header_nav.css">

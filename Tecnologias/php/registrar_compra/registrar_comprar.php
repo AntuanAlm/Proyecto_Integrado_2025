@@ -60,7 +60,7 @@ if (isset($data["carrito"]) && count($data["carrito"]) > 0) {
         // Si compra un paquete de clases prácticas, aumentamos `clases_practicas` según la cantidad comprada
         elseif ($producto === "Pack Completo") {
             $clases_a_sumar = 10 * $cantidad;
-            $oportunidades_a_sumar = 2 * $cantidad;
+            $oportunidades_a_sumar = 0 * $cantidad;
             $query_update = "UPDATE clientes SET clases_practicas = clases_practicas + ?, oportunidades_examen = oportunidades_examen + ? WHERE id = ?";
             $stmt_update = $conexion->prepare($query_update);
             $stmt_update->bind_param("iii", $clases_a_sumar, $oportunidades_a_sumar, $usuario_id);

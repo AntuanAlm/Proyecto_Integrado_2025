@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
   let añoActual = 2025;
-  let mesActualIndex = 5; // Estamos en junio (mes 5, ya que enero es 0) como los array empiezan en 0
-  
+  let mesActualIndex = 5; // Estamos en junio (mes 5, ya que enero es 0)
 
   const meses = [
     "Enero", "Febrero", "Marzo", "Abril",
@@ -80,15 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
     menuAcciones.classList.toggle("visible");
   }
 
-  botonFlotante.addEventListener("click", function (e) {
-    if (e.target === botonFlotante || e.target.textContent.trim() === "☰") {
-      toggleMenu();
-    }
-  });
+  // Modificación para evitar error si botonFlotante no existe
+  if (botonFlotante) {
+    botonFlotante.addEventListener("click", function (e) {
+      if (e.target === botonFlotante || e.target.textContent.trim() === "☰") {
+        toggleMenu();
+      }
+    });
+  }
 
   document.addEventListener("click", function (event) {
-    if (!botonFlotante.contains(event.target) && !menuAcciones.contains(event.target)) {
-      menuAcciones.classList.remove("visible");
+    if (!botonFlotante?.contains(event.target) && !menuAcciones?.contains(event.target)) {
+      menuAcciones?.classList.remove("visible");
     }
   });
 
@@ -103,8 +105,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Agregado: registrar el evento solo si el botón existe con la cuenta del profe
+  const btnAñadir = document.getElementById("btnAñadir");
+  if (btnAñadir) {
+    btnAñadir.addEventListener("click", añadirEvento);
+  }
+
+  // Inicializar calendario al cargar la página
+  generarCalendario(añoActual, mesActualIndex);
  // ========================= AÑADIR EVENTO =========================
-// Función para añadir un evento al calendario
 
 function añadirEvento() {
   // Confirmar si el usuario desea añadir un evento

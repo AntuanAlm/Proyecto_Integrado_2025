@@ -1,4 +1,3 @@
-// Animación suave al hacer clic en enlaces internos
 document.querySelectorAll('a[href^="#"]').forEach(enlace => {
     enlace.addEventListener('click', function(e) {
         e.preventDefault();

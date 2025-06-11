@@ -9,13 +9,15 @@ if (!isset($_SESSION["profesor_id"]) || $_SESSION["profesor_id"] !== 2) {
 // Obtener alumnos asignados a María y sus compras desde la tabla `compras`
 $stmt = $conexion->prepare("
     SELECT clientes.id, clientes.nombre, clientes.apellidos, clientes.dni, clientes.telefono, clientes.correo, 
-    DATE(clientes.fecha_registro) AS fecha_inscripcion, clientes.fecha_nacimiento, clientes.profesor_id, 
-    IFNULL(GROUP_CONCAT(CONCAT(compras.producto, ' - ', compras.precio, '€') SEPARATOR ', '), 'Sin compras') AS productos_comprados,
-    IFNULL(SUM(compras.precio), 0) AS total_gastado
-    FROM clientes 
-    LEFT JOIN compras ON clientes.id = compras.usuario_id 
-    WHERE clientes.profesor_id = 2 
-    GROUP BY clientes.id
+DATE(clientes.fecha_registro) AS fecha_inscripcion, clientes.fecha_nacimiento, clientes.profesor_id,
+clientes.oportunidades_examen,
+IFNULL(GROUP_CONCAT(CONCAT(compras.producto, ' - ', compras.precio, '€') SEPARATOR ', '), 'Sin compras') AS productos_comprados,
+IFNULL(SUM(compras.precio), 0) AS total_gastado
+FROM clientes 
+LEFT JOIN compras ON clientes.id = compras.usuario_id 
+WHERE clientes.profesor_id = 2 
+GROUP BY clientes.id
+
 ");
 
 
@@ -178,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <p><strong>Profesora:</strong> <?= ($fila["profesor_id"] == 2) ? "María" : "Juan"; ?></p>
     <p><strong>Compras:</strong> <?= htmlspecialchars($fila["productos_comprados"]); ?></p>
     <p><strong>Total gastado:</strong> <?= number_format($fila["total_gastado"], 2) . "€"; ?></p>
+    <p><strong>Oportunidades de examen:</strong> <?= htmlspecialchars($fila["oportunidades_examen"]); ?></p>
     <a href="../../php/resultados_usuario/resultado.php?usuario_id=<?= $fila['id']; ?>" class="btn-ver-resultados">
         Ver Resultados de los test
     </a>

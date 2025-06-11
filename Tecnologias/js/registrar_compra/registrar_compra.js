@@ -18,7 +18,7 @@ function realizarPago() {
                 alert("⚠️ Debes iniciar sesión para realizar la compra.");
                 window.location.href = "../../html/login_usuario/login_usuario.html";
             } else {
-                // 🔹 Simular pago después de confirmar sesión
+                // Simular pago después de confirmar sesión
                 setTimeout(() => {
                     alert("✅ Pago simulado con éxito.");
                     registrarCompra(carrito);
@@ -32,18 +32,18 @@ function realizarPago() {
 function registrarCompra(carrito) {
     console.log("Enviando compra al servidor:", carrito);
 
-    // 🔹 Transformamos los datos para asegurarnos de que cada producto tiene su cantidad reflejada
+    // Transformamos los datos para asegurarnos de que cada producto tiene su cantidad reflejada
     let carritoProcesado = carrito.map(item => ({
         nombre: item.nombre,
         precioUnitario: item.precio,
         cantidad: item.cantidad,
-        precioTotal: item.precio * item.cantidad // ✅ Multiplicamos el precio por la cantidad
+        precioTotal: item.precio * item.cantidad // Multiplicamos el precio por la cantidad
     }));
 
     fetch("../../php/registrar_compra/registrar_comprar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ carrito: carritoProcesado }) // ✅ Enviar datos corregidos
+        body: JSON.stringify({ carrito: carritoProcesado }) // Enviar datos corregidos
     })
     .then(response => response.json())
     .then(data => {
@@ -51,7 +51,7 @@ function registrarCompra(carrito) {
         
         if (data.success) {
             alert("✅ Compra registrada con éxito.");
-            localStorage.removeItem("carrito"); // 🔹 Vaciar carrito tras el pago
+            localStorage.removeItem("carrito"); // Vaciar carrito tras el pago
             window.location.href = "../../html/agradecimiento_pago/agradecimiento_pago.html";
         } else {
             alert("⚠️ Error al registrar la compra: " + data.error);
@@ -72,6 +72,6 @@ function agregarAlCarrito(nombre, precio, tipo) {
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    console.log("Carrito actualizado:", carrito); // 🔹 Ver datos en la consola
+    console.log("Carrito actualizado:", carrito); // Ver datos en la consola
     alert(`✅ ${nombre} añadido al carrito.`);
 }

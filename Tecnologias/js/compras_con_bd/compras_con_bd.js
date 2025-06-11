@@ -12,16 +12,16 @@ function agregarAlCarrito(nombre, precio, tipo) {
     fetch("http://localhost/Proyecto_Integrado_2025/Tecnologias/php/verificar_usuario_pago/verificar_usuario.php")
         .then(response => response.json())
         .then(data => {
-            // 🔹 Lista de productos que se pueden comprar múltiples veces
+            // Lista de productos que se pueden comprar múltiples veces
             let productosRecurrentes = ["Práctico", "Pack de 10 Clases Prácticas", "Pack de 20 Clases Prácticas", "Curso Intensivo"];
 
             if (!productosRecurrentes.includes(nombre) && data.productos_comprados.includes(nombre)) {
                 alert(`❌ Ya has comprado '${nombre}'. No puedes añadirlo nuevamente.`);
-                return; // 🔹 Bloquea la acción antes de que cause errores
+                return; // Bloquea la acción antes de que cause errores
             }
             // no puedes comprar el pack completo si ya has comprado el teórico o práctico porque lo he limitado a 1 desde el php.
 
-            // 🔹 Asegura que el precio es un número válido
+            // Asegura que el precio es un número válido
             precio = parseFloat(precio); 
             if (isNaN(precio)) {
                 console.error(`⚠️ Error: Precio inválido para '${nombre}'. Valor recibido:`, precio);
@@ -29,7 +29,7 @@ function agregarAlCarrito(nombre, precio, tipo) {
                 return;
             }
 
-            // 🔹 Manejo del carrito fusionando lógica de `carrito.js`
+            // Manejo del carrito fusionando lógica de `carrito.js`
             let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             let itemExistente = carrito.find(item => item.nombre === nombre);
 
@@ -40,7 +40,7 @@ function agregarAlCarrito(nombre, precio, tipo) {
             }
 
             localStorage.setItem("carrito", JSON.stringify(carrito));
-            actualizarCarrito(); // Refresca la visualización del carrito
+            actualizarCarrito(); 
 
             alert(`✅ '${nombre}' ha sido añadido al carrito.`);
         })
